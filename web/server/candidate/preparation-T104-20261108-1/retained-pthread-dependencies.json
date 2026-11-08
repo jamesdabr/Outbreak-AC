@@ -1,0 +1,35 @@
+{
+  "kind": "T104_RETAINED_ACTUAL_DEPENDENCY_TEXT",
+  "records": [
+    {
+      "path": "web/server/out-lifecycle/release/tools.d",
+      "sha256": "b0f9cbb427b22c2b0c3d0172a2aa288387c89951aa72417b4867921a186fc79d",
+      "matching_lines": [
+        {
+          "line": 371,
+          "raw": "  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h \\"
+        }
+      ]
+    },
+    {
+      "path": "web/server/out-lifecycle/release/log.d",
+      "sha256": "e7f19d6db4734387fb972d54323188af6e06a7536765794c6b0b59f0168e6cf8",
+      "matching_lines": [
+        {
+          "line": 372,
+          "raw": "  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h \\"
+        }
+      ]
+    },
+    {
+      "path": "web/server/out-lifecycle/release/server.d",
+      "sha256": "fa3f82909c2745079ded571ba20c69588bab3affbfd9d0fe39939bfed1f6b3e1",
+      "matching_lines": [
+        {
+          "line": 372,
+          "raw": "  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/pthread.h \\"
+        }
+      ]
+    }
+  ]
+}

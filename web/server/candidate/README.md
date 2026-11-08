@@ -1,7 +1,7 @@
-# T0925.19 / T0985.24 native candidate tooling — PREPARATION ONLY
+# T0925.19 / T0985.24 / T1041.0 native candidate tooling — PREPARATION ONLY
 
-Governing CANDIDATE_NATIVE_FOUNDATION0.2 / CANDIDATE_BUILD_FOUNDATION0.2,
-D087/D088/D090/D091/D098; all old helpers, binaries, ledgers and frameworks immutable.
+Governing CANDIDATE_NATIVE_FOUNDATION0.3 / CANDIDATE_BUILD_FOUNDATION0.2,
+D087/D088/D090/D091/D098/D107; all old helpers, binaries, ledgers and frameworks immutable.
 No actual signing/compile/tool probe/server has been run by this preparation.
 Fixture commands/objects/signatures are conspicuously fake temporary data and
 cannot authorize real effects or become accepted build evidence.
@@ -168,3 +168,46 @@ foreign dylibs in either inspection phase, resealed tmp/log/ancestor/record/dep/
 object/binary/receipt/extra-framework links, valid framework chains, and producer
 refusal to seal an injected link. No current tool probe/sign/compile/runtime has
 been run; no fixture artifact is accepted native evidence.
+
+## T104 exact installed SDK pthread alias
+
+D107/native0.3 adds only the fixed SDK/usr/include/pthread.h link with raw target
+pthread/pthread.h, lstat mode0755 and canonical ordinary terminal
+SDK/usr/include/pthread/pthread.h. SDK remains the exact canonical CLT
+MacOSX15.5.sdk. The recipe-source constant binds this identity; no new public
+authorization/observation/system_sdk/report schema field or alias selector exists.
+
+authorize validates ordinary ancestors of both names, exact raw link type/text/
+mode, exact confined canonical ordinary terminal and matching current target
+hash in both existing inputs and system_sdk.files before reservation/tool effects.
+Only the canonical ordinary target is pinned; alias names cannot be ordinary map
+entries. Each actual occurrence of that exact alias in dependency_paths repeats
+the identity/ancestor/target/pin/hash validation, then normalizes to its canonical
+declared target. The raw .d text/log evidence is unchanged and retained; existing
+canonical pre/post dependency membership/hash checks still apply. Existing staged
+framework alias handling is unchanged. Build.py and verify.py remain byte-identical
+and consume this shared helper as before.
+
+Unknown aliases even to the same bytes, source aliases, the historical MacOSX.sdk
+selector, altered raw spelling/mode/terminal, nested/escaping/dangling links and
+undeclared/changed targets refuse. There is no generic SDK canonicalization,
+old-header equivalence waiver, flag/SDK/tool/target change or new execution grant.
+
+Before correction, the prior stage.py/test_preparation.py/README.md and unchanged
+build.py/verify.py were archived exactly under preparation-T104-20261108-1/
+prior-source/ with mappings in prior-source-archive.json. Original T092/T098/f0
+source/evidence/freezes and D106 clean clone remain historical and untouched.
+retained-pthread-dependencies.json records exact matching raw lines and full .d
+hashes from retained actual release tools/log/server dependency files. Those lines
+use the old SDK selector; the positive fixture substitutes only the already-fixed
+canonical SDK root to model the future recipe, without running a compiler.
+
+Common fixture changes now use a physical fake SDK tree, a real fake-owned
+pthread.h symlink (lchmod applies only inside temporary fixture storage) and its
+canonical target. Only ordinary canonical fake SDK files enter pins; FakeRunner
+emits the raw alias and FixtureView maps all SDK access into temporary storage.
+All original38 test bodies are preserved; new alias regressions cover raw retained
+format/full simulated builder+independent verifier, pre-effect refusal, mode/text/
+ancestor/ordinary/declaration/target changes, same-byte unknown aliases and a guard
+against any real CLT/Python/tool file read. All real process/socket/compiler/signing
+guards remain. Fake commands/objects do not become actual native build evidence.

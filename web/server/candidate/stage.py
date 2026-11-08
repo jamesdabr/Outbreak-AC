@@ -4,6 +4,7 @@ from pathlib import Path,PurePosixPath
 
 ROOT=Path(__file__).resolve().parents[3]
 SDK='/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk'
+SDK_PTHREAD_ALIAS=(SDK+'/usr/include/pthread.h','pthread/pthread.h',0o755,SDK+'/usr/include/pthread/pthread.h')
 CLT='/Library/Developer/CommandLineTools'
 PYTHON='/Library/Frameworks/Python.framework/Versions/3.11'
 FRAMEWORK='source/xcode/Frameworks/SDL2.framework'
@@ -109,6 +110,16 @@ def validate_preservation(p):
  for missing in p['absent_roots']:need(not any(beneath(n,missing) for group in kinds[:3] for n in group),'present member inside absent root')
  return p
 
+def sdk_pthread_alias(view,inputs,sdk_files):
+ """D107: one fixed leaf alias, pinned ordinary target, never a generic waiver."""
+ alias,text,mode,target=SDK_PTHREAD_ALIAS;relative=target[len(SDK)+1:]
+ need(view.ordinary_ancestors(alias) and view.ordinary_ancestors(target),'SDK pthread alias ancestors must be ordinary')
+ need(view.link_identity(alias)=={'target':text,'mode':mode},'fixed SDK pthread alias raw text/mode/type changed')
+ need(view.ordinary(target) and view.canonical(target)==target and view.canonical(alias)==target,'SDK pthread target must be exact canonical ordinary file')
+ need(target in inputs and relative in sdk_files and alias not in inputs and 'usr/include/pthread.h' not in sdk_files,'SDK pthread canonical target not declared')
+ need(digest(inputs[target])==digest(sdk_files[relative])==view.hash(target),'SDK pthread target bytes changed')
+ return target
+
 def authorize(data,expected_sha,ident,view,existing=False,verify_preservation=True):
  need(sha(data)==digest(expected_sha),'authorization digest mismatch');p=loads(data);root=view.root;identifier(ident)
  exact(p,['schema_version','kind','authority','status','execution_release','recipe','ticket','candidate_id','decision','source_revision','source_manifest','bindings','observation'],'authorization fields')
@@ -138,6 +149,7 @@ def authorize(data,expected_sha,ident,view,existing=False,verify_preservation=Tr
  need(all(root+'/'+n in o['inputs'] for n in entries) and manifest in o['inputs'] and root+'/'+decision in o['inputs'],'manifest/decision inputs missing')
  need(all(row['path'] in o['inputs'] and o['inputs'][row['path']]==row['sha256'] for row in o['tools'].values()),'tool inputs missing')
  need(all(SDK+'/'+n in o['inputs'] and o['inputs'][SDK+'/'+n]==h for n,h in o['system_sdk']['files'].items()),'SDK inputs missing')
+ sdk_pthread_alias(view,o['inputs'],o['system_sdk']['files']);view.sdk_files=o['system_sdk']['files']
  for path in (CLT+'/usr/bin/clang',CLT+'/usr/bin/ld',SDK+'/SDKSettings.json',SDK+'/usr/include/zlib.h',SDK+'/usr/include/pthread.h',SDK+'/usr/lib/libz.tbd',SDK+'/usr/lib/libpthread.tbd'):
   physical=view.canonical(path);need(beneath(physical,CLT) and physical in o['inputs'],'actual compiler/SDK/link prerequisite not declared')
  for name,row in o['source_framework'].items():
@@ -151,6 +163,13 @@ class View:
  """Read-only filesystem implementation. No tools/compiler probes."""
  def __init__(self,root=ROOT):self.root=str(Path(root).resolve())
  def ordinary(self,p):return Path(p).is_file() and not Path(p).is_symlink()
+ def ordinary_ancestors(self,p):
+  try:return all(stat.S_ISDIR(q.lstat().st_mode) for q in Path(p).parents)
+  except OSError:return False
+ def link_identity(self,p):
+  try:info=Path(p).lstat()
+  except FileNotFoundError:return None
+  return {'target':os.readlink(p),'mode':stat.S_IMODE(info.st_mode)} if stat.S_ISLNK(info.st_mode) else None
  def canonical(self,p):return str(Path(p).resolve(strict=True))
  def exists(self,p):return Path(p).exists() or Path(p).is_symlink()
  def output_safe(self,ident):
@@ -311,17 +330,19 @@ def signed_inventory(before,after):
  return after
 
 def dependency_paths(text,target,view,ident):
- """Parse actual clang dependencies, normalize only declared framework links.
+ """Normalize only declared framework links and D107's exact pthread alias.
  No sound/MD3/native-token exception or implicit discovered-input adoption.
  """
  need(type(text) is str and ':' in text,'malformed dependency file');left,right=text.replace('\\\n',' ').split(':',1);need(left.strip()==target,'dependency target mismatch')
  raw=shlex.split(right);need(raw and len(raw)==len(set(raw)),'empty/duplicate dependency file');result={};root=view.root;copy=attempt(root,ident)+'/deps-signed/SDL2.framework'
  for name in raw:
-  absolute(name);canonical=view.canonical(name)
-  if beneath(name,copy):
+  absolute(name)
+  if name==SDK_PTHREAD_ALIAS[0]:canonical=sdk_pthread_alias(view,view.declared_inputs,view.sdk_files);origin=canonical
+  elif beneath(name,copy):
+   canonical=view.canonical(name)
    need(beneath(canonical,copy),'staged dependency escapes');origin=root+'/'+FRAMEWORK+canonical[len(copy):]
    need('/Headers/' in canonical,'unexpected staged non-header compiler dependency')
-  else:need(name==canonical,'undeclared dependency alias');origin=canonical
+  else:canonical=view.canonical(name);need(name==canonical,'undeclared dependency alias');origin=canonical
   need(origin in view.declared_inputs and view.hash(canonical)==view.declared_inputs[origin],'undeclared/changed actual consumed dependency')
   if beneath(origin,root):need(origin[len(root)+1:] in view.source_entries,'consumed project header absent from source package')
   result[canonical]={'origin':origin,'sha256':view.hash(canonical)}

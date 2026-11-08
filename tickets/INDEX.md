@@ -266,3 +266,11 @@ D104: T097 corrected discovery source/preparation ACCEPTED after independent six
 D105: T102 external native identity collection ACCEPTED after independent912-file/seven-link/15-reference verification. MAIN source inventory reconciled; final T101/clean-root/source revision and actual builds pending.
 
 D106: T095/T101 package/corrected stager/successor metadata ACCEPTED. MAIN authorized explicit887-path local source commit/fresh no-hardlink clone and one bounded DATA-only prerequisite stage there; compiler/build/runtime gates remain separate.
+
+D107: reviewed commitf0b9f1f2/fresh source887-member checks and actual6738-member prerequisite stage PASS. Native raw dependency preflight found known pthread.h alias rejected by parser; native contract0.3/T1041.0 AI correction RELEASED before compiler execution. Full builds not run.
+
+| T104 | P0 subset | [Handle fixed SDK pthread alias](T104.md) | AI-Director | D107/native contract0.3 | RELEASED |
+
+D108: T103 Player re-released1.1/probe0.2, explicit same-origin iframe choice and unavailable early-output disclosure/partial diagnostic scope; no actual browser/service execution.
+
+D109: T104 exact SDK pthread alias correction ACCEPTED after independent52 tests/all18 frozen files/targeted source review. MAIN successor source revision/clean-root/prerequisite transaction authorized; actual compiler/build tickets still separate.

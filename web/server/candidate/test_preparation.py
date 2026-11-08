@@ -18,7 +18,7 @@ def fake_macho(kind,paths=()):
 
 class Fixture:
  def __init__(self,root):
-  root=root.resolve();self.root=str(root);self.external={};self.ident='FIXTURE_ONLY';self.pin=root/'notes/decisions/FIXTURE_ONLY.json';self.view=None
+  root=root.resolve();self.root=str(root);self.external={};self.sdk_root=root/'EXTERNAL/SDK';self.ident='FIXTURE_ONLY';self.pin=root/'notes/decisions/FIXTURE_ONLY.json';self.view=None
   def put(name,data=b'FIXTURE_ONLY\n',mode=420):
    p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data);p.chmod(mode);return p
   self.put=put;put('.git/HEAD',b'1'*40+b'\n');put('notes/decisions/FIXTURE_ONLY.md');put('notes/decisions/OTHER.md');put('source/game/portable.h');put('web/runtime/tests/historical/unconsumed.h')
@@ -32,27 +32,33 @@ class Fixture:
   old=root/'web/server/deps-signed';old.mkdir(parents=True);(old/'opaque').symlink_to('/FIXTURE_ONLY/nonexistent/outside')
   for name in [*stage.TOOLS.values(),stage.CLT+'/usr/bin/clang',stage.CLT+'/usr/bin/ld',stage.CLT+'/usr/lib/clang/17/include/stddef.h',stage.PYTHON+'/bin/python3']:
    self.ext(name)
-  for name in ['SDKSettings.json','usr/include/zlib.h','usr/include/pthread.h','usr/lib/libz.tbd','usr/lib/libpthread.tbd','usr/lib/libc++.tbd']:self.ext(stage.SDK+'/'+name,b'{"Version":"15.5"}' if name=='SDKSettings.json' else b'FIXTURE_ONLY_SDK')
+  for name in ['SDKSettings.json','usr/include/zlib.h','usr/include/pthread/pthread.h','usr/lib/libz.tbd','usr/lib/libpthread.tbd','usr/lib/libc++.tbd']:self.ext(stage.SDK+'/'+name,b'{"Version":"15.5"}' if name=='SDKSettings.json' else b'FIXTURE_ONLY_SDK')
+  alias=self.sdk_root/'usr/include/pthread.h';alias.symlink_to('pthread/pthread.h');os.lchmod(alias,0o755);self.external[stage.SDK_PTHREAD_ALIAS[0]]=alias
   self.view=FixtureView(self)
   entries=[]
   package=stage.CPP+stage.C+['source/src/sound.h','source/src/Makefile','source/enet/Makefile.am','notes/decisions/FIXTURE_ONLY.md','notes/decisions/OTHER.md','source/game/portable.h']+['web/server/candidate/'+n for n in stage.SCRIPT_NAMES]
   package+=['source/xcode/Frameworks/SDL2.framework/'+n for n,row in self.view.framework().items() if row['kind']=='file']
   for name in sorted(package):p=root/name;entries.append({'path':name,'bytes':p.stat().st_size,'sha256':stage.sha(p.read_bytes()),'mode':self.view.mode(str(p))})
   manifest={'schema_version':1,'kind':'SOURCE_INPUT_MANIFEST','source_revision':'1'*40,'entries':entries};put('web/repro/source-manifest.json',stage.canonical_json(manifest).encode())
-  inputs={self.root+'/'+e['path']:e['sha256'] for e in entries};inputs[self.root+'/web/repro/source-manifest.json']=self.view.hash(self.root+'/web/repro/source-manifest.json');inputs.update({n:self.view.hash(n) for n in self.external})
-  sdkfiles={n[len(stage.SDK)+1:]:self.view.hash(n) for n in self.external if n.startswith(stage.SDK+'/')}
+  inputs={self.root+'/'+e['path']:e['sha256'] for e in entries};inputs[self.root+'/web/repro/source-manifest.json']=self.view.hash(self.root+'/web/repro/source-manifest.json');inputs.update({n:self.view.hash(n) for n in self.external if self.view.ordinary(n) and self.view.canonical(n)==n})
+  sdkfiles={n[len(stage.SDK)+1:]:self.view.hash(n) for n in self.external if n.startswith(stage.SDK+'/') and self.view.ordinary(n) and self.view.canonical(n)==n}
   self.auth={'schema_version':1,'kind':'CANDIDATE_NATIVE_BUILD_AUTHORIZATION','authority':'MAIN','status':'ACCEPTED','execution_release':'EXPLICIT_CANDIDATE_NATIVE_BUILD_EXECUTION','recipe':'native_standalone_v1','ticket':'FIXTURE_ONLY_NOT_REAL_AUTHORITY','candidate_id':self.ident,'decision':'notes/decisions/FIXTURE_ONLY.md','source_revision':'1'*40,'source_manifest':{'path':'web/repro/source-manifest.json','sha256':self.view.hash(self.root+'/web/repro/source-manifest.json')},'bindings':{'repository':self.root,'system_sdk':stage.SDK,'source_framework':self.root+'/'+stage.FRAMEWORK},'observation':{'inputs':inputs,'preservation':self.view.preservation(),'source_framework':self.view.framework(),'units':{'cpp':stage.CPP,'c':stage.C},'tools':{k:{'path':p,'sha256':self.view.hash(p)} for k,p in stage.TOOLS.items()},'system_sdk':{'root':stage.SDK,'files':sdkfiles},'flags':{m:stage.flags(self.root,self.ident,m) for m in ('release','debug')},'errors':[]}}
   self.write()
  def ext(self,name,data=b'FIXTURE_ONLY_TOOL'):
-  path=Path(self.root)/'EXTERNAL'/stage.sha(name.encode());path.parent.mkdir(exist_ok=True);path.write_bytes(data);self.external[name]=path
+  path=self.sdk_root/name[len(stage.SDK)+1:] if name.startswith(stage.SDK+'/') else Path(self.root)/'EXTERNAL'/stage.sha(name.encode());path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data);self.external[name]=path
  def write(self):self.pin.write_text(stage.canonical_json(self.auth));self.digest=stage.sha(self.pin.read_bytes())
  def output(self):return Path(stage.attempt(self.root,self.ident))
 
 class FixtureView(stage.View):
  def __init__(self,f):self.fixture=f;self.root=f.root
- def mapped(self,name):return self.fixture.external.get(name,Path(name))
+ def mapped(self,name):return self.fixture.sdk_root/name[len(stage.SDK)+1:] if name.startswith(stage.SDK+'/') else self.fixture.external.get(name,Path(name))
  def ordinary(self,name):p=self.mapped(name);return p.is_file() and not p.is_symlink()
- def canonical(self,name):return name if name in self.fixture.external else str(Path(name).resolve(strict=True))
+ def canonical(self,name):
+  if name.startswith(stage.SDK+'/'):
+   physical=self.mapped(name).resolve(strict=True);return stage.SDK+'/'+str(physical.relative_to(self.fixture.sdk_root)) if physical.is_relative_to(self.fixture.sdk_root) else str(physical)
+  return name if name in self.fixture.external else str(Path(name).resolve(strict=True))
+ def ordinary_ancestors(self,name):return super().ordinary_ancestors(self.mapped(name))
+ def link_identity(self,name):return super().link_identity(self.mapped(name))
  def hash(self,name):return stage.sha(self.mapped(name).read_bytes())
  def size(self,name):return self.mapped(name).stat().st_size
  def mode(self,name):return self.mapped(name).stat().st_mode&0o7777
@@ -71,7 +77,7 @@ class FakeRunner:
    p=Path(argv[-1])/('Versions/A/hidapi' if argv[-1].endswith('hidapi.framework') else 'Versions/A/SDL2');b=p.read_bytes();p.write_bytes(b[:-1]+b'X')
   elif kind in ('discover_dependencies','compile') and not bad:
    source=argv[-1] if kind=='discover_dependencies' else argv[argv.index('-c')+1];obj=argv[argv.index('-MT')+1] if kind=='discover_dependencies' else argv[argv.index('-o')+1];dep=argv[argv.index('-MF')+1]
-   names=[source,str(self.root/'source/src/sound.h'),str(self.base/'deps-signed/SDL2.framework/Headers/SDL.h'),stage.SDK+'/usr/include/zlib.h',stage.CLT+'/usr/lib/clang/17/include/stddef.h']
+   names=[source,str(self.root/'source/src/sound.h'),str(self.base/'deps-signed/SDL2.framework/Headers/SDL.h'),stage.SDK+'/usr/include/zlib.h',stage.SDK_PTHREAD_ALIAS[0],stage.CLT+'/usr/lib/clang/17/include/stddef.h']
    if self.include_undeclared:names.append(str(self.root/'web/runtime/tests/historical/unconsumed.h'))
    Path(dep).write_text(obj+': '+' '.join(shlex.quote(n) for n in names)+'\n')
    if kind=='compile':Path(obj).write_bytes(fake_macho(1))
@@ -268,6 +274,88 @@ class Preparation(unittest.TestCase):
   with self.assertRaises(stage.Refused):stage.owned_path(base,base/'alias/file')
   with self.assertRaises(stage.Refused):stage.owned_path(base,base/'alias/new',absent=True)
   self.assertEqual(stage.owned_path(base,base/'ordinary/file'),base/'ordinary/file')
+ def pthread_ready(self):
+  self.gate();self.f.view.declared_inputs=self.f.auth['observation']['inputs'];return stage.SDK_PTHREAD_ALIAS
+ def pthread_dep(self,name):return stage.dependency_paths('/FIXTURE_ONLY.o: '+name+'\n','/FIXTURE_ONLY.o',self.f.view,self.f.ident)
+ def test_sdk_pthread_fixed_alias_pin_and_retained_raw_format(self):
+  alias,raw,mode,target=self.pthread_ready();self.assertFalse(self.f.view.ordinary(alias));self.assertTrue(self.f.view.ordinary(target));self.assertEqual(self.f.view.link_identity(alias),{'target':raw,'mode':mode});self.assertNotIn(alias,self.f.auth['observation']['inputs']);self.assertIn(target,self.f.auth['observation']['inputs']);self.assertIn('usr/include/pthread/pthread.h',self.f.auth['observation']['system_sdk']['files'])
+  retained=stage.loads((Path(__file__).parent/'preparation-T104-20261108-1/retained-pthread-dependencies.json').read_bytes())
+  for record in retained['records']:
+   line=record['matching_lines'][0]['raw'].replace('/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk',stage.SDK);text='/FIXTURE_ONLY.o: \\\n'+line+'\n  '+stage.SDK+'/usr/include/zlib.h\n';result=stage.dependency_paths(text,'/FIXTURE_ONLY.o',self.f.view,self.f.ident);self.assertIn(target,result);self.assertNotIn(alias,result);self.assertIn(alias,text)
+ def test_sdk_pthread_full_pipeline_keeps_raw_dependency(self):
+  r=self.pipeline();self.assertEqual(r['status'],'NATIVE_LINKED_NOT_RUN');alias,_,_,target=stage.SDK_PTHREAD_ALIAS
+  for mode in r['modes'].values():
+   for unit in mode['units']:
+    self.assertIn(target,unit['dependencies']);self.assertNotIn(alias,unit['dependencies']);self.assertIn(alias,Path(unit['pre_dep']).read_text());self.assertIn(alias,Path(unit['dep']).read_text())
+  self.assertEqual(verify.verify(self.f.root,self.f.ident,self.f.pin,self.f.digest)['status'],'VERIFIED_BUILD_ONLY_NOT_RUN')
+ def test_sdk_pthread_alias_identity_before_any_effects(self):
+  alias,raw,mode,target=stage.SDK_PTHREAD_ALIAS
+  for identity in [None,{'target':'./'+raw,'mode':mode},{'target':raw,'mode':0o777}]:
+   with self.subTest(identity=identity),patch.object(self.f.view,'link_identity',return_value=identity),patch.object(FakeRunner,'run',side_effect=AssertionError('EFFECT BEFORE ALIAS GATE')):
+    with self.assertRaises(stage.Refused):self.pipeline()
+    self.assertFalse(self.f.output().exists())
+ def test_sdk_pthread_undeclared_target_before_any_effects(self):
+  original=copy.deepcopy(self.f.auth);target=stage.SDK_PTHREAD_ALIAS[3]
+  for field in ('inputs','system_sdk'):
+   self.f.auth=copy.deepcopy(original)
+   if field=='inputs':self.f.auth['observation']['inputs'].pop(target)
+   else:self.f.auth['observation']['system_sdk']['files'].pop('usr/include/pthread/pthread.h')
+   self.f.write()
+   with patch.object(FakeRunner,'run',side_effect=AssertionError('EFFECT BEFORE TARGET PIN')):
+    with self.assertRaises(stage.Refused):self.pipeline()
+   self.assertFalse(self.f.output().exists())
+ def test_sdk_pthread_target_bytes_changed_when_consumed(self):
+  alias,_,_,target=self.pthread_ready();self.f.view.mapped(target).write_text('FIXTURE_ONLY changed pthread bytes')
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+ def test_sdk_pthread_nested_target_rejected(self):
+  alias,_,_,target=self.pthread_ready();p=self.f.view.mapped(target);other=p.with_name('same-bytes.h');p.rename(other);p.symlink_to('same-bytes.h')
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_linked_ancestor_rejected(self):
+  alias,_,_,target=self.pthread_ready();parent=self.f.view.mapped(target).parent;other=parent.with_name('same-directory');parent.rename(other);parent.symlink_to('same-directory',target_is_directory=True)
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_unknown_same_content_alias_rejected(self):
+  alias,_,_,target=self.pthread_ready();unknown=stage.SDK+'/usr/include/also-pthread.h';self.f.view.mapped(unknown).symlink_to('pthread/pthread.h')
+  self.assertEqual(self.f.view.hash(unknown),self.f.view.hash(target))
+  with self.assertRaises(stage.Refused):self.pthread_dep(unknown)
+ def test_sdk_pthread_changed_raw_escape_and_dangling_rejected(self):
+  alias,raw,mode,target=self.pthread_ready();p=self.f.view.mapped(alias)
+  for text in ['./'+raw,'pthread/../pthread/pthread.h','../outside.h','/FIXTURE_ONLY/outside.h','pthread/missing.h']:
+   p.unlink();p.symlink_to(text);os.lchmod(p,mode)
+   with self.subTest(raw=text):
+    with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+    with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_ordinary_or_missing_alias_rejected(self):
+  alias,_,_,target=self.pthread_ready();p=self.f.view.mapped(alias);p.unlink();p.write_bytes(self.f.view.mapped(target).read_bytes())
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+  p.unlink()
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_mode_changed_after_gate_rejected(self):
+  alias,_,_,_=self.pthread_ready();os.lchmod(self.f.view.mapped(alias),0o700)
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_missing_target_rejected(self):
+  alias,_,_,target=self.pthread_ready();self.f.view.mapped(target).unlink()
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  with self.assertRaises(stage.Refused):self.gate()
+ def test_sdk_pthread_legacy_sdk_selector_still_rejected(self):
+  alias,_,_,target=self.pthread_ready();old=alias.replace('MacOSX15.5.sdk','MacOSX.sdk');original=self.f.view.canonical
+  with patch.object(self.f.view,'canonical',side_effect=lambda name:target if name==old else original(name)):
+   with self.assertRaises(stage.Refused):self.pthread_dep(old)
+ def test_sdk_pthread_fake_pipeline_reads_no_real_external_files(self):
+  patches=[]
+  for method in ('open','stat','lstat','resolve'):
+   original=getattr(Path,method)
+   def guarded(path,*args,_original=original,**kwargs):
+    self.assertFalse(str(path).startswith(('/Library/Developer/CommandLineTools','/Library/Frameworks/Python.framework','/usr/bin/')),'REAL EXTERNAL FILE READ FORBIDDEN');return _original(path,*args,**kwargs)
+   patches.append(patch.object(Path,method,guarded))
+  for p in patches:p.start()
+  try:self.assertEqual(self.pipeline()['status'],'NATIVE_LINKED_NOT_RUN');self.assertEqual(verify.verify(self.f.root,self.f.ident,self.f.pin,self.f.digest)['status'],'VERIFIED_BUILD_ONLY_NOT_RUN')
+  finally:
+   for p in reversed(patches):p.stop()
  def test_capture_wrapper_effect_double_success_and_timeout(self):
   # Exercise real capture/control logic with fake process/fd/selector/signals only.
   import types

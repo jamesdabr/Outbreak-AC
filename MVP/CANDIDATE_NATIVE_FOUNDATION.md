@@ -1,6 +1,6 @@
 # Fresh native developer candidate build
 
-Revision:0.2. Status: APPROVED MAIN D087 for PREPARATION ONLY. Complements CANDIDATE_BUILD_FOUNDATION0.1; no actual signing/build/runtime is released.
+Revision:0.3. Status: APPROVED MAIN D087/D107 for PREPARATION ONLY. Complements CANDIDATE_BUILD_FOUNDATION0.2; no actual signing/build/runtime is released.
 
 ## Fixed recipe
 
@@ -31,3 +31,9 @@ Pure standard-library fixtures with real process/socket/signing/compiler effects
 ## D091 shared-package/preservation amendment
 
 D091-shared-source-and-preservation-records.md governs the common source-package interpretation, allowed existing Python authoring inputs and exact observation.preservation {files,directories,links,absent_roots} record. It supersedes conflicting earlier private map wording. Every manifest member is verified/stable; each recipe requires its consumed subset, permits other explicitly MAIN-listed source-package files, and still rejects undeclared consumed compiler headers. Protected historical symlinks are recorded opaquely without following, never granted as consumed input/output links. No actual build/runtime scope changes.
+
+## D107 fixed SDK header alias
+
+The actual approved MacOSX15.5 SDK has one specifically permitted compiler-header alias: SDK/usr/include/pthread.h, raw relative target pthread/pthread.h, lstat permission mode0755, ordinary canonical terminal SDK/usr/include/pthread/pthread.h. Declare this exact fixed alias in recipe source, verify its raw text/mode/ordinary ancestors/confined terminal and current target hash before compiler effects and whenever consumed, and include the canonical terminal in existing system_sdk.files/inputs. No public authorization/report schema field is added; fixed allowed alias semantics are bound by the reviewed recipe/source manifest. Alias identity must be checked explicitly, not inferred solely from equal terminal bytes.
+
+Actual dependency text may name that exact alias; normalize only that known alias to its declared ordinary canonical target before the unchanged pre/post dependency/hash/source checks. Existing exact staged framework chains remain allowed as before. All other compiler dependency aliases remain refused, including unknown SDK aliases to the same bytes, nested/changed/escaping/dangling aliases, source aliases and arbitrary link chains. Do not require compiler-reported names to lie by replacing the retained raw diagnostic. This is an installed SDK compatibility correction, not a source/header hash waiver or permission to use the historical MacOSX.sdk selector in new flags. Flags, target, SDK, tool roles, limits, schema and recipe identity remain unchanged. Preparation fixtures must model the known symlink and canonical target, not an ordinary fake pthread.h that hides this behavior.
