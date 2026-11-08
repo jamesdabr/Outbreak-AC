@@ -1,0 +1,600 @@
+{
+  "anchors": [
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          15,
+          14
+        ],
+        [
+          16,
+          14
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          16,
+          15
+        ],
+        [
+          17,
+          15
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          15,
+          17
+        ],
+        [
+          16,
+          17
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 16,
+      "y": 16,
+      "yaw_degrees": 135.0,
+      "yaw_encoded": 1350,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          47,
+          14
+        ],
+        [
+          48,
+          14
+        ],
+        [
+          46,
+          15
+        ],
+        [
+          47,
+          15
+        ],
+        [
+          48,
+          15
+        ],
+        [
+          49,
+          15
+        ],
+        [
+          46,
+          16
+        ],
+        [
+          47,
+          16
+        ],
+        [
+          48,
+          16
+        ],
+        [
+          49,
+          16
+        ],
+        [
+          47,
+          17
+        ],
+        [
+          48,
+          17
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 48,
+      "y": 16,
+      "yaw_degrees": 225.0,
+      "yaw_encoded": 2250,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          15,
+          46
+        ],
+        [
+          16,
+          46
+        ],
+        [
+          14,
+          47
+        ],
+        [
+          15,
+          47
+        ],
+        [
+          16,
+          47
+        ],
+        [
+          17,
+          47
+        ],
+        [
+          14,
+          48
+        ],
+        [
+          15,
+          48
+        ],
+        [
+          16,
+          48
+        ],
+        [
+          17,
+          48
+        ],
+        [
+          15,
+          49
+        ],
+        [
+          16,
+          49
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 16,
+      "y": 48,
+      "yaw_degrees": 45.0,
+      "yaw_encoded": 450,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          47,
+          46
+        ],
+        [
+          48,
+          46
+        ],
+        [
+          46,
+          47
+        ],
+        [
+          47,
+          47
+        ],
+        [
+          48,
+          47
+        ],
+        [
+          49,
+          47
+        ],
+        [
+          46,
+          48
+        ],
+        [
+          47,
+          48
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          49,
+          48
+        ],
+        [
+          47,
+          49
+        ],
+        [
+          48,
+          49
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 48,
+      "y": 48,
+      "yaw_degrees": 315.0,
+      "yaw_encoded": 3150,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          15,
+          30
+        ],
+        [
+          16,
+          30
+        ],
+        [
+          14,
+          31
+        ],
+        [
+          15,
+          31
+        ],
+        [
+          16,
+          31
+        ],
+        [
+          17,
+          31
+        ],
+        [
+          14,
+          32
+        ],
+        [
+          15,
+          32
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          17,
+          32
+        ],
+        [
+          15,
+          33
+        ],
+        [
+          16,
+          33
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 16,
+      "y": 32,
+      "yaw_degrees": 90.0,
+      "yaw_encoded": 900,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          47,
+          30
+        ],
+        [
+          48,
+          30
+        ],
+        [
+          46,
+          31
+        ],
+        [
+          47,
+          31
+        ],
+        [
+          48,
+          31
+        ],
+        [
+          49,
+          31
+        ],
+        [
+          46,
+          32
+        ],
+        [
+          47,
+          32
+        ],
+        [
+          48,
+          32
+        ],
+        [
+          49,
+          32
+        ],
+        [
+          47,
+          33
+        ],
+        [
+          48,
+          33
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 48,
+      "y": 32,
+      "yaw_degrees": 270.0,
+      "yaw_encoded": 2700,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          31,
+          14
+        ],
+        [
+          32,
+          14
+        ],
+        [
+          30,
+          15
+        ],
+        [
+          31,
+          15
+        ],
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          15
+        ],
+        [
+          30,
+          16
+        ],
+        [
+          31,
+          16
+        ],
+        [
+          32,
+          16
+        ],
+        [
+          33,
+          16
+        ],
+        [
+          31,
+          17
+        ],
+        [
+          32,
+          17
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 32,
+      "y": 16,
+      "yaw_degrees": 180.0,
+      "yaw_encoded": 1800,
+      "z": 5
+    },
+    {
+      "attr2": 100,
+      "ceiling": 12,
+      "clearance": "PASS",
+      "floor": 0,
+      "intersected_cells": [
+        [
+          31,
+          46
+        ],
+        [
+          32,
+          46
+        ],
+        [
+          30,
+          47
+        ],
+        [
+          31,
+          47
+        ],
+        [
+          32,
+          47
+        ],
+        [
+          33,
+          47
+        ],
+        [
+          30,
+          48
+        ],
+        [
+          31,
+          48
+        ],
+        [
+          32,
+          48
+        ],
+        [
+          33,
+          48
+        ],
+        [
+          31,
+          49
+        ],
+        [
+          32,
+          49
+        ]
+      ],
+      "other_attributes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "radius": 1.1,
+      "type": 2,
+      "x": 32,
+      "y": 48,
+      "yaw_degrees": 0.0,
+      "yaw_encoded": 0,
+      "z": 5
+    }
+  ],
+  "dedicated_mode_selection": "NOT RUN",
+  "final_squad_deployment": false,
+  "gameplay": "NOT RUN",
+  "geometry_cells": 4096,
+  "map_revision": 2,
+  "map_sha256": "856173969726f632812fd8ebd2ada746831d7e81f7452dd98f7235a2bd398134",
+  "minimum_horizontal_separation": 16.0,
+  "native_rules": {
+    "actual_native_mode_selection": "NOT RUN",
+    "citations": [
+      "source/src/world.h:150",
+      "source/src/entity.h:30",
+      "source/src/tools.cpp:291",
+      "source/src/tools.cpp:312",
+      "source/src/protocol.cpp:519",
+      "source/src/protocol.h:170",
+      "source/src/server.h:484",
+      "source/src/serverfiles.h:1001"
+    ],
+    "deathmatch_spawn_prerequisite_satisfied": true,
+    "ffa_attr2": 100,
+    "hasffaspawns_source_condition": "es.spawns[2] >= MINSPAWNS",
+    "minimum_ffa_starts": 5,
+    "source_rule_satisfied": true,
+    "source_sha256": {
+      "source/src/entity.h": "dc42d6285c64139db7f4cf2fb9c509604128d823dd86b37112e8a8bac309ac30",
+      "source/src/protocol.cpp": "85ab66b5667459025ff1a83fb7811f1545d3254606ff1388167184e973327036",
+      "source/src/protocol.h": "a3e8f928b31976836d239817cd03300a11460d0ee9994417274b775990add42c",
+      "source/src/server.h": "3ca9c5b38b9af9eaee5b2169b5617997eb6156417e10148405dc9d0c378ae7b5",
+      "source/src/serverfiles.h": "efca26aaefb9d33cc8623bc84dcf06f3a1f10d0b9d9664fff78790dab2bed75f",
+      "source/src/tools.cpp": "fe7055c0ce7ac986ff632f22e887de6b621fe85a3d601b6dcbfd6851b724ec5c",
+      "source/src/world.h": "7fc623e91fb09b9b2bf88c7508fb68d8b8c19b815e34062dc9c43c9e5816bcc3"
+    },
+    "supplied_ffa_starts": 8
+  },
+  "runtime_native_decode": "NOT RUN"
+}

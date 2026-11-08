@@ -1,0 +1,11 @@
+{
+  "ticket": "T040 revision 1.3",
+  "sdk_root": "/private/tmp/outbreak-web-sdk",
+  "sdk_version": "7.0.0",
+  "compiler_revision": "777e6e5db7b4990bcaeb1b9998ed642cc84e6629",
+  "common_cxx": ["--target=wasm32-unknown-emscripten", "-std=gnu++11", "-fsigned-char", "-O2"],
+  "common_c": ["--target=wasm32-unknown-emscripten", "-O2", "-DHAS_SOCKLEN_T=1"],
+  "ports": ["-sUSE_SDL=2", "-sUSE_SDL_IMAGE=2", "-sSDL2_IMAGE_FORMATS=[\"png\"]", "-sUSE_ZLIB=1", "-sUSE_VORBIS=1"],
+  "link": ["-O2", "-lopenal", "-sLEGACY_GL_EMULATION=1", "-sGL_UNSAFE_OPTS=0", "-sALLOW_MEMORY_GROWTH=1", "-sINITIAL_MEMORY=67108864", "-sSTACK_SIZE=2097152"],
+  "libpng_sha512": "e14302d87864432d747896e3944a6416d4b5f3059f538cfe615ddbe1d0084d4a02d4df3ef2761b02c839858625bed57d873198792c3583029c619e1cf8c4561b"
+}

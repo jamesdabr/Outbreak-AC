@@ -1,0 +1,5 @@
+# D079 Bounded portable format prerequisites released
+
+MAIN approves PORTABLE_FORMAT_FOUNDATION.md0.1 as two isolated, unused P0 source prerequisites: exact36-byte OBP1 header-only codec(T083Engine) and already-decompressed dry-flat owned native-map subset(T084World). These are concrete bounded byte/memory interfaces from reviewed T002/owned maps, independent of gameplay/engine integration. Full T002/application protocol/body/rules/world-query/P0/P1 adoption remains pending; neither success is authority, general nativeformat support or appmessage acceptance. No phase gate waived.
+
+Individually release T0835.6 and T0845.7 with exclusive NEW source/outbreak files/tests; no current game/header/source/build/SDK/runtime-controller modification or services. Numeric0.1 unchanged. Native/Wasm actual golden decoding/encoding, failure-output/canary and installed native sanitizer verification are required; pure simulated codec is insufficient. Exact APIs/subsets/limits/error values in approved addendum.

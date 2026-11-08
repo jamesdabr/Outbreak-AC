@@ -400,11 +400,30 @@ class audiomanager
     bufferhashtable bufferpool;
     oggstream *gamemusic;
 
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sbuffer *browserproofbuffer = NULL;
+    source *browserproofsource = NULL;
+    const char *browserproofphase = "uninitialized";
+    string browserprooferror = "";
+    int browserproofgestures = 0, browserproofplays = 0, browserproofstate = -1;
+    bool browserproofrelease();
+    bool browserproofquerystate();
+    void browserproofpublish();
+    void browserprooffail(const char *error);
+#endif
+
 public:
 
     locvector locations;
 
     audiomanager();
+
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    // Original proof cue only; not a gameplay sound registration or exported action.
+    void browserproofgesture();
+    void browserproofpoll();
+    void browserproofstop(bool shutdown = false);
+#endif
 
     // init & setup
     void initsound();

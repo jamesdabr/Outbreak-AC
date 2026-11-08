@@ -1,0 +1,9 @@
+# D086 — Freeze P0/P1 rules and resolve T002 policy questions
+
+MAIN adopts the exact numerical/behavior subset in APPROVED MVP/P1_RULES.md0.1, reconciling T071/T002 with the owner's unchanged browser-first8-player MVP. This resolves notes/questions/T002-engine-authority-freeze.md: completed-hold boarding arbitration/no reservation; revive NoHeadroom without push/teleport; anonymous eight-slot/long-session spectator-only readmission;50Hz/25Hz/input/catchup/no-rewind/atomicity/trade/overkill policy. Later AI/wood/medical/balance recommendations are not adopted wholesale.
+
+This is a rules/policy freeze, not a complete header/body/codec/adapter schema approval or a P1 implementation release. Missing exact shared record layouts, numeric algorithms/trig/TOI/remainders/spread and concrete new-mode wire/admission interfaces still must be frozen before dependent coding. T002 remains SUBMITTED; full P0 and all its mandatory tickets remain incomplete. Historical proposals stay immutable; this approved addendum supersedes only its explicitly matching draft parameter/policy rows, not accepted source/runtime flags.
+
+Routine technical choices preserve product scope: interrupted2s boarding still required, seats remain scarce/vulnerable, universal5s revive stays free, no same-round survivor replacement, no client grants. The boarding wording is clarified at transaction completion; no extra player-facing ability/exclusion added. No old measured acceptance threshold changed; initial P1 tolerances are set before corresponding gameplay implementation/measurements.
+
+Required next steps: complete T088/T089/T090 and real clean builds/render evidence; finish exact T002 technical addendum before P1 release; later P2 collider/crawl policy must avoid the impossible radius1.1/height1.15 capsule implicit in the unadopted proposal. Current experimental profiles remain unchanged. Workers cannot treat these future-target choices as a lease on shared files.

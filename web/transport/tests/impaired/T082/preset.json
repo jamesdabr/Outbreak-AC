@@ -1,0 +1,1 @@
+{"schema_version":1,"profile":"delay40_drop50_v1","delay_ms":40,"drop_every":50,"queue_datagrams":64,"queue_bytes":131072,"max_pending_ms":500}

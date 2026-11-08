@@ -1,0 +1,10 @@
+# D085 — Next build/toolchain wave
+
+MAIN accepts T0855.8 planning delivery, without wholesale adoption of every future recommendation. Its read-only genuine MD3/server-dependency trace and hardcoded build/runtime/clean-checkout findings agree with inspected sources. New approved CANDIDATE_BUILD_FOUNDATION0.1 specifies the first bounded successor; unrelated future manifest/native/runtime suggestions remain proposals until separately frozen.
+
+MAIN accepts T0875.10 diagnostic delivery after inspecting report/samples and independently checking all90 terminal freeze entries. Tiny UBSan-only reaches main; address and combined stall before main, consistent with the observed initialization stack. This is diagnostic acceptance, NOT sanitizer/parser coverage. Official LLVM upstream fix https://github.com/llvm/llvm-project/pull/182943 and release22 backport https://github.com/llvm/llvm-project/pull/188913 provide a candidate remedy; root-cause identity and local remedy success still require actual tests.
+
+T0885.11 RELEASED Engine new fixed-network candidate builder/verifier PREPARATION under CANDIDATE_BUILD_FOUNDATION0.1, preserving frozen old entrypoints.
+T0895.12 RELEASED Player exact accepted production md3.h line application and bounded genuine consumer/source-linked regression controls. T086 is terminal/accepted; no current runtime is authorized. Prior source hashes remain historical, new build/runtime need fresh pins.
+T0905.13 RELEASED World project-local LLVM22.1.8 provisioning and two tiny startup tests ONLY, no parser retry. Official metadata retrieved read-only from api.github.com/repos/llvm/llvm-project/releases/tags/llvmorg-22.1.8; archive1479903744bytes SHA256f260f4f7c0d430828a81ae8a3826a1d63fc0963ec2459489308cc23b1f7eab4f. Isolated tooling only, no global install or current Emscripten/tool replacement.
+T0151.0 RELEASED AI reporting-only integrated transport evidence synthesis. Existing actual/runtime scope is unchanged; no new launch. T014 prerequisite still unresolved; full T015 acceptance stays pending that dependency and evidence review. This reporting subset does not permit dependent gameplay or waive phase gates.

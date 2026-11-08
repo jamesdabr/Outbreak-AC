@@ -167,7 +167,7 @@ COMMANDF(magreserve, "s", (char *ws)
 
 void tryreload(playerent *p)
 {
-    if(!p || p->state!=CS_ALIVE || ispaused || p->weaponsel->reloading || p->weaponchanging) return;
+    if(!p || p->combat.downed || p->state!=CS_ALIVE || ispaused || p->weaponsel->reloading || p->weaponchanging) return;
     p->weaponsel->reload(false);
 }
 
@@ -1379,7 +1379,7 @@ bool gun::attack(vec &targ)
     if(attackmillis<0) return false;
     gunwait = reloading = 0;
 
-    if(!owner->attacking)
+    if(owner->combat.downed || !owner->attacking)
     {
         shots = 0;
         checkautoreload();
@@ -1411,6 +1411,7 @@ bool gun::attack(vec &targ)
     from.z -= weaponbeloweye;
 
     attackphysics(from, to);
+    if(outbreakactive()) intersectgeometry(from, to);
 
     attackevent(owner, type);
 
@@ -1672,7 +1673,7 @@ COMMANDF(setscope, "i", (int *on) { setscope(*on != 0); });
 
 void shoot(playerent *p, vec &targ)
 {
-    if(p->state!=CS_ALIVE) return;
+    if(p->state!=CS_ALIVE || p->combat.downed || (p == player1 && outbreakactive() && outbreakreviving)) return;
     weapon *weap = p->weaponsel, *bweap = p->weapons[GUN_GRENADE];
     if(bweap->busy()) bweap->attack(targ); // continue ongoing nade action
     else bweap = NULL;

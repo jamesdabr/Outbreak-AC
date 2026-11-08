@@ -67,7 +67,15 @@ bool setfont(const char *name)
     curfont = f;
     return true;
 }
+#ifdef __EMSCRIPTEN__
+static void setfontcommand(char *name)
+{
+    (void)setfont(name); // CubeScript string commands have a void return ABI.
+}
+COMMANDN(setfont, setfontcommand, "s");
+#else
 COMMAND(setfont, "s");
+#endif
 
 COMMANDF(curfont, "", () { result(curfont && curfont->name ? curfont->name : ""); });
 

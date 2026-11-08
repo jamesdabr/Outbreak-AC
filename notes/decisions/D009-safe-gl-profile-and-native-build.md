@@ -1,0 +1,9 @@
+# D009 Safe GL profile clarification and native build acceptance
+
+Approved lead additive revision 0.9 to T031/D006/D008; BROWSER_FOUNDATION/GOVERNANCE/P0 0.5 remains the governing baseline.
+
+Resolved T031-engine-safe-gl-default.md after inspecting pinned SDK src/settings.js:475-477: GL_UNSAFE_OPTS defaults true. D006 intended safe emulation. Explicit -sGL_UNSAFE_OPTS=0 is now APPROVED and REQUIRED in the final link, with every other exact D006 flag/port/heap/stack unchanged. The prohibition means do not enable unsafe optimizations (1), not do not explicitly disable the SDK default. Earlier failed links never ran and establish no safe-renderer behavior. Record the new config/flags and source/object identities. No extra feature flag, renderer rewrite or error suppression is authorized. T034 stable source is accepted in D008-gl-fixes-acceptance.json; no pending source gate blocks the full rebuild/link.
+
+T033 ACCEPTED within real native build/inspection/proposal-only scope. MAIN reviewed T033-AI-Director-1.md, actual launch source/side effects and verifier code, then independently ran verify_native.py and file. Real arm64 release and debug executables and dependency/object integrity pass; neither executable was run. Release SHA-256 296601782e7ff1510b5c9900548bad34c28c97a73d9d571b4d5037c88a9e6005; debug SHA-256 eb2b0c7f9cf75173319dddfa300ec1d54d0c8936426d05de5abfbf776280890a. Runtime loader, actual loopback binds/master/DNS absence, native threads/shutdown and client joins remain NOT RUN.
+
+Keep all source/binary inputs stable. Later runtime may be assigned independently but needs a bounded exact original sandbox/config/map/binary/process contract; this build acceptance is not permission to launch arbitrary services or public endpoints. No full T014/T015/P0/MVP acceptance is implied.

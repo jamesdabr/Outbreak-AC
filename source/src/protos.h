@@ -1317,3 +1317,9 @@ struct servercommandline
     }
 };
 
+
+// Opt-in local Outbreak combat prototype.
+extern bool outbreakactive();
+extern bool outbreakthirdperson();
+extern bool outbreakaiming;
+extern bool outbreakreviving;

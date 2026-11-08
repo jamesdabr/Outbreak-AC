@@ -4,6 +4,19 @@
 #include "cube.h"
 
 #ifdef STANDALONE
+#include "serverlifecycle.h"
+#include <atomic>
+#include <mutex>
+static std::atomic<bool> producerstop(false);
+// Close map/auth publication before the main thread starts cancellation.
+static std::mutex serverpublishmutex;
+static void *mapworkerhandle = NULL, *configworkerhandle = NULL;
+static void *demoworkerhandle = NULL, *authworkerhandle = NULL;
+static bool servercleanupstarted = false;
+bool serverworkersstopping() { return producerstop.load(std::memory_order_acquire); }
+#endif
+
+#ifdef STANDALONE
 #define DEBUGCOND (true)
 #else
 VARP(serverdebug, 0, 0, 1);
@@ -15,6 +28,10 @@ VARP(serverdebug, 0, 0, 1);
 #include "serverfiles.h"
 
 #include "signal.h"
+
+#ifdef STANDALONE
+static volatile sig_atomic_t serverrequestedsignal = 0;
+#endif
 
 struct servergame
 {
@@ -876,6 +893,11 @@ int demoworkerthread(void *logfileprefix) // demo worker thread: compress demo d
     int len;
     while(1)
     {
+#ifdef STANDALONE
+        // After observing stop, finish one whole pass over the now-finite work.
+        // The main thread marks the active recording before publishing stop.
+        bool finalpass = serverworkersstopping();
+#endif
         loopi(MAXDEMOS) if(demos[i].sequence)
         {
             demo_s &s = demos[i];
@@ -943,6 +965,10 @@ int demoworkerthread(void *logfileprefix) // demo worker thread: compress demo d
                 if(!s.done) s.sequence = 0;
             }
         }
+#ifdef STANDALONE
+        if(finalpass) break;
+        if(serverworkersstopping()) continue;
+#endif
         sem_demoworkerthread.timedwait(500); // wait for mainloop to add some work
     }
     return 0;
@@ -3048,17 +3074,26 @@ struct servinfoauth
 ringbuf<servinfoauth *, 16> servinfoauths;
 volatile servinfoauth *servinfoauth_dropbox = NULL;
 volatile bool servinfoauth_done = false;
+#if !defined(__EMSCRIPTEN__) || defined(STANDALONE)
 sl_semaphore servinfoauth_deferred(0, NULL);
 
 int deferredprocessingthread(void *nop)
 {
     for(;;)
     {
+#ifdef STANDALONE
+        if(serverworkersstopping()) break;
+#endif
         servinfoauth_deferred.wait();
+#ifdef STANDALONE
+        if(serverworkersstopping()) break;
+#endif
         if(!servinfoauth_done && servinfoauths.length())
         {
             servinfoauth *sa = servinfoauths.remove();
+#ifndef STANDALONE
             servinfoauth_dropbox = sa;
+#endif
             sa->success = 0;
             switch(sa->type)
             {
@@ -3073,16 +3108,75 @@ int deferredprocessingthread(void *nop)
                     break;
                 }
             }
+#ifdef STANDALONE
+            std::lock_guard<std::mutex> publish(serverpublishmutex);
+            if(serverworkersstopping()) delete sa; // private, never published
+            else
+            {
+                servinfoauth_dropbox = sa;
+                servinfoauth_done = true;
+            }
+#else
             servinfoauth_done = true;
+#endif
         }
     }
     return 0;
 }
+#else
+// The browser map experiment retains only the local, unauthenticated protocol.
+// Slot identity must be checked before reading the current client's policy.
+static bool offlineauthcurrent(const servinfoauth *sa)
+{
+    return clients.inrange(sa->cn) && clients[sa->cn] &&
+           clients[sa->cn]->type != ST_EMPTY &&
+           clients[sa->cn]->clientsequence == sa->clientsequence;
+}
+
+static bool offlineautheligible(const servinfoauth *sa)
+{
+    return offlineauthcurrent(sa) && sa->type == SV_SERVINFO_RESPONSE &&
+           clients[sa->cn]->type == ST_LOCAL && !sa->wantauth &&
+           !clients[sa->cn]->needsauth;
+}
+#endif
 
 void polldeferredprocessing()
 {
+#ifdef STANDALONE
+    if(serverworkersstopping()) return;
+#endif
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    // One dequeue only, including stale or rejected jobs. No worker or wait.
+    if(servinfoauths.empty()) return;
+    servinfoauth *pending = servinfoauths.remove();
+    if(!offlineauthcurrent(pending))
+    {
+        delete pending;
+        return;
+    }
+    pending->success = offlineautheligible(pending) ? 1 : 0;
+    if(!pending->success)
+    {
+        mlog(ACLOG_WARNING, "offline browser auth rejected cn %d (%s)", pending->cn, disc_reason(DISC_AUTH));
+        bool local = clients[pending->cn]->type == ST_LOCAL;
+        int cn = pending->cn;
+        // Free the job before cleanup, which may synchronously clear clients.
+        delete pending;
+        if(local) disconnect(1, 0); // cleanup only: never reconnect locally
+        else disconnect_client(cn, DISC_AUTH);
+        return;
+    }
+    servinfoauth_dropbox = pending;
+    servinfoauth_done = true;
+#else
+#ifdef STANDALONE
+    if(!authworkerhandle) authworkerhandle = sl_createthread(deferredprocessingthread, NULL);
+#else
     static void *deferredprocessingthread_ti = NULL;
     if(!deferredprocessingthread_ti) deferredprocessingthread_ti = sl_createthread(deferredprocessingthread, NULL);
+#endif
+#endif
 
     if(servinfoauth_done)
     {
@@ -3127,7 +3221,9 @@ void polldeferredprocessing()
         }
         delete sa;
     }
+#if !defined(__EMSCRIPTEN__) || defined(STANDALONE)
     if(!servinfoauths.empty() && servinfoauth_deferred.getvalue() < 1) servinfoauth_deferred.post();
+#endif
 }
 
 // server side processing of updates: does very little and most state is tracked client only
@@ -3137,6 +3233,9 @@ SERVPARLIST(auth_verify_ip, 0, 0, 0, endis, "sVerify server IP reported by the c
 
 void process(ENetPacket *packet, int sender, int chan)
 {
+#ifdef STANDALONE
+    if(serverworkersstopping()) return; // admission is closed, award no effects
+#endif
     ucharbuf p(packet->data, packet->dataLength);
     char text[MAXTRANS];
     client *cl = sender>=0 ? clients[sender] : NULL;
@@ -4699,6 +4798,70 @@ void serverslice(uint timeout)   // main server update, called from cube main lo
 
 void cleanupserver()
 {
+#ifdef STANDALONE
+    if(!ismainthread())
+    {
+        fprintf(stderr, "Standalone cleanup from a worker is unsupported; no self-join attempted\n");
+        return;
+    }
+    if(servercleanupstarted) return;
+    servercleanupstarted = true;
+    if(demoworkerhandle && demorecord) enddemorecord();
+    {
+        std::lock_guard<std::mutex> publish(serverpublishmutex);
+        producerstop.store(true, std::memory_order_release);
+    }
+    if(mapworkerhandle) readmapsthread_sem->post();
+    if(configworkerhandle) readserverconfigsthread_sem->post();
+    if(demoworkerhandle) sem_demoworkerthread.post();
+    if(authworkerhandle) servinfoauth_deferred.post();
+    void **workers[] = { &mapworkerhandle, &configworkerhandle, &demoworkerhandle, &authworkerhandle };
+    bool waiting;
+    do
+    {
+        waiting = false;
+        // Producers can be blocked on a full threadlog buffer. Keep moving it
+        // to the real logger while waiting for atomic completion publication.
+        poll_logbuffers();
+        loopi(4) if(*workers[i])
+        {
+            if(sl_pollthread(*workers[i]))
+            {
+                sl_waitthread(*workers[i]);
+                *workers[i] = NULL;
+            }
+            else waiting = true;
+        }
+        if(waiting) sl_sleep(1);
+    } while(waiting);
+
+    int cancelledmaps = 0, cancelledauth = 0;
+    if(servermapdropbox)
+    {
+        delete (servermap *)servermapdropbox;
+        servermapdropbox = NULL;
+        cancelledmaps++;
+    }
+    if(servinfoauth_done && servinfoauth_dropbox)
+    {
+        delete (servinfoauth *)servinfoauth_dropbox;
+        cancelledauth++;
+    }
+    servinfoauth_dropbox = NULL; // a consumed result leaves only a borrowed pointer
+    servinfoauth_done = false;
+    while(!servinfoauths.empty()) { delete servinfoauths.remove(); cancelledauth++; }
+    if(cancelledmaps || cancelledauth) mlog(ACLOG_INFO, "Shutdown cancelled %d pending map results and %d auth jobs", cancelledmaps, cancelledauth);
+    if(vitastosave)
+    {
+        mlog(ACLOG_WARNING, "Shutdown cancelled unstarted vita snapshot (no config worker completed it)");
+        DELETEP(vitastosave);
+    }
+    if(vitaupdatebuf) { DELETEA(vitaupdatebuf); vitaupdatebuflen = 0; }
+    loopv(serverconfigs) DELETEA(serverconfigs[i]->buf);
+    stopserverlogworker(); // last consumer, before sinks/static semaphores
+    DELETEP(readmapsthread_sem);
+    DELETEP(readserverconfigsthread_sem);
+#endif
     if(serverhost) { enet_host_destroy(serverhost); serverhost = NULL; }
     if(svcctrl)
     {
@@ -4872,8 +5035,12 @@ void processmasterinput(const char *cmd, int cmdlen, const char *args)
 
 void quitproc(int param)
 {
+#ifdef STANDALONE
+    if(!serverrequestedsignal) serverrequestedsignal = param;
+#else
     // this triggers any "atexit"-calls:
     exit(param == 2 ? EXIT_SUCCESS : EXIT_FAILURE); // 3 is the only reply on Win32 apparently, SIGINT == 2 == Ctrl-C
+#endif
 }
 
 const char *loglevelnames[] = { "debug", "verbose", "info", "warning", "error", "disabled", "" };
@@ -4898,6 +5065,12 @@ void restartlogging()
 
 void initserver(bool dedicated)
 {
+#ifdef STANDALONE
+    if(serverrequestedsignal) return;
+#endif
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(dedicated) fatal("Native dedicated server unavailable in offline browser profile");
+#endif
     copystring(servpubkey, "");
     if(scl.ssk && hex2bin(ssk, scl.ssk, 32) != 32) scl.ssk = NULL;
     ed25519_pubkey_from_private(spk, ssk);
@@ -4991,16 +5164,30 @@ void initserver(bool dedicated)
         // start file-IO threads
         readmapsthread_sem = new sl_semaphore(0, NULL);
         defformatstring(readmapslogfilename)("%sreadmaps_log.txt", scl.logfilepath);
+#ifdef STANDALONE
+        if(!serverrequestedsignal) mapworkerhandle = sl_createthread(readmapsthread, (void *)path(readmapslogfilename));
+#else
         sl_createthread(readmapsthread, (void *)path(readmapslogfilename));
+#endif
         defformatstring(_modeinfologfilename)("%smisc/modeinfo.txt", scl.logfilepath);
         modeinfologfilename = path(_modeinfologfilename);
 
         readserverconfigsthread_sem = new sl_semaphore(0, NULL);
+#ifdef STANDALONE
+        if(!serverrequestedsignal) configworkerhandle = sl_createthread(readserverconfigsthread, NULL);
+#else
         sl_createthread(readserverconfigsthread, NULL);
+#endif
 
+#ifdef STANDALONE
+        if(!serverrequestedsignal) demoworkerhandle = sl_createthread(demoworkerthread, NULL);
+        while(!serverrequestedsignal) serverslice(5);
+        cleanupserver();
+#else
         sl_createthread(demoworkerthread, NULL);
 
         for(;;) serverslice(5);
+#endif
     }
 }
 
@@ -5029,6 +5216,12 @@ int main(int argc, char **argv)
     #endif
 
     setlocale(LC_ALL, "POSIX");
+    // Install before partial startup; the handler itself only records a signal.
+    if(signal(SIGINT, quitproc) == SIG_ERR || signal(SIGTERM, quitproc) == SIG_ERR || signal(SIGHUP, quitproc) == SIG_ERR)
+    {
+        fprintf(stderr, "Cannot install standalone termination handlers\n");
+        return EXIT_FAILURE;
+    }
     entropy_init(time(NULL) + (uint)(size_t)&scl + (uint)(size_t)"" + (uint)(size_t)entropy_init + (int)enet_time_get());
 
     for(int i = 1; i < argc; i++)
@@ -5053,7 +5246,8 @@ int main(int argc, char **argv)
 
     if(enet_initialize() < 0) fatal("Unable to initialise network module");
     initserver(true);
-    return EXIT_SUCCESS;
+    cleanupserver(); // also handles an early request before initserver starts
+    return serverrequestedsignal && serverrequestedsignal != SIGINT ? EXIT_FAILURE : EXIT_SUCCESS;
 
     #if defined(WIN32) && !defined(_DEBUG) && !defined(__GNUC__)
     } __except(stackdumper(0, GetExceptionInformation()), EXCEPTION_CONTINUE_SEARCH) { return 0; }

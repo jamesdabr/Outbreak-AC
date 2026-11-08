@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "root": "/private/tmp/outbreak-web-sdk/upstream/emscripten/node_modules",
+  "aliases": [
+    {
+      "path": "/private/tmp/outbreak-web-sdk/upstream/emscripten/node_modules/.bin/html-minifier-terser",
+      "link_text": "../html-minifier-terser/cli.js",
+      "resolved_path": "/private/tmp/outbreak-web-sdk/upstream/emscripten/node_modules/html-minifier-terser/cli.js",
+      "resolved_sha256": "d8d808ad0fb98e3db9324f0256fac798d115dfefa0bf50ac00a346acaca58bf1"
+    }
+  ],
+  "inspected_supporting_files": {
+    "/private/tmp/outbreak-web-sdk/upstream/emscripten/node_modules/html-minifier-terser/package.json": "5844cc84c2589de03d4ab0c1126f0cefee515464a0e4a61180b8da68d95fb5b2",
+    "/private/tmp/outbreak-web-sdk/upstream/emscripten/node_modules/html-minifier-terser/src/htmlminifier.js": "f951be0ca21d988ca8dbc8c0d07ef6f1626cf132e6e70d2385bc41f4764dddbf",
+    "/private/tmp/outbreak-web-sdk/upstream/emscripten/tools/link.py": "fc00f2cb8d9c30c16acd0aaf74d4b8c8e3250272ecab7f1830f0a55247e5af18",
+    "/private/tmp/outbreak-web-sdk/upstream/emscripten/tools/shared.py": "d150d8c925d4335290ca19e1e5e3728eed484394b2c3229fcb05ef79792cb761"
+  }
+}

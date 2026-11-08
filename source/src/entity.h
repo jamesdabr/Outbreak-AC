@@ -411,6 +411,8 @@ public:
 #define ROLLEFFMAX 30
 #define ROLLEFFDEF 0
 
+#include "outbreakstate.h"
+
 class playerent : public dynent, public playerstate
 {
 private:
@@ -423,6 +425,7 @@ public:
     int lastaction, lastmove, lastpain, lastvoicecom, lastdeath;
     int clientrole;
     bool attacking;
+    outbreakstate combat;
     string name;
     int team;
     int weaponchanging;
@@ -506,6 +509,7 @@ public:
     void respawn()
     {
         dynent::reset();
+        combat.reset();
         playerstate::respawn();
         history.reset();
         if(weaponsel) weaponsel->reset();

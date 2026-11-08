@@ -2,6 +2,13 @@
 
 #include "cube.h"
 
+#ifdef STANDALONE
+#include "serverlifecycle.h"
+#include <atomic>
+static void *logworkerthread_id = NULL;
+static std::atomic<bool> logworkerstop(false);
+#endif
+
 #if !defined(WIN32) && !defined(__APPLE__)
 
     #include <syslog.h>
@@ -38,7 +45,15 @@ static char loglevelenabled[ACLOG_NUM];
 
 bool initlogging(const char *identity, int facility_, int consolethres, int filethres, int syslogthres, bool logtimestamp, const char *logfilepath)
 {
+#ifndef STANDALONE
     static void *logworkerthread_id = NULL;
+#else
+    if(logworkerstop.load(std::memory_order_acquire))
+    {
+        fprintf(stderr, "Standalone logger cannot restart after shutdown\n");
+        return false;
+    }
+#endif
     extern int logworkerthread(void *nop);
     if(!logworkerthread_id) logworkerthread_id = sl_createthread(logworkerthread, NULL); // always start, if dedicated server
     facility = facility_;
@@ -106,7 +121,15 @@ int logworkerthread(void *nop)
     string tmp;
     for(;;)
     {
+#ifdef STANDALONE
+        while(mainlog.empty())
+        {
+            if(logworkerstop.load(std::memory_order_acquire)) return 0;
+            mainlogsem.wait();
+        }
+#else
         while(mainlog.empty()) mainlogsem.wait();
+#endif
         int mainloglevel = (100 * mainlog.length()) / mainlog.maxsize();
         if(mainloglevel > stat_mainlog_peaklevel) stat_mainlog_peaklevel = mainloglevel;
         logline_s *ll = mainlog.remove();
@@ -222,3 +245,23 @@ void poll_logbuffers() // just copy threadlog to mainlog and restart blocked thr
     if(!threadlog.full() && threadlogfullsem.getvalue() < 1) threadlogfullsem.post();
     if(!mainlog.empty() && mainlogsem.getvalue() < 1) mainlogsem.post();
 }
+
+#ifdef STANDALONE
+void stopserverlogworker()
+{
+    if(!logworkerthread_id) return; // never started or already really joined
+    // Producers have joined. Keep transferring until their last records fit.
+    do
+    {
+        poll_logbuffers();
+        if(!threadlog.empty()) sl_sleep(1);
+    } while(!threadlog.empty());
+    logworkerstop.store(true, std::memory_order_release);
+    mainlogsem.post();
+    while(!sl_pollthread(logworkerthread_id)) sl_sleep(1);
+    sl_waitthread(logworkerthread_id);
+    logworkerthread_id = NULL;
+    fflush(stdout);
+    if(fp) fflush(fp);
+}
+#endif

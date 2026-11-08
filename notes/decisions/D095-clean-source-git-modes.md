@@ -1,0 +1,9 @@
+# D095 — Canonical source modes come from the reviewed Git checkout
+
+MAIN resolves the T096 audit finding that required vendored ws source files currently have mode0600. No source-manifest schema or code-hash exception is required, and no worker is authorized to chmod current source/vendor files or rewrite old receipts.
+
+Git source-tree entries record ordinary nonexecutable/executable file modes100644/100755, not raw workspace permission bits such as0600/0664/0775. The reviewed local source revision and its fresh checkout are the clean-build baseline. MAIN will use a normal0022 task umask for that fresh same-project checkout, verify its actual ordinary-file modes0644/0755 and unchanged blob bytes, then generate source-manifest.json there against the exact reviewed HEAD. Reject an actually noncanonical clean-checkout file mode rather than relaxing the source manifest or treating a private working-tree mode as a different code blob.
+
+T096 proposal must retain all required ordinary source paths and report original raw modes separately from the expected Git executable-bit mode; do not omit valid ws files to make an inventory pass. Existing source/vendor content and permissions remain unchanged in the original working checkout. No source-manifest generated against a different root/revision is silently transplanted to bypass raw-mode checks in this dirty checkout. T088/T092 preparation plans may remain NOT_EXECUTED/unready for their missing MAIN manifest; actual execution will use a separately reviewed clean root with its own exact manifest/bindings/pins.
+
+This is distinct from T095/D094 dependency-cache package normalization: compiler-cache data is not Git source and gets the explicitly approved package-only mode table. All actual source/tool/alias/dependency/file/member identity gates remain. Source commit and fresh checkout require MAIN's final explicit whitelist review; no Git mutation delegated by this decision.

@@ -90,6 +90,13 @@ void CBot::Spawn()
 void CBot::Think()
 {
     if (intermission) return;
+    if(m_pMyEnt->combat.downed)
+    {
+        m_pMyEnt->move = m_pMyEnt->strafe = 0;
+        m_pMyEnt->attacking = m_pMyEnt->jumpnext = false;
+        moveplayer(m_pMyEnt, 1, false);
+        return;
+    }
     // Bot is dead?
     if (m_pMyEnt->state == CS_DEAD)
     {

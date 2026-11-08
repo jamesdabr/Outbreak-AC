@@ -2,6 +2,15 @@
 
 #include "cube.h"
 
+static inline void editorvertex2(int x, int y)
+{
+#ifdef __EMSCRIPTEN__
+    glVertex2f(float(x), float(y));
+#else
+    glVertex2d(x, y);
+#endif
+}
+
 bool editmode = false;
 
 // the current selections, used by almost all editing commands
@@ -900,10 +909,10 @@ void rendereditingsettings()
                     partcolour &pc = partcolours[i];
                     glColor3f(pc.r, pc.g, pc.b);
                     glBegin(GL_TRIANGLE_STRIP);
-                    glVertex2d(x1, y1);
-                    glVertex2d(x2, y1);
-                    glVertex2d(x1, y2);
-                    glVertex2d(x2, y2);
+                    editorvertex2(x1, y1);
+                    editorvertex2(x2, y1);
+                    editorvertex2(x1, y2);
+                    editorvertex2(x2, y2);
                     glEnd();
                     // and the border
                     box2d(x1-border, y1-border, x2+border, y2+border, ishidden?0:200);
@@ -911,10 +920,10 @@ void rendereditingsettings()
                     if(ishidden){
                         glColor3d(0,0,0);
                         glBegin(GL_LINES);
-                        glVertex2d(x1, y1);
-                        glVertex2d(x2, y2);
-                        glVertex2d(x1, y2);
-                        glVertex2d(x2, y1);
+                        editorvertex2(x1, y1);
+                        editorvertex2(x2, y2);
+                        editorvertex2(x1, y2);
+                        editorvertex2(x2, y1);
                         glEnd();
                     }
                 }

@@ -1,0 +1,57 @@
+[
+  {
+    "source": "/Users/jd1/code/apps/outbreak/source/README.txt",
+    "output": "web/build/notices/assaultcube-source.txt",
+    "sha256": "8db297aeedc74a8d527a024f6ab4edda72a76686301b39d43142334cad18f153"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/source/README_CUBEENGINE.txt",
+    "output": "web/build/notices/cube-source.txt",
+    "sha256": "daa94f50008388c7d1b89d745427757cf325b0518a9ddcebcef8e84b6a0c0158"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/source/enet/LICENSE",
+    "output": "web/build/notices/enet.txt",
+    "sha256": "e603f2f9d22b0c13e50c6568505c81c8466c9ce3b1041f6cebc9b11406d6b165"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/docs/cube_bot-readme.txt",
+    "output": "web/build/notices/cube-bots.txt",
+    "sha256": "9850cd946fd360a99146ed268f8e2fd2f7b037df8af3f4b20944358110454cb3"
+  },
+  {
+    "source": "/private/tmp/outbreak-web-sdk/upstream/emscripten/LICENSE",
+    "output": "web/build/notices/emscripten.txt",
+    "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/sdl2/SDL-release-2.32.10/LICENSE.txt",
+    "output": "web/build/notices/sdl2.txt",
+    "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/sdl2_image/SDL_image-release-2.6.0/LICENSE.txt",
+    "output": "web/build/notices/sdl2-image.txt",
+    "sha256": "28aabfed22b3cb0b7e23ef40385e4f66297c960082f029c96d073cc1d4e008d5"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/zlib/zlib-1.3.2/LICENSE",
+    "output": "web/build/notices/zlib.txt",
+    "sha256": "e32ff4e00d9d94930537635291da39e7e612703334bf6fde8c7f1686fe8a45a2"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/vorbis/libvorbis-1.3.7/COPYING",
+    "output": "web/build/notices/vorbis.txt",
+    "sha256": "ec1815db59fcd302846df949d7424876cb2e2dc5ed1606c5fb0b36787b1cf43a"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/ogg/libogg-1.3.5/COPYING",
+    "output": "web/build/notices/ogg.txt",
+    "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814"
+  },
+  {
+    "source": "/Users/jd1/code/apps/outbreak/web/build/.cache/ports/libpng/libpng-1.6.59/LICENSE",
+    "output": "web/build/notices/libpng.txt",
+    "sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526"
+  }
+]

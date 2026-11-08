@@ -1055,7 +1055,11 @@ int load_world(char *mname)        // still supports all map formats that have e
     // read world geometry
     delete[] world;
     setupworld(hdr.sfactor);
+#ifndef __EMSCRIPTEN__
+    // Browser original packs have no stock resource table; keep setupworld's
+    // full world/mip allocation instead of aliasing the smaller entity buffer.
     if(!mapinfo.numelems || (mapinfo.access(mname) && !cmpf(cgzname, mapinfo[mname]))) world = (sqr *)ents.getbuf();
+#endif
     c2skeepalive();
 
     vector<uchar> rawcubes; // fetch whole file into buffer

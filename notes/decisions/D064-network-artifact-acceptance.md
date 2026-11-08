@@ -1,0 +1,9 @@
+# D064 Full network artifact and additive verifier accepted
+
+MAIN accepts frozen T0724.4 after terminal handoff, source/fixture/receipt review, independent19-test PASS and independent read-only PublishedNetworkRecipe.verify of the actual frozen T070 publication. All gates passed:23474 original input members/hashes,6073 protected files, exactly17 new published members and matching attempt bundle,61 actual object/command/exit/log records,79 actual preload slices, notices, metadata/bundleID and162 historical evidence fingerprints. Root verification ran without subprocess or runtime launch and did not overwrite the immutable receipt.
+
+Accept T0704.2 FULL_BUILD component using D062's separately authorized additive post-publication verification remedy. Original verifier failure exit2 remains visible and immutable; the build result stays LINKED_NOT_BROWSER_VERIFIED, not retroactively browser-verified. The corrected evidence is separate and enforces all original gates plus explicit authorized publication membership, rather than ignoring preservation changes. No rebuild/source/tooling/SDK/old artifact edit was needed.
+
+Bundle35bad2ff04cdc17df5193ca026969380e7c9dc4176596601972b4af163b90e0a; separately accepted verifierfce172c094dfcfa32c3951d8d8de4078e7be734ca43edb00c681e0accb619b43; immutable actual receiptc6ad3a59ef16f70690215811c36a8574b99f9050c2256e80401fd820fba331f5. Exact published identities and scope in D064-accepted-network-artifact.json. New verifier is not a historical build input. Future runtime must pin it/receipt/acceptance separately.
+
+Full C++ game instantiation, native game auth/welcome/map/spawn, two-player movement, audio/models/pointer/layout/performance/authority/P0/MVP remain NOT RUN/unaccepted. T067 preparation still needs review/freeze and complete MAIN runtime pins/release before any launch. All frozen inputs stay read-only.

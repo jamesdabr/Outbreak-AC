@@ -1,0 +1,11 @@
+# D088 — Actual production source versus historical test evidence
+
+MAIN clarification for T088/T092 and the future source manifest. Public schemas, fixed flags, paths, authority/verification/phase gates and current ticket revisions stay unchanged.
+
+The initial candidate source package contains explicit production units/headers/backend/config/helper/pack/notices and their actual transitive dependencies. Historical generated test caches/objects/source-extracted witnesses/logs under web/runtime/tests, web/player/tests, web/transport/results, tests/outbreak/*/attempt-* are retained evidence, not compiler inputs merely because a recursive historical recipe glob sees .h/.cpp files there. In particular source/src and the fixed include roots do not include web/runtime/tests. Do not require copying old task caches into a clean checkout to satisfy a broad unused-file glob.
+
+The new candidate layer may override historical repository_inputs discovery to enumerate the current production source/helper dependency closure explicitly, while leaving the old Recipe source immutable. Every genuine unit/header actually reached by compiler discovery remains pinned and compared before/after; no changed or undeclared consumed dependency is exempt. Preparation unit/negative fixture sources used for candidate checks are explicitly enumerated when packaged, never inferred from recorded outcomes. Full SDK/port/tool identities remain prerequisites. Existing accepted evidence/artifacts are separately protected when present in the working checkout; absence of historical results in a fresh source checkout is not a build-source failure.
+
+Private historical glob inventories are not the public build API and must not be used to smuggle unused generated SDK copies into source provenance. No weakening of source/tool/command/object/notices/payload/alias validation, no skipping actual compiler dependencies and no new external command is authorized. Fixtures should cover an unconsumed historical test header versus an actually included undeclared header, proving the latter still fails.
+
+MAIN added narrow .gitignore rules for new candidate output roots and the T090 downloaded/extracted payload only. No data deleted or hidden from required verification, and future source staging still uses an explicit whitelist rather than git add web or git add . .

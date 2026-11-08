@@ -1,0 +1,6 @@
+580f571bf063e2256b51b3946a035bc452fc0e22808d5547b198baea39923a32  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/lib/utilsBundle.js
+57945338cba4878e373646733528017fbe3db1503ec2b431fd30d2a390c70c33  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/lib/utilsBundle.js.LICENSE
+07c47543631fef9508760365dee9fbe958c562093ec8d122543949ed231f233f  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/package.json
+45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/LICENSE
+6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/NOTICE
+a549d329bad8806fe279f0ecae0fc0270dec7e7c2dc8ec10f90e394f7c32b144  /Users/jd1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core/ThirdPartyNotices.txt

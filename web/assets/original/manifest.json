@@ -1,0 +1,512 @@
+{
+  "dimensions": {
+    "building_bounds": [
+      26,
+      24,
+      38,
+      40
+    ],
+    "building_size": [
+      12,
+      16
+    ],
+    "courtyard_bounds": [
+      8,
+      8,
+      56,
+      56
+    ],
+    "courtyard_size": [
+      48,
+      48
+    ],
+    "door_width": 4,
+    "exterior_ceiling_z": 12,
+    "floor_z": 0,
+    "interior_bounds": [
+      28,
+      26,
+      36,
+      38
+    ],
+    "interior_ceiling_z": 8,
+    "interior_size": [
+      8,
+      12
+    ],
+    "player_radius": 1.1,
+    "spawn_eye_z": 5,
+    "wall_thickness": 2,
+    "world": [
+      64,
+      64
+    ]
+  },
+  "entries": [
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "LICENSE.txt",
+      "provenance": "Per-original-file MIT notice, scope limited to this declared pack",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/LICENSE.txt"
+    },
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "config/LICENSE.txt",
+      "provenance": "Notice pointer compatible with existing config/packages inventory confinement",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/config/LICENSE.txt"
+    },
+    {
+      "bytes": 2139,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "config/browser.cfg",
+      "provenance": "D005 canonical minimal offline-map settings, bindings and explicit map command context",
+      "sha256": "ae5853e303fbc6efcf6fdf39517b47cc46eb88fec4d3963edc56b9c005c30d3e",
+      "virtual_path": "/outbreak/config/browser.cfg"
+    },
+    {
+      "bytes": 1622,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "config/default_map_settings.cfg",
+      "provenance": "worldio.cpp::load_world external/default config branch; authored minimal texture slots",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+      "virtual_path": "/outbreak/config/default_map_settings.cfg"
+    },
+    {
+      "bytes": 13889,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "config/font.cfg",
+      "provenance": "rendertext.cpp::newfont/fontchar/fontskip; independent hand-drawn stroke atlas",
+      "sha256": "34286962a32c8dd284600b39cb404a79df150a9892b15a9f4848e7a0aeed0b08",
+      "virtual_path": "/outbreak/config/font.cfg"
+    },
+    {
+      "bytes": 1508,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/crosshairs/default.png",
+      "provenance": "renderhud.cpp::loadcrosshair default literal, original procedural cross",
+      "sha256": "f3171fd839d52853ca2e97ef1ecba45a8bfc45df511503123ee78d6382032f7d",
+      "virtual_path": "/outbreak/packages/crosshairs/default.png"
+    },
+    {
+      "bytes": 1622,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/maps/dev_outbreak_browser.cfg",
+      "provenance": "D005 canonical original external map config",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cfg"
+    },
+    {
+      "bytes": 534,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/maps/dev_outbreak_browser.cgz",
+      "provenance": "Native v10 header, original persistent entities and SOLID/SPACE RLE",
+      "sha256": "c3f0226abdf143474804d9259428eb9ba641b3ac259251bdafef04962d5cb52d",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cgz"
+    },
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/maps/dev_outbreak_browser.cgz.LICENSE.txt",
+      "provenance": "Explicit per-original-map notice; HX_MAPINFO also identifies MIT",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cgz.LICENSE.txt"
+    },
+    {
+      "bytes": 3136,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/base.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/base.png"
+    },
+    {
+      "bytes": 3136,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/blood.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/blood.png"
+    },
+    {
+      "bytes": 3136,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/bullethole.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/bullethole.png"
+    },
+    {
+      "bytes": 1571,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/com.png",
+      "provenance": "rendergl.cpp::renderaboveheadicon literal; original ring placeholder",
+      "sha256": "4bd7e0e9c08179469f7d2fbd5287949476f46e8fe6fa28051c8665407c0e5f06",
+      "virtual_path": "/outbreak/packages/misc/com.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/compass-base.png",
+      "provenance": "renderhud.cpp::drawradar_showmap literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/compass-base.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/compass-rose.png",
+      "provenance": "renderhud.cpp::drawradar_showmap literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/compass-rose.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/ctficons.png",
+      "provenance": "renderhud.cpp::drawctficon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/ctficons.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/damage.png",
+      "provenance": "renderhud.cpp::drawdamagescreen literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/damage.png"
+    },
+    {
+      "bytes": 3137,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/explosion.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+      "virtual_path": "/outbreak/packages/misc/explosion.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/htficons.png",
+      "provenance": "renderhud.cpp::drawctficon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/htficons.png"
+    },
+    {
+      "bytes": 1524,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/icon.png",
+      "provenance": "main.cpp non-Apple SDL window icon literal; original fallback pixels",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+      "virtual_path": "/outbreak/packages/misc/icon.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/items.png",
+      "provenance": "renderhud.cpp::drawequipicon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/items.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/ktficons.png",
+      "provenance": "renderhud.cpp::drawctficon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/ktficons.png"
+    },
+    {
+      "bytes": 3137,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/muzzleflash.jpg",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+      "virtual_path": "/outbreak/packages/misc/muzzleflash.jpg"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/radaricons.png",
+      "provenance": "renderhud.cpp::drawradaricon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/radaricons.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/scope.png",
+      "provenance": "renderhud.cpp::drawscope literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/scope.png"
+    },
+    {
+      "bytes": 3136,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/scorch.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/scorch.png"
+    },
+    {
+      "bytes": 3136,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/smoke.png",
+      "provenance": "renderparticles.cpp::particleinit literal; original radial neutral placeholder; PNG signature even for legacy .jpg name",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/smoke.png"
+    },
+    {
+      "bytes": 1776,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/startscreen.png",
+      "provenance": "renderhud.cpp::loadingscreen literal; original abstract grid, no inherited logo",
+      "sha256": "abf245e8e33d0240a7fae852bfb3ce7a5a53cc2608113bd8ec3f9825ea0c8ce6",
+      "virtual_path": "/outbreak/packages/misc/startscreen.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/teamicons.png",
+      "provenance": "renderhud.cpp::drawteamicons literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/teamicons.png"
+    },
+    {
+      "bytes": 1616,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/misc/voteicons.png",
+      "provenance": "renderhud.cpp::drawvoteicon literal; original neutral cross/grid placeholder, not final iconography",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/voteicons.png"
+    },
+    {
+      "bytes": 1524,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/outbreak/fallback.png",
+      "provenance": "D005 canonical generated diagnostic checker fallback",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+      "virtual_path": "/outbreak/packages/outbreak/fallback.png"
+    },
+    {
+      "bytes": 2765,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/outbreak/font.png",
+      "provenance": "Original glyphs.py stroke grids, 2x nearest-neighbor rasterization",
+      "sha256": "e8567f11398e350100a2b11a913a3d2c21e04d2be797eaea92a707f3e24bfcc9",
+      "virtual_path": "/outbreak/packages/outbreak/font.png"
+    },
+    {
+      "bytes": 1585,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/outbreak/ceiling.png",
+      "provenance": "Original procedural grid tile referenced by authored map texture commands",
+      "sha256": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa",
+      "virtual_path": "/outbreak/packages/textures/outbreak/ceiling.png"
+    },
+    {
+      "bytes": 1586,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/outbreak/ground.png",
+      "provenance": "Original procedural grid tile referenced by authored map texture commands",
+      "sha256": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39",
+      "virtual_path": "/outbreak/packages/textures/outbreak/ground.png"
+    },
+    {
+      "bytes": 1586,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/outbreak/wall.png",
+      "provenance": "Original procedural grid tile referenced by authored map texture commands",
+      "sha256": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3",
+      "virtual_path": "/outbreak/packages/textures/outbreak/wall.png"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_bk.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_bk.jpg"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_dn.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_dn.jpg"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_ft.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_ft.jpg"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_lf.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_lf.jpg"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_rt.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_rt.jpg"
+    },
+    {
+      "bytes": 1497,
+      "encoded_format": "PNG",
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "original": true,
+      "path": "packages/textures/skymaps/_up.jpg",
+      "provenance": "texture.cpp::loadskymap with empty loadsky; required by T028 reload path; original solid-color PNG, legacy .jpg filename, no JPEG pixels/decoder needed by inspected IMG detection",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_up.jpg"
+    }
+  ],
+  "map_name": "dev_outbreak_browser",
+  "omitted_optional_features": [
+    "weapon and character models",
+    "audio/music",
+    "bots",
+    "native menus/docs/autostarts",
+    "public networking/auth/download services",
+    "inline igraph directory/icons (hideigraphs=1)"
+  ],
+  "profile": "offline-map-original",
+  "provided_fonts": [
+    "default",
+    "mono",
+    "huddigits",
+    "serverquality",
+    "bargraphs",
+    "radaricons"
+  ],
+  "raw_bytes": 87897,
+  "runtime_verified": false,
+  "schema_version": 1,
+  "shared_build_ready": false
+}

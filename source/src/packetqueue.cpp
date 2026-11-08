@@ -1,6 +1,10 @@
 // supports buffering Enet packets for logging purposes
 
 #include "cube.h"
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+#include "browsernet.h"
+extern bool browsernet_parser_busy();
+#endif
 
 packetqueue::packetqueue()
 {
@@ -21,6 +25,9 @@ void packetqueue::queue(ENetPacket *p)
 // writes all currently queued packets to disk and clears the queue
 bool packetqueue::flushtolog(const char *logfile)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return false; // No disk/payload logging or logger clear from an active parser.
+#endif
     if(packets.empty()) return false;
 
     stream *f = NULL;
@@ -54,6 +61,9 @@ bool packetqueue::flushtolog(const char *logfile)
 // clear queue
 void packetqueue::clear()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(browsernet_parser_busy()) { browsernet_close(BNE_ENET); return; }
+#endif
     while(!packets.empty()) enet_packet_destroy(packets.remove());
 }
 

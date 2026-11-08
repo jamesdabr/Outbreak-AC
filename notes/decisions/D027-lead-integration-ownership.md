@@ -1,0 +1,7 @@
+# D027 Lead integration ownership while QA chat holds
+
+The QA chat reports a direct human instruction to hang tight. MAIN leaves that chat idle; no further resume/implementation dispatch is sent. This does not mark the root project's continuing user goal paused. Necessary local integration checks in the coordinating chat continue within the active game-build goal.
+
+T047 revision2.2 is reassigned exclusively to MAIN for D024's already approved exact notice attribution/strict real GPU rejection and optional actual canvas capture. QA has not edited game_probe.mjs since accepted T037; no concurrent source owner. Keep raw errors/warnings and all artifact/schema/runtime/input/cleanup invariants. Optional --capture-canvas is allowed only in real mode, captures #canvas after observed yielding frames, writes a fresh sibling T030-*.canvas.png under the already confined results directory with wx/no overwrite, hashes and labels the image as actual artifact evidence, not a pixel-correctness pass. Fixture screenshot or arbitrary paths are forbidden.
+
+Focused classifier negative checks and observer syntax checks suffice for source revision; next actual loopback run requires a separately recorded exact artifact identity/pins from accepted graphics build. MAIN may execute the same inspected Chrome/Playwright/Python loopback observer under that recorded run scope; human hold applies to the QA chat, not a silent waiver of verification. No game/source/build mutation, private state injection, input/security bypass, external services or LLM screenshot contract is added.

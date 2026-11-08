@@ -1,0 +1,420 @@
+{
+  "cue_count": 9,
+  "engine_decode_verified": false,
+  "entries": [
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 39734,
+      "channels": 1,
+      "cue": "extraction",
+      "duration_seconds": 0.9,
+      "format": "PCM16 signed little-endian",
+      "frames": 19845,
+      "integration_name": "outbreak/extraction",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/extraction.wav",
+      "provenance": {
+        "duration_ms": 900,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            230,
+            262,
+            262,
+            0
+          ],
+          [
+            300,
+            530,
+            330,
+            330,
+            0
+          ],
+          [
+            600,
+            900,
+            524,
+            524,
+            0
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "9a06d8c8d5cd3435237344611904d7bd26c8af2046c053c423f898e87e3bcf5d"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 8864,
+      "channels": 1,
+      "cue": "footstep",
+      "duration_seconds": 0.2,
+      "format": "PCM16 signed little-endian",
+      "frames": 4410,
+      "integration_name": "outbreak/footstep",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/footstep.wav",
+      "provenance": {
+        "duration_ms": 200,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            200,
+            95,
+            45,
+            65
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "e0b2bc1d1f3a58a058692885b0a920295be6aeaa47e65be7f7df3a2f601e2400"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 7982,
+      "channels": 1,
+      "cue": "pistol",
+      "duration_seconds": 0.18,
+      "format": "PCM16 signed little-endian",
+      "frames": 3969,
+      "integration_name": "outbreak/pistol",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/pistol.wav",
+      "provenance": {
+        "duration_ms": 180,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            180,
+            520,
+            80,
+            70
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "708999bd25f91c1a132bc04e62f487a1dea85b7e21ed851603afd31e1ec06483"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 33118,
+      "channels": 1,
+      "cue": "predator_flank",
+      "duration_seconds": 0.7499773242630385,
+      "format": "PCM16 signed little-endian",
+      "frames": 16537,
+      "integration_name": "outbreak/predator_flank",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/predator_flank.wav",
+      "provenance": {
+        "duration_ms": 750,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            150,
+            660,
+            660,
+            0
+          ],
+          [
+            250,
+            400,
+            440,
+            440,
+            0
+          ],
+          [
+            500,
+            750,
+            220,
+            220,
+            0
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "51859ce446db0c50d9390110e2007f8646a471ae3ec76f959eed5b008d01bbc7"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 26504,
+      "channels": 1,
+      "cue": "predator_front",
+      "duration_seconds": 0.6,
+      "format": "PCM16 signed little-endian",
+      "frames": 13230,
+      "integration_name": "outbreak/predator_front",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/predator_front.wav",
+      "provenance": {
+        "duration_ms": 600,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            200,
+            330,
+            330,
+            0
+          ],
+          [
+            300,
+            600,
+            660,
+            660,
+            0
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "1d8af04001b1fed5a3dc88cfaf4c35a416b34fba3f66a9bd72049939b146fe2d"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 13274,
+      "channels": 1,
+      "cue": "proof_tone",
+      "duration_seconds": 0.3,
+      "format": "PCM16 signed little-endian",
+      "frames": 6615,
+      "integration_name": "outbreak/proof_tone",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/proof_tone.wav",
+      "provenance": {
+        "duration_ms": 300,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            300,
+            440,
+            440,
+            0
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "e37aa3c35b32a3a6b81610c08717721d22a95fb059f24894cfbaea24aa4e5f72"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 19888,
+      "channels": 1,
+      "cue": "reload",
+      "duration_seconds": 0.44997732426303855,
+      "format": "PCM16 signed little-endian",
+      "frames": 9922,
+      "integration_name": "outbreak/reload",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/reload.wav",
+      "provenance": {
+        "duration_ms": 450,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            90,
+            900,
+            600,
+            50
+          ],
+          [
+            200,
+            290,
+            650,
+            450,
+            50
+          ],
+          [
+            360,
+            450,
+            1050,
+            800,
+            40
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "b409287328685f4648d377498eda64746a72866036f745635bd13d974324aa62"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 5336,
+      "channels": 1,
+      "cue": "rifle",
+      "duration_seconds": 0.12,
+      "format": "PCM16 signed little-endian",
+      "frames": 2646,
+      "integration_name": "outbreak/rifle",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/rifle.wav",
+      "provenance": {
+        "duration_ms": 120,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            120,
+            740,
+            110,
+            85
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "1fcd2440fb09924f39b6d5260e28253636f76d2a1fa526dd2187f5eda8228693"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 17684,
+      "channels": 1,
+      "cue": "walker_attack",
+      "duration_seconds": 0.4,
+      "format": "PCM16 signed little-endian",
+      "frames": 8820,
+      "integration_name": "outbreak/walker_attack",
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/walker_attack.wav",
+      "provenance": {
+        "duration_ms": 400,
+        "method": "original integer triangle/chirp plus seeded integer LCG noise; 5ms attack/25ms release per pulse and globally; gain 6000",
+        "seed": "0x013579bd + weighted cue-name codepoints",
+        "segments": [
+          [
+            0,
+            400,
+            170,
+            65,
+            35
+          ]
+        ],
+        "source": "audio_pack.py"
+      },
+      "sample_rate": 22050,
+      "sample_width": 2,
+      "sha256": "17bca6cf27dd34d06a8f26528f27401cd7723c65d420448149717854e88e9c45"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    }
+  ],
+  "playback_verified": false,
+  "profile": "original-audio-prerequisite",
+  "raw_bytes": 184804,
+  "schema_version": 1,
+  "staged_only": true,
+  "ticket": "T032 revision 0.7"
+}

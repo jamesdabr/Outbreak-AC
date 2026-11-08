@@ -6,6 +6,24 @@ vector<vertex> verts;
 
 void finishstrips();
 
+#ifdef __EMSCRIPTEN__
+// Each strip keeps its own CPU-array origin so SDK quad indices start at zero.
+static const uchar *browserstripposition = NULL, *browserstripcolour = NULL, *browserstripuv = NULL;
+static GLsizei browserstripstride = 0;
+static int browserstripvertices = 0;
+
+static void browserdrawstrip(GLenum type, GLint first, GLsizei count)
+{
+    if(first < 0 || count < 0 || first > browserstripvertices || count > browserstripvertices-first)
+        fatal("Browser strip range exceeds its actual vertex array");
+    const size_t offset = size_t(first) * size_t(browserstripstride);
+    glVertexPointer(3, GL_FLOAT, browserstripstride, browserstripposition + offset);
+    glTexCoordPointer(2, GL_FLOAT, browserstripstride, browserstripuv + offset);
+    if(browserstripcolour) glColorPointer(4, GL_UNSIGNED_BYTE, browserstripstride, browserstripcolour + offset);
+    glDrawArrays(type, 0, count);
+}
+#endif
+
 void setupstrips()
 {
     finishstrips();
@@ -18,6 +36,13 @@ void setupstrips()
     glVertexPointer(3, GL_FLOAT, sizeof(vertex), &buf->x);
     glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(vertex), &buf->r);
     glTexCoordPointer(2, GL_FLOAT, sizeof(vertex), &buf->u);
+#ifdef __EMSCRIPTEN__
+    browserstripposition = (const uchar *)&buf->x;
+    browserstripcolour = (const uchar *)&buf->r;
+    browserstripuv = (const uchar *)&buf->u;
+    browserstripstride = sizeof(vertex);
+    browserstripvertices = verts.length();
+#endif
 }
 
 struct strips { vector<GLint> first; vector<GLsizei> count; };
@@ -35,6 +60,15 @@ int renderedtexs = 0;
 
 extern int ati_mda_bug;
 
+#ifdef __EMSCRIPTEN__
+#define RENDERSTRIPS(strips, type) \
+    if(strips.first.length()) \
+    { \
+        loopv(strips.first) browserdrawstrip(type, strips.first[i], strips.count[i]); \
+        strips.first.setsize(0); \
+        strips.count.setsize(0); \
+    }
+#else
 #define RENDERSTRIPS(strips, type) \
     if(strips.first.length()) \
     { \
@@ -43,6 +77,7 @@ extern int ati_mda_bug;
         strips.first.setsize(0); \
         strips.count.setsize(0); \
     }
+#endif
 
 void renderstripssky()
 {
@@ -440,6 +475,13 @@ static void rendershadowstrips()
     shadowvertex *buf = shadowverts.getbuf();
     glVertexPointer(3, GL_FLOAT, sizeof(shadowvertex), &buf->x);
     glTexCoordPointer(2, GL_FLOAT, sizeof(shadowvertex), &buf->u);
+#ifdef __EMSCRIPTEN__
+    browserstripposition = (const uchar *)&buf->x;
+    browserstripcolour = NULL; // shadow pass has no enabled per-vertex colour array
+    browserstripuv = (const uchar *)&buf->u;
+    browserstripstride = sizeof(shadowvertex);
+    browserstripvertices = shadowverts.length();
+#endif
 
     loopj(renderedtexs)
     {

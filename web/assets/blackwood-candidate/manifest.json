@@ -1,0 +1,49 @@
+{
+  "coordinate_system": "Q10_FOOT_EAST_NORTH_UP",
+  "entries": [
+    {
+      "bytes": 1300,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "sha256": "d597a754790e54f9ee13788b3c2f1ded4c0edc60c3d37251c787d5d7f648d47e"
+    },
+    {
+      "bytes": 3103,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "PROVENANCE.json",
+      "sha256": "0da2da2801d55e0afab1abf2ec1d0ed4e25bd4bf41d8a225cad37e5aa8809676"
+    },
+    {
+      "bytes": 1677,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/maps/blackwood_greybox_v1.cfg",
+      "sha256": "289bcb22b29a17443cdf47a936e82edbc47a7a0e0dd034a8b602ce3ec79b76bd"
+    },
+    {
+      "bytes": 734,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/maps/blackwood_greybox_v1.cgz",
+      "sha256": "e68314e911130d2822fdfa65d77dfaba302d4f5c3552ff91c698b84768d5ddf1"
+    },
+    {
+      "bytes": 16385,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/outbreak/blackwood_greybox_v1.anchors.json",
+      "sha256": "159d3afe87123616e8346f6db00c2fd3a99325abbfa74a67b825bebfd89af05e"
+    }
+  ],
+  "map_name": "blackwood_greybox_v1",
+  "map_revision": 1,
+  "native_decoder": false,
+  "overlay": false,
+  "profile": "BLACKWOOD_GREYBOX_CANDIDATE_DATA",
+  "runtime": false,
+  "schema_version": 1,
+  "source_plan_sha256": "44f272bfb2f50b44bece0601153627c161c79405dbc44f1131b3477789cd5b51",
+  "source_report_sha256": "33b29fc02f340a62b7aa6fce6d74574f735dd1a95a51c658c0b870270c3be9e3"
+}

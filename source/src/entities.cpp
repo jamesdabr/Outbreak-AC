@@ -450,7 +450,7 @@ void trypickupflag(int flag, playerent *d)
 
 void checkitems(playerent *d)
 {
-    if(editmode || d->state!=CS_ALIVE) return;
+    if(editmode || d->state!=CS_ALIVE || d->combat.downed) return;
     d->onladder = false;
     float eyeheight = d->eyeheight;
     loopv(ents)

@@ -2,14 +2,47 @@
 
 #include "cube.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#include <emscripten/html5.h>
+#include <unistd.h>
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+#include "browsernet.h"
+static bool browsernetworkstarted = false, browsernetworkclosing = false;
+static unsigned browsernetworknextframe = 0;
+static void browsernetworkfinish(void *)
+{
+    // A yielded callback is outside any active native packet-parser stack.
+    browsernet_frame(browsernetworknextframe);
+}
+#endif
+
+static bool browserrunning = false, browserresetdelta = true;
+static bool browserfocused = true, browservisible = true;
+static bool browserlocked = false, browserlockpending = false;
+static void browserstop();
+static const char *browserphase = "loading";
+static int browserrenderedframes = 0;
+static void browserpublish(const char *error = NULL);
+static void browserrendered();
+#endif
+
 void cleanup(char *msg)         // single program exit point;
 {
+#ifdef __EMSCRIPTEN__
+    browserstop(); // cancel before any engine/SDL resources are destroyed
+#endif
     if(clientlogfile) clientlogfile->fflush();
     if(!msg)
     {
         cleanupclient();
         audiomgr.soundcleanup();
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+        // This profile owns no embedded server, including failure cleanup.
+#else
         cleanupserver();
+#endif
     }
     SDL_ShowCursor(SDL_TRUE);
     SDL_SetRelativeMouseMode(SDL_FALSE);
@@ -33,6 +66,14 @@ VAR(resetcfg, 0, 0, 1);
 
 void quit()                     // normal exit
 {
+#ifdef __EMSCRIPTEN__
+    browserstop();
+    cleanup(NULL);
+    inmainloop = false;
+    popscontext();
+    DELETEP(clientlogfile);
+    return; // no inherited onQuit scripts, profile writes or unload-save promise
+#else
     if(clientlogfile) clientlogfile->fflush();
     const char *onquit = getalias("onQuit");
     setcontext("hook", "onQuit");
@@ -54,6 +95,7 @@ void quit()                     // normal exit
     popscontext();
     DELETEP(clientlogfile);
     exit(EXIT_SUCCESS);
+#endif
 }
 COMMAND(quit, "");
 
@@ -69,6 +111,10 @@ void fatal(const char *s, ...)    // failure exit
         {
             defvformatstring(msg,s,s);
             defformatstring(msgerr)("%s (%s)\n", msg, SDL_GetError());
+#ifdef __EMSCRIPTEN__
+            browserphase = "error";
+            browserpublish(msgerr);
+#endif
             cleanup(msgerr);
         }
         else puts(msg);
@@ -124,6 +170,18 @@ VAR(sdl_xgrab_bug, 0, 0, 1);
 
 void inputgrab(bool on, bool delay = false)
 {
+#ifdef __EMSCRIPTEN__
+    // Startup, focus, mouse motion and fullscreen changes must never request lock.
+    // Only the direct browser gesture handler below may do that.
+    shouldgrab = false;
+    if(!on)
+    {
+        if(browserlocked || browserlockpending) emscripten_exit_pointerlock();
+        browserlocked = browserlockpending = false;
+    }
+    grabinput = relativemouse = on && browserrunning && browserfocused && browservisible && browserlocked;
+    SDL_ShowCursor(grabinput ? SDL_FALSE : SDL_TRUE);
+#else
 #ifdef SDL_VIDEO_DRIVER_X11
     bool wasrelativemouse = relativemouse;
 #endif
@@ -173,6 +231,7 @@ void inputgrab(bool on, bool delay = false)
             else XUngrabPointer(info.info.x11.display, CurrentTime);
         }
     }
+#endif
 #endif
 }
 
@@ -347,6 +406,13 @@ error:
 
 void mapscreenshot(const char *imagepath, bool mapshot, int fileformat, float scale, int height, int quality)
 {
+#ifdef __EMSCRIPTEN__
+    if(mapshot)
+    {
+        conoutf("Browser mapshot is unavailable: minimap texture readback is unsupported. No image was written.");
+        return;
+    }
+#endif
     extern int minimaplastsize;
     int src_w = mapshot ? minimaplastsize : screenw;
     int src_h = mapshot ? minimaplastsize : screenh;
@@ -374,6 +440,7 @@ void mapscreenshot(const char *imagepath, bool mapshot, int fileformat, float sc
     int tmpdstsize = dst_w * dst_h * 3, tmpdstpitch = dst_w * 3;
     uchar *tmpdst = new uchar[tmpdstsize], *dst = (uchar *)image->pixels;
 
+#ifndef __EMSCRIPTEN__
     if(mapshot)
     {
         extern GLuint minimaptex;
@@ -397,6 +464,7 @@ void mapscreenshot(const char *imagepath, bool mapshot, int fileformat, float sc
         }
     }
     else
+#endif
     {
         glPixelStorei(GL_PACK_ALIGNMENT, 1);
         if(src_w != dst_w || src_h != dst_h)
@@ -775,6 +843,232 @@ void pushevent(const SDL_Event &e)
     events.add(e);
 }
 
+#ifdef __EMSCRIPTEN__
+static bool browserinputevent(Uint32 type)
+{
+    return type == SDL_KEYDOWN || type == SDL_KEYUP || type == SDL_TEXTINPUT ||
+           type == SDL_TEXTEDITING || type == SDL_MOUSEMOTION ||
+           type == SDL_MOUSEBUTTONDOWN || type == SDL_MOUSEBUTTONUP || type == SDL_MOUSEWHEEL;
+}
+
+static void browserdiscardinput()
+{
+    // Keep quit/window events, but do not replay pre-blur actions after reacquisition.
+    loopv(events) if(browserinputevent(events[i].type)) events.remove(i--);
+    SDL_FlushEvents(SDL_KEYDOWN, SDL_TEXTINPUT);
+    SDL_FlushEvents(SDL_MOUSEMOTION, SDL_MOUSEWHEEL);
+}
+
+static void browserreleaseinput()
+{
+    vector<int> held;
+    enumerate(keyms, keym, km, if(km.pressed) held.add(km.code));
+    // Snapshot first: onrelease scripts are allowed to change bindings.
+    loopv(held) keypress(held[i], 0, false);
+    if(player1)
+    {
+        player1->stopmoving();
+        player1->attacking = player1->trycrouch = false;
+    }
+    browserdiscardinput();
+}
+
+// Own only this canvas request's result; SDK requestPointerLock discards its Promise.
+EM_JS_DEPS(outbreak_pointer_request, "$stringToUTF8");
+EM_JS(int, browserpointerrequest, (int action, char *reason, int capacity), {
+    const state = browserpointerrequest.state ||
+        (browserpointerrequest.state = {epoch: 0, request: null});
+    if (action === 0) { // loss/stop/acquisition invalidates every old request
+        ++state.epoch;
+        state.request = null;
+        return 0;
+    }
+    if (action === 2) { // copy an observation now; never retain a Wasm pointer
+        const current = state.request;
+        if (!current || (!current.denial && !current.eventError)) return 0;
+        stringToUTF8(current.denial || 'Browser pointerlockerror event', reason, capacity);
+        return 1;
+    }
+    if (action === 3) { // genuine browser event; prefer its Promise's precise reason
+        if (!state.request || !state.request.modern) return 0;
+        state.request.eventError = true;
+        return 1;
+    }
+    const own = {epoch: ++state.epoch, denial: null, modern: false, eventError: false};
+    state.request = own;
+    const denied = (error) => {
+        const expected = typeof DOMException !== 'undefined' && error instanceof DOMException &&
+            ['WrongDocumentError', 'NotAllowedError', 'NotSupportedError', 'InvalidStateError',
+             'SecurityError', 'AbortError'].includes(error.name);
+        if (!expected) throw error; // preserve the real sync error/unhandled rejection path
+        if (state.request !== own || state.epoch !== own.epoch) return;
+        own.denial = (error.name + ': ' + error.message).slice(0, 512);
+    };
+    try {
+        const canvas = document.getElementById('canvas');
+        if (!canvas || typeof canvas.requestPointerLock !== 'function') {
+            own.denial = 'Canvas pointer lock API unavailable';
+            return 1;
+        }
+        const result = canvas.requestPointerLock(); // synchronous normal gesture, never deferred
+        if (result && typeof result.then === 'function') {
+            own.modern = true;
+            result.then(undefined, denied); // resolution alone never grants game input
+        }
+        return 0; // also support the genuine legacy void-return API
+    } catch (error) {
+        denied(error);
+        return 1;
+    }
+});
+
+static void browserloseinput()
+{
+    browserpointerrequest(0, NULL, 0);
+    audiomgr.browserproofstop();
+    inputgrab(false);
+    browserresetdelta = true;
+    browserreleaseinput();
+    browserpublish();
+}
+
+static void browserpollpointer()
+{
+    if(!browserrunning) return;
+    string reason;
+    if(browserpointerrequest(2, reason, sizeof(reason)))
+    {
+        browserloseinput();
+        conoutf("Browser pointer lock denied (%s); click the canvas to try again.", reason);
+    }
+}
+
+static bool browserfocus(int type, const EmscriptenFocusEvent *, void *)
+{
+    if(!browserrunning) return false;
+    browserfocused = type == EMSCRIPTEN_EVENT_FOCUS;
+    browserresetdelta = true;
+    if(!browserfocused) browserloseinput();
+    return false;
+}
+
+static bool browservisibility(int, const EmscriptenVisibilityChangeEvent *event, void *)
+{
+    if(!browserrunning) return false;
+    browservisible = !event->hidden;
+    browserresetdelta = true;
+    if(!browservisible) browserloseinput();
+    return false;
+}
+
+static bool browserpointerlock(int, const EmscriptenPointerlockChangeEvent *event, void *)
+{
+    if(!browserrunning) return false;
+    // The integration shell uses SDL's default #canvas target.
+    bool acquired = event->isActive && !strcmp(event->id, "canvas");
+    bool requested = browserlockpending;
+    browserlockpending = false;
+    if(!acquired || !requested || !browserfocused || !browservisible)
+    {
+        browserloseinput();
+        if(acquired) emscripten_exit_pointerlock();
+        return false;
+    }
+    browserpointerrequest(0, NULL, 0); // only the real change event establishes capture
+    browserreleaseinput(); // acquisition click must not also fire a weapon
+    browserlocked = true;
+    browserresetdelta = true;
+    inputgrab(true);
+    if(getclientnum() >= 0) tryrespawn(); // ordinary server-validated entry, never a shot
+    browserpublish();
+    return false;
+}
+
+static bool browserpointererror(int, const void *, void *)
+{
+    if(!browserrunning || !browserlockpending) return false;
+    // The next frame consumes the owned Promise reason, or this actual event if
+    // a browser emits it without settling the Promise. No new request is made.
+    if(browserpointerrequest(3, NULL, 0)) return false;
+    browserloseinput();
+    conoutf("Browser pointer lock denied; click the canvas to try again.");
+    return false;
+}
+
+static bool browserplaygesture(int, const EmscriptenMouseEvent *event, void *)
+{
+    if(!browserrunning || browserlocked) return false;
+    if(event->button != 0 || !browserfocused || !browservisible) return true;
+    if(!browserlockpending)
+    {
+        browserreleaseinput();
+        audiomgr.browserproofgesture(); // real backend/cue inside this valid user gesture
+        browserlockpending = true;
+        // Never defer: a future unrelated input must not silently capture the pointer.
+        browserpointerrequest(1, NULL, 0);
+        browserpollpointer(); // synchronous expected denial also uses the full loss path
+    }
+    return true; // consume the entry click, even when the browser rejects capture
+}
+
+static void browserstop()
+{
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    if(browsernetworkstarted && !browsernetworkclosing)
+    {
+        browsernetworkclosing = true;
+        browsernet_close(BNE_CLOSED); // latch only; never destroy a nested parser's packet
+        emscripten_async_call(browsernetworkfinish, NULL, 0); // one final yielded safe pump
+    }
+#endif
+    browserpointerrequest(0, NULL, 0);
+    audiomgr.browserproofstop(true);
+    browserrunning = false;
+    browserlocked = browserlockpending = false;
+    grabinput = relativemouse = shouldgrab = false;
+    emscripten_cancel_main_loop();
+    emscripten_set_blur_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, NULL, true, NULL);
+    emscripten_set_focus_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, NULL, true, NULL);
+    emscripten_set_visibilitychange_callback(NULL, true, NULL);
+    emscripten_set_pointerlockchange_callback(EMSCRIPTEN_EVENT_TARGET_DOCUMENT, NULL, true, NULL);
+    emscripten_set_pointerlockerror_callback(EMSCRIPTEN_EVENT_TARGET_DOCUMENT, NULL, true, NULL);
+    emscripten_set_mousedown_callback("#canvas", NULL, true, NULL);
+    emscripten_exit_pointerlock();
+    if(strcmp(browserphase, "error")) browserphase = "stopped";
+    browserpublish();
+}
+
+static void browsercheckcallback(EMSCRIPTEN_RESULT result)
+{
+    if(result != EMSCRIPTEN_RESULT_SUCCESS) fatal("Browser input callback registration failed (%d)", int(result));
+}
+
+static void browserstart()
+{
+    browserrunning = true;
+    browserresetdelta = true;
+    browserloseinput();
+    EmscriptenVisibilityChangeEvent visibility;
+    if(emscripten_get_visibility_status(&visibility) == EMSCRIPTEN_RESULT_SUCCESS) browservisible = !visibility.hidden;
+    browsercheckcallback(emscripten_set_blur_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, NULL, true, browserfocus));
+    browsercheckcallback(emscripten_set_focus_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, NULL, true, browserfocus));
+    browsercheckcallback(emscripten_set_visibilitychange_callback(NULL, true, browservisibility));
+    browsercheckcallback(emscripten_set_pointerlockchange_callback(EMSCRIPTEN_EVENT_TARGET_DOCUMENT, NULL, true, browserpointerlock));
+    browsercheckcallback(emscripten_set_pointerlockerror_callback(EMSCRIPTEN_EVENT_TARGET_DOCUMENT, NULL, true, browserpointererror));
+    browsercheckcallback(emscripten_set_mousedown_callback("#canvas", NULL, true, browserplaygesture));
+}
+
+static int browserlocalelapsed(int elapsed)
+{
+    if(browserresetdelta)
+    {
+        browserresetdelta = false;
+        return 0;
+    }
+    return clamp(elapsed, 0, 250);
+}
+#endif
+
 bool interceptkey(int sym)
 {
     static int lastintercept = SDLK_UNKNOWN;
@@ -795,19 +1089,23 @@ bool interceptkey(int sym)
 
 static void resetmousemotion()
 {
+#ifndef __EMSCRIPTEN__
     if (grabinput && !relativemouse && !(SDL_GetWindowFlags(screen) & SDL_WINDOW_FULLSCREEN))
     {
         SDL_WarpMouseInWindow(screen, screenw / 2, screenh / 2);
     }
+#endif
 }
 
 static inline bool skipmousemotion(SDL_Event &event)
 {
     if(event.type != SDL_MOUSEMOTION) return true;
+    #ifndef __EMSCRIPTEN__
     if(!(SDL_GetWindowFlags(screen) & SDL_WINDOW_FULLSCREEN))
     {
         if(event.motion.x == screenw / 2 && event.motion.y == screenh / 2) return true;  // ignore any motion events generated SDL_WarpMouse
     }
+    #endif
     return false;
 }
 
@@ -853,6 +1151,21 @@ void checkinput()
     {
         if(events.length()) event = events.remove(0);
 
+#ifdef __EMSCRIPTEN__
+        if(browserinputevent(event.type) && !grabinput) continue;
+        // A physically held key may repeat after focus returns. Require a fresh down.
+        if(event.type == SDL_KEYDOWN && event.key.repeat)
+        {
+            keym *key = keyms.access(event.key.keysym.sym);
+            if(!key) key = keyms.access(event.key.keysym.scancode | SDLK_SCANCODE_MASK);
+            if(!key || !key->pressed) continue;
+        }
+        if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
+        {
+            browserloseinput();
+            continue;
+        }
+#endif
         EVENTDEBUG(int thres = 1; defformatstring(eb)("EVENT %d", event.type));
 
         if (focused && event.type != SDL_WINDOWEVENT) { if (grabinput != (focused > 0)) inputgrab(grabinput = focused > 0, shouldgrab); focused = 0; }
@@ -884,6 +1197,22 @@ void checkinput()
             case SDL_WINDOWEVENT:
             {
                 EVENTDEBUG(concatstring(eb, "(SDL_WINDOWEVENT) "));
+#ifdef __EMSCRIPTEN__
+                switch(event.window.event)
+                {
+                    case SDL_WINDOWEVENT_FOCUS_LOST:
+                    case SDL_WINDOWEVENT_MINIMIZED:
+                    case SDL_WINDOWEVENT_HIDDEN:
+                        browserloseinput();
+                        tdx = tdy = 0;
+                        break;
+                    case SDL_WINDOWEVENT_FOCUS_GAINED:
+                    case SDL_WINDOWEVENT_RESTORED:
+                    case SDL_WINDOWEVENT_SHOWN:
+                        browserresetdelta = true;
+                        break;
+                }
+#endif
                 switch(event.window.event)
                 {
                     case SDL_WINDOWEVENT_SHOWN: // window has been shown
@@ -943,7 +1272,9 @@ void checkinput()
 
                     case SDL_WINDOWEVENT_FOCUS_GAINED: // window has gained keyboard focus
                         EVENTDEBUG(concatstring(eb, " SDL_WINDOWEVENT_FOCUS_GAINED"));
+#ifndef __EMSCRIPTEN__
                         shouldgrab = true;
+#endif
                         break;
 
                     case SDL_WINDOWEVENT_FOCUS_LOST: // window has lost keyboard focus
@@ -1203,10 +1534,421 @@ void sanitychecks()
 }
 #endif
 
+// Lifetime spans browser callbacks; nothing here refers to main's startup stack.
+struct mainframestate
+{
+    int frames, timeerr;
+    float fps;
+    bool onceauthed;
+#ifdef _DEBUG
+    int lastflush;
+#endif
+    mainframestate() : frames(0), timeerr(0), fps(10.0f), onceauthed(true)
+#ifdef _DEBUG
+        , lastflush(0)
+#endif
+    {}
+};
+static mainframestate frame;
+
+#ifdef __EMSCRIPTEN__
+// Snapshots are observations only: no exported commands or game-state setters.
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+EM_JS(void, browserpublishjs, (const char *phase, int frames, int rendered, const char *map,
+                             double x, double y, double z, int locked, const char *error), {
+    const publish = (value) => Object.defineProperty(window, 'OUTBREAK_DIAGNOSTICS', {
+        value: Object.freeze(value), writable: false, enumerable: true, configurable: true
+    });
+    if (!window.OUTBREAK_DIAGNOSTICS) {
+        const failure = (message) => {
+            const state = window.OUTBREAK_DIAGNOSTICS;
+            if (!state) return;
+            publish(Object.assign({}, state, {phase: 'error',
+                runtime_errors: Object.freeze(state.runtime_errors.concat(String(message)))}));
+        };
+        window.addEventListener('error', (event) => failure(event.message || 'Browser runtime error'));
+        window.addEventListener('unhandledrejection', (event) => failure(event.reason || 'Unhandled browser rejection'));
+    }
+    const previous = window.OUTBREAK_DIAGNOSTICS;
+    const errors = previous ? Array.from(previous.runtime_errors) : [];
+    if (error) errors.push(UTF8ToString(error));
+    publish({schema_version: 1, profile: 'network-client',
+        phase: previous && previous.phase === 'error' ? 'error' : UTF8ToString(phase),
+        frame_count: frames, rendered_frame_count: rendered, map_name: UTF8ToString(map),
+        player_position: Object.freeze([x, y, z]), input_locked: !!locked,
+        runtime_errors: Object.freeze(errors)});
+});
+
+#else
+EM_JS(void, browserpublishjs, (const char *phase, int frames, int rendered, const char *map,
+                             double x, double y, double z, int locked, const char *error), {
+    const publish = (value) => Object.defineProperty(window, 'OUTBREAK_DIAGNOSTICS', {
+        value: Object.freeze(value), writable: false, enumerable: true, configurable: true
+    });
+    if (!window.OUTBREAK_DIAGNOSTICS) {
+        const failure = (message) => {
+            const state = window.OUTBREAK_DIAGNOSTICS;
+            if (!state) return;
+            publish(Object.assign({}, state, {phase: 'error',
+                runtime_errors: Object.freeze(state.runtime_errors.concat(String(message)))}));
+        };
+        window.addEventListener('error', (event) => failure(event.message || 'Browser runtime error'));
+        window.addEventListener('unhandledrejection', (event) => failure(event.reason || 'Unhandled browser rejection'));
+    }
+    const previous = window.OUTBREAK_DIAGNOSTICS;
+    const errors = previous ? Array.from(previous.runtime_errors) : [];
+    if (error) errors.push(UTF8ToString(error));
+    publish({schema_version: 1, profile: 'offline-map',
+        phase: previous && previous.phase === 'error' ? 'error' : UTF8ToString(phase),
+        frame_count: frames, rendered_frame_count: rendered, map_name: UTF8ToString(map),
+        player_position: Object.freeze([x, y, z]), input_locked: !!locked,
+        runtime_errors: Object.freeze(errors)});
+});
+
+#endif
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+EM_JS(void, browserfoundationmetrics, (int frames, int rendered, int actor, double yaw, double pitch,
+                                     int move, int strafe, int attack, int jumpnext, int jumpheld,
+                                     int crouch, int width, int height), {
+    const require = (ok, field) => {
+        if (!ok) throw new Error('OUTBREAK_FOUNDATION_METRICS invalid ' + field);
+    };
+    require(Number.isSafeInteger(frames) && frames >= 0, 'frame_count');
+    require(Number.isSafeInteger(rendered) && rendered >= 0, 'rendered_frame_count');
+    require(actor === 0 || actor === 1, 'actor_present');
+    require(Number.isFinite(yaw) && Number.isFinite(pitch), 'actor_angles');
+    require(Number.isInteger(move) && Number.isInteger(strafe), 'held_axes');
+    require([attack, jumpnext, jumpheld, crouch].every(v => v === 0 || v === 1), 'held_flags');
+    require(Number.isInteger(width) && Number.isInteger(height), 'logical_viewport');
+    const heapBytes = HEAPU8.buffer.byteLength;
+    require(Number.isSafeInteger(heapBytes) && heapBytes >= 0, 'wasm_heap_bytes');
+    const focused = document.hasFocus(), visibility = document.visibilityState;
+    const pointerIsCanvas = document.pointerLockElement === document.querySelector('#canvas');
+    require(typeof focused === 'boolean' && typeof visibility === 'string', 'document');
+    Object.defineProperty(window, 'OUTBREAK_FOUNDATION_METRICS', {
+        value: Object.freeze({schema_version: 1, profile: 'network-client',
+            frame_count: frames, rendered_frame_count: rendered, actor_present: !!actor,
+            yaw_degrees: actor ? yaw : null, pitch_degrees: actor ? pitch : null,
+            held: Object.freeze({move: actor ? move : 0, strafe: actor ? strafe : 0,
+                attack: !!actor && !!attack, jump_next: !!actor && !!jumpnext,
+                jump_held: !!actor && !!jumpheld, crouch_try: !!actor && !!crouch}),
+            wasm_heap_bytes: heapBytes,
+            logical_viewport: Object.freeze({width: width, height: height}),
+            document: Object.freeze({focused: focused, visibility: visibility,
+                pointer_is_canvas: pointerIsCanvas})}),
+        writable: false, enumerable: true, configurable: true
+    });
+});
+#endif
+
+static void browserpublish(const char *error)
+{
+    const vec position = player1 ? player1->o : vec(0, 0, 0);
+    browserpublishjs(browserphase, frame.frames, browserrenderedframes, getclientmap(),
+                     position.x, position.y, position.z, grabinput, error);
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    browserfoundationmetrics(frame.frames, browserrenderedframes, player1 != NULL,
+        player1 ? player1->yaw : 0.0, player1 ? player1->pitch : 0.0,
+        player1 ? int(player1->move) : 0, player1 ? int(player1->strafe) : 0,
+        player1 ? player1->attacking : false, player1 ? player1->jumpnext : false,
+        player1 ? player1->jumpd : false, player1 ? player1->trycrouch : false,
+        screenw, screenh);
+#endif
+}
+
+static void browserrendered()
+{
+    ++browserrenderedframes; // called only after the actual game draw returns
+    if(!strcmp(browserphase, "loading") && maploaded > 0 &&
+       !strcmp(getclientmap(), "dev_outbreak_browser")) browserphase = "running";
+    browserpublish();
+}
+#endif
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+EM_JS(void, browsernetworktiming, (int raw, int prediction, unsigned frameid, int lifecycle), {
+    Object.defineProperty(window, 'OUTBREAK_NETWORK_TIMING', {
+        value: Object.freeze({schema_version: 1, raw_elapsed_ms: raw,
+            prediction_elapsed_ms: prediction, frame_id: frameid,
+            lifecycle_state: lifecycle, embedded_server_path_compiled: false}),
+        writable: false, configurable: true, enumerable: true
+    });
+});
+#endif
+
+static void mainloopframe()
+{
+#ifdef __EMSCRIPTEN__
+    if(!browserrunning) return;
+    browserpollpointer(); // recover before this frame can process held input
+#endif
+    int millis = SDL_GetTicks() - clockrealbase;
+    if(clockfix) millis = int(millis*(double(clockerror)/1000000));
+    millis += clockvirtbase;
+    if(millis<totalmillis) millis = totalmillis;
+#ifndef __EMSCRIPTEN__
+    limitfps(millis, totalmillis);
+#endif
+    int elapsed = millis-totalmillis;
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    totalmillis = millis; // raw monotonic clock also advances throughout native join
+    browsernetworknextframe = unsigned(frame.frames) + 1;
+    browsernet_frame(unsigned(frame.frames)); // poll once before any game/action handling
+    if(!browserrunning) return;
+    const BrowserNetState lifecycle = browsernet_state();
+    curtime = lifecycle == BN_ACTIVE && !ispaused ? min(elapsed, 50) : 0;
+    lastmillis += curtime; // bounded prediction only, never native authority time
+    entropy_add_byte(elapsed);
+    browsernetworktiming(elapsed, curtime, unsigned(frame.frames), int(lifecycle));
+#else
+    int gameplayelapsed = elapsed;
+#ifdef __EMSCRIPTEN__
+    // D004 OFFLINE_MAP: bound the retained local simulation, including its server.
+    // Raw elapsed/totalmillis still track wall time for diagnostics and services.
+    // A future networked browser client needs a separately approved timing policy.
+    gameplayelapsed = browserlocalelapsed(elapsed);
+#endif
+    entropy_add_byte(elapsed);
+    if(multiplayer(NULL))
+    {
+        if(ispaused) curtime = 0;
+        else curtime = gameplayelapsed;
+    }
+    else
+    {
+        int scaledtime = gameplayelapsed*gamespeed + frame.timeerr;
+        curtime = scaledtime/100;
+        frame.timeerr = scaledtime%100;
+        if(!watchingdemo) skipmillis = 0;
+        if(skipmillis && watchingdemo)
+        {
+            int skipmillisnow = skipmillis > 5000 ? skipmillis - 5000 : min(1000, skipmillis);
+            curtime += skipmillisnow;
+            skipmillis -= skipmillisnow;
+        }
+        if(paused) curtime = 0;
+    }
+    lastmillis += curtime;
+    totalmillis = millis;
+#endif
+
+    checkinput();
+#ifdef __EMSCRIPTEN__
+    if(!browserrunning) return;
+#endif
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    updateworld(curtime, lastmillis); // pre-ACTIVE control/parsers must run at lastmillis zero
+    if(!browserrunning) return;
+#else
+    if(lastmillis) updateworld(curtime, lastmillis);
+#endif
+
+    if(needsautoscreenshot) showscores(true);
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    // Remote client has no embedded-server simulation or fallback slice.
+#else
+    serverslice(0);
+#endif
+
+    if(elapsed) frame.fps = (1000.0f/elapsed+frame.fps*10)/11; // avoid DIV-by-0
+    frame.frames++;
+
+    audiomgr.updateaudio();
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    audiomgr.browserproofpoll(); // query real completion/errors; never starts playback
+#endif
+
+    computeraytable(camera1->o.x, camera1->o.y, dynfov());
+    if(frame.frames>3 && !minimized)
+    {
+        gl_drawframe(screenw, screenh, frame.fps<lowfps ? frame.fps/lowfps : (frame.fps>highfps ? frame.fps/highfps : 1.0f), frame.fps, elapsed);
+#ifdef __EMSCRIPTEN__
+        browserrendered();
+#endif
+        if(frame.frames>4) SDL_GL_SwapWindow(screen);
+    }
+
+    if(needsautoscreenshot)
+    {
+        showscores(true);
+        // draw again after swapping buffers, to make sure menu is captured
+        // in the screenshot regardless of which frame buffer is current
+        if(!minimized)
+        {
+            gl_drawframe(screenw, screenh, frame.fps<lowfps ? frame.fps/lowfps : (frame.fps>highfps ? frame.fps/highfps : 1.0f), frame.fps, elapsed);
+#ifdef __EMSCRIPTEN__
+            browserrendered();
+#endif
+        }
+        addsleep(0, "screenshot");
+        needsautoscreenshot = false;
+    }
+#ifdef _DEBUG
+    if(millis>frame.lastflush+60000) { fflush(stdout); frame.lastflush = millis; }
+#endif
+#ifndef __EMSCRIPTEN__
+    pollautodownloadresponse();
+    if(frame.onceauthed && sk)
+    {
+        frame.onceauthed = false;
+        afterauth();
+    }
+#else
+    browserpublish();
+#endif
+}
+
+#ifdef __EMSCRIPTEN__
+static void browserrequirefile(const char *name)
+{
+    if(getfilesize(name) <= 0) fatal("Missing required original browser asset: %s", name);
+}
+
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+EM_JS(void, browsermodelpublish, (int survivor, int pistol, int rifle), {
+    Object.defineProperty(window, 'OUTBREAK_MODEL_DIAGNOSTICS', {
+        value: Object.freeze({schema_version: 1, profile: 'network-client',
+            preloads: Object.freeze([
+                Object.freeze({name: 'outbreak/survivor', loaded: !!survivor}),
+                Object.freeze({name: 'outbreak/pistol', loaded: !!pistol}),
+                Object.freeze({name: 'outbreak/rifle', loaded: !!rifle})])}),
+        writable: false, configurable: true, enumerable: true
+    });
+});
+
+static void browserpreloadmodels()
+{
+    const char *names[] = {"outbreak/survivor", "outbreak/pistol", "outbreak/rifle"};
+    const char *files[] = {"tris.md3", "md3.cfg", "skin.png"};
+    loopi(3) loopj(3)
+    {
+        defformatstring(path)("packages/models/%s/%s", names[i], files[j]);
+        browserrequirefile(path);
+    }
+    bool loaded[3];
+    loopi(3) loaded[i] = loadmodel(names[i]) != NULL; // genuine existing model loader
+    browsermodelpublish(loaded[0], loaded[1], loaded[2]); // only actual load outcomes
+    loopi(3) if(!loaded[i]) fatal("Cannot preload required original network model %s", names[i]);
+}
+#endif
+
+static int browsermain()
+{
+    browserphase = "loading";
+    browserpublish();
+    if(chdir("/outbreak") != 0) fatal("Cannot enter required browser virtual directory /outbreak");
+    const char *required[] = {
+        "config/browser.cfg", "config/font.cfg", "config/default_map_settings.cfg",
+        "packages/outbreak/fallback.png", "packages/outbreak/font.png",
+        "packages/maps/dev_outbreak_browser.cgz", "packages/maps/dev_outbreak_browser.cfg",
+        // loadskymap(true) loads six faces even with the default empty loadsky.
+        "packages/textures/skymaps/_lf.jpg", "packages/textures/skymaps/_rt.jpg",
+        "packages/textures/skymaps/_ft.jpg", "packages/textures/skymaps/_bk.jpg",
+        "packages/textures/skymaps/_dn.jpg", "packages/textures/skymaps/_up.jpg"
+    };
+    loopi(sizeof(required)/sizeof(required[0])) browserrequirefile(required[i]);
+    setlocale(LC_ALL, "POSIX");
+    pushscontext(IEXC_CFG);
+    persistidents = false;
+    initing = INIT_RESET;
+    // Memory entropy pool is needed for the real local handshake. Its optional
+    // relative entropy-file read is confined to the virtual /outbreak tree.
+    entropy_init(uint(time(NULL)));
+    bootstrapentropy = 0; // no inherited screenshot-based entropy bootstrap
+    initing = NOT_INITING;
+    if(SDL_Init(SDL_INIT_TIMER|SDL_INIT_VIDEO) < 0) fatal("Unable to initialize browser SDL");
+    if(enet_initialize() < 0) fatal("Unable to initialize local protocol module");
+    initclient();
+    gamemode = GMODE_DEATHMATCH; // no bot mode; retain local server spawn/protocol
+    extern int nextmode;
+    nextmode = GMODE_DEATHMATCH;
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    player1->clientnum = -1;
+    player1->state = CS_SPECTATE;
+    player1->clientrole = CR_DEFAULT; // before any map load; parser owns genuine spawn
+#endif
+    loopi(NUMGUNS) crosshairnames[i] = gunnames[i] = guns[i].modelname;
+    crosshairnames[GUN_AKIMBO] = gunnames[GUN_AKIMBO] = "akimbo";
+    crosshairnames[CROSSHAIR_DEFAULT] = "default";
+    crosshairnames[CROSSHAIR_TEAMMATE] = "teammate";
+    crosshairnames[CROSSHAIR_SCOPE] = "scope";
+    crosshairnames[CROSSHAIR_EDIT] = "edit";
+    crosshairnames[CROSSHAIR_NUM] = gunnames[NUMGUNS] = "";
+    // No host home, argument scripts, private auth, native configs or URI flow.
+    if(!execfile("config/browser.cfg")) fatal("Cannot load original browser configuration");
+    setvar("audio", 1);
+    setvar("soundvol", 96);
+    setvar("musicvol", 0);
+    audiomgr.browserproofpoll(); // uninitialized snapshot; no backend before gesture
+    setvar("hudgun", 0);
+    setvar("autodownload", 0);
+    setvar("autogetmap", 0);
+    fullscreen = 0;
+    if(scr_w < 0) scr_w = 960;
+    if(scr_h < 0) scr_h = 540;
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    conoutf("NETWORK_BROWSER original survivor/pistol/rifle preload; other weapon visuals and HUD gun omitted. Native join/spawn requires remote protocol; proof audio waits for canvas gesture; not MVP acceptance.");
+#else
+    conoutf("OFFLINE_MAP omissions: no bots, HUD weapon/local character model preload, or gameplay sound mapping. Original audio proof waits for canvas gesture; not P1/MVP acceptance.");
+    initserver(false);
+#endif
+    // startmap unconditionally resets this container. It is an inert lifecycle
+    // slot, not the inherited native menu tree or a browser download UI.
+    extern void *downloaddemomenu;
+    downloaddemomenu = addmenu("__outbreak_map_lifecycle", NULL, false);
+    empty_world(7, true);
+    if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) fatal("Unable to initialize browser video");
+    int useddepthbits = 0, usedfsaa = 0;
+    setupscreen(useddepthbits, usedfsaa);
+    gl_checkextensions();
+    gl_init(screenw, screenh, useddepthbits, usedfsaa);
+    notexture = noworldtexture = textureload("packages/outbreak/fallback.png");
+    if(!notexture || !notexture->id) fatal("Cannot decode original browser fallback texture");
+    // Existing loading-screen calls reuse the original texture instead of stock art.
+    extern Texture *startscreen;
+    startscreen = notexture;
+    updateigraphs();
+    if(!execfile("config/font.cfg") || !setfont("mono") || !setfont("default"))
+        fatal("Cannot initialize original browser fonts");
+    loadingscreen();
+    particleinit(); // literal original aliases are inventoried by T027
+    initing = NOT_INITING;
+    uniformtexres = !hirestextures;
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    browserpreloadmodels(); // GL/fonts/config ready; before map/remote join/frame scheduling
+#endif
+    extern string clientmap;
+    copystring(clientmap, "dev_outbreak_browser");
+    int mapresult = load_world(clientmap);
+    if(mapresult != 0) fatal("Original browser map failed validation/load (%d)", mapresult);
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    // No local handshake. Only T061's real remote parser can assign cn/life/join.
+#else
+    localconnect(); // real deferred local handshake; never standalone multiplayer proof
+#endif
+    resetcamera();
+    inputgrab(false);
+    inmainloop = true;
+    browserstart();
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    browsernetworkstarted = true;
+    browsernet_begin(); // exactly one boot after scene/input setup, before normal frames
+#endif
+    emscripten_set_main_loop(mainloopframe, 0, true);
+    return EXIT_SUCCESS;
+}
+#endif
+
 #define DEFAULTPROFILEPATH "profile"
 
 int main(int argc, char **argv)
 {
+#ifdef __EMSCRIPTEN__
+    return browsermain();
+#else
     DEBUGCODE(sanitychecks());
     extern struct servercommandline scl;
     #ifdef WIN32
@@ -1510,97 +2252,24 @@ int main(int argc, char **argv)
     inputgrab(grabinput = true);
 
     inmainloop = true;
-    static bool onceauthed = true;
-#ifdef _DEBUG
-    int lastflush = 0;
-#endif
     if(scl.logident[0])
     { // "-Nxxx" sets the number of client log lines to xxx (after init)
         extern int clientloglinesremaining;
         clientloglinesremaining = atoi(scl.logident);  // dual-use for scl.logident
     }
-    for(;;)
-    {
-        static int frames = 0;
-        static float fps = 10.0f;
-        int millis = SDL_GetTicks() - clockrealbase;
-        if(clockfix) millis = int(millis*(double(clockerror)/1000000));
-        millis += clockvirtbase;
-        if(millis<totalmillis) millis = totalmillis;
-        limitfps(millis, totalmillis);
-        int elapsed = millis-totalmillis;
-        entropy_add_byte(elapsed);
-        if(multiplayer(NULL))
-        {
-            if(ispaused) curtime = 0;
-            else curtime = elapsed;
-        }
-        else
-        {
-            static int timeerr = 0;
-            int scaledtime = elapsed*gamespeed + timeerr;
-            curtime = scaledtime/100;
-            timeerr = scaledtime%100;
-            if(!watchingdemo) skipmillis = 0;
-            if(skipmillis && watchingdemo)
-            {
-                int skipmillisnow = skipmillis > 5000 ? skipmillis - 5000 : min(1000, skipmillis);
-                curtime += skipmillisnow;
-                skipmillis -= skipmillisnow;
-            }
-            if(paused) curtime = 0;
-        }
-        lastmillis += curtime;
-        totalmillis = millis;
-
-        checkinput();
-
-        if(lastmillis) updateworld(curtime, lastmillis);
-
-        if(needsautoscreenshot) showscores(true);
-
-        serverslice(0);
-
-        if(elapsed) fps = (1000.0f/elapsed+fps*10)/11; // avoid DIV-by-0
-        frames++;
-
-        audiomgr.updateaudio();
-
-        computeraytable(camera1->o.x, camera1->o.y, dynfov());
-        if(frames>3 && !minimized)
-        {
-            gl_drawframe(screenw, screenh, fps<lowfps ? fps/lowfps : (fps>highfps ? fps/highfps : 1.0f), fps, elapsed);
-            if(frames>4) SDL_GL_SwapWindow(screen);
-        }
-
-        if(needsautoscreenshot)
-        {
-            showscores(true);
-            // draw again after swapping buffers, to make sure menu is captured
-            // in the screenshot regardless of which frame buffer is current
-            if(!minimized)
-            {
-                gl_drawframe(screenw, screenh, fps<lowfps ? fps/lowfps : (fps>highfps ? fps/highfps : 1.0f), fps, elapsed);
-            }
-            addsleep(0, "screenshot");
-            needsautoscreenshot = false;
-        }
-#ifdef _DEBUG
-        if(millis>lastflush+60000) { fflush(stdout); lastflush = millis; }
+#ifdef __EMSCRIPTEN__
+    browserstart();
+    emscripten_set_main_loop(mainloopframe, 0, true);
+#else
+    for(;;) mainloopframe();
 #endif
-        pollautodownloadresponse();
-        if(onceauthed && sk)
-        {
-            onceauthed = false;
-            afterauth();
-        }
-    }
 
     quit();
     return EXIT_SUCCESS;
 
 #if defined(WIN32) && !defined(_DEBUG) && !defined(__GNUC__)
     } __except(stackdumper(0, GetExceptionInformation()), EXCEPTION_CONTINUE_SEARCH) { return 0; }
+#endif
 #endif
 }
 

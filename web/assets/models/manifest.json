@@ -1,0 +1,2562 @@
+{
+  "entries": [
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/LICENSE.txt",
+      "provenance": "original scoped MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/pistol/md3.cfg",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1497,
+      "dimensions": [
+        64,
+        64
+      ],
+      "format": "PNG RGBA8",
+      "license": "MIT",
+      "notice": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "original": true,
+      "palette_layout": "four 32x32 quadrants; survivor front head visor and chest panel differ from back",
+      "path": "packages/models/outbreak/pistol/skin.png",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "482917bedeaba79fa1c407a886473b85567a79f0667e4f91b18a64897121ff8f"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 4100,
+      "format": "MD3 version15",
+      "license": "MIT",
+      "model": {
+        "animations": {
+          "all": [
+            0,
+            3,
+            8
+          ],
+          "attack": [
+            1,
+            1,
+            12
+          ],
+          "crouch attack": [
+            1,
+            1,
+            12
+          ],
+          "crouch death": [
+            0,
+            1,
+            8
+          ],
+          "crouch idle": [
+            0,
+            1,
+            8
+          ],
+          "crouch pain": [
+            0,
+            1,
+            8
+          ],
+          "crouch walk": [
+            0,
+            1,
+            8
+          ],
+          "death": [
+            0,
+            1,
+            8
+          ],
+          "decay": [
+            0,
+            1,
+            8
+          ],
+          "flag": [
+            0,
+            1,
+            8
+          ],
+          "flipoff": [
+            0,
+            1,
+            8
+          ],
+          "gun idle": [
+            0,
+            1,
+            8
+          ],
+          "gun reload": [
+            2,
+            1,
+            6
+          ],
+          "gun shoot": [
+            1,
+            1,
+            12
+          ],
+          "gun throw": [
+            0,
+            1,
+            8
+          ],
+          "idle": [
+            0,
+            1,
+            8
+          ],
+          "jump": [
+            0,
+            1,
+            8
+          ],
+          "land": [
+            0,
+            1,
+            8
+          ],
+          "lying dead": [
+            0,
+            1,
+            8
+          ],
+          "mapmodel": [
+            0,
+            1,
+            8
+          ],
+          "pain": [
+            0,
+            1,
+            8
+          ],
+          "point": [
+            0,
+            1,
+            8
+          ],
+          "run": [
+            0,
+            1,
+            8
+          ],
+          "salute": [
+            0,
+            1,
+            8
+          ],
+          "taunt": [
+            0,
+            1,
+            8
+          ],
+          "trigger": [
+            0,
+            1,
+            8
+          ],
+          "wave": [
+            0,
+            1,
+            8
+          ]
+        },
+        "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+        "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+        "frame_bounds": [
+          {
+            "max_engine": [
+              1.150390625,
+              0.1796875,
+              0.330078125
+            ],
+            "min_engine": [
+              -0.1201171875,
+              -0.1796875,
+              -0.5498046875
+            ]
+          },
+          {
+            "max_engine": [
+              1.080078125,
+              0.1796875,
+              0.330078125
+            ],
+            "min_engine": [
+              -0.1904296875,
+              -0.1796875,
+              -0.5498046875
+            ]
+          },
+          {
+            "max_engine": [
+              1.150390625,
+              0.1796875,
+              0.330078125
+            ],
+            "min_engine": [
+              -0.1201171875,
+              -0.1796875,
+              -0.7001953125
+            ]
+          }
+        ],
+        "frame_tags_engine": [
+          {},
+          {},
+          {}
+        ],
+        "frames": 3,
+        "native_forward": "+X",
+        "native_scale": 100,
+        "surface": "body",
+        "surfaces": 1,
+        "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+        "tags": [],
+        "triangles_per_surface": 48,
+        "uv_range": [
+          0,
+          1
+        ],
+        "vertices_per_surface": 96
+      },
+      "notice": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/pistol/tris.md3",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "cef9e518dead445712f708bc5f6c6ea1b5709ddcf23944d228e0b7924897ea86"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/rifle/md3.cfg",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1496,
+      "dimensions": [
+        64,
+        64
+      ],
+      "format": "PNG RGBA8",
+      "license": "MIT",
+      "notice": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "original": true,
+      "palette_layout": "four 32x32 quadrants; survivor front head visor and chest panel differ from back",
+      "path": "packages/models/outbreak/rifle/skin.png",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "147a1a18c92bd5341d1b80eec71bf0f21eaf8f0766766da2628496cc1838b62f"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 5924,
+      "format": "MD3 version15",
+      "license": "MIT",
+      "model": {
+        "animations": {
+          "all": [
+            0,
+            3,
+            8
+          ],
+          "attack": [
+            1,
+            1,
+            12
+          ],
+          "crouch attack": [
+            1,
+            1,
+            12
+          ],
+          "crouch death": [
+            0,
+            1,
+            8
+          ],
+          "crouch idle": [
+            0,
+            1,
+            8
+          ],
+          "crouch pain": [
+            0,
+            1,
+            8
+          ],
+          "crouch walk": [
+            0,
+            1,
+            8
+          ],
+          "death": [
+            0,
+            1,
+            8
+          ],
+          "decay": [
+            0,
+            1,
+            8
+          ],
+          "flag": [
+            0,
+            1,
+            8
+          ],
+          "flipoff": [
+            0,
+            1,
+            8
+          ],
+          "gun idle": [
+            0,
+            1,
+            8
+          ],
+          "gun reload": [
+            2,
+            1,
+            6
+          ],
+          "gun shoot": [
+            1,
+            1,
+            12
+          ],
+          "gun throw": [
+            0,
+            1,
+            8
+          ],
+          "idle": [
+            0,
+            1,
+            8
+          ],
+          "jump": [
+            0,
+            1,
+            8
+          ],
+          "land": [
+            0,
+            1,
+            8
+          ],
+          "lying dead": [
+            0,
+            1,
+            8
+          ],
+          "mapmodel": [
+            0,
+            1,
+            8
+          ],
+          "pain": [
+            0,
+            1,
+            8
+          ],
+          "point": [
+            0,
+            1,
+            8
+          ],
+          "run": [
+            0,
+            1,
+            8
+          ],
+          "salute": [
+            0,
+            1,
+            8
+          ],
+          "taunt": [
+            0,
+            1,
+            8
+          ],
+          "trigger": [
+            0,
+            1,
+            8
+          ],
+          "wave": [
+            0,
+            1,
+            8
+          ]
+        },
+        "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+        "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+        "frame_bounds": [
+          {
+            "max_engine": [
+              2.2001953125,
+              0.1904296875,
+              0.4697265625
+            ],
+            "min_engine": [
+              -0.9501953125,
+              -0.1904296875,
+              -0.5498046875
+            ]
+          },
+          {
+            "max_engine": [
+              2.1298828125,
+              0.1904296875,
+              0.4697265625
+            ],
+            "min_engine": [
+              -0.9501953125,
+              -0.1904296875,
+              -0.5498046875
+            ]
+          },
+          {
+            "max_engine": [
+              2.2001953125,
+              0.1904296875,
+              0.4697265625
+            ],
+            "min_engine": [
+              -0.9501953125,
+              -0.1904296875,
+              -0.75
+            ]
+          }
+        ],
+        "frame_tags_engine": [
+          {},
+          {},
+          {}
+        ],
+        "frames": 3,
+        "native_forward": "+X",
+        "native_scale": 100,
+        "surface": "body",
+        "surfaces": 1,
+        "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+        "tags": [],
+        "triangles_per_surface": 72,
+        "uv_range": [
+          0,
+          1
+        ],
+        "vertices_per_surface": 144
+      },
+      "notice": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/rifle/tris.md3",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "16995887d6fcaadc01c43c4fe8b94a8bb312b74d8cbc07f44b9c4c96bb99a1d5"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2100,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/survivor/md3.cfg",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "060e48df70ba96084f68ba1a2187598f628ada2ab18f78cca5eb80af190833da"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1512,
+      "dimensions": [
+        64,
+        64
+      ],
+      "format": "PNG RGBA8",
+      "license": "MIT",
+      "notice": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "original": true,
+      "palette_layout": "four 32x32 quadrants; survivor front head visor and chest panel differ from back",
+      "path": "packages/models/outbreak/survivor/skin.png",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "9fa0040fefbc054364fdaa1e859297ec9ac5f84f2459f38a18fcf16a045f5f96"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 82156,
+      "format": "MD3 version15",
+      "license": "MIT",
+      "model": {
+        "animations": {
+          "all": [
+            0,
+            26,
+            8
+          ],
+          "attack": [
+            19,
+            1,
+            8
+          ],
+          "crouch attack": [
+            23,
+            1,
+            8
+          ],
+          "crouch death": [
+            25,
+            1,
+            8
+          ],
+          "crouch idle": [
+            9,
+            1,
+            8
+          ],
+          "crouch pain": [
+            24,
+            1,
+            8
+          ],
+          "crouch walk": [
+            10,
+            8,
+            8
+          ],
+          "death": [
+            21,
+            2,
+            6
+          ],
+          "decay": [
+            22,
+            1,
+            8
+          ],
+          "flag": [
+            0,
+            1,
+            8
+          ],
+          "flipoff": [
+            0,
+            1,
+            8
+          ],
+          "gun idle": [
+            0,
+            1,
+            8
+          ],
+          "gun reload": [
+            0,
+            1,
+            8
+          ],
+          "gun shoot": [
+            0,
+            1,
+            8
+          ],
+          "gun throw": [
+            0,
+            1,
+            8
+          ],
+          "idle": [
+            0,
+            1,
+            8
+          ],
+          "jump": [
+            18,
+            1,
+            8
+          ],
+          "land": [
+            0,
+            1,
+            8
+          ],
+          "lying dead": [
+            22,
+            1,
+            8
+          ],
+          "mapmodel": [
+            0,
+            1,
+            8
+          ],
+          "pain": [
+            20,
+            1,
+            8
+          ],
+          "point": [
+            19,
+            1,
+            8
+          ],
+          "run": [
+            1,
+            8,
+            10
+          ],
+          "salute": [
+            0,
+            1,
+            8
+          ],
+          "taunt": [
+            0,
+            1,
+            8
+          ],
+          "trigger": [
+            0,
+            1,
+            8
+          ],
+          "wave": [
+            0,
+            1,
+            8
+          ]
+        },
+        "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+        "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+        "frame_bounds": [
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.7001953125,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.5400390625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.849609375,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.6904296875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.7001953125,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.5400390625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.7001953125,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.5400390625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.849609375,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.6904296875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.7001953125,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.5400390625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.580078125,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.419921875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.669921875,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.509765625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.580078125,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.419921875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.400390625,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.580078125,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.419921875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.669921875,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.509765625,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.580078125,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.419921875,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.650390625,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.490234375,
+              -1.0,
+              0.400390625
+            ]
+          },
+          {
+            "max_engine": [
+              0.75,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.48046875,
+              1.0,
+              5.2001953125
+            ],
+            "min_engine": [
+              -0.2802734375,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.6201171875,
+              1.0,
+              3.599609375
+            ],
+            "min_engine": [
+              -0.2802734375,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              1.0498046875,
+              1.0,
+              1.150390625
+            ],
+            "min_engine": [
+              -1.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.75,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.3203125,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              0.48046875,
+              1.0,
+              3.650390625
+            ],
+            "min_engine": [
+              -0.2802734375,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "max_engine": [
+              1.0498046875,
+              1.0,
+              1.150390625
+            ],
+            "min_engine": [
+              -1.0,
+              -1.0,
+              0.0
+            ]
+          }
+        ],
+        "frame_tags_engine": [
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              -0.029999999329447746,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              -0.11999999731779099,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              -0.029999999329447746,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.33000001311302185,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.41999998688697815,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.33000001311302185,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.041999999433755875,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              -0.012000000104308128,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.041999999433755875,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.257999986410141,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.31200000643730164,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.257999986410141,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.0,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.550000011920929,
+              -0.8299999833106995,
+              3.875
+            ]
+          },
+          {
+            "tag_head": [
+              0.1599999964237213,
+              -0.0,
+              4.824999809265137
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              3.299999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.30000001192092896,
+              -0.0,
+              3.2249999046325684
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              1.7999999523162842
+            ]
+          },
+          {
+            "tag_head": [
+              0.7250000238418579,
+              -0.0,
+              0.800000011920929
+            ],
+            "tag_weapon": [
+              0.4749999940395355,
+              -0.699999988079071,
+              0.25
+            ]
+          },
+          {
+            "tag_head": [
+              0.0,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.550000011920929,
+              -0.8299999833106995,
+              2.424999952316284
+            ]
+          },
+          {
+            "tag_head": [
+              0.1599999964237213,
+              -0.0,
+              3.2750000953674316
+            ],
+            "tag_weapon": [
+              0.15000000596046448,
+              -0.8299999833106995,
+              1.850000023841858
+            ]
+          },
+          {
+            "tag_head": [
+              0.7250000238418579,
+              -0.0,
+              0.800000011920929
+            ],
+            "tag_weapon": [
+              0.4749999940395355,
+              -0.699999988079071,
+              0.25
+            ]
+          }
+        ],
+        "frames": 26,
+        "native_forward": "+X",
+        "native_scale": 100,
+        "surface": "body",
+        "surfaces": 1,
+        "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+        "tags": [
+          "tag_weapon",
+          "tag_head"
+        ],
+        "triangles_per_surface": 168,
+        "uv_range": [
+          0,
+          1
+        ],
+        "vertices_per_surface": 336
+      },
+      "notice": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/survivor/tris.md3",
+      "provenance": "original box geometry, per-face palette UVs, pose transforms and native command references; no stock inputs",
+      "sha256": "9b6f1cc37bc404d0cc2a1a4e26ece431af275de971924707cd9f91ebf2fefb09"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "original": true,
+      "path": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "provenance": "per-original-file MIT notice",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    }
+  ],
+  "gameplay_mapping_implemented": false,
+  "models": {
+    "pistol": {
+      "animations": {
+        "all": [
+          0,
+          3,
+          8
+        ],
+        "attack": [
+          1,
+          1,
+          12
+        ],
+        "crouch attack": [
+          1,
+          1,
+          12
+        ],
+        "crouch death": [
+          0,
+          1,
+          8
+        ],
+        "crouch idle": [
+          0,
+          1,
+          8
+        ],
+        "crouch pain": [
+          0,
+          1,
+          8
+        ],
+        "crouch walk": [
+          0,
+          1,
+          8
+        ],
+        "death": [
+          0,
+          1,
+          8
+        ],
+        "decay": [
+          0,
+          1,
+          8
+        ],
+        "flag": [
+          0,
+          1,
+          8
+        ],
+        "flipoff": [
+          0,
+          1,
+          8
+        ],
+        "gun idle": [
+          0,
+          1,
+          8
+        ],
+        "gun reload": [
+          2,
+          1,
+          6
+        ],
+        "gun shoot": [
+          1,
+          1,
+          12
+        ],
+        "gun throw": [
+          0,
+          1,
+          8
+        ],
+        "idle": [
+          0,
+          1,
+          8
+        ],
+        "jump": [
+          0,
+          1,
+          8
+        ],
+        "land": [
+          0,
+          1,
+          8
+        ],
+        "lying dead": [
+          0,
+          1,
+          8
+        ],
+        "mapmodel": [
+          0,
+          1,
+          8
+        ],
+        "pain": [
+          0,
+          1,
+          8
+        ],
+        "point": [
+          0,
+          1,
+          8
+        ],
+        "run": [
+          0,
+          1,
+          8
+        ],
+        "salute": [
+          0,
+          1,
+          8
+        ],
+        "taunt": [
+          0,
+          1,
+          8
+        ],
+        "trigger": [
+          0,
+          1,
+          8
+        ],
+        "wave": [
+          0,
+          1,
+          8
+        ]
+      },
+      "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+      "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+      "frame_bounds": [
+        {
+          "max_engine": [
+            1.150390625,
+            0.1796875,
+            0.330078125
+          ],
+          "min_engine": [
+            -0.1201171875,
+            -0.1796875,
+            -0.5498046875
+          ]
+        },
+        {
+          "max_engine": [
+            1.080078125,
+            0.1796875,
+            0.330078125
+          ],
+          "min_engine": [
+            -0.1904296875,
+            -0.1796875,
+            -0.5498046875
+          ]
+        },
+        {
+          "max_engine": [
+            1.150390625,
+            0.1796875,
+            0.330078125
+          ],
+          "min_engine": [
+            -0.1201171875,
+            -0.1796875,
+            -0.7001953125
+          ]
+        }
+      ],
+      "frame_tags_engine": [
+        {},
+        {},
+        {}
+      ],
+      "frames": 3,
+      "native_forward": "+X",
+      "native_scale": 100,
+      "surface": "body",
+      "surfaces": 1,
+      "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+      "tags": [],
+      "triangles_per_surface": 48,
+      "uv_range": [
+        0,
+        1
+      ],
+      "vertices_per_surface": 96
+    },
+    "rifle": {
+      "animations": {
+        "all": [
+          0,
+          3,
+          8
+        ],
+        "attack": [
+          1,
+          1,
+          12
+        ],
+        "crouch attack": [
+          1,
+          1,
+          12
+        ],
+        "crouch death": [
+          0,
+          1,
+          8
+        ],
+        "crouch idle": [
+          0,
+          1,
+          8
+        ],
+        "crouch pain": [
+          0,
+          1,
+          8
+        ],
+        "crouch walk": [
+          0,
+          1,
+          8
+        ],
+        "death": [
+          0,
+          1,
+          8
+        ],
+        "decay": [
+          0,
+          1,
+          8
+        ],
+        "flag": [
+          0,
+          1,
+          8
+        ],
+        "flipoff": [
+          0,
+          1,
+          8
+        ],
+        "gun idle": [
+          0,
+          1,
+          8
+        ],
+        "gun reload": [
+          2,
+          1,
+          6
+        ],
+        "gun shoot": [
+          1,
+          1,
+          12
+        ],
+        "gun throw": [
+          0,
+          1,
+          8
+        ],
+        "idle": [
+          0,
+          1,
+          8
+        ],
+        "jump": [
+          0,
+          1,
+          8
+        ],
+        "land": [
+          0,
+          1,
+          8
+        ],
+        "lying dead": [
+          0,
+          1,
+          8
+        ],
+        "mapmodel": [
+          0,
+          1,
+          8
+        ],
+        "pain": [
+          0,
+          1,
+          8
+        ],
+        "point": [
+          0,
+          1,
+          8
+        ],
+        "run": [
+          0,
+          1,
+          8
+        ],
+        "salute": [
+          0,
+          1,
+          8
+        ],
+        "taunt": [
+          0,
+          1,
+          8
+        ],
+        "trigger": [
+          0,
+          1,
+          8
+        ],
+        "wave": [
+          0,
+          1,
+          8
+        ]
+      },
+      "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+      "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+      "frame_bounds": [
+        {
+          "max_engine": [
+            2.2001953125,
+            0.1904296875,
+            0.4697265625
+          ],
+          "min_engine": [
+            -0.9501953125,
+            -0.1904296875,
+            -0.5498046875
+          ]
+        },
+        {
+          "max_engine": [
+            2.1298828125,
+            0.1904296875,
+            0.4697265625
+          ],
+          "min_engine": [
+            -0.9501953125,
+            -0.1904296875,
+            -0.5498046875
+          ]
+        },
+        {
+          "max_engine": [
+            2.2001953125,
+            0.1904296875,
+            0.4697265625
+          ],
+          "min_engine": [
+            -0.9501953125,
+            -0.1904296875,
+            -0.75
+          ]
+        }
+      ],
+      "frame_tags_engine": [
+        {},
+        {},
+        {}
+      ],
+      "frames": 3,
+      "native_forward": "+X",
+      "native_scale": 100,
+      "surface": "body",
+      "surfaces": 1,
+      "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+      "tags": [],
+      "triangles_per_surface": 72,
+      "uv_range": [
+        0,
+        1
+      ],
+      "vertices_per_surface": 144
+    },
+    "survivor": {
+      "animations": {
+        "all": [
+          0,
+          26,
+          8
+        ],
+        "attack": [
+          19,
+          1,
+          8
+        ],
+        "crouch attack": [
+          23,
+          1,
+          8
+        ],
+        "crouch death": [
+          25,
+          1,
+          8
+        ],
+        "crouch idle": [
+          9,
+          1,
+          8
+        ],
+        "crouch pain": [
+          24,
+          1,
+          8
+        ],
+        "crouch walk": [
+          10,
+          8,
+          8
+        ],
+        "death": [
+          21,
+          2,
+          6
+        ],
+        "decay": [
+          22,
+          1,
+          8
+        ],
+        "flag": [
+          0,
+          1,
+          8
+        ],
+        "flipoff": [
+          0,
+          1,
+          8
+        ],
+        "gun idle": [
+          0,
+          1,
+          8
+        ],
+        "gun reload": [
+          0,
+          1,
+          8
+        ],
+        "gun shoot": [
+          0,
+          1,
+          8
+        ],
+        "gun throw": [
+          0,
+          1,
+          8
+        ],
+        "idle": [
+          0,
+          1,
+          8
+        ],
+        "jump": [
+          18,
+          1,
+          8
+        ],
+        "land": [
+          0,
+          1,
+          8
+        ],
+        "lying dead": [
+          22,
+          1,
+          8
+        ],
+        "mapmodel": [
+          0,
+          1,
+          8
+        ],
+        "pain": [
+          20,
+          1,
+          8
+        ],
+        "point": [
+          19,
+          1,
+          8
+        ],
+        "run": [
+          1,
+          8,
+          10
+        ],
+        "salute": [
+          0,
+          1,
+          8
+        ],
+        "taunt": [
+          0,
+          1,
+          8
+        ],
+        "trigger": [
+          0,
+          1,
+          8
+        ],
+        "wave": [
+          0,
+          1,
+          8
+        ]
+      },
+      "construction_to_native": "rotate -90 degrees around Z before file x/y swap",
+      "file_to_engine": "swap x/y then divide by16; packed coordinates engine*1024",
+      "frame_bounds": [
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.7001953125,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.5400390625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.849609375,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.6904296875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.7001953125,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.5400390625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.7001953125,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.5400390625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.849609375,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.6904296875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.7001953125,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.5400390625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.580078125,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.419921875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.669921875,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.509765625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.580078125,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.419921875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.400390625,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.580078125,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.419921875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.669921875,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.509765625,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.580078125,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.419921875,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.650390625,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.490234375,
+            -1.0,
+            0.400390625
+          ]
+        },
+        {
+          "max_engine": [
+            0.75,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.48046875,
+            1.0,
+            5.2001953125
+          ],
+          "min_engine": [
+            -0.2802734375,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.6201171875,
+            1.0,
+            3.599609375
+          ],
+          "min_engine": [
+            -0.2802734375,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            1.0498046875,
+            1.0,
+            1.150390625
+          ],
+          "min_engine": [
+            -1.0,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.75,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.3203125,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            0.48046875,
+            1.0,
+            3.650390625
+          ],
+          "min_engine": [
+            -0.2802734375,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "max_engine": [
+            1.0498046875,
+            1.0,
+            1.150390625
+          ],
+          "min_engine": [
+            -1.0,
+            -1.0,
+            0.0
+          ]
+        }
+      ],
+      "frame_tags_engine": [
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            -0.029999999329447746,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            -0.11999999731779099,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            -0.029999999329447746,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.33000001311302185,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.41999998688697815,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.33000001311302185,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.041999999433755875,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            -0.012000000104308128,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.041999999433755875,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.257999986410141,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.31200000643730164,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.257999986410141,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.0,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.550000011920929,
+            -0.8299999833106995,
+            3.875
+          ]
+        },
+        {
+          "tag_head": [
+            0.1599999964237213,
+            -0.0,
+            4.824999809265137
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            3.299999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.30000001192092896,
+            -0.0,
+            3.2249999046325684
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            1.7999999523162842
+          ]
+        },
+        {
+          "tag_head": [
+            0.7250000238418579,
+            -0.0,
+            0.800000011920929
+          ],
+          "tag_weapon": [
+            0.4749999940395355,
+            -0.699999988079071,
+            0.25
+          ]
+        },
+        {
+          "tag_head": [
+            0.0,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.550000011920929,
+            -0.8299999833106995,
+            2.424999952316284
+          ]
+        },
+        {
+          "tag_head": [
+            0.1599999964237213,
+            -0.0,
+            3.2750000953674316
+          ],
+          "tag_weapon": [
+            0.15000000596046448,
+            -0.8299999833106995,
+            1.850000023841858
+          ]
+        },
+        {
+          "tag_head": [
+            0.7250000238418579,
+            -0.0,
+            0.800000011920929
+          ],
+          "tag_weapon": [
+            0.4749999940395355,
+            -0.699999988079071,
+            0.25
+          ]
+        }
+      ],
+      "frames": 26,
+      "native_forward": "+X",
+      "native_scale": 100,
+      "surface": "body",
+      "surfaces": 1,
+      "tag_basis": "identity right-handed; origins follow right forearm and head centers",
+      "tags": [
+        "tag_weapon",
+        "tag_head"
+      ],
+      "triangles_per_surface": 168,
+      "uv_range": [
+        0,
+        1
+      ],
+      "vertices_per_surface": 336
+    }
+  },
+  "raw_bytes": 115915,
+  "runtime_verified": false,
+  "schema_version": 1,
+  "staged_only": true,
+  "ticket": "T041 revision1.5"
+}

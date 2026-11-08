@@ -1,0 +1,3 @@
+# D077 Fixed impairment profile preparation
+
+After independently accepted T079 actual unimpeded two-game-client proof, release T0825.5 AI for controlled raw UDP delay/loss harness PREPARATION only under APPROVED EXPERIMENTAL_IMPAIRMENT.md0.1. Actual two-client game under impairednetwork is still a missing T015/P0 gate; this defines the experiment before measuring, not after a failure. Keep old game/backend/gateway/vendor/artifact limits/source immutable; preserve7 T079 controller files before explicit minimal test-controller extension and retain default baseline behavior. No actual run until source/test review and separate complete MAIN pins/release. No production transport policy/engine/authority/P0/MVP selection inferred.

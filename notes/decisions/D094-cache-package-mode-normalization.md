@@ -1,0 +1,9 @@
+# D094 — Canonical package permissions without changing source cache
+
+MAIN resolves notes/questions/T095-world-cache-modes.md. PREREQUISITE_PACKAGE0.1→0.2; T0955.20→5.22 re-released with unchanged owner/paths/execution bounds and no original-cache write.
+
+Approve exactly this source→package/staged mode table for inspected ordinary cache entries:0644→0644,0755→0755,0600→0644,0664→0644,0775→0755. No other source modes accepted; directories must retain directory semantics/searchability, file execute bits follow this fixed table. No chmod/edit/replacement of original source-cache entries. Source bytes, names, entry kinds, SDK/port/archive/recipe identities and all no-link/no-special/no-game-object rules unchanged. Original full raw source inventory/modes and canonical mapping/counts are recorded in NEW private package evidence under the existing bundle/test allowance, not silently discarded. Manifest/archive/staged output modes remain only644/755, so public manifest field schema unchanged.
+
+Read-only observed cache5956files/782directories/203069184ordinary bytes;523noncanonical entries (224mode0600,261mode0664,38mode0775). Record actual counts and fail if unapproved new mode appears. Normalization applies only to new package/staged data and preserves executable-bit meaning, never the historical accepted cache itself. No confidentiality/redistribution/license statement is inferred from these compiler-cache permissions.
+
+Update fixtures for each allowed mapping and denied mode, original raw-mode preservation, exact canonical archive/staging roundtrip and mutation refusal. Producer still runs at most once after inspected source/tests/freeze; no actual staging into real cache, compiler/SDK/network/install/runtime authority added. Retain the original question/first scan and fixture failures; no self-acceptance.

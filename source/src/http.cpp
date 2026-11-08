@@ -33,6 +33,10 @@ void httpget::reset(int keep) // keep == 0: delete all, keep == 1: keep connecti
 
 bool httpget::set_host(const char *newhostname) // set and resolve host
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    err = "Native HTTP/DNS unavailable in offline browser profile";
+    return false;
+#else
     if(!hostname || strcmp(hostname, newhostname))
     {
         DELSTRING(hostname);
@@ -48,6 +52,7 @@ bool httpget::set_host(const char *newhostname) // set and resolve host
         hostname = newstring(newhostname);
     }
     return ip.host != ENET_HOST_ANY;
+#endif
 }
 
 void httpget::set_port(int port) // set port (disconnect, if different to previous)
@@ -70,24 +75,36 @@ bool httpget::execcallback(float progress)
 
 void httpget::disconnect()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(tcp != ENET_SOCKET_NULL) fatal("Unexpected native HTTP socket in offline browser profile");
+#else
     if(tcp != ENET_SOCKET_NULL)
     {
         enet_socket_destroy(tcp);
         tcp = ENET_SOCKET_NULL;
     }
+#endif
 }
 
 struct connectinfo { ENetSocket sock; ENetAddress address; volatile char running; };
 
 int hcont(void *data)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return -1; // no native socket connection in the browser
+#else
     connectinfo ci = *((connectinfo *)data);
     ((connectinfo *)data)->running = 1; // now the calling thread may as well vanish
     return enet_socket_connect(ci.sock, &ci.address);
+#endif
 }
 
 bool httpget::connect(bool force)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    err = "Native HTTP connection unavailable in offline browser profile";
+    return false;
+#else
     if(force || tcp_age.elapsed() > TCP_TIMEOUT) disconnect();
     if(tcp == ENET_SOCKET_NULL)
     {
@@ -129,10 +146,15 @@ bool httpget::connect(bool force)
         return false;
     }
     return true;
+#endif
 }
 
 int httpget::get(const char *url1, uint timeout, uint totaltimeout, int range, bool head)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    err = "Native HTTP download unavailable in offline browser profile";
+    return -1;
+#else
     int redirects = 0, res = 0, transferred = 0;
     vector<char> *content = NULL;
     ASSERT(timeout && totaltimeout); // zero is not allowed
@@ -369,6 +391,7 @@ geterror:
     elapsedtime = to.elapsed();
     if(err) disconnect();
     return err ? -1 : res;
+#endif
 }
 
 char *urlencode(const char *s, bool strict)

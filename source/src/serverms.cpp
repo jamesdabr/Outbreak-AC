@@ -28,6 +28,11 @@ int masteroutpos = 0, masterinpos = 0;
 
 void disconnectmaster()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    mastersock = ENET_SOCKET_NULL;
+    masterout.setsize(0); masterin.setsize(0);
+    masteroutpos = masterinpos = 0;
+#else
     if(mastersock == ENET_SOCKET_NULL) return;
 
     enet_socket_destroy(mastersock);
@@ -41,10 +46,15 @@ void disconnectmaster()
     masteraddress.port = ENET_PORT_ANY;
 
     //lastupdatemaster = 0;
+#endif
 }
 
 ENetSocket connectmaster()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Master connection unavailable in offline browser profile");
+    return ENET_SOCKET_NULL;
+#else
     if(!mastername[0] || !usemaster) return ENET_SOCKET_NULL;
 
     if(masteraddress.host == ENET_HOST_ANY)
@@ -67,10 +77,15 @@ ENetSocket connectmaster()
 
     enet_socket_set_option(sock, ENET_SOCKOPT_NONBLOCK, 1);
     return sock;
+#endif
 }
 
 bool requestmaster(const char *req)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Master request unavailable in offline browser profile");
+    return false;
+#else
     if(mastersock == ENET_SOCKET_NULL)
     {
         mastersock = connectmaster();
@@ -79,6 +94,7 @@ bool requestmaster(const char *req)
 
     masterout.put(req, strlen(req));
     return true;
+#endif
 }
 
 bool requestmasterf(const char *fmt, ...)
@@ -91,6 +107,10 @@ extern void processmasterinput(const char *cmd, int cmdlen, const char *args);
 
 void processmasterinput()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Master input unavailable in offline browser profile");
+    return;
+#else
     if(masterinpos >= masterin.length()) return;
 
     char *input = &masterin[masterinpos], *end = (char *)memchr(input, '\n', masterin.length() - masterinpos);
@@ -121,10 +141,14 @@ void processmasterinput()
         masterin.setsize(0);
         masterinpos = 0;
     }
+#endif
 }
 
 void flushmasteroutput()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // no browser master output is queued
+#else
     if(masterout.empty()) return;
 
     ENetBuffer buf;
@@ -141,10 +165,14 @@ void flushmasteroutput()
         }
     }
     else disconnectmaster();
+#endif
 }
 
 void flushmasterinput()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // no browser master socket exists
+#else
     if(masterin.length() >= masterin.capacity())
         masterin.reserve(4096);
 
@@ -158,6 +186,7 @@ void flushmasterinput()
         processmasterinput();
     }
     else disconnectmaster();
+#endif
 }
 
 extern int totalclients;
@@ -166,6 +195,10 @@ extern int totalclients;
 // TODO?: implement a thread to drop this "only in intermission" business, we'll need it once AUTH gets active!
 static inline void updatemasterserver(int millis, int port, int _interm)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Master registration unavailable in offline browser profile");
+    return;
+#else
     if(!lastupdatemaster || ((millis-lastupdatemaster)>40*60*1000 && (_interm || !totalclients)))
     {
         string servdesc; extern string servpubkey;
@@ -173,6 +206,7 @@ static inline void updatemasterserver(int millis, int port, int _interm)
         if(mastername[0]) requestmasterf("regserv %d %s-%s %d\n", port, servdesc, scl.ssk ? servpubkey : "nokey", AC_VERSION);
         lastupdatemaster = millis + 1;
     }
+#endif
 }
 
 ENetSocket pongsock = ENET_SOCKET_NULL, lansock = ENET_SOCKET_NULL;
@@ -180,6 +214,9 @@ extern int getpongflags(enet_uint32 ip);
 
 void serverms(int mode, int numplayers, int minremain, char *smapname, int millis, const ENetAddress &localaddr, int *mnum, int *msend, int *mrec, int *cnum, int *csend, int *crec, int protocol_version, const char *servdesccur, int _interm)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // master/LAN polling is excluded, never a successful discovery
+#else
     flushmasteroutput();
     updatemasterserver(millis, localaddr.port, _interm);
 
@@ -324,10 +361,15 @@ void serverms(int mode, int numplayers, int minremain, char *smapname, int milli
     }
 
     if(mastersock != ENET_SOCKET_NULL && ENET_SOCKETSET_CHECK(sockset, mastersock)) flushmasterinput();
+#endif
 }
 
 void servermsinit(bool listen)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    usemaster = false;
+    conoutf("Master/LAN services unavailable in offline browser profile");
+#else
     if(scl.master && *scl.master) copystring(mastername, scl.master);
     usemaster = !listen || (listen && scl.master && scl.ssk && scl.maxclients <= MAXCLIENTSONMASTER);  // true: connect to master, false: LAN-only server
     if(scl.maxclients > MAXCLIENTSONMASTER) mlog(ACLOG_WARNING, "maxclient exceeded: cannot register");
@@ -369,4 +411,5 @@ void servermsinit(bool listen)
             if(scl.maxclients>MAXCLIENTSONMASTER) mlog(ACLOG_INFO, "LAN-only because too many clients for master");
         }
     }
+#endif
 }

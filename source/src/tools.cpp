@@ -2,6 +2,10 @@
 
 #include "cube.h"
 
+#ifdef STANDALONE
+#include <atomic>
+#endif
+
 extern bool isdedicated;
 
 #ifdef NO_POSIX_R
@@ -551,8 +555,12 @@ char *formatdemofilename(const char *demoformat, const char *timestampformat, co
                     if(!isdedicated)
                     {
 #ifndef STANDALONE
+#ifdef __EMSCRIPTEN__
+                        cvecconcat(d, "unavailable"); // native reverse DNS is excluded
+#else
                         ENetAddress a = { htonl(ip), 0 };
                         cvecconcat(d, !enet_address_get_host(&a, buf, MAXSTRLEN) ? buf : "unknown");
+#endif
                         break;
 #endif
                     } // fallthrough to "IP" on dedicated servers
@@ -710,6 +718,51 @@ bool glmatrixf::invert(const glmatrixf &m, float mindet)
 // all embedded servers and all standalone servers except on linux use SDL
 // the standalone linux version uses native linux libraries - and also makes use of shared memory
 
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+// Immediate counted primitives for the single-thread offline browser profile.
+static int sl_sem_errorcountdummy = 0;
+static void browserblockingfailure(const char *operation)
+{
+    fprintf(stderr, "Unsupported offline browser operation: %s\n", operation);
+    abort(); // never continue as though a blocked operation succeeded
+}
+sl_semaphore::sl_semaphore(int init, int *ecnt)
+{
+    errorcount = ecnt ? ecnt : &sl_sem_errorcountdummy;
+    if(init < 0) { ++*errorcount; browserblockingfailure("negative semaphore count"); }
+    data = new int(init);
+}
+sl_semaphore::~sl_semaphore() { delete (int *)data; }
+int sl_semaphore::trywait()
+{
+    int &count = *(int *)data;
+    if(!count) return 1;
+    --count;
+    return 0;
+}
+void sl_semaphore::wait()
+{
+    if(trywait()) { ++*errorcount; browserblockingfailure("semaphore wait would block"); }
+}
+int sl_semaphore::timedwait(int howlongmillis) { return trywait(); }
+int sl_semaphore::getvalue() { return *(int *)data; }
+void sl_semaphore::post()
+{
+    int &count = *(int *)data;
+    if(count == INT_MAX) { ++*errorcount; browserblockingfailure("semaphore count overflow"); }
+    ++count;
+}
+void *sl_createthread(int (*fn)(void *), void *data, const char *name)
+{
+    browserblockingfailure("thread creation");
+    return NULL;
+}
+int sl_waitthread(void *ti) { browserblockingfailure("thread join"); return -1; }
+bool sl_pollthread(void *ti) { browserblockingfailure("thread polling"); return false; }
+void sl_detachthread(void *ti) { if(ti) browserblockingfailure("thread detach"); }
+bool ismainthread() { return true; } // this profile has exactly one execution thread
+void sl_sleep(int duration) { browserblockingfailure("blocking sleep"); }
+#else
 #ifdef AC_USE_SDL_THREADS
     #include "SDL_timer.h"
     #include "SDL_thread.h"      // also fetches SDL_mutex.h
@@ -814,7 +867,11 @@ void sl_semaphore::post()
 
 // (wrapping threads is slightly ugly, since SDL threads use a different return value (int) than pthreads (void *) - and that can't be solved with a typecast)
 #ifdef AC_USE_SDL_THREADS
+#ifdef STANDALONE
+struct sl_threadinfo { int (*fn)(void *); void *data; SDL_Thread *handle; std::atomic<char> done; };
+#else
 struct sl_threadinfo { int (*fn)(void *); void *data; SDL_Thread *handle; volatile char done; };
+#endif
 
 static int sl_thread_indir(void *info)
 {
@@ -872,7 +929,11 @@ static SDL_threadID mainthreadid = SDL_ThreadID();
 bool ismainthread() { return mainthreadid == SDL_ThreadID(); }
 
 #else
+#ifdef STANDALONE
+struct sl_threadinfo { int (*fn)(void *); void *data; pthread_t handle; int res; std::atomic<char> done; };
+#else
 struct sl_threadinfo { int (*fn)(void *); void *data; pthread_t handle; int res; volatile char done; };
+#endif
 
 static void *sl_thread_indir(void *info)
 {
@@ -939,6 +1000,8 @@ void sl_sleep(int duration)
     struct timespec t = { duration / 1000, (duration % 1000) * 1000000 };
     nanosleep(&t, NULL);
 }
+#endif
+
 #endif
 
 void parseupdatelist(hashtable<const char *, int> &ht, char *buf, const char *prefix, const char *suffix)

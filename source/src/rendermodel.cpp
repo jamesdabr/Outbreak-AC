@@ -1060,6 +1060,17 @@ void updateclientname(playerent *d)
 void renderclientp(playerent *d)
 {
     if(!d) return;
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    const char *attachment = NULL;
+    if(d->weaponsel) switch(d->weaponsel->type)
+    {
+        case GUN_PISTOL: attachment = "outbreak/pistol"; break;
+        case GUN_ASSAULT: attachment = "outbreak/rifle"; break;
+        default: break; // unsupported native selections remain body-only
+    }
+    renderclient(d, "outbreak/survivor", attachment, 0); // configured MD3 skin->id
+    return;
+#else
     int team = team_base(d->team);
     const char *cs = NULL, *skinbase = SKINBASE, *teamname = team_basestring(team);
     int skinid = 1 + d->skin();
@@ -1084,6 +1095,7 @@ void renderclientp(playerent *d)
     if(d->weaponsel && !(d->weaponsel->type == GUN_GRENADE && !d->mag[GUN_GRENADE])) formatstring(vwep)("weapons/%s/world", d->weaponsel->info.modelname);
     else vwep[0] = 0;
     renderclient(d, "playermodels", vwep[0] ? vwep : NULL, -(int)textureload(skin)->id);
+#endif
 }
 
 void renderclients()

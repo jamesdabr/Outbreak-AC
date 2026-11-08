@@ -30,8 +30,13 @@ sl_semaphore sem_pckservers(1, NULL); // control access to the pckservers vector
 
 void resetpckservers()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native package-source persistence unavailable in offline browser profile");
+    return;
+#else
     delfile(findfile("config" PATHDIVS "pcksources.cfg", "w"));
     conoutf("\f3Restart AssaultCube to take effect after resetting the list of packages source servers");
+#endif
 }
 COMMAND(resetpckservers, "");
 
@@ -70,6 +75,10 @@ const char *updatestxt = "/updates.txt";
 
 int pingpckserver(void *data) // fetch updates.txt from a media server, measure required time
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Package ping unavailable in offline browser profile");
+    return -1;
+#else
     httpget h;
     urlparse u;
     pckserver *s = (pckserver *)data;
@@ -131,10 +140,15 @@ int pingpckserver(void *data) // fetch updates.txt from a media server, measure 
     }
     h.disconnect();
     return 0;
+#endif
 }
 
 int pingallpckservers(void *data)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Package updater unavailable in offline browser profile");
+    return -1;
+#else
     sem_pckservers.wait();
     if(autodownload)
     {
@@ -157,20 +171,30 @@ int pingallpckservers(void *data)
     pckping_log.add('e'); // signal end of thread
     sem_pckservers.post();
     return 0;
+#endif
 }
 
 SDL_Thread *pingallpckthread = NULL;
 
 void setupautodownload()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    autodownload = 0;
+    conoutf("Native autodownload unavailable in offline browser profile");
+    return;
+#else
     // fetch updates from all configured servers
     // in a background thread
     // during startup
     pingallpckthread = SDL_CreateThread(pingallpckservers, "PingAllPackageServers", NULL);
+#endif
 }
 
 void pollautodownloadresponse() // thread-safe feedback from the autodownload-updater thread
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // no updater was launched and no result is fabricated
+#else
     static int donepolling = 0;
     if(donepolling) return;
     if(!sem_pckservers.trywait())
@@ -198,6 +222,7 @@ void pollautodownloadresponse() // thread-safe feedback from the autodownload-up
         SDL_WaitThread(pingallpckthread, &nop);    // detaching the thread would be preferrable, but SDL 1.2 doesn't provide that
         pingallpckthread = NULL;
     }
+#endif
 }
 
 const char *mmexts[] = { ".md2", ".md3", ".cfg", ".txt", ".jpg", ".png", "" },
@@ -206,6 +231,10 @@ const char *mmexts[] = { ".md2", ".md3", ".cfg", ".txt", ".jpg", ".png", "" },
 
 bool requirepackage(int type, const char *name, const char *host)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Package request unavailable in offline browser profile");
+    return false;
+#else
     const char *prefix = NULL, *checkprefix = NULL, *forceext = NULL;
     package *pck = new package;
     switch(type)
@@ -275,6 +304,7 @@ bool requirepackage(int type, const char *name, const char *host)
           << ", strictnames: " << pck->strictnames << ", server: " << pck->server << ", exts: " << (pck->exts ? *pck->exts : ""));
     pendingpackages.add(pck);
     return true;
+#endif
 }
 
 VAR(rereadtexturelists, 0, 1, 1); // flag to indicate additional texture files to trigger a menu rebuild (defaults to "1" to build the menus after startup)
@@ -282,6 +312,10 @@ VAR(rereadsoundlists, 0, 1, 1); // same for map sounds
 
 void processdownload(package *pck, stream *f) // write downloaded data to file(s)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Package installation unavailable in offline browser profile");
+    return;
+#else
     f->seek(0);
     if(pck->iszip)
     { // unpack zip file
@@ -352,6 +386,7 @@ void processdownload(package *pck, stream *f) // write downloaded data to file(s
         case PCK_MAPMODEL:
             break;
     }
+#endif
 }
 
 bool canceldownloads = false;
@@ -376,6 +411,10 @@ int progress_callback_dlpackage(void *data, float progress)
 
 bool dlpackage(httpget &h, package *pck, pckserver *s) // download one package from one server
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Package download unavailable in offline browser profile");
+    return false;
+#else
     urlparse u;
     u.set(s ? s->host : pck->host);
     h.callbackfunc = progress_callback_dlpackage;
@@ -413,6 +452,7 @@ bool dlpackage(httpget &h, package *pck, pckserver *s) // download one package f
         h.disconnect();
     }
     return false;
+#endif
 }
 
 int packagesort_server(package **a, package **b) { return (*b)->server - (*a)->server; }
@@ -429,6 +469,10 @@ int pckserversort(pckserver **a, pckserver **b)
 
 int downloadpackages(bool loadscr) // get all pending packages
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(!pendingpackages.empty()) conoutf("Native package downloads unavailable in offline browser profile");
+    return 0; // zero bytes downloaded; missing-media checks still run
+#else
     bool failed = false;
     httpget h;
     canceldownloads = false;
@@ -514,10 +558,15 @@ int downloadpackages(bool loadscr) // get all pending packages
     sem_pckservers.post();
     h.disconnect();
     return failed ? 0 : h.traffic;
+#endif
 }
 
 void writepcksourcecfg()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native package-source persistence unavailable in offline browser profile");
+    return;
+#else
     if(pckservers.length())
     {
         stream *f = openfile("config" PATHDIVS "pcksources.cfg", "w");
@@ -531,6 +580,7 @@ void writepcksourcecfg()
         }
         delete f;
     }
+#endif
 }
 
 void getmod(char *name)

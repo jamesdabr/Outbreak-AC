@@ -512,6 +512,9 @@ vector<mapfilename> mapfilenames; // this list only grows
 
 void updateservermap(int index, bool deletethis)
 {
+#ifdef STANDALONE
+    if(serverworkersstopping()) return;
+#endif
     mapfilename &m = mapfilenames[index];
     servermap *sm = new servermap(m.fname, m.fpath);
     if(!deletethis) sm->load();
@@ -525,7 +528,17 @@ void updateservermap(int index, bool deletethis)
     // pipe sm to main thread....
     // we're handing a pointer to a new servermap to the main thread (who manages the array for all servermaps)
     // if the new servermap is not loaded properly, that's the signal for the main thread to delete the entry from the array
+#ifdef STANDALONE
+    while(servermapdropbox)
+    {
+        if(serverworkersstopping()) { delete sm; return; } // still worker-owned
+        readmapsthread_sem->wait();
+    }
+    std::lock_guard<std::mutex> publish(serverpublishmutex);
+    if(serverworkersstopping()) { delete sm; return; }
+#else
     while(servermapdropbox) readmapsthread_sem->wait(); // wait for the main thread to process the last sent servermap
+#endif
     servermapdropbox = sm;
 }
 
@@ -537,6 +550,9 @@ int getmapfilenameindex(const char *fname, const char *fpath)
 
 void trymapfiles(const char *fpath, const char *fname, int epoch)  //check, if map files were added or altered (detecting alteration requires filesizes to be changed as well, as usual)
 {
+#ifdef STANDALONE
+    if(serverworkersstopping()) return;
+#endif
     bool updatethis = false;
     int mapfileindex = getmapfilenameindex(fname, fpath);
     if(mapfileindex < 0)
@@ -573,7 +589,16 @@ int readmapsthread(void *logfilename)
 
     while(1)
     {
+#ifdef STANDALONE
+        while(!startnewservermapsepoch)
+        {
+            if(serverworkersstopping()) return 0;
+            readmapsthread_sem->wait();
+        }
+        if(serverworkersstopping()) return 0;
+#else
         while(!startnewservermapsepoch) readmapsthread_sem->wait();  // wait without using the cpu
+#endif
 
         if(logfilename) readmaplog = openfile((const char *)logfilename, "a");
 
@@ -762,12 +787,34 @@ int readserverconfigsthread(void *data)
 {
     while(1)
     {
+#ifdef STANDALONE
+        while(!recheckallserverconfigs && !vitastosave)
+        {
+            if(serverworkersstopping()) return 0;
+            readserverconfigsthread_sem->wait();
+        }
+        // Finish an already-owned vita save; cancel unstarted reload/update work.
+        if(serverworkersstopping() && !vitastosave) return 0;
+#else
         while(!recheckallserverconfigs&&!vitastosave) readserverconfigsthread_sem->wait();  // wait without using the cpu
+#endif
 
+#ifdef STANDALONE
+        if(recheckallserverconfigs) loopv(serverconfigs)
+        {
+            if(serverworkersstopping()) break;
+            serverconfigs[i]->trypreload();
+        }
+#else
         if(recheckallserverconfigs) loopv(serverconfigs) serverconfigs[i]->trypreload();
+#endif
 
         // special treatment for vita updates: read once and move out of the way
-        if(!vitaupdatebuf && getfilesize(vitafilename_update) > 0)
+        if(
+#ifdef STANDALONE
+           !serverworkersstopping() &&
+#endif
+           !vitaupdatebuf && getfilesize(vitafilename_update) > 0)
         {
             formatstring(vitafilename_update_backup)("%s%d.cfg", vitafilename_update_backup_base, (int)(time(NULL) / 60));
             backup(vitafilename_update, vitafilename_update_backup);

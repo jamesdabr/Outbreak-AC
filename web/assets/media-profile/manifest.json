@@ -1,0 +1,1557 @@
+{
+  "copied_files": 78,
+  "derived_files": [
+    "config/browser.cfg"
+  ],
+  "entries": [
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "LICENSE.txt",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "LICENSE.txt",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/LICENSE.txt"
+    },
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "config/LICENSE.txt",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "config/LICENSE.txt",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/config/LICENSE.txt"
+    },
+    {
+      "bytes": 2286,
+      "derivation": {
+        "inserted_bytes_sha256": "b3c2ca8fecf6d5d9b9d6f6cad91d306aede131f0432c1d8c9a90d37a7a7a96cb",
+        "inserted_lines": [
+          "scriptcontext MDLCFG md3load",
+          "scriptcontext MDLCFG md3skin",
+          "scriptcontext MDLCFG md3anim",
+          "scriptcontext MDLCFG mdlscale",
+          "scriptcontext MDLCFG mdltrans"
+        ],
+        "marker": "isolatecontext MDLCFG",
+        "operation": "insert literal lines immediately before existing isolatecontext MDLCFG; all other bytes unchanged",
+        "result_sha256": "1ee76c7f9f23362f32cf9e7e8dc260d55a387a9d2561ddd39d7c7702c884eacc",
+        "source_sha256": "ae5853e303fbc6efcf6fdf39517b47cc46eb88fec4d3963edc56b9c005c30d3e"
+      },
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "config/browser.cfg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "config/browser.cfg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "ae5853e303fbc6efcf6fdf39517b47cc46eb88fec4d3963edc56b9c005c30d3e",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "1ee76c7f9f23362f32cf9e7e8dc260d55a387a9d2561ddd39d7c7702c884eacc",
+      "virtual_path": "/outbreak/config/browser.cfg"
+    },
+    {
+      "bytes": 1622,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "config/default_map_settings.cfg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "config/default_map_settings.cfg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+      "virtual_path": "/outbreak/config/default_map_settings.cfg"
+    },
+    {
+      "bytes": 13889,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "config/font.cfg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "config/font.cfg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "34286962a32c8dd284600b39cb404a79df150a9892b15a9f4848e7a0aeed0b08",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "34286962a32c8dd284600b39cb404a79df150a9892b15a9f4848e7a0aeed0b08",
+      "virtual_path": "/outbreak/config/font.cfg"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/LICENSE.txt"
+    },
+    {
+      "bytes": 39734,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/extraction.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/extraction.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "9a06d8c8d5cd3435237344611904d7bd26c8af2046c053c423f898e87e3bcf5d",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "9a06d8c8d5cd3435237344611904d7bd26c8af2046c053c423f898e87e3bcf5d",
+      "virtual_path": "/outbreak/packages/audio/outbreak/extraction.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/extraction.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/extraction.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 8864,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/footstep.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/footstep.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "e0b2bc1d1f3a58a058692885b0a920295be6aeaa47e65be7f7df3a2f601e2400",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e0b2bc1d1f3a58a058692885b0a920295be6aeaa47e65be7f7df3a2f601e2400",
+      "virtual_path": "/outbreak/packages/audio/outbreak/footstep.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/footstep.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/footstep.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 7982,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/pistol.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/pistol.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "708999bd25f91c1a132bc04e62f487a1dea85b7e21ed851603afd31e1ec06483",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "708999bd25f91c1a132bc04e62f487a1dea85b7e21ed851603afd31e1ec06483",
+      "virtual_path": "/outbreak/packages/audio/outbreak/pistol.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/pistol.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/pistol.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 33118,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/predator_flank.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/predator_flank.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "51859ce446db0c50d9390110e2007f8646a471ae3ec76f959eed5b008d01bbc7",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "51859ce446db0c50d9390110e2007f8646a471ae3ec76f959eed5b008d01bbc7",
+      "virtual_path": "/outbreak/packages/audio/outbreak/predator_flank.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/predator_flank.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 26504,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/predator_front.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/predator_front.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "1d8af04001b1fed5a3dc88cfaf4c35a416b34fba3f66a9bd72049939b146fe2d",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "1d8af04001b1fed5a3dc88cfaf4c35a416b34fba3f66a9bd72049939b146fe2d",
+      "virtual_path": "/outbreak/packages/audio/outbreak/predator_front.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/predator_front.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 13274,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/proof_tone.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/proof_tone.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "e37aa3c35b32a3a6b81610c08717721d22a95fb059f24894cfbaea24aa4e5f72",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e37aa3c35b32a3a6b81610c08717721d22a95fb059f24894cfbaea24aa4e5f72",
+      "virtual_path": "/outbreak/packages/audio/outbreak/proof_tone.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/proof_tone.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 19888,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/reload.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/reload.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "b409287328685f4648d377498eda64746a72866036f745635bd13d974324aa62",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "b409287328685f4648d377498eda64746a72866036f745635bd13d974324aa62",
+      "virtual_path": "/outbreak/packages/audio/outbreak/reload.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/reload.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/reload.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 5336,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/rifle.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/rifle.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "1fcd2440fb09924f39b6d5260e28253636f76d2a1fa526dd2187f5eda8228693",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "1fcd2440fb09924f39b6d5260e28253636f76d2a1fa526dd2187f5eda8228693",
+      "virtual_path": "/outbreak/packages/audio/outbreak/rifle.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/rifle.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/rifle.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 17684,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "path": "packages/audio/outbreak/walker_attack.wav",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/walker_attack.wav",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "17bca6cf27dd34d06a8f26528f27401cd7723c65d420448149717854e88e9c45",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "17bca6cf27dd34d06a8f26528f27401cd7723c65d420448149717854e88e9c45",
+      "virtual_path": "/outbreak/packages/audio/outbreak/walker_attack.wav"
+    },
+    {
+      "bytes": 1242,
+      "license": "MIT",
+      "notice": "packages/audio/outbreak/LICENSE.txt",
+      "path": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "provenance": {
+        "input": "audio",
+        "input_manifest": "web/assets/audio/manifest.json",
+        "input_manifest_sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3",
+        "input_path": "packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+        "input_root": "web/assets/audio/pack-root",
+        "input_sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+        "license": "MIT",
+        "notice": "packages/audio/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e",
+      "virtual_path": "/outbreak/packages/audio/outbreak/walker_attack.wav.LICENSE.txt"
+    },
+    {
+      "bytes": 1508,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/crosshairs/default.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/crosshairs/default.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "f3171fd839d52853ca2e97ef1ecba45a8bfc45df511503123ee78d6382032f7d",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "f3171fd839d52853ca2e97ef1ecba45a8bfc45df511503123ee78d6382032f7d",
+      "virtual_path": "/outbreak/packages/crosshairs/default.png"
+    },
+    {
+      "bytes": 1622,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/maps/dev_outbreak_browser.cfg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/maps/dev_outbreak_browser.cfg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cfg"
+    },
+    {
+      "bytes": 534,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/maps/dev_outbreak_browser.cgz",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/maps/dev_outbreak_browser.cgz",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "c3f0226abdf143474804d9259428eb9ba641b3ac259251bdafef04962d5cb52d",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "c3f0226abdf143474804d9259428eb9ba641b3ac259251bdafef04962d5cb52d",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cgz"
+    },
+    {
+      "bytes": 1318,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/maps/dev_outbreak_browser.cgz.LICENSE.txt",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/maps/dev_outbreak_browser.cgz.LICENSE.txt",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+      "virtual_path": "/outbreak/packages/maps/dev_outbreak_browser.cgz.LICENSE.txt"
+    },
+    {
+      "bytes": 3136,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/base.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/base.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/base.png"
+    },
+    {
+      "bytes": 3136,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/blood.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/blood.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/blood.png"
+    },
+    {
+      "bytes": 3136,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/bullethole.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/bullethole.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/bullethole.png"
+    },
+    {
+      "bytes": 1571,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/com.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/com.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "4bd7e0e9c08179469f7d2fbd5287949476f46e8fe6fa28051c8665407c0e5f06",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "4bd7e0e9c08179469f7d2fbd5287949476f46e8fe6fa28051c8665407c0e5f06",
+      "virtual_path": "/outbreak/packages/misc/com.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/compass-base.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/compass-base.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/compass-base.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/compass-rose.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/compass-rose.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/compass-rose.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/ctficons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/ctficons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/ctficons.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/damage.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/damage.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/damage.png"
+    },
+    {
+      "bytes": 3137,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/explosion.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/explosion.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+      "virtual_path": "/outbreak/packages/misc/explosion.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/htficons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/htficons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/htficons.png"
+    },
+    {
+      "bytes": 1524,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/icon.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/icon.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+      "virtual_path": "/outbreak/packages/misc/icon.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/items.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/items.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/items.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/ktficons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/ktficons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/ktficons.png"
+    },
+    {
+      "bytes": 3137,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/muzzleflash.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/muzzleflash.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972",
+      "virtual_path": "/outbreak/packages/misc/muzzleflash.jpg"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/radaricons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/radaricons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/radaricons.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/scope.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/scope.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/scope.png"
+    },
+    {
+      "bytes": 3136,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/scorch.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/scorch.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/scorch.png"
+    },
+    {
+      "bytes": 3136,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/smoke.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/smoke.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8",
+      "virtual_path": "/outbreak/packages/misc/smoke.png"
+    },
+    {
+      "bytes": 1776,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/startscreen.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/startscreen.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "abf245e8e33d0240a7fae852bfb3ce7a5a53cc2608113bd8ec3f9825ea0c8ce6",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "abf245e8e33d0240a7fae852bfb3ce7a5a53cc2608113bd8ec3f9825ea0c8ce6",
+      "virtual_path": "/outbreak/packages/misc/startscreen.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/teamicons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/teamicons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/teamicons.png"
+    },
+    {
+      "bytes": 1616,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/misc/voteicons.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/misc/voteicons.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf",
+      "virtual_path": "/outbreak/packages/misc/voteicons.png"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/LICENSE.txt"
+    },
+    {
+      "bytes": 2090,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/md3.cfg",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/md3.cfg",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/md3.cfg"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/md3.cfg.LICENSE.txt"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/skin.png",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/skin.png",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "482917bedeaba79fa1c407a886473b85567a79f0667e4f91b18a64897121ff8f",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "482917bedeaba79fa1c407a886473b85567a79f0667e4f91b18a64897121ff8f",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/skin.png"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/skin.png.LICENSE.txt"
+    },
+    {
+      "bytes": 4100,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/tris.md3",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/tris.md3",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "cef9e518dead445712f708bc5f6c6ea1b5709ddcf23944d228e0b7924897ea86",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "cef9e518dead445712f708bc5f6c6ea1b5709ddcf23944d228e0b7924897ea86",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/tris.md3"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/pistol/tris.md3.LICENSE.txt"
+    },
+    {
+      "bytes": 2090,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/md3.cfg",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/md3.cfg",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/md3.cfg"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/md3.cfg.LICENSE.txt"
+    },
+    {
+      "bytes": 1496,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/skin.png",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/skin.png",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "147a1a18c92bd5341d1b80eec71bf0f21eaf8f0766766da2628496cc1838b62f",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "147a1a18c92bd5341d1b80eec71bf0f21eaf8f0766766da2628496cc1838b62f",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/skin.png"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/skin.png.LICENSE.txt"
+    },
+    {
+      "bytes": 5924,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/tris.md3",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/tris.md3",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "16995887d6fcaadc01c43c4fe8b94a8bb312b74d8cbc07f44b9c4c96bb99a1d5",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "16995887d6fcaadc01c43c4fe8b94a8bb312b74d8cbc07f44b9c4c96bb99a1d5",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/tris.md3"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/rifle/tris.md3.LICENSE.txt"
+    },
+    {
+      "bytes": 2100,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/md3.cfg",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/md3.cfg",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "060e48df70ba96084f68ba1a2187598f628ada2ab18f78cca5eb80af190833da",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "060e48df70ba96084f68ba1a2187598f628ada2ab18f78cca5eb80af190833da",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/md3.cfg"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/md3.cfg.LICENSE.txt"
+    },
+    {
+      "bytes": 1512,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/skin.png",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/skin.png",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "9fa0040fefbc054364fdaa1e859297ec9ac5f84f2459f38a18fcf16a045f5f96",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "9fa0040fefbc054364fdaa1e859297ec9ac5f84f2459f38a18fcf16a045f5f96",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/skin.png"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/skin.png.LICENSE.txt"
+    },
+    {
+      "bytes": 82156,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/tris.md3",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/tris.md3",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "9b6f1cc37bc404d0cc2a1a4e26ece431af275de971924707cd9f91ebf2fefb09",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+        "original": true
+      },
+      "sha256": "9b6f1cc37bc404d0cc2a1a4e26ece431af275de971924707cd9f91ebf2fefb09",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/tris.md3"
+    },
+    {
+      "bytes": 1295,
+      "license": "MIT",
+      "notice": "packages/models/outbreak/LICENSE.txt",
+      "path": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "provenance": {
+        "input": "models",
+        "input_manifest": "web/assets/models/manifest.json",
+        "input_manifest_sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1",
+        "input_path": "packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+        "input_root": "web/assets/models/pack-root",
+        "input_sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+        "license": "MIT",
+        "notice": "packages/models/outbreak/LICENSE.txt",
+        "original": true
+      },
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307",
+      "virtual_path": "/outbreak/packages/models/outbreak/survivor/tris.md3.LICENSE.txt"
+    },
+    {
+      "bytes": 1524,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/outbreak/fallback.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/outbreak/fallback.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6",
+      "virtual_path": "/outbreak/packages/outbreak/fallback.png"
+    },
+    {
+      "bytes": 2765,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/outbreak/font.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/outbreak/font.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e8567f11398e350100a2b11a913a3d2c21e04d2be797eaea92a707f3e24bfcc9",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e8567f11398e350100a2b11a913a3d2c21e04d2be797eaea92a707f3e24bfcc9",
+      "virtual_path": "/outbreak/packages/outbreak/font.png"
+    },
+    {
+      "bytes": 1585,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/outbreak/ceiling.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/outbreak/ceiling.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa",
+      "virtual_path": "/outbreak/packages/textures/outbreak/ceiling.png"
+    },
+    {
+      "bytes": 1586,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/outbreak/ground.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/outbreak/ground.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39",
+      "virtual_path": "/outbreak/packages/textures/outbreak/ground.png"
+    },
+    {
+      "bytes": 1586,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/outbreak/wall.png",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/outbreak/wall.png",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3",
+      "virtual_path": "/outbreak/packages/textures/outbreak/wall.png"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_bk.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_bk.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_bk.jpg"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_dn.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_dn.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_dn.jpg"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_ft.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_ft.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_ft.jpg"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_lf.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_lf.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_lf.jpg"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_rt.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_rt.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_rt.jpg"
+    },
+    {
+      "bytes": 1497,
+      "license": "MIT",
+      "notice": "LICENSE.txt",
+      "path": "packages/textures/skymaps/_up.jpg",
+      "provenance": {
+        "input": "map",
+        "input_manifest": "web/assets/original/manifest.json",
+        "input_manifest_sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3",
+        "input_path": "packages/textures/skymaps/_up.jpg",
+        "input_root": "web/assets/original/pack-root",
+        "input_sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+        "license": "MIT",
+        "notice": "LICENSE.txt",
+        "original": true
+      },
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb",
+      "virtual_path": "/outbreak/packages/textures/skymaps/_up.jpg"
+    }
+  ],
+  "inputs": [
+    {
+      "count": 41,
+      "id": "map",
+      "manifest": "web/assets/original/manifest.json",
+      "root": "web/assets/original/pack-root",
+      "sha256": "1073382bb93f689379406eb5d7556726b1dede6afa90a6d2b3796978506f5be3"
+    },
+    {
+      "count": 19,
+      "id": "audio",
+      "manifest": "web/assets/audio/manifest.json",
+      "root": "web/assets/audio/pack-root",
+      "sha256": "689941eae651adaef254cb3858f940e673661ef490c63c4821a290e9615907a3"
+    },
+    {
+      "count": 19,
+      "id": "models",
+      "manifest": "web/assets/models/manifest.json",
+      "root": "web/assets/models/pack-root",
+      "sha256": "7a232c7e8e238b29285f452c9e38f31dfc073cc3d0b9568352bb7a233c6b2fd1"
+    }
+  ],
+  "mount": "/outbreak",
+  "profile": "original-media-stage",
+  "raw_bytes": 388763,
+  "runtime_verified": false,
+  "schema_version": 1,
+  "ticket": "T049 revision2.1",
+  "unresolved_runtime_gates": [
+    "model loading/material/animation/attachment/render",
+    "audio backend/sample decode/user-gesture playback",
+    "active build/profile integration; no overlay performed"
+  ]
+}

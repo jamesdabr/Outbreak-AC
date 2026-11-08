@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "root": "/private/tmp/outbreak-web-sdk/upstream/bin",
+  "aliases": [
+    {
+      "path": "/private/tmp/outbreak-web-sdk/upstream/bin/clang",
+      "link_text": "clang-24",
+      "resolved_path": "/private/tmp/outbreak-web-sdk/upstream/bin/clang-24",
+      "resolved_sha256": "9a96f4220eefe21e72a4a9a20a88f4d6c26cad1b047cb02b5b22a96bef49c423"
+    },
+    {
+      "path": "/private/tmp/outbreak-web-sdk/upstream/bin/clang++",
+      "link_text": "clang",
+      "resolved_path": "/private/tmp/outbreak-web-sdk/upstream/bin/clang-24",
+      "resolved_sha256": "9a96f4220eefe21e72a4a9a20a88f4d6c26cad1b047cb02b5b22a96bef49c423"
+    },
+    {
+      "path": "/private/tmp/outbreak-web-sdk/upstream/bin/wasm-ld",
+      "link_text": "lld",
+      "resolved_path": "/private/tmp/outbreak-web-sdk/upstream/bin/lld",
+      "resolved_sha256": "b851d4f8a53ca2839651b62821a8981fcdb22a51c8c7fc04733ed2f6d050ad5c"
+    },
+    {
+      "path": "/private/tmp/outbreak-web-sdk/upstream/bin/llvm-ranlib",
+      "link_text": "llvm-ar",
+      "resolved_path": "/private/tmp/outbreak-web-sdk/upstream/bin/llvm-ar",
+      "resolved_sha256": "ba6f5e5d5c2e8dc5b7a6fc30feae23a7681df0f9a4a86ceb196e8375670b879b"
+    }
+  ]
+}

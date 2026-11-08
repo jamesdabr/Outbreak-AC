@@ -2,6 +2,12 @@
 
 #include "cube.h"
 #include "bot/bot.h"
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+#include "browsernet.h"
+#include "browsernet_observer.h"
+#include "../../web/transport/enet_ws_bridge.h"
+#include <emscripten/emscripten.h>
+#endif
 
 VAR(connected, 1, 0, 0);
 
@@ -15,6 +21,9 @@ int getclientnum() { return player1 ? player1->clientnum : -1; }
 
 bool multiplayer(const char *op)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return true; // A remote-only profile must not select local gameplay when joining/closed.
+#endif
     // check not correct on listen server?
     if(curpeer && op) conoutf("%s%s%s not available in multiplayer", *op ? "\"" : "", *op ? op : "operation", *op ? "\"" : "");
     return curpeer!=NULL;
@@ -22,6 +31,9 @@ bool multiplayer(const char *op)
 
 bool allowedittoggle()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return false;
+#endif
     bool allow = !curpeer || gamemode==1;
     if(!allow) conoutf("editing in multiplayer requires coopedit mode (1)");
     return allow;
@@ -44,8 +56,248 @@ string clientpassword = "";
 int connectrole = CR_DEFAULT;
 bool modprotocol = false;
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+// T061: one consumed boot, genuine ENet peers/parser, no local-session fallback.
+extern vector<uchar> messages;
+extern packetqueue pktlogger;
+extern bool sendmapidenttoserver;
+namespace
+{
+    BrowserNetState bnphase = BN_IDLE;
+    int bnerror = BNE_NONE, bnstage = 0, bncn = -1, bnlife = -1, bnparserdepth = 0;
+    bool bnconsumed = false, bnseenframe = false, bnpending = false, bndiscsent = false, bndrained = false;
+    unsigned bnframeid = 0, bneventsleft = 0;
+    bool bnhasspawnrequest = false;
+    bool bnspawnack = false;
+    enet_uint32 bnlastspawnrequest = 0;
+    double bnjoinat = 0, bncloseat = 0;
+    bool bnmap = false;
+    struct BNRemote { bool valid; int cn, life, count; float x,y,z; double at; } bnremotes[MAXCLIENTS] = {};
+    struct BNEvent { int kind, milestone, cn, life, error; double at; } bnevents[512];
+    int bneventcount = 0;
+    struct BNCounters
+    {
+        unsigned begin_calls, repeated_begin, frame_calls, frame_advances, ws_frames,
+          service_calls, game_events, receive_packets, send_queued, send_rejected,
+          owned_local_attempts, milestones, life_observations, position_receipts,
+          remove_receipts, map_receipts, join_timeouts, spawn_requests, spawn_acknowledgments, teardowns;
+    } bnc = {};
+    double bnnow() { return emscripten_get_now(); }
+    bool bnterminal() { return bnphase==BN_CLOSING || bnphase==BN_FAILED; }
+    void bninputoff()
+    {
+        if(!player1) return;
+        player1->attacking = player1->jumpnext = false;
+        player1->move = player1->strafe = 0;
+        player1->state = CS_SPECTATE;
+    }
+    void bnrecord(int kind, int milestone=0, int cn=-1, int life=-1)
+    {
+        if(bneventcount>=512)
+        {
+            if(!bnerror) bnerror=BNE_BACKLOG;
+            bnphase=BN_FAILED; bnpending=true; bninputoff(); return;
+        }
+        BNEvent &e=bnevents[bneventcount++];
+        e.kind=kind; e.milestone=milestone; e.cn=cn; e.life=life; e.error=bnerror; e.at=bnnow();
+    }
+    void bncleardisplay()
+    {
+        // Deliberately does not touch clienthost/connpeer/curpeer or local server.
+        loopv(players) if(players[i]) zapplayer(players[i]);
+        if(player1) { player1->clientnum=-1; player1->lifesequence=0; player1->clientrole=CR_DEFAULT; }
+        bninputoff(); connected=0; clientpassword[0]='\0'; connectrole=CR_DEFAULT; modprotocol=false;
+    }
+    int bnbackend()
+    {
+        int status=ob_ws_status(clienthost ? clienthost->socket : 0);
+        if(status<0) browsernet_close(-status>=BNE_BOOT && -status<=BNE_VISIBILITY ? -status : BNE_ENET);
+        return status;
+    }
+    bool bnflush()
+    {
+        if(!clienthost) return false;
+        enet_host_flush(clienthost); // ENet's void API cannot expose send failure.
+        return bnbackend()>=0;      // Poll the platform's first latched error.
+    }
+    void bnteardown()
+    {
+        if(!bnpending || bnparserdepth) return;
+        // Only a frame safe point owns logger/actors/peer/host destruction.
+        messages.setsize(0); pktlogger.clear();
+        if(clienthost) enet_host_destroy(clienthost);
+        clienthost=NULL; curpeer=connpeer=NULL; connmillis=connattempts=discmillis=0;
+        bncleardisplay(); memset(bnremotes,0,sizeof(bnremotes)); bnmap=false;
+        bncn=-1; bnlife=-1; bnstage=0; bnspawnack=false;
+        bnpending=false; ++bnc.teardowns;
+        if(bneventcount<512) bnrecord(3);
+        else { if(!bnerror) bnerror=BNE_BACKLOG; bnphase=BN_FAILED; }
+    }
+}
+
+EM_JS(void, bn_publish_json, (const char *json), {
+    const text=UTF8ToString(json);
+    const freeze=(value)=>{if(value && typeof value==='object'){Object.keys(value).forEach(k=>freeze(value[k]));Object.freeze(value);}return value;};
+    // Each getter closes over an immutable serialized observation, never C handles.
+    Object.defineProperty(window,'outbreakNetworkSnapshot',{
+        configurable:true,enumerable:true,writable:false,
+        value:()=>freeze(JSON.parse(text))
+    });
+});
+static void bnpublish()
+{
+    static char json[131072];
+    int n=0;
+    const char *states[]={"BN_IDLE","BN_OPENING","BN_OPEN","BN_JOINING","BN_ACTIVE","BN_CLOSING","BN_FAILED"};
+    vec own=player1 ? player1->o : vec(0,0,0);
+    if(!__builtin_isfinite(own.x)||!__builtin_isfinite(own.y)||!__builtin_isfinite(own.z)) { browsernet_close(BNE_SIZE); own=vec(0,0,0); }
+#define BN_JSON(...) do { int wrote=snprintf(json+n,sizeof(json)-n,__VA_ARGS__); if(wrote<0 || wrote>=int(sizeof(json)-n)) { browsernet_close(BNE_BACKLOG); return; } n+=wrote; } while(0)
+    BN_JSON("{\"schema_version\":1,\"profile\":\"network-client\",\"state\":\"%s\",\"error\":%d,\"map_name\":\"%s\",\"map_revision\":%d,\"own\":{\"cn\":%d,\"life\":%d,\"state\":%d,\"position\":[%.9g,%.9g,%.9g]},\"remotes\":[", states[bnphase],bnerror,bnmap?"dev_outbreak_browser":"",bnmap?2:0,player1?player1->clientnum:-1,bnlife,player1?player1->state:CS_SPECTATE,own.x,own.y,own.z);
+    bool comma=false;
+    loopi(MAXCLIENTS) if(bnremotes[i].valid)
+    {
+        BNRemote &r=bnremotes[i];
+        BN_JSON("%s{\"cn\":%d,\"life\":%d,\"position\":[%.9g,%.9g,%.9g],\"parse_count\":%d,\"last_parse_ms\":%.3f}",comma?",":"",r.cn,r.life,r.x,r.y,r.z,r.count,r.at); comma=true;
+    }
+    BN_JSON("],\"counters\":{");
+#define BN_COUNT(key) BN_JSON("\"" #key "\":%u,",bnc.key)
+    BN_COUNT(begin_calls); BN_COUNT(repeated_begin); BN_COUNT(frame_calls); BN_COUNT(frame_advances); BN_COUNT(ws_frames);
+    BN_COUNT(service_calls); BN_COUNT(game_events); BN_COUNT(receive_packets); BN_COUNT(send_queued); BN_COUNT(send_rejected);
+    BN_COUNT(owned_local_attempts); BN_COUNT(milestones); BN_COUNT(life_observations); BN_COUNT(position_receipts);
+    BN_COUNT(remove_receipts); BN_COUNT(map_receipts); BN_COUNT(join_timeouts); BN_COUNT(spawn_requests); BN_COUNT(spawn_acknowledgments);
+    BN_JSON("\"teardowns\":%u},\"coverage\":\"owned client send/local receive paths only; main/local server unobserved\",\"events\":[",bnc.teardowns);
+    loopi(bneventcount)
+    {
+        BNEvent &e=bnevents[i];
+        BN_JSON("%s{\"kind\":%d,\"milestone\":%d,\"cn\":%d,\"life\":%d,\"error\":%d,\"at_ms\":%.3f}",i?",":"",e.kind,e.milestone,e.cn,e.life,e.error,e.at);
+    }
+    BN_JSON("]}"); bn_publish_json(json);
+#undef BN_COUNT
+#undef BN_JSON
+}
+BrowserNetState browsernet_state() { return bnphase; }
+int browsernet_error() { return bnerror; }
+void browsernet_close(int reason)
+{
+    if(reason && !bnerror) bnerror=reason>=BNE_BOOT && reason<=BNE_VISIBILITY ? reason : BNE_ENET;
+    if(bnterminal()) { if(bnerror) bnphase=BN_FAILED; return; }
+    bnphase=bnerror ? BN_FAILED : BN_CLOSING; bncloseat=bnnow(); bnpending=true;
+    bninputoff(); bnrecord(2);
+    // No packet logger, actor, host or peer is destroyed on this stack.
+}
+void browsernet_begin()
+{
+    ++bnc.begin_calls;
+    if(bnconsumed || bnterminal()) { ++bnc.repeated_begin; return; }
+    bnconsumed=true; bncleardisplay(); gamemode=GMODE_DEATHMATCH; watchingdemo=false; editmode=false;
+    if(sk || clienthost || curpeer || connpeer) { browsernet_close(BNE_BOOT); bnpublish(); return; }
+    bnphase=BN_OPENING;
+    clienthost=enet_host_create(NULL,1,3,0,0);
+    if(!clienthost)
+    {
+        int status=ob_ws_status(0);
+        browsernet_close(status<0 && -status>=BNE_BOOT && -status<=BNE_VISIBILITY ? -status : BNE_OPEN);
+    }
+    bnrecord(0); bnpublish();
+}
+void browsernet_frame(unsigned frameId)
+{
+    ++bnc.frame_calls;
+    if(bnseenframe && frameId==bnframeid) return;
+    bnseenframe=true; bnframeid=frameId; bneventsleft=64; ++bnc.frame_advances;
+    ob_ws_frame(frameId); ++bnc.ws_frames;
+    if(clienthost && !bnterminal())
+    {
+        int status=bnbackend();
+        if(bnphase==BN_OPENING && status==1)
+        {
+            bnphase=BN_OPEN; bnjoinat=bnnow(); bnrecord(0);
+            ENetAddress address;
+            address.host=ENET_HOST_TO_NET_32(0x7f000001); address.port=29863;
+            connpeer=enet_host_connect(clienthost,&address,3,0);
+            if(!connpeer) browsernet_close(BNE_ENET);
+            else { bnphase=BN_JOINING; connmillis=totalmillis; connattempts=0; bnflush(); }
+        }
+        if(bnphase==BN_JOINING && bnnow()-bnjoinat>=15000) { ++bnc.join_timeouts; browsernet_close(BNE_DEADLINE); }
+    }
+    if(bnpending && !bnparserdepth)
+    {
+        if(!bnerror && curpeer && clienthost)
+        {
+            if(!bndiscsent) { bndiscsent=true; enet_peer_disconnect(curpeer,DISC_BECAUSE); bnflush(); }
+            if(!bnerror && !bndrained && bnnow()-bncloseat<2000) { gets2c(); bnpublish(); return; }
+        }
+        bnteardown();
+    }
+    bnpublish();
+}
+void browsernet_game_observed(unsigned milestone,int cn,int lifeSequence)
+{
+    if(bnterminal()) return;
+    if(!curpeer || curpeer->host!=clienthost || cn<0 || cn>=MAXCLIENTS) { browsernet_close(BNE_MILESTONE); return; }
+    if(milestone==4 && lifeSequence!=player1->lifesequence) { browsernet_close(BNE_MILESTONE); return; }
+    if(bnphase==BN_ACTIVE && milestone==4 && cn==bncn && lifeSequence>=0 && bnspawnack)
+    {
+        bnspawnack=false; bnlife=lifeSequence; ++bnc.life_observations; bnrecord(1,4,cn,lifeSequence); return;
+    }
+    if(bnphase!=BN_JOINING || milestone!=unsigned(bnstage+1) || milestone>4 || (bnstage && cn!=bncn) || (milestone<4 && lifeSequence!=-1)) { browsernet_close(BNE_MILESTONE); return; }
+    if(milestone==4 && (!bnmap || !bnspawnack || lifeSequence<0 || player1->clientnum!=cn || player1->state!=CS_ALIVE)) { browsernet_close(bnmap?BNE_MILESTONE:BNE_MAP); return; }
+    bncn=cn; bnstage=milestone; ++bnc.milestones; bnrecord(1,milestone,cn,lifeSequence);
+    if(milestone==4) { bnspawnack=false; bnlife=lifeSequence; bnphase=BN_ACTIVE; }
+}
+bool browsernet_spawn_expected()
+{
+    if(bnterminal()) return false;
+    if(!bnmap) { browsernet_close(BNE_MAP); return false; }
+    if(!curpeer || player1->clientnum!=bncn || (bnphase!=BN_ACTIVE && (bnphase!=BN_JOINING || bnstage!=3))) { browsernet_close(BNE_MILESTONE); return false; }
+    bnspawnack=false;
+    return true;
+}
+bool browsernet_spawn_request_allowed()
+{
+    return player1 && curpeer && clienthost && curpeer->host==clienthost && bnmap &&
+      gamemode==GMODE_DEATHMATCH && hdr.maprevision==2 && maploaded>0 &&
+      bncn>=0 && bncn<MAXCLIENTS && player1->clientnum==bncn &&
+      ((bnphase==BN_JOINING && bnstage==3) || (bnphase==BN_ACTIVE && bnstage==4));
+}
+bool browsernet_message_allowed(int type)
+{
+    if(bnterminal() || (bnphase!=BN_JOINING && bnphase!=BN_ACTIVE)) return false;
+    if(type==SV_TRYSPAWN) return browsernet_spawn_request_allowed();
+    switch(type)
+    {
+        case SV_SENDMAP: case SV_RECVMAP: case SV_REMOVEMAP: case SV_LISTDEMOS: case SV_GETDEMO: case SV_SENDDEMO:
+        case SV_DEMOPLAYBACK: case SV_DEMOCHECKSUM: case SV_DEMOSIGNATURE: case SV_EDITMODE: case SV_EDITENT:
+        case SV_EDITXY: case SV_EDITARCH: case SV_EDITBLOCK: case SV_EDITD: case SV_EDITE: case SV_NEWMAP: return false;
+    }
+    if(bnphase==BN_ACTIVE) return true;
+    return type==SV_SERVINFO_RESPONSE || type==SV_CONNECT || type==SV_MAPIDENT || type==SV_SPAWN || type==SV_PING || type==SV_PONG;
+}
+bool browsernet_parser_busy() { return bnparserdepth>0; }
+void browsernet_local_attempt() { ++bnc.owned_local_attempts; browsernet_close(BNE_ENET); }
+void browsernet_position_observed(int cn,int lifeSequence,float x,float y,float z)
+{
+    if(bnterminal()) return;
+    if(cn<0 || cn>=MAXCLIENTS || lifeSequence<0 || !__builtin_isfinite(x)||!__builtin_isfinite(y)||!__builtin_isfinite(z)) { browsernet_close(BNE_MILESTONE); return; }
+    BNRemote &r=bnremotes[cn]; r.valid=true; r.cn=cn; r.life=lifeSequence; r.x=x; r.y=y; r.z=z; ++r.count; r.at=bnnow(); ++bnc.position_receipts;
+}
+void browsernet_remove_observed(int cn)
+{
+    if(cn>=0 && cn<MAXCLIENTS) { bnremotes[cn]=BNRemote(); ++bnc.remove_receipts; }
+}
+void browsernet_map_observed(const char *name,int revision)
+{
+    if(bnterminal()) return;
+    if(!name || strcmp(name,"dev_outbreak_browser") || revision!=2 || gamemode!=GMODE_DEATHMATCH || maploaded<=0 || hdr.maprevision!=2) { browsernet_close(BNE_MAP); return; }
+    bnmap=true; ++bnc.map_receipts;
+}
+#endif
+
 void abortconnect()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_ENET); return;
+#endif
     if(!connpeer) return;
     clientpassword[0] = '\0';
     connectrole = CR_DEFAULT;
@@ -55,6 +307,9 @@ void abortconnect()
 
 void connectserv_(const char *servername, int serverport = 0, const char *password = NULL, int role = CR_DEFAULT)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(serverport <= 0) serverport = CUBE_DEFAULT_SERVER_PORT;
     if(watchingdemo) enddemoplayback();
 
@@ -107,6 +362,9 @@ void connectserv_(const char *servername, int serverport = 0, const char *passwo
 
 void connectserv(char *servername, int *serverport, char *password)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(sk)
     {
         modprotocol = false;
@@ -128,6 +386,9 @@ COMMANDN(connect, connectserv, "sis");
 
 void connectadmin(char *servername, int *serverport, char *password)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     modprotocol = false;
     connectserv_(servername, *serverport, password, CR_ADMIN);
 }
@@ -135,6 +396,9 @@ COMMAND(connectadmin, "sis");
 
 void lanconnect()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     modprotocol = false;
     connectserv_(NULL);
 }
@@ -142,6 +406,9 @@ COMMAND(lanconnect, "");
 
 void modconnectserv(char *servername, int *serverport, char *password)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     modprotocol = true;
     connectserv_(servername, *serverport, password);
 }
@@ -149,6 +416,9 @@ COMMANDN(modconnect, modconnectserv, "sis");
 
 void modconnectadmin(char *servername, int *serverport, char *password)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     modprotocol = true;
     connectserv_(servername, *serverport, password, CR_ADMIN);
 }
@@ -156,6 +426,9 @@ COMMAND(modconnectadmin, "sis");
 
 void modlanconnect()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     modprotocol = true;
     connectserv_(NULL);
 }
@@ -163,6 +436,9 @@ COMMAND(modlanconnect, "");
 
 void disconnect(int onlyclean, int async)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(onlyclean ? BNE_NONE : BNE_CLOSED); return;
+#endif
     bool cleanup = onlyclean!=0;
     if(curpeer)
     {
@@ -202,6 +478,9 @@ void disconnect(int onlyclean, int async)
 
 void trydisconnect()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_NONE); return;
+#endif
     if(connpeer)
     {
         conoutf("aborting connection attempt");
@@ -301,6 +580,9 @@ COMMAND(current_version, "s");
 
 void cleanupclient()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_NONE); return;
+#endif
     abortconnect();
     disconnect(1);
     if(clienthost)
@@ -316,6 +598,15 @@ vector<uchar> messages;
 
 void addmsg(int type, const char *fmt, ...)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(!browsernet_message_allowed(type)) return;
+    if(type==SV_TRYSPAWN)
+    {
+        enet_uint32 at=enet_time_get();
+        if(bnhasspawnrequest && enet_uint32(at-bnlastspawnrequest)<1000) return;
+        bnhasspawnrequest=true; bnlastspawnrequest=at; ++bnc.spawn_requests;
+    }
+#endif
     static uchar buf[MAXTRANS];
     ucharbuf p(buf, MAXTRANS);
     putint(p, type);
@@ -372,15 +663,68 @@ void addmsg(int type, const char *fmt, ...)
 static int lastupdate = -1000, lastping = 0;
 bool sendmapidenttoserver = false;
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+ENetPacket *browsernet_take_packet(packetbuf &p)
+{
+    ENetPacket *packet=p.finalize();
+    p.packet=NULL; p.buf=NULL; // finalize alone does NOT transfer packetbuf ownership.
+    return packet;
+}
+#endif
+
 void sendpackettoserv(int chan, ENetPacket *packet)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(!packet) return;
+    if(!curpeer || curpeer->host!=clienthost || bnterminal() || chan<0 || chan>1 || (chan==0 && bnphase!=BN_ACTIVE))
+    {
+        if(!curpeer) ++bnc.owned_local_attempts;
+        ++bnc.send_rejected;
+        if(!packet->referenceCount) enet_packet_destroy(packet);
+        return;
+    }
+    if(chan==1)
+    {
+        ucharbuf inspect(packet->data,int(packet->dataLength));
+        int type=getint(inspect); // Use the native decoder; never a second protocol parser.
+        if(inspect.overread() || !browsernet_message_allowed(type))
+        { ++bnc.send_rejected; if(!packet->referenceCount) enet_packet_destroy(packet); return; }
+    }
+    if(enet_peer_send(curpeer,chan,packet)<0)
+    {
+        ++bnc.send_rejected;
+        if(!packet->referenceCount) enet_packet_destroy(packet);
+        browsernet_close(BNE_ENET);
+    }
+    else ++bnc.send_queued;
+#else
     if(curpeer) enet_peer_send(curpeer, chan, packet);
     else localclienttoserver(chan, packet);
+#endif
 }
+
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+bool browsernet_acknowledge_spawn(int life,int gun)
+{
+    if(bnterminal() || !curpeer) return false;
+    unsigned queued=bnc.send_queued;
+    packetbuf ack(32,ENET_PACKET_FLAG_RELIABLE);
+    putint(ack,SV_SPAWN); putint(ack,life); putint(ack,gun);
+    sendpackettoserv(1,browsernet_take_packet(ack));
+    if(bnterminal() || bnc.send_queued!=queued+1) { browsernet_close(BNE_ENET); return false; }
+    if(!bnflush()) return false;
+    bnspawnack=true; ++bnc.spawn_acknowledgments;
+    return true;
+}
+#endif
 
 void c2skeepalive()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    gets2c(); // Shared event dispatch/budget and explicit error path, including keepalive.
+#else
     if(clienthost && (curpeer || connpeer)) enet_host_service(clienthost, NULL, 0);
+#endif
 }
 
 extern string masterpwd;
@@ -388,10 +732,17 @@ bool sv_pos = true;
 
 void c2sinfo(playerent *d)                  // send update to the server
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(!curpeer || bnterminal()) return;
+#endif
     if(d->clientnum<0) return;              // we haven't had a welcome message from the server yet
     if(totalmillis-lastupdate<40) return;    // don't update faster than 25fps
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(bnphase==BN_ACTIVE && (d->state==CS_ALIVE || d->state==CS_EDITING))
+#else
     if(d->state==CS_ALIVE || d->state==CS_EDITING)
+#endif
     {
         ASSERT(!(d->crouching && d->onladder)); // onladder is never set while crouching - and we're going to rely on it ;)
         ASSERT(!(d->move < -1 || d->move > 1 || d->strafe < -1 || d->strafe > 1));
@@ -453,7 +804,11 @@ void c2sinfo(playerent *d)                  // send update to the server
                 putint(q, dz);
             }
         }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+        sendpackettoserv(0, browsernet_take_packet(q));
+#else
         sendpackettoserv(0, q.finalize());
+#endif
         d->jumpd = false;
     }
 
@@ -485,10 +840,18 @@ void c2sinfo(playerent *d)                  // send update to the server
             putint(p, totalmillis);
             lastping = totalmillis;
         }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+        if(p.length()) sendpackettoserv(1, browsernet_take_packet(p));
+#else
         if(p.length()) sendpackettoserv(1, p.finalize());
+#endif
     }
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(clienthost) bnflush();
+#else
     if(clienthost) enet_host_flush(clienthost);
+#endif
     lastupdate = totalmillis;
 }
 
@@ -528,11 +891,67 @@ void sendintro()
     putint(p, player1->maxrolleffect);
     putint(p, player1->ffov);
     putint(p, player1->scopefov);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sendpackettoserv(1, browsernet_take_packet(p));
+#else
     sendpackettoserv(1, p.finalize());
+#endif
 }
 
 void gets2c()           // get updates from the server
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(bnparserdepth) return; // Map/control keepalive cannot recursively evict the current logger payload.
+    if(!clienthost || !bnseenframe || (!curpeer && !connpeer) || bnphase==BN_FAILED) return;
+    if(bnbackend()<0) return;
+    if(connpeer && totalmillis/3000 > connmillis/3000)
+    {
+        connmillis=totalmillis; ++connattempts;
+        if(connattempts>3) { browsernet_close(BNE_DEADLINE); return; }
+    }
+    while(clienthost && bneventsleft && bnphase!=BN_FAILED)
+    {
+        ENetEvent event; ++bnc.service_calls;
+        int result=enet_host_service(clienthost,&event,0);
+        if(result<0) { if(bnbackend()>=0) browsernet_close(BNE_ENET); return; }
+        if(bnbackend()<0) { if(result>0 && event.type==ENET_EVENT_TYPE_RECEIVE) enet_packet_destroy(event.packet); return; }
+        if(!result) return;
+        --bneventsleft; ++bnc.game_events;
+        switch(event.type)
+        {
+            case ENET_EVENT_TYPE_CONNECT:
+                if(bnterminal()) break;
+                if(event.peer!=connpeer || event.peer->host!=clienthost) { browsernet_close(BNE_ENET); return; }
+                bncleardisplay(); // Host and the real event peer survive display cleanup.
+                curpeer=event.peer; connpeer=NULL; connected=1; throttle();
+                break;
+            case ENET_EVENT_TYPE_RECEIVE:
+                if(event.peer!=curpeer || event.channelID>1 || bnterminal())
+                {
+                    enet_packet_destroy(event.packet);
+                    if(!bnterminal()) browsernet_close(BNE_TARGET);
+                    break;
+                }
+                pktlogger.queue(event.packet); ++bnc.receive_packets;
+                ++bnparserdepth;
+                servertoclient(event.channelID,event.packet->data,int(event.packet->dataLength));
+                --bnparserdepth;
+                // Logger owns event.packet. It must survive even a nested close.
+                if(bnterminal())
+                {
+                    if(bnerror) bnteardown(); // Parser has returned; safe even if main canceled.
+                    return;
+                }
+                break;
+            case ENET_EVENT_TYPE_DISCONNECT:
+                if(event.peer!=curpeer && event.peer!=connpeer) { browsernet_close(BNE_ENET); return; }
+                if(bnphase==BN_CLOSING) bndrained=true;
+                else browsernet_close(BNE_CLOSED);
+                return;
+            default: break;
+        }
+    }
+#else
     ENetEvent event;
     if(!clienthost || (!curpeer && !connpeer)) return;
     if(connpeer && totalmillis/3000 > connmillis/3000)
@@ -591,6 +1010,7 @@ void gets2c()           // get updates from the server
         default:
             break;
     }
+#endif
 }
 
 // sendmap/getmap commands, should be replaced by more intuitive map downloading
@@ -621,6 +1041,9 @@ bool securemapcheck(const char *map, bool msg)
 
 void sendmap(char *mapname)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(!*mapname) mapname = getclientmap();
     if(securemapcheck(mapname)) return;
     if(gamemode == GMODE_COOPEDIT && !strcmp(getclientmap(), mapname)) save_world(mapname, true, false); // skip optimisations, don't add undos
@@ -654,20 +1077,31 @@ void sendmap(char *mapname)
         delete[] cfgdata;
     }
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sendpackettoserv(2, browsernet_take_packet(p));
+#else
     sendpackettoserv(2, p.finalize());
+#endif
     conoutf("sending map %s to server...", mapname);
 }
 COMMAND(sendmap, "s");
 
 void getmap(char *name, char *callback)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if((!name || !*name)
         || (curpeer && !strcmp(name, getclientmap())) )
     {
         conoutf("requesting map from server...");
         packetbuf p(10, ENET_PACKET_FLAG_RELIABLE);
         putint(p, SV_RECVMAP);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+        sendpackettoserv(2, browsernet_take_packet(p));
+#else
         sendpackettoserv(2, p.finalize());
+#endif
     }
     else
     {
@@ -684,6 +1118,9 @@ COMMAND(getmap, "ss");
 
 void deleteservermap(char *mapname)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     const char *name = behindpath(mapname);
     if(!*name || securemapcheck(name)) return;
     addmsg(SV_REMOVEMAP, "rs", name);
@@ -693,6 +1130,9 @@ COMMAND(deleteservermap, "s");
 string demosubpath;
 void getdemo(int *idx, char *dsp)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(!multiplayer(NULL))
     {
         conoutf("\f3Getting demo from server is not available in singleplayer");
@@ -708,6 +1148,9 @@ COMMAND(getdemo, "is");
 
 void listdemos()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(!multiplayer(NULL))
     {
         conoutf("\f3Listing demos from server is not available in singleplayer");
@@ -720,6 +1163,9 @@ COMMAND(listdemos, "");
 
 void shiftgametime(int newmillis)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(!watchingdemo) { conoutf("You have to be watching a demo to change game time"); return; }
 
     newmillis = max(0, newmillis);

@@ -2,6 +2,14 @@
 
 #include "cube.h"
 #include "bot/bot.h"
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+#include "browsernet.h"
+#include "browsernet_observer.h"
+extern ENetPacket *browsernet_take_packet(packetbuf &p);
+extern bool browsernet_spawn_expected();
+extern bool browsernet_acknowledge_spawn(int life,int gun);
+extern void browsernet_local_attempt();
+#endif
 
 VARP(networkdebug, 0, 0, 1);
 #define DEBUGCOND (networkdebug==1)
@@ -17,6 +25,9 @@ packetqueue pktlogger;
 
 void neterr(const char *s)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_ENET); return; // Never clear/free pktlogger during a nested parser.
+#endif
     conoutf("\f3illegal network message (%s)", s);
 
     // might indicate a client/server communication bug, create error report
@@ -37,6 +48,17 @@ bool localwrongmap = false;
 
 bool changemapserv(char *name, int mode, int download, int revision)        // forced map change from the server
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(!name || strcmp(name,"dev_outbreak_browser") || mode!=GMODE_DEATHMATCH || revision!=2 ||
+       download<=0 || maploaded!=download || hdr.maprevision!=2 || strcmp(getclientmap(),"dev_outbreak_browser"))
+    { browsernet_close(BNE_MAP); return false; }
+    gamemode=mode;
+    int networkloaded=load_world(name);
+    if(networkloaded<0 || incompatiblemap || maploaded!=download || hdr.maprevision!=revision)
+    { browsernet_close(BNE_MAP); return false; }
+    browsernet_map_observed(name,revision);
+    return browsernet_state()!=BN_FAILED;
+#endif
     gamemode = mode;
     if(m_demo) return true;
     if(m_coop)
@@ -167,9 +189,16 @@ void parsepositions(ucharbuf &p)
             }
             if(f & (1 << 10)) z = -z;
             o.z = z / DMF;
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+            if(p.overread()) { browsernet_close(BNE_ENET); return; }
+#endif
             int seqcolor = (f>>6)&1;
             playerent *d = getclient(cn);
             if(!d || seqcolor!=(d->lifesequence&1)) continue;
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+            browsernet_position_observed(cn,d->lifesequence,o.x,o.y,o.z+d->eyeheight);
+            if(browsernet_state()==BN_FAILED || browsernet_state()==BN_CLOSING) return;
+#endif
             vec oldpos(d->o);
             float oldyaw = d->yaw, oldpitch = d->pitch;
             d->o = o;
@@ -265,6 +294,17 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
     while(p.remaining())
     {
         type = getint(p);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+        if(p.overread()) { browsernet_close(BNE_ENET); return; }
+        if(browsernet_state()==BN_FAILED || browsernet_state()==BN_CLOSING) return;
+        switch(type)
+        {
+            case SV_EDITMODE: case SV_EDITENT: case SV_EDITXY: case SV_EDITARCH: case SV_EDITBLOCK: case SV_EDITD: case SV_EDITE: case SV_NEWMAP:
+            case SV_SENDMAP: case SV_RECVMAP: case SV_REMOVEMAP: case SV_LISTDEMOS: case SV_SENDDEMOLIST: case SV_GETDEMO: case SV_SENDDEMO:
+            case SV_DEMOPLAYBACK: case SV_DEMOCHECKSUM: case SV_DEMOSIGNATURE:
+                browsernet_close(BNE_TARGET); return;
+        }
+#endif
 
         #ifdef _DEBUG
         if(type!=SV_POS && type!=SV_CLIENTPING && type!=SV_PING && type!=SV_PONG && type!=SV_CLIENT)
@@ -296,6 +336,9 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     return;
                 }
                 int req_auth = getint(p);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(req_auth || sk) { browsernet_close(BNE_AUTH); return; }
+#endif
                 if(!sk && req_auth)
                 {
                     conoutf("\f3server requires a valid game account to connect");
@@ -303,7 +346,11 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     disconnect();
                     return;
                 }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(getint(p)>0) { browsernet_close(BNE_AUTH); return; }
+#else
                 if(getint(p) > 0) conoutf("INFO: this server is password protected");
+#endif
                 sessionid = getint(p); // salt
                 s->serverip = getip4(p);
                 s->clientip = getip4(p);
@@ -340,6 +387,11 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 }
                 if(sk) ed25519_sign((uchar*)challenge, NULL, (uchar*)challenge, chlen, sk);
 
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(p.overread()) { browsernet_close(BNE_ENET); return; }
+                browsernet_game_observed(1,s->cn,-1);
+                if(browsernet_state()!=BN_JOINING) return;
+#endif
                 packetbuf pr(MAXTRANS, ENET_PACKET_FLAG_RELIABLE);
                 putint(pr, SV_SERVINFO_RESPONSE);
                 putint(pr, s->clientsalt);
@@ -354,7 +406,11 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     pr.put(sk + 32, 32);
                     pr.put(s->clientsignature, 64);
                 }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                sendpackettoserv(1, browsernet_take_packet(pr));
+#else
                 sendpackettoserv(1, pr.finalize());
+#endif
                 break;
             }
 
@@ -363,6 +419,9 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 session_s *s = &session;
                 string tmp, servauth;
                 int auth = getint(p);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(auth || sk) { browsernet_close(BNE_AUTH); return; }
+#endif
                 if(auth)
                 {
                     formatstring(servauth)("SERVINFOSIGNED<%s>", bin2hex(tmp, (uchar*)s->clientsignature, 64));
@@ -387,6 +446,11 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     if(!ed25519_sign_check((uchar*)servauth, auth + 64, s->serverpubkey)) conoutf("\f3server authentication failed");
                     else clientlogf("server authenticated as %s", bin2hex(tmp, s->serverpubkey, 32));
                 }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(p.overread()) { browsernet_close(BNE_ENET); return; }
+                browsernet_game_observed(2,s->cn,-1);
+                if(browsernet_state()!=BN_JOINING) return;
+#endif
                 player1->clientnum = s->cn;
                 sendintro();
                 break;
@@ -396,6 +460,10 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 joining = getint(p);
                 player1->resetspec();
                 resetcamera();
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(p.overread()) { browsernet_close(BNE_ENET); return; }
+                browsernet_game_observed(3,player1->clientnum,-1);
+#endif
                 break;
 
             case SV_CLIENT:
@@ -494,7 +562,13 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 int downloadable = getint(p);
                 int revision = getint(p);
                 srvgamesalt = getint(p);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(p.overread()) { browsernet_close(BNE_ENET); return; }
+#endif
                 localwrongmap = !changemapserv(text, mode, downloadable, revision);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(localwrongmap) { browsernet_close(BNE_MAP); return; }
+#endif
                 if(m_arena && joining > 1 && !watchingdemo) deathstate(player1);
                 break;
             }
@@ -589,8 +663,15 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 playerent *d = getclient(cn);
                 if(!d) break;
                 if(d->name[0]) conoutf("player %s disconnected", colorname(d));
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                int departedcn=d->clientnum; // capture before zapplayer frees d
+                browsernet_remove_observed(departedcn);
+                zapplayer(players[cn]);
+                exechook(HOOK_SP_MP,"onDisconnect","%d",departedcn);
+#else
                 zapplayer(players[cn]);
                 exechook(HOOK_SP_MP, "onDisconnect", "%d", d->clientnum);
+#endif
                 break;
             }
 
@@ -624,6 +705,9 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
 
             case SV_SPAWNSTATE:
             {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(!browsernet_spawn_expected()) return;
+#endif
                 if(editmode) toggleedit(true);
                 showscores(false);
                 setscope(false);
@@ -636,6 +720,9 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                 int arenaspawn = getint(p);
                 loopi(NUMGUNS) player1->ammo[i] = getint(p);
                 loopi(NUMGUNS) player1->mag[i] = getint(p);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(p.overread() || player1->lifesequence<0) { browsernet_close(BNE_ENET); return; }
+#endif
                 player1->state = CS_ALIVE;
                 lastspawn = lastmillis;
                 findplayerstart(player1, false, arenaspawn);
@@ -647,10 +734,17 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     hudeditf(HUDMSG_TIMER, "FIGHT!");
                     if(m_botmode) BotManager.RespawnBots();
                 }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                if(!browsernet_acknowledge_spawn(player1->lifesequence,player1->weaponsel->type)) return;
+#else
                 addmsg(SV_SPAWN, "rii", player1->lifesequence, player1->weaponsel->type);
+#endif
                 player1->weaponswitch(player1->primweap, false);
                 player1->weaponchanging -= weapon::weaponchangetime/2;
                 if(player1->lifesequence==0) player1->resetstats(); //NEW
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                browsernet_game_observed(4,player1->clientnum,player1->lifesequence);
+#endif
                 break;
             }
 
@@ -1347,7 +1441,11 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
                     putint(pr, session.curpeerport);
                     putip4(pr, session.curpeerip);
                     pr.put((uchar*)msg, 64);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+                    sendpackettoserv(1, browsernet_take_packet(pr));
+#else
                     sendpackettoserv(1, pr.finalize());
+#endif
                 }
                 break;
             }
@@ -1399,6 +1497,9 @@ void parsemessages(int cn, playerent *d, ucharbuf &p, bool demo = false)
     #ifdef _DEBUG
     protocoldebug(false);
     #endif
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(p.overread()) browsernet_close(BNE_ENET);
+#endif
 }
 
 SVARP(demonameformat, "%w_%h_%n_%Mmin_%G");
@@ -1406,6 +1507,9 @@ SVARP(demotimestampformat, "%Y%m%d_%H%M");
 
 void receivefile(uchar *data, int len)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     static char text[MAXTRANS];
     ucharbuf p(data, len);
     int type = getint(p);
@@ -1470,6 +1574,9 @@ void receivefile(uchar *data, int len)
 
 void servertoclient(int chan, uchar *buf, int len, bool demo)   // processes any updates from the server
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(chan<0 || chan>1 || demo) { browsernet_close(BNE_TARGET); return; }
+#endif
     ucharbuf p(buf, len);
     switch(chan)
     {
@@ -1477,10 +1584,16 @@ void servertoclient(int chan, uchar *buf, int len, bool demo)   // processes any
         case 1: parsemessages(-1, NULL, p, demo); break;
         case 2: receivefile(p.buf, p.maxlen); break;
     }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(p.overread()) browsernet_close(BNE_ENET);
+#endif
 }
 
 void localservertoclient(int chan, uchar *buf, int len, bool demo)   // processes any updates from the server
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_local_attempt(); return;
+#endif
 //    pktlogger.queue(enet_packet_create (buf, len, 0));  // log local & demo packets
     servertoclient(chan, buf, len, demo);
 }

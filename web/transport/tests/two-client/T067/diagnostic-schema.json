@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "accepted_handoff": "notes/handoffs/T061-engine-1.md",
+  "states": {"BN_IDLE":"BN_IDLE","BN_OPENING":"BN_OPENING","BN_OPEN":"BN_OPEN","BN_JOINING":"BN_JOINING","BN_ACTIVE":"BN_ACTIVE","BN_CLOSING":"BN_CLOSING","BN_FAILED":"BN_FAILED"},
+  "alive_state": 0,
+  "running_phase": "running",
+  "counter_keys": ["begin_calls","repeated_begin","frame_calls","frame_advances","ws_frames","service_calls","game_events","receive_packets","send_queued","send_rejected","owned_local_attempts","milestones","life_observations","position_receipts","remove_receipts","map_receipts","join_timeouts","spawn_requests","spawn_acknowledgments","teardowns"],
+  "counter_roles": {"local_attempts":"owned_local_attempts","join_timeouts":"join_timeouts","send_rejected":"send_rejected","map_receipts":"map_receipts","spawn_acknowledgments":"spawn_acknowledgments"},
+  "milestone_kind": 1,
+  "opened_kind": 0,
+  "opened_ordinal": 2
+}

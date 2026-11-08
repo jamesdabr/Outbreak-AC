@@ -89,6 +89,254 @@ void audiomanager::initsound()
     }
 }
 
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+#include <emscripten/emscripten.h>
+EM_JS_DEPS(outbreak_audio_proof, "$AL");
+
+// Use the inspected SDK's real OpenAL context, not a second Web Audio backend.
+EM_JS(int, browserproofcontext, (uintptr_t handle, int action), {
+    const owner = AL.contexts[handle];
+    if (!owner || !owner.audioCtx) return 0;
+    if (action === 0) return owner.T052Error ? 0 : 1;
+    const epoch = owner.T052Epoch = (owner.T052Epoch || 0) + 1;
+    const report = (error) => {
+        if (AL.contexts[handle] !== owner || owner.T052Epoch !== epoch) return;
+        owner.T052Error = String(error).slice(0, 512);
+    };
+    try {
+        if (action === 1) {
+            owner.T052Error = null;
+            const result = owner.audioCtx.resume(); // invoked synchronously in the canvas gesture
+            if (result && result.catch) result.catch(report);
+        } else if (action === 2) {
+            if (owner.audioCtx.state !== 'closed' && owner.audioCtx.state !== 'suspended') {
+                const result = owner.audioCtx.suspend();
+                if (result && result.catch) result.catch(report);
+            }
+        } else if (action === 3) {
+            const actual = owner.audioCtx;
+            const before = window.OUTBREAK_AUDIO_DIAGNOSTICS;
+            const gesture = before ? before.gesture_count : 0;
+            // Engine sources/context are torn down synchronously after this call.
+            // Close the underlying device context after those nodes are released.
+            Promise.resolve().then(() => actual.state === 'closed' ? undefined : actual.close()).catch((error) => {
+                const message = 'OpenAL proof AudioContext close failed: ' + String(error).slice(0, 512);
+                console.error(message);
+                const current = window.OUTBREAK_AUDIO_DIAGNOSTICS;
+                if (current && current.gesture_count === gesture && current.phase === 'stopped') {
+                    Object.defineProperty(window, 'OUTBREAK_AUDIO_DIAGNOSTICS', {
+                        value: Object.freeze(Object.assign({}, current, {phase: 'error', error: message})),
+                        writable: false, configurable: true, enumerable: true
+                    });
+                }
+            });
+        }
+        return 1;
+    } catch (error) {
+        report(error);
+        return 0;
+    }
+});
+
+EM_JS(void, browserproofsnapshot, (const char *phase, int gestures, int loaded, int plays,
+                                  int source_state, const char *error, uintptr_t handle), {
+    const owner = handle ? AL.contexts[handle] : null;
+    const observedError = owner && owner.T052Error;
+    let actualError = observedError || (error ? UTF8ToString(error) : null);
+    const previous = window.OUTBREAK_AUDIO_DIAGNOSTICS;
+    if (!actualError && !handle && UTF8ToString(phase) === 'stopped' && previous &&
+        previous.error && previous.error.startsWith('OpenAL proof AudioContext close failed:'))
+        actualError = previous.error;
+    Object.defineProperty(window, 'OUTBREAK_AUDIO_DIAGNOSTICS', {
+        value: Object.freeze({schema_version: 1, phase: actualError ? 'error' : UTF8ToString(phase),
+            gesture_count: gestures, sample_loaded: !!loaded, play_count: plays,
+            openal_source_state: source_state < 0 ? null : source_state,
+            audio_context_state: owner && owner.audioCtx ? owner.audioCtx.state : null,
+            error: actualError}),
+        writable: false, configurable: true, enumerable: true
+    });
+});
+
+void audiomanager::browserproofpublish()
+{
+    browserproofsnapshot(browserproofphase, browserproofgestures,
+        browserproofbuffer && browserproofbuffer->id, browserproofplays,
+        browserproofstate, browserprooferror[0] ? browserprooferror : NULL, (uintptr_t)context);
+}
+
+bool audiomanager::browserproofrelease()
+{
+    browserproofstate = -1;
+    bool ok = true;
+    if(browserproofsource)
+    {
+        if(browserproofsource->valid)
+        {
+            if(!browserproofsource->stop())
+            {
+                copystring(browserprooferror, "OpenAL proof source stop failed");
+                ok = false;
+            }
+            if(!browserproofsource->delete_())
+            {
+                copystring(browserprooferror, "OpenAL proof source deletion failed");
+                return false; // retain ownership for retry, never allocate a duplicate
+            }
+            browserproofsource->valid = false;
+        }
+        DELETEP(browserproofsource);
+    }
+    if(browserproofbuffer && browserproofbuffer->id)
+    {
+        alclearerr();
+        const ALuint id = browserproofbuffer->id;
+        alDeleteBuffers(1, &id);
+        if(alerr(false))
+        {
+            copystring(browserprooferror, "OpenAL proof buffer deletion failed");
+            return false; // keep the buffer/backend alive for a later cleanup retry
+        }
+        browserproofbuffer->id = 0; // the destructor must not delete the same buffer again
+    }
+    DELETEP(browserproofbuffer);
+    browserproofstate = -1;
+    return ok;
+}
+
+void audiomanager::browserprooffail(const char *error)
+{
+    if(error != browserprooferror) copystring(browserprooferror, error);
+    conoutf("Browser audio proof: %s", browserprooferror);
+    browserproofrelease();
+    browserproofphase = "error";
+    browserproofpublish();
+}
+
+bool audiomanager::browserproofquerystate()
+{
+    browserproofstate = -1;
+    if(!browserproofsource) return true;
+    alclearerr();
+    ALint actual = 0;
+    alGetSourcei(browserproofsource->id, AL_SOURCE_STATE, &actual);
+    const ALenum error = alGetError();
+    if(error != AL_NO_ERROR)
+    {
+        formatstring(browserprooferror)("OpenAL proof source query failed (0x%x)", int(error));
+        return false;
+    }
+    browserproofstate = actual;
+    return true;
+}
+
+void audiomanager::browserproofgesture()
+{
+    ++browserproofgestures;
+    browserprooferror[0] = '\0';
+    if(!browserproofrelease()) { browserprooffail(browserprooferror); return; }
+    if(nosound)
+    {
+        // This is the existing engine initialization, only now inside a real gesture.
+        initsound();
+        if(nosound)
+        {
+            // initsound already disposes failed handles; do not reuse its dangling fields.
+            context = NULL;
+            device = NULL;
+            browserprooffail("OpenAL backend initialization failed");
+            return;
+        }
+    }
+    if(!context || !device || alcGetCurrentContext() != context)
+    {
+        browserprooffail("OpenAL proof backend has no current context");
+        return;
+    }
+    if(!browserproofcontext((uintptr_t)context, 1))
+    {
+        browserprooffail("OpenAL proof AudioContext resume failed");
+        return;
+    }
+    // Do not invoke the inherited map-sound reload side effect of setlistenervol.
+    alclearerr();
+    alListenerf(AL_GAIN, soundvol/255.0f);
+    if(alerr(false)) { browserprooffail("OpenAL proof listener gain failed"); return; }
+    browserproofphase = "ready";
+    browserproofbuffer = new sbuffer;
+    browserproofbuffer->name = "outbreak/proof_tone";
+    if(!browserproofbuffer->load(false))
+    {
+        browserprooffail("Cannot load/decode packages/audio/outbreak/proof_tone.wav");
+        return;
+    }
+    browserproofsource = new source;
+    if(!browserproofsource->valid || !browserproofsource->buffer(browserproofbuffer->id) ||
+       !browserproofsource->looping(false) || !browserproofsource->sourcerelative(true) ||
+       !browserproofsource->position(0.0f, 0.0f, 0.0f) || !browserproofsource->gain(1.0f) ||
+       !browserproofsource->pitch(1.0f) || !browserproofsource->play())
+    {
+        browserprooffail("OpenAL proof source configuration/play failed");
+        return;
+    }
+    if(!browserproofquerystate()) { browserprooffail(browserprooferror); return; }
+    if(browserproofstate != AL_PLAYING)
+    {
+        browserprooffail("OpenAL proof source did not enter AL_PLAYING");
+        return;
+    }
+    ++browserproofplays; // actual queried OpenAL playback, not a physical audibility claim
+    browserproofphase = "playing";
+    browserproofpublish();
+}
+
+void audiomanager::browserproofpoll()
+{
+    if(!strcmp(browserproofphase, "error")) { browserproofpublish(); return; } // retry only on a later gesture
+    if(!nosound && context && !browserproofcontext((uintptr_t)context, 0))
+    {
+        browserprooffail("OpenAL proof AudioContext resume/suspend failed");
+        return;
+    }
+    if(!browserproofquerystate()) { browserprooffail(browserprooferror); return; }
+    if(!strcmp(browserproofphase, "playing") && browserproofstate != AL_PLAYING)
+        browserproofphase = "ready";
+    browserproofpublish();
+}
+
+void audiomanager::browserproofstop(bool shutdown)
+{
+    // Startup focus reset must not manufacture an initialized backend or cue.
+    if(!browserproofgestures && !shutdown) { browserproofpublish(); return; }
+    const bool released = browserproofrelease();
+    if(context && !nosound)
+    {
+        if(shutdown)
+        {
+            if(browserproofsource || browserproofbuffer)
+            {
+                // The SDK keeps buffers outside the context registry. Retain failed
+                // deletion ownership and its backend for retry rather than orphan it.
+                browserproofcontext((uintptr_t)context, 2);
+                browserproofphase = "error";
+                browserproofpublish();
+                return;
+            }
+            browserproofcontext((uintptr_t)context, 3);
+            soundcleanup(); // real scheduler/buffer/source/context/device teardown
+            context = NULL;
+            device = NULL;
+            nosound = true; // existing later cleanup is now idempotent
+        }
+        else if(!browserproofcontext((uintptr_t)context, 2) && !browserprooferror[0])
+            copystring(browserprooferror, "OpenAL proof AudioContext suspend failed");
+    }
+    browserproofstate = -1;
+    browserproofphase = released && !browserprooferror[0] ? "stopped" : "error";
+    browserproofpublish();
+}
+#endif
+
+
 void audiomanager::music(char *name, int millis, char *cmd)
 {
     if(nosound) return;
@@ -271,6 +519,15 @@ void audiomanager::setchannels(int num)
 // called at game exit
 void audiomanager::soundcleanup()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    // Normal engine exit may call here after a proof shutdown deletion failure.
+    // Keep its owned handles/backend retryable rather than bypassing that failure.
+    if(browserproofsource || browserproofbuffer)
+    {
+        browserproofstop(true);
+        return;
+    }
+#endif
     if(nosound) return;
 
     // destroy consuming code

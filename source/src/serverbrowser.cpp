@@ -30,6 +30,10 @@ SDL_cond *querycond, *resultcond;
 
 int resolverloop(void * data)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("DNS worker unavailable in offline browser profile");
+    return -1;
+#else
     resolverthread *rt = (resolverthread *)data;
     SDL_LockMutex(resolvermutex);
     SDL_Thread *thread = rt->thread;
@@ -60,10 +64,15 @@ int resolverloop(void * data)
         SDL_UnlockMutex(resolvermutex);
     }
     return 0;
+#endif
 }
 
 void resolverinit()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native DNS unavailable in offline browser profile");
+    return;
+#else
     resolvermutex = SDL_CreateMutex();
     querycond = SDL_CreateCond();
     resultcond = SDL_CreateCond();
@@ -77,10 +86,14 @@ void resolverinit()
         rt.thread = SDL_CreateThread(resolverloop, "ResolverThread", &rt);
     }
     SDL_UnlockMutex(resolvermutex);
+#endif
 }
 
 void resolverstop(resolverthread &rt)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    rt.query = NULL; rt.starttime = 0; rt.thread = NULL;
+#else
     SDL_LockMutex(resolvermutex);
     if(rt.query)
     {
@@ -90,10 +103,14 @@ void resolverstop(resolverthread &rt)
     rt.query = NULL;
     rt.starttime = 0;
     SDL_UnlockMutex(resolvermutex);
+#endif
 }
 
 void resolverclear()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    resolverqueries.setsize(0); resolverresults.setsize(0); resolverthreads.setsize(0);
+#else
     if(resolverthreads.empty()) return;
 
     SDL_LockMutex(resolvermutex);
@@ -105,20 +122,31 @@ void resolverclear()
         resolverstop(rt);
     }
     SDL_UnlockMutex(resolvermutex);
+#endif
 }
 
 void resolverquery(const char *name)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native DNS query unavailable in offline browser profile");
+    return;
+#else
     if(resolverthreads.empty()) resolverinit();
 
     SDL_LockMutex(resolvermutex);
     resolverqueries.add(name);
     SDL_CondSignal(querycond);
     SDL_UnlockMutex(resolvermutex);
+#endif
 }
 
 bool resolvercheck(const char **name, ENetAddress *address)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(name) *name = NULL;
+    if(address) { address->host = ENET_HOST_ANY; address->port = ENET_PORT_ANY; }
+    return false;
+#else
     bool resolved = false;
     SDL_LockMutex(resolvermutex);
     if(!resolverresults.empty())
@@ -140,12 +168,18 @@ bool resolvercheck(const char **name, ENetAddress *address)
     }
     SDL_UnlockMutex(resolvermutex);
     return resolved;
+#endif
 }
 
 extern bool isdedicated;
 
 bool resolverwait(const char *name, ENetAddress *address)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(address) { address->host = ENET_HOST_ANY; address->port = ENET_PORT_ANY; }
+    conoutf("Native DNS unavailable in offline browser profile");
+    return false;
+#else
     if(isdedicated) return enet_address_set_host(address, name) >= 0;
 
     if(resolverthreads.empty()) resolverinit();
@@ -190,6 +224,7 @@ bool resolverwait(const char *name, ENetAddress *address)
     }
     SDL_UnlockMutex(resolvermutex);
     return resolved;
+#endif
 }
 
 SDL_Thread *connthread = NULL;
@@ -207,6 +242,10 @@ struct connectdata
 // could set timeouts on sockets, but this is more reliable and gives more control
 int connectthread(void *data)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native connect worker unavailable in offline browser profile");
+    return -1;
+#else
     SDL_LockMutex(connmutex);
     if(!connthread || SDL_GetThreadID(connthread) != SDL_ThreadID())
     {
@@ -230,12 +269,17 @@ int connectthread(void *data)
     SDL_UnlockMutex(connmutex);
 
     return 0;
+#endif
 }
 
 #define CONNLIMIT 20000
 
 int connectwithtimeout(ENetSocket sock, const char *hostname, ENetAddress &address)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native socket connect unavailable in offline browser profile");
+    return -1;
+#else
     if(isdedicated)
     {
         int result = enet_socket_connect(sock, &address);
@@ -277,6 +321,7 @@ int connectwithtimeout(ENetSocket sock, const char *hostname, ENetAddress &addre
     SDL_UnlockMutex(connmutex);
 
     return cd.result;
+#endif
 }
 
 vector<serverinfo *> servers;
@@ -341,6 +386,10 @@ int chooseextping(serverinfo *si)
 
 void pingservers(bool issearch, serverinfo *onlyconnected)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("UDP/LAN discovery unavailable in offline browser profile");
+    return;
+#else
     if(pingsock == ENET_SOCKET_NULL)
     {
         pingsock = enet_socket_create(ENET_SOCKET_TYPE_DATAGRAM);
@@ -405,10 +454,14 @@ void pingservers(bool issearch, serverinfo *onlyconnected)
         enet_socket_send(pingsock, &address, &buf, 1);
     }
     lastinfo = totalmillis;
+#endif
 }
 
 void checkresolver()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // no native resolver requests can be queued
+#else
     int resolving = 0;
     loopv(servers)
     {
@@ -438,12 +491,16 @@ void checkresolver()
             }
         }
     }
+#endif
 }
 
 #define MAXINFOLINELEN 100  // including color codes
 
 void checkpings()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    return; // no native ping socket exists
+#else
     if(pingsock == ENET_SOCKET_NULL) return;
     enet_uint32 events = ENET_SOCKET_WAIT_RECEIVE;
     ENetBuffer buf;
@@ -631,6 +688,7 @@ void checkpings()
             formatstring(si->description)("%s  \f1(%s)", si->sdesc, sp);
         }
     }
+#endif
 }
 
 enum { SBS_PING = 0, SBS_NUMPL, SBS_MAXPL, SBS_MINREM, SBS_MAP, SBS_MODE, SBS_IP, SBS_DESC, NUMSERVSORT };
@@ -954,6 +1012,11 @@ static bool pinglastselected = false;
 
 void refreshservers(void *menu, bool init)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    static bool reported = false;
+    if(!reported) { conoutf("Server browser unavailable in offline browser profile"); reported = true; }
+    return;
+#else
     static int servermenumillis;
     static bool usedselect = false;
     static string title;
@@ -1170,6 +1233,7 @@ void refreshservers(void *menu, bool init)
         }
         if(*notfoundmsg) menuitemmanual(menu, notfoundmsg, NULL, NULL, NULL);
     }
+#endif
 }
 
 bool serverskey(void *menu, int code, bool isdown)
@@ -1321,6 +1385,11 @@ VARP(mastertype, 0, 0, 1); // 0: TCP direct, 1: HTTP proxy
 
 void retrieveservers(vector<char> &data)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    data.setsize(0);
+    conoutf("Master server list unavailable in offline browser profile");
+    return;
+#else
     if(mastertype)
     {
         httpget h;
@@ -1397,6 +1466,7 @@ void retrieveservers(vector<char> &data)
         if(data.length()) data.add('\0');
         enet_socket_destroy(sock);
     }
+#endif
 }
 
 VARP(masterupdatefrequency, 1, 60*60, 24*60*60);
@@ -1404,6 +1474,10 @@ VAR(msctrl, 1, 1, INT_MAX);
 
 void updatefrommaster(int *force)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Master server list unavailable in offline browser profile");
+    return;
+#else
     static int lastupdate = 0;
     if(!*force && lastupdate && totalmillis-lastupdate<masterupdatefrequency*1000) return;
 
@@ -1425,6 +1499,7 @@ void updatefrommaster(int *force)
 
         lastupdate = totalmillis;
     }
+#endif
 }
 
 COMMANDF(addserver, "sii", (char *n, int *p, int *w) { addserver(n, *p, *w); });
@@ -1433,6 +1508,10 @@ COMMAND(updatefrommaster, "i");
 
 void writeservercfg()
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Native server-list persistence unavailable in offline browser profile");
+    return;
+#else
     stream *f = openfile(path("config/servers.cfg", true), "w");
     if(!f) return;
     f->printf("// servers connected to are added here automatically\n");
@@ -1443,4 +1522,5 @@ void writeservercfg()
     }
     f->printf("\n");
     delete f;
+#endif
 }

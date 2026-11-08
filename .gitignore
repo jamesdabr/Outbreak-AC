@@ -42,3 +42,20 @@ profile/*
 logs/*
 private/*
 .DS_Store
+
+# Outbreak task-local browser build caches
+web/build/.cache/
+web/build/generated/tmp/
+
+# Immutable local candidate outputs and downloaded toolchain payloads
+web/build/candidate-attempts/
+web/build/candidates/
+web/server/candidate-attempts/
+web/toolchains/T090/extracted/
+web/toolchains/T090/*.tar.xz
+# MAIN-generated release metadata is supplied after the source revision exists
+/web/repro/source-manifest.json
+/notes/decisions/*-candidate-build-pins.json
+/notes/decisions/*-candidate-native-pins.json
+/notes/decisions/*-candidate-execution-release.md
+/web/repro/prerequisite-bundles/

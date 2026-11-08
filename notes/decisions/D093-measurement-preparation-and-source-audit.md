@@ -1,0 +1,7 @@
+# D093 — Measurement component prep and reviewed-source inventory
+
+MAIN accepts T0945.17 COMPONENT PREPARATION only after inspecting no-import ordinary-Page/read-only source, private result schema/actual-versus-fake scope, independently running all36 fake-Page cases in /private/tmp/outbreak-MAIN-T094-1 without modifying its frozen evidence, and verifying all15 frozen source/schema/receipt members. No actual browser/input/frame/audio/memory/RSS measurement or runtime integration is accepted. Audio PASS in this component means diagnostics were recorded without error, not that its explicit observed_context_running/observed_cue_playing facts are true; the future supervisor must evaluate required actual audio evidence, not infer hearing/playback from that section status. Overall P0/MVP still incomplete.
+
+T0965.21 RELEASED Player read-only source-whitelist/overlay review proposal. This supplies a concrete file-level audit for MAIN's clean-source revision without blindly staging historical caches/toolchains/private data. No Git mutation, archive execution, source code change or source manifest approval delegated. T088/T092/T095 source authoring remains active under separate owners; proposed path list is not a claim their content is frozen or build-ready.
+
+Future source commit and generated source manifest remain MAIN-owned. T095 port bundle is a documented separate prerequisite, not versioned game output. T088/T092 amended contracts0.2 and D091 common source/preservation interpretation stay in force; no new runtime authority.

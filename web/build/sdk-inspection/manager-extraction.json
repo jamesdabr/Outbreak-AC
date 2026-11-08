@@ -1,0 +1,697 @@
+{
+  "archive": "/private/tmp/outbreak-web-sdk-inspection/emsdk-1693ce7359fc9694f198694f902a2cc061239b86.tar.gz",
+  "archive_sha256": "fd37b19a256254cd90c1737062ee77ab4d82341c4c7bc890601b1a355034f345",
+  "uncompressed_bytes": 673158,
+  "files": [
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.circleci/config.yml",
+      "sha256": "3d287f304541e0e015709a468d04f4b46c1eec738f13cd6adf7600c5b1a9e4e6",
+      "bytes": 11298
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.dockerignore",
+      "sha256": "0f1c157235e788b36a8f28534690b544c36c8a7499af265875b796a604c57319",
+      "bytes": 432
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.flake8",
+      "sha256": "3564f1fd43e5b90fce3e3089c48fd9189aa1d570593247ff0212cc02020c579e",
+      "bytes": 259
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.github/workflows/create-release.yml",
+      "sha256": "c4447e30f0c2c16542a144a591f789844c7c37b660ea98254b26523e3d7d2be7",
+      "bytes": 1543
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.github/workflows/tag-release.yml",
+      "sha256": "9710803804af1c48d765a7c314956ff255f9e08710e3f268a72e9ec33ef2881c",
+      "bytes": 3196
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/.gitignore",
+      "sha256": "3bcce91dfae34bebc336433eb219e24ce677faf18e4b08a3e565eddf24cfa3a0",
+      "bytes": 491
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/LICENSE",
+      "sha256": "99d9a9616fbde3f5ee22a71d8645799a8522d48526130c5ba6dc27ad15ce01f1",
+      "bytes": 1326
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/README.md",
+      "sha256": "c116ffa46646d0a44d303727ad7bfc55eebfd1705e336397c26e60bbbcb426c9",
+      "bytes": 10919
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/SECURITY.md",
+      "sha256": "df044daf1821153c7c535cf82336727225bec7bbcb6efe2b8a35a2362c507a13",
+      "bytes": 718
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/.bazelrc",
+      "sha256": "c400d159072415bd1b660dcd6e5f8202bbd2fb16646cd02c3a21070caaaba570",
+      "bytes": 52
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/.gitignore",
+      "sha256": "e606b66360001f0846c1e8b477d02aed4a107368e7d31bf63e14cbd11204c16e",
+      "bytes": 9
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/BUILD",
+      "sha256": "b71fa4f4694a0daf81028a6881702407d1f962ea388cd9199fca2ebdda742fc5",
+      "bytes": 365
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/MODULE.bazel",
+      "sha256": "675f90333616c333dfda6d4e7d90a5bd20b8feca3f4f8b8c8aaf3699e70f2290",
+      "bytes": 1402
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/MODULE.bazel.lock",
+      "sha256": "276ca3ca46f0391a74103ef73abe32fd9c617b540a9a57a956a8a0d889e54cc1",
+      "bytes": 72217
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/README.md",
+      "sha256": "988bbfe0a8215ad5b0da46bf25d2bfb45d02fafb8f91471ec9ea06f3223dd93c",
+      "bytes": 3537
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/bazelrc",
+      "sha256": "c9bc95431c0703bfcf364079beef70b1feefa8a8c7992080f99562272fc178c5",
+      "bytes": 103
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_build_file.bzl",
+      "sha256": "74c9a46462dcf073eab10906939203409c7a98c71dca4c0ff6e408cd6c03b4be",
+      "bytes": 2422
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_cache.bzl",
+      "sha256": "0761ece5d2992b97895a21a64ed7f9354df9f6241a12a672ef8e1042b2f5a1fb",
+      "bytes": 7441
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_deps.bzl",
+      "sha256": "701ca59ea318378f90305497c29e4194af43955e45d00b2aa1edda7f52573133",
+      "bytes": 3193
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/BUILD.bazel",
+      "sha256": "028ce243106a5e68c25e0b76f5a61c337ed228fc4145effb6328562d8c749eb3",
+      "bytes": 1820
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/default_config",
+      "sha256": "36355e65151c91ebf7b5ec14a716b5d2c16bb6d0c9d9b3c84fe1dc310c51de9c",
+      "bytes": 729
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emar.bat",
+      "sha256": "30586c5a5e04a41ea43ddc345b82aa726f78ca156f1e052a16178711e183999d",
+      "bytes": 72
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emar.sh",
+      "sha256": "1bbf289c9dbf46d6faae730107657271adab3c832fa57256c304a05dac0146e8",
+      "bytes": 86
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emcc.bat",
+      "sha256": "a9795c29090a48c1b5dfdf045da34d7552b88dafde903b21fad0c45c3585bf24",
+      "bytes": 72
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emcc.sh",
+      "sha256": "21a570ed909fc17d43ffe1214aa61f2a921a76ea285585a189d6ae19c135402f",
+      "bytes": 86
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emcc_link.bat",
+      "sha256": "aceebc074ca27e8be427ab33ac9f74c74c4a583b5d959705fb4fdc5229d54e77",
+      "bytes": 73
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/emcc_link.sh",
+      "sha256": "9ac11d29901dbcee50e7e1696e17c84c6cb63a4caeba2f8fce1efdb91bf00000",
+      "bytes": 96
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/env.bat",
+      "sha256": "41101ab05d213c636800bd7e27c0d3aa5a5c7b4b9e61f242ddef0b719eee7fd3",
+      "bytes": 223
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/env.sh",
+      "sha256": "7411732a4f152aa1b90825b28b7a81861fd7c412fce90d0388bc2535ed8d24b0",
+      "bytes": 205
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/link_wrapper.py",
+      "sha256": "62f22d9e9fcc6e6679a33fd5e09feb4b8def0c789f16aa1442310fd382f8514e",
+      "bytes": 6174
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/platform_info.bzl",
+      "sha256": "fd3713b9c1b806367121d44d8211ace9bb1d6a0fb736802096600e38faf9694f",
+      "bytes": 606
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/toolchain.bzl",
+      "sha256": "da8fac457ec187fd1efc80b64b9b98941e7c15adc6d44744fde5660cfe38924f",
+      "bytes": 40751
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/wasm_binary.py",
+      "sha256": "594893b601486700f05f30ccdc0d92eb25cb0a51809a72408434d17c220d3632",
+      "bytes": 2041
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/wasm_cc_binary.bzl",
+      "sha256": "cec37acd41d162f5ce1996b1f68226e59955bb999ecf57467e7349e4ff612bdd",
+      "bytes": 6655
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/emscripten_toolchain/wasm_rules.bzl",
+      "sha256": "2ab9ff6448d1e4d631f366a790acef1d1360bf8714571a9227e1b6fa027b9a86",
+      "bytes": 144
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/hello-world/BUILD",
+      "sha256": "1b40d387242953b6712ed124de5796a4acb6e8c560e4a7226bd13794cc5dc341",
+      "bytes": 583
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/hello-world/hello-world-simd.cc",
+      "sha256": "dd9c43d43c80bf63e97e03822943c1ea177de5e74666f8949609b1668c9aa067",
+      "bytes": 1597
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/hello-world/hello-world.cc",
+      "sha256": "7aec2eb4614ce8be8e750f57a8fae6a2c34660bf37cf06ab70b627c6162bab12",
+      "bytes": 113
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/remote_emscripten_repository.bzl",
+      "sha256": "bd6209d2ec36c34a1361678bc521bd49c17df92951577a200ad26ec5a419f730",
+      "bytes": 5249
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/revisions.bzl",
+      "sha256": "85079c840ee39b3898549397cbcb656aed4ec264eee4cf1fd76d5ae2e144022d",
+      "bytes": 68316
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/.gitignore",
+      "sha256": "10c6eae57811579a97487959959b64f39e1d4c01586e0fc05fd756f5c68e8a1b",
+      "bytes": 54
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/BUILD",
+      "sha256": "8ca3424ab11eb351213e245491e424d58f03beee970be3ff70a51cd2f16d36d9",
+      "bytes": 1653
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/MODULE.bazel",
+      "sha256": "b6a0e6f33d8112067d4bcf221dabdf14c1a5664ee49c159d73736bf7d1b6f753",
+      "bytes": 142
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/MODULE.bazel.lock",
+      "sha256": "80599a88e51b1f4b7d7839a9e50a19fdacf22155fca5619331f9cfa929108625",
+      "bytes": 73084
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/hello-embind-externs.js",
+      "sha256": "ac6fd4a307533fc36eb451e6204b6108f169e0592448b11ce6d2767154109b40",
+      "bytes": 149
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/hello-embind-interface.js",
+      "sha256": "6be225d8f10c06015fa85ef67aa6d636a9893a505496b278225b278fec411058",
+      "bytes": 157
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/hello-embind.cc",
+      "sha256": "e642e9eb56c08633cd0d29479d15568d71d0ac0005b8845aadfdb6d21faa2420",
+      "bytes": 355
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/hello-world.cc",
+      "sha256": "7aec2eb4614ce8be8e750f57a8fae6a2c34660bf37cf06ab70b627c6162bab12",
+      "bytes": 113
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/BUILD.bazel",
+      "sha256": "a5f79cb463f2fdd896c4ca074012b5d7422e6c37af15900ec1150b1d961ba56b",
+      "bytes": 1595
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file01.hh",
+      "sha256": "58d71f3a43dbab46e899c3b38abe331ecc290145afe1b40cb80a334394e7cbc1",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file02.hh",
+      "sha256": "71d1abc812ae23a9cb431a3dbdc765dfd1cfbeb145bf1cf36d50a7a602cc133a",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file03.hh",
+      "sha256": "ff0aac3082db903b7a39c2876f20749788356c1731d7bfc2876c734145067547",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file04.hh",
+      "sha256": "8f79622773473c159754cf27b374c533b83a99319ad822a8144841567033983c",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file05.hh",
+      "sha256": "c2c5f6a9b5d3815991aff1193c91abaf57090854f948db772c044327b44d5e34",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file06.hh",
+      "sha256": "489e182089307eef756fb5fd454e4760dbad7c7a3664be9e7b57f868671aa0be",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file07.hh",
+      "sha256": "3c9f9500e7525111d4c48bcdf10c7d8a1410f5cb61e480fc27b2571c6a00e82f",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file08.hh",
+      "sha256": "2ed92830883bb682a9232d58ca351a1f674294fbf193aab31aca59f88febb86e",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file09.hh",
+      "sha256": "96035e44a95e8c28728ca9eddd6995bb8f368b4934a1635318643c39fffde890",
+      "bytes": 25
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file10.hh",
+      "sha256": "2657736700e1725dedd31de5fe71bb3fa91e083a495738317e62169825d91cb4",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file11.hh",
+      "sha256": "a910f5a999cafd95a1dcb396a0d4cde28d8a93754a2fb2ea8a6197fd563e47e4",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file12.hh",
+      "sha256": "a7c7e0aefbd0f28e871edeb26c05effb7f677b8a16a19edacf9faaaf8c285754",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file13.hh",
+      "sha256": "9b7f420f1e407757c381cd9c3d9c130fa0c8a91f2f7f825334226f5e7a9095be",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file14.hh",
+      "sha256": "536b084e794ab0e5c1be01283612c1de9f472621984534709523c26de7d19fb1",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file15.hh",
+      "sha256": "bc5adbdb99e6ddd4961fa83f7ed1873e0802464b1e2b772bd81672c92ffce868",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file16.hh",
+      "sha256": "a026eeb8418f4bf243a5b1e1b630200c95ecb256fc712fc13e37ab0abfe6496c",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file17.hh",
+      "sha256": "a05b39834bdaebad33279deb1ece7e25a52a73bc922cf0f269bf92739e5e3159",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file18.hh",
+      "sha256": "f2479404ee176177a90487309aa09ba7fc9e05b25d4ca5f4fcce00afcfcbcbed",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file19.hh",
+      "sha256": "b89f9827c4e68ec7d49fac2656ed61715bbeda3f2e61dafcc1872d3d473e7d27",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/include/long_command_line_file20.hh",
+      "sha256": "36d55574a50ea1148d107d19b14136abf5fb5be30c4c25a84febc20b34568246",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line.cc",
+      "sha256": "0e9bf38543fdbb51756d9c132e4c401e5d8e8b147986b454584e86dc09efcfee",
+      "bytes": 967
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file01.cc",
+      "sha256": "49c40330d19c1bf7f59e5eb80ac607129e7ed78cc41d7ca291cc82b8da239916",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file02.cc",
+      "sha256": "c1b16cecb23a3fd75d15868882b34bbff4407d73f6963817fc6e0afc9d5b9090",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file03.cc",
+      "sha256": "7b129af175b8e3c9317f9fe1e16de4956e7016232538a40d6853c31a31f69b81",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file04.cc",
+      "sha256": "7916c56bbbda77cc248d1b6e2d315b07d9960e354ce47c1c594ba2f6083cc0bf",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file05.cc",
+      "sha256": "73c9cb9418ea3ce22c29e9681c64e876b94cbc919e09b3b85a52dcd50ad23dd6",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file06.cc",
+      "sha256": "87dd3ab1d32e60140b31d3a0ba8b01bdc218b544fb2284d3a67d4fb9b5ec2f63",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file07.cc",
+      "sha256": "d94b2987ada0beb3d6da6a748d6f4c9c86001e25c6dc7c54d9d6c9fb481c798b",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file08.cc",
+      "sha256": "796ba896c8d7f68e88dcb6b59724d00e16741ebca9b7100ee02b15cd79b542b3",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file09.cc",
+      "sha256": "22c0bf404d95fb32ae4958db46e38f3f0000d58663e0bfa21e2f8833b8286849",
+      "bytes": 109
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file10.cc",
+      "sha256": "20990e65826b22aac5117187b0a5da6fafdf9d93ada0c2e231f4ef1e92e9c40b",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file11.cc",
+      "sha256": "a9244c9840f191cad5bc185ee03783a901fdc6aec31158323c21e9964042df16",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file12.cc",
+      "sha256": "87ae640455d3980101c3374903078c5ad83b6e2e793a9e844c3d72c3b7efa514",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file13.cc",
+      "sha256": "6865d70e6b525f9b740d780fef542a3349af6c7ec6e839d473b6220fdb4e8e21",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file14.cc",
+      "sha256": "bcbe83fc52057a35248d3f4212995a3a7fd5567ebc5e23d690a221c25a161001",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file15.cc",
+      "sha256": "f5a11cf0597b07223d79e3f4f4a79da4fae60fbd73002f5b77b5541d0a399c42",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file16.cc",
+      "sha256": "8ee7f4ecd88b17ce70bd92bacd64e3aaa41f6e1d7011bc12bd956626fad93ac8",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file17.cc",
+      "sha256": "ee5805dba6f85ad7d7c039f990b74123768f7decfc2b4df50aeb270124a4304f",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file18.cc",
+      "sha256": "ee783aea1b5dc49c9beec56e51c6cd5a1c9e2ac80e757666ef43fbb3b1173fb8",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file19.cc",
+      "sha256": "576cc2c847030355386be521e6cad2a60e8a51dd5bc2bf2c967e25e07d314855",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_external/long_command_line/long_command_line_file20.cc",
+      "sha256": "73c1a6e717e5015ffa5c0ed72f8eaaa1a3c39f2e59ca7dddfd7479ba788b7020",
+      "bytes": 111
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_prebuilt_cache/.gitignore",
+      "sha256": "b1a5d99bc18a6d738f4ab2f3f896a7dd8de5d7aa531946b45f86c9cceeb5b5cf",
+      "bytes": 61
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_prebuilt_cache/BUILD",
+      "sha256": "742c1ddd1ea409d85b041b59e13698c2e04c5279e7c3fc744da8c57fdefc0f50",
+      "bytes": 470
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_prebuilt_cache/MODULE.bazel",
+      "sha256": "d728a8477f6af2452e98a9fd13870bb598d145358bb3b58c62d29f7fe0eaba9a",
+      "bytes": 1044
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_prebuilt_cache/hello-world.cc",
+      "sha256": "7aec2eb4614ce8be8e750f57a8fae6a2c34660bf37cf06ab70b627c6162bab12",
+      "bytes": 113
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_secondary_lto_cache/.gitignore",
+      "sha256": "0e2a8f96ca76197d7c2a0acd811209efafa5b394c8d18a03f1a309f33b99c2ba",
+      "bytes": 65
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_secondary_lto_cache/BUILD",
+      "sha256": "a3e0f12a76fc5456bb0324ca27f8b6d45d0285a0c7971ba21c0af01efe2d56d5",
+      "bytes": 422
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_secondary_lto_cache/MODULE.bazel",
+      "sha256": "bc3cd2dd583a39032c282cba6d68b1cf1e28f4bf6aaf7eb592d20ef1a1f3033b",
+      "bytes": 611
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_secondary_lto_cache/MODULE.bazel.lock",
+      "sha256": "a1d68ecf94f270a806cb307d22e20ff6c757b334b9f2e992cfd96bcf39f16be5",
+      "bytes": 73562
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/bazel/test_secondary_lto_cache/hello-world.cc",
+      "sha256": "7aec2eb4614ce8be8e750f57a8fae6a2c34660bf37cf06ab70b627c6162bab12",
+      "bytes": 113
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/docker/Dockerfile",
+      "sha256": "d862fedc666b8a9b384d8970221bab24c22026097736609e8aa6769d77701c07",
+      "bytes": 4473
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/docker/Makefile",
+      "sha256": "edbf9c7447c892b6b28f5eff84740aff6992a5e0e8bb1861087d868a2ef257f1",
+      "bytes": 1070
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/docker/README.md",
+      "sha256": "b0006e2dbde6575fdee01b970466e60a44ca5a14926ff2a0ec73f5519a002803",
+      "bytes": 3714
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/docker/entrypoint.sh",
+      "sha256": "4714048c075f7f33372b8cae4ca9feae5c9b2879731ecb6833025797a785c347",
+      "bytes": 118
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/docker/test_dockerimage.sh",
+      "sha256": "2d0abcf6fc9f5a2df053a0f8bd931f1446eb48075bb1ad29621f2b664a5e743a",
+      "bytes": 520
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emcmdprompt.bat",
+      "sha256": "bcd97cc4c9ce1e2dde5533a150e0ec913bd7fb0b0f12c0fdd6e17b589ee49dab",
+      "bytes": 26
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emscripten-releases-tags.json",
+      "sha256": "d8405d9fc22dd1bdf14daa95acaeee50755a2bed208bdc426d88e2d6d3cf8eac",
+      "bytes": 20413
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk",
+      "sha256": "b25a2b0afc1e2c37fda624dddce9d1fc6c06fc15775accda3f8909352632e8b2",
+      "bytes": 1217
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk.bat",
+      "sha256": "527651f260a2b5115c32cfe6fd3de40310e7c85076699c9a50d54827efd62c95",
+      "bytes": 1337
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk.ps1",
+      "sha256": "f66217a27ca31134a643f59d145a3b2e7617b90edb3d5858b49082f266a07bf5",
+      "bytes": 1253
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk.py",
+      "sha256": "5f9ac5896342e084e97e315f6e77679f305530d679b3024ec4f14f6ba8527fea",
+      "bytes": 133285
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_env.bat",
+      "sha256": "adddc214c7ad06aa8e2d756e907bc5d18dda441dd58fc281150bc28d03e85ebf",
+      "bytes": 33
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_env.csh",
+      "sha256": "ab1bbc9eddc4de56bc220b64849d5ddbd4a5ffe836523f8f2138d88cfa379249",
+      "bytes": 566
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_env.fish",
+      "sha256": "e5dda50fd2b78174fada06f6947703a1dfcc56918ce03f43f6a2289cc9aa4942",
+      "bytes": 326
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_env.ps1",
+      "sha256": "e9a4ec58e4ba8fefffddfdd5a68cc7891f971932de0d7342785e8387a6e9b971",
+      "bytes": 127
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_env.sh",
+      "sha256": "946b9f4201d86ceeeb8f4ae2deb34e5240d5207e9fd89901f2c1e036c2283dde",
+      "bytes": 1977
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/emsdk_manifest.json",
+      "sha256": "d163881207ed0131ee456c6b41cf96634a9c15aafb5d13b6260f5da5b204f71c",
+      "bytes": 33012
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/legacy-binaryen-tags.txt",
+      "sha256": "ca22110b1921d7bcf6141254fd19d06882d2a7ddc8853445840c2e7c212c7f57",
+      "bytes": 659
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/legacy-emscripten-tags.txt",
+      "sha256": "655fba09b0737a969c48bee75c57d32f1c6ebe6357b6486664088df02916ef61",
+      "bytes": 1190
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/llvm-tags-64bit.txt",
+      "sha256": "14de8911fcdec6b97a36cfa5371b93cc1544299c04d85f14dd564c109cb87f5a",
+      "bytes": 2380
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/pyproject.toml",
+      "sha256": "b2999e338d1e1513431f9076f8298d68cd0a0377000d5a4105e67ee10d6d4798",
+      "bytes": 954
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/requirements-dev.txt",
+      "sha256": "d0bdd533a05dd9e16c83a2e7597ba173e92c859424ceb721af8d9a6e9348ef51",
+      "bytes": 27
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/create_release.py",
+      "sha256": "81c4d17b3b6c7cf71c155d31cfd86f668e7f957c671fc49d9de90920c447ea0f",
+      "bytes": 2979
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/get_emscripten_revision_info.py",
+      "sha256": "ff15e88d88ff6721eebcf3c40bca86ad9c9a3b0bc72734d8fda5dc650f34c751",
+      "bytes": 1537
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/get_release_info.py",
+      "sha256": "7cb34dc55061533146aa47fd3cdeb812fd4357a01f4ba3e4c70065fb6b8be63b",
+      "bytes": 532
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/update_bazel_workspace.py",
+      "sha256": "2ef508d3f8e15f4d1586b6542f6518852df66d7cd7fa8aa29a497cc509e0fb8b",
+      "bytes": 2735
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/update_node.py",
+      "sha256": "7c4dd384ea2d4362382dc905c5e34bb5f6eb7dab71e507386e84fc1b30c3fff9",
+      "bytes": 1716
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/update_python.py",
+      "sha256": "0485a36e3c89f910ad7beb824f523b0395f9e0f1d42595167d3e22a451022f72",
+      "bytes": 7292
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/scripts/zip.py",
+      "sha256": "22493a3a6f6978bea6d61a54a00bab6858454007c970d5ccc10bf69b593ad2f8",
+      "bytes": 561
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test.bat",
+      "sha256": "878fc60cc8b032752d4ed8a23a2198bcbd75f7487ef493dc961384225b46b802",
+      "bytes": 181
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test.py",
+      "sha256": "156524133f3c29d882d36cd0e458f94e97e8375fb126c92fcd3d797df2570a28",
+      "bytes": 14098
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test.sh",
+      "sha256": "737cb3eed6ec2f3fb67e56900514f3100d768230073c7526fc3f4deb498acb7b",
+      "bytes": 1406
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_activation.ps1",
+      "sha256": "cc0f973b23b9424fae6f0f28a06af1b1cf5a432f6033ba9c57b07e59fbddc071",
+      "bytes": 3064
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_bazel.ps1",
+      "sha256": "e9a1f2eb657b1268d67d36097480b0dcf9a2ba1bf2e21ed561f04722de25b862",
+      "bytes": 1076
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_bazel.sh",
+      "sha256": "635b87a5f2e0841e01b53cd7ddb6ff2ea5ea835b312af18250bf2f053acefc5c",
+      "bytes": 1534
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_bazel_mac.sh",
+      "sha256": "959d9c2cb79b89cfeac529141c6f462cae1280654aeb28af01cee4def2ad5aa6",
+      "bytes": 1150
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_node_path.sh",
+      "sha256": "43da765694c270d9c50791d640e3704555d18fdcad4b0323333ee1904a48977b",
+      "bytes": 772
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_path_preservation.ps1",
+      "sha256": "1d448af797e3f68f33f46e88fd82d651da354287d2b0c81660ecb9338bd4cc55",
+      "bytes": 5702
+    },
+    {
+      "path": "manager/emsdk-1693ce7359fc9694f198694f902a2cc061239b86/test/test_source_env.sh",
+      "sha256": "ebbfd066f4b3a8e45ab63aa0ab5dd9319be7421b6b78dbccf28de297580dd683",
+      "bytes": 4089
+    }
+  ]
+}

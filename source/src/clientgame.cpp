@@ -2,10 +2,73 @@
 
 #include "cube.h"
 #include "bot/bot.h"
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+#include "browsernet.h"
+#include "browsernet_observer.h"
+extern ENetPacket *browsernet_take_packet(packetbuf &p);
+#endif
 
 int nextmode = 0;   // nextmode becomes gamemode after next map load
 VAR(gamemode, 1, 0, 0);
 VARP(modeacronyms, 0, 1, 1);
+
+// This prototype never alters remote server combat or the wire protocol.
+VAR(outbreak, 0, 0, 1);
+bool outbreakaiming = false, outbreakreviving = false;
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+bool outbreakactive() { return false; }
+#else
+bool outbreakactive() { return outbreak && !m_mp(gamemode) && !multiplayer(NULL) && !watchingdemo; }
+#endif
+bool outbreakthirdperson() { return outbreakactive() && !editmode && player1->state == CS_ALIVE && !player1->scoping; }
+COMMANDF(outbreakaim, "i", (int *on) { outbreakaiming = *on != 0 && outbreakactive(); });
+COMMANDF(revive, "i", (int *on) { outbreakreviving = *on != 0 && outbreakactive(); });
+
+static bool canrevive(playerent *helper, playerent *target)
+{
+    if(helper == target || helper->state != CS_ALIVE || helper->combat.downed ||
+       !isteam(helper->team, target->team) || helper->attacking || helper->weaponsel->reloading ||
+       helper->o.dist(target->o) > 6.0f || lastmillis - helper->lastpain < 300 ||
+       lastmillis - target->lastpain < 300) return false;
+    vec end(target->o);
+    intersectgeometry(helper->o, end);
+    return end.dist(target->o) < 0.1f;
+}
+
+static void updateoutbreakplayer(playerent *p)
+{
+    if(!p->combat.downed) return;
+    if(p->state != CS_ALIVE) { p->combat.reset(); return; }
+    // Resolve downed players normally when leaving the prototype, too.
+    if(!outbreakactive() || p->combat.expired(lastmillis))
+    {
+        playerent *actor = getclient(p->combat.attacker);
+        p->health = 0;
+        p->combat.downed = false;
+        dokill(p, actor ? actor : p, false, p->combat.gun);
+        return;
+    }
+    p->attacking = p->jumpnext = false;
+    p->move = p->strafe = 0;
+    playerent *helper = NULL;
+    if(outbreakreviving && canrevive(player1, p)) helper = player1;
+    loopv(bots) if(bots[i] && canrevive(bots[i], p) && (!helper || bots[i]->clientnum == p->combat.helper)) helper = bots[i];
+    if(!helper) { p->combat.cancelrevive(); return; }
+    if(p->combat.revive(lastmillis, helper->clientnum))
+    {
+        p->health = 40;
+        p->armour = 0;
+        p->lastpain = lastmillis;
+        hudoutf("%s revived %s", colorname(helper), colorname(p));
+    }
+}
+
+static void updateoutbreak()
+{
+    if(ispaused || intermission) return;
+    updateoutbreakplayer(player1);
+    loopv(bots) if(bots[i]) updateoutbreakplayer(bots[i]);
+}
 
 flaginfo flaginfos[2];
 entitystats_s clentstats;
@@ -230,6 +293,9 @@ VARP(autoscreenshot, 0, 0, 1);
 
 void stopdemo()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(watchingdemo) enddemoplayback();
     else conoutf("not playing a demo");
 }
@@ -429,6 +495,8 @@ COMMANDF(getmode, "i", (int *acr) { result(modestr(gamemode, *acr != 0)); });
 
 void deathstate(playerent *pl)
 {
+    pl->combat.downed = false;
+    pl->combat.cancelrevive();
     pl->state = CS_DEAD;
     pl->spectatemode = SM_DEATHCAM;
     pl->lastdeath = pl->lastpain = lastmillis;
@@ -528,7 +596,7 @@ void movelocalplayer()
     else if(!intermission)
     {
         moveplayer(player1, 10, true);
-        checkitems(player1);
+        if(!player1->combat.downed) checkitems(player1);
     }
 }
 
@@ -662,6 +730,21 @@ COMMANDF(resetsleeps, "", (void) { resetsleep(true); });
 
 void updateworld(int curtime, int lastmillis)        // main game update loop
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    gets2c();
+    if(browsernet_state()!=BN_ACTIVE)
+    {
+        player1->attacking=player1->jumpnext=false;
+        player1->move=player1->strafe=0;
+        c2sinfo(player1); // Joining control packets, not positions/actions.
+        return;
+    }
+    physicsframe(); checkweaponstate();
+    if(getclientnum()>=0) shoot(player1,worldpos);
+    movebounceents(); moveotherplayers(); showrespawntimer();
+    movelocalplayer(); c2sinfo(player1);
+    // No sleep execution, edit synchronisation, BotManager or updateoutbreak.
+#else
     // process command sleeps
     sleepssemaphore->wait();
     loopv(sleeps)
@@ -681,6 +764,7 @@ void updateworld(int curtime, int lastmillis)        // main game update loop
 
     syncentchanges();
     physicsframe();
+    updateoutbreak();
     checkweaponstate();
     if(getclientnum()>=0) shoot(player1, worldpos);     // only shoot when connected to server
     movebounceents();
@@ -693,6 +777,7 @@ void updateworld(int curtime, int lastmillis)        // main game update loop
 
     movelocalplayer();
     c2sinfo(player1);   // do this last, to reduce the effective frame lag
+#endif
 }
 
 #define SECURESPAWNDIST 15
@@ -771,6 +856,9 @@ void findplayerstart(playerent *d, bool mapcenter, int arenaspawn)
 
 void spawnplayer(playerent *d)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_MILESTONE); return; // Real SPAWNSTATE owns network spawning.
+#endif
     d->respawn();
     d->spawnstate(gamemode);
     d->state = (d==player1 && editmode) ? CS_EDITING : CS_ALIVE;
@@ -779,6 +867,10 @@ void spawnplayer(playerent *d)
 
 void respawnself()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(browsernet_spawn_request_allowed()) addmsg(SV_TRYSPAWN,"r");
+    return;
+#endif
     if( m_mp(gamemode) ) addmsg(SV_TRYSPAWN, "r");
     else
     {
@@ -817,6 +909,13 @@ int waiting_permission = 0;
 
 bool tryrespawn()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(browsernet_state()!=BN_ACTIVE)
+    {
+        if(!browsernet_spawn_request_allowed()) return false;
+        respawnself(); return true;
+    }
+#endif
     if(spawnpermission > SP_OK_NUM)
     {
         hudeditf(HUDMSG_TIMER, "\f%s", spawn_message());
@@ -930,6 +1029,17 @@ void dodamage(int damage, playerent *pl, playerent *actor, int gun, bool gib, bo
         pl->damageroll(damage);
     }
 
+    if(pl->health <= 0 && local && outbreakactive() && m_teammode && !gib && pl != actor &&
+       team_isactive(pl->team) && pl->combat.down(lastmillis, actor->clientnum, gun))
+    {
+        pl->health = 1;
+        pl->attacking = pl->jumpnext = false;
+        pl->move = pl->strafe = 0;
+        pl->weaponsel->onownerdies();
+        if(pl == player1) setscope(false);
+        hudoutf("%s is down! Revive within 20 seconds.", colorname(pl));
+        return;
+    }
     if(pl->health<=0) { if(local) dokill(pl, actor, gib, gun >= 0 ? gun : actor->weaponsel->type); }
     else if(pl==player1) audiomgr.playsound(S_PAIN6, SP_HIGH);
     else audiomgr.playsound(S_PAIN1+rnd(5), pl);
@@ -1159,6 +1269,15 @@ void startmap(const char *name, bool reset, bool norespawn)   // called just aft
     extern bool canceldownloads;
     canceldownloads = false;
     copystring(clientmap, name);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sendmapidenttoserver=true;
+    if(reset) { player1->startmap(); loopv(players) if(players[i]) players[i]->startmap(); }
+    player1->state=CS_SPECTATE; player1->clientrole=CR_DEFAULT;
+    if(browsernet_state()==BN_IDLE || browsernet_state()==BN_OPENING || browsernet_state()==BN_OPEN) player1->clientnum=-1;
+    player1->attacking=player1->jumpnext=false; player1->move=player1->strafe=0;
+    intermission=false; ispaused=0;
+    return; // No local respawn/findplayerstart/mapstart sleep fallback.
+#endif
 
     if(norespawn) return;
 
@@ -1406,6 +1525,10 @@ votedisplayinfo *curvote = NULL, *calledvote = NULL;
 
 void callvote(int type, const char *arg1, const char *arg2, const char *arg3)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(browsernet_state()!=BN_ACTIVE) return;
+    if(type==SA_MAP || type==SA_RECORDDEMO || type==SA_STOPDEMO || type==SA_CLEARDEMOS) { browsernet_close(BNE_TARGET); return; }
+#endif
     if(calledvote) return;
     votedisplayinfo *v = newvotedisplayinfo(player1, type, arg1, arg2, arg3);
     if(v)
@@ -1446,7 +1569,11 @@ void callvote(int type, const char *arg1, const char *arg2, const char *arg3)
                 putint(p, atoi(arg1));
                 break;
         }
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+        sendpackettoserv(1, browsernet_take_packet(p));
+#else
         sendpackettoserv(1, p.finalize());
+#endif
         exechook(HOOK_SP_MP, "onCallVote", "%d %d [%s] [%s]", type, player1->clientnum, arg1, arg2);
     }
     else conoutf("\f3invalid vote");
@@ -1505,12 +1632,19 @@ void scallvote(int *type, const char *arg1, const char *arg2)
 
 int vote(int v)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(browsernet_state()!=BN_ACTIVE) return 0;
+#endif
     if(!curvote || v < 0 || v >= VOTE_NUM) return 0;
     if(curvote->localplayervoted) { conoutf("\f3you voted already"); return 0; }
     packetbuf p(MAXTRANS, ENET_PACKET_FLAG_RELIABLE);
     putint(p, SV_VOTE);
     putint(p, v);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sendpackettoserv(1, browsernet_take_packet(p));
+#else
     sendpackettoserv(1, p.finalize());
+#endif
     if(!curvote) return 0;
     curvote->stats[v]++;
     curvote->localplayervoted = true;
@@ -1600,6 +1734,9 @@ COMMAND(setnext, "ss");
 
 void gonext(int *arg1)
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    browsernet_close(BNE_TARGET); return;
+#endif
     if(calledvote || !multiplayer(NULL)) return;
     packetbuf p(MAXTRANS, ENET_PACKET_FLAG_RELIABLE);
     putint(p, SV_CALLVOTE);
@@ -1607,7 +1744,11 @@ void gonext(int *arg1)
     sendstring("+1", p);
     putint(p, *arg1);
     putint(p, -1);
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sendpackettoserv(1, browsernet_take_packet(p));
+#else
     sendpackettoserv(1, p.finalize());
+#endif
 }
 COMMAND(gonext, "i");
 

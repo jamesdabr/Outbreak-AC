@@ -1,0 +1,7 @@
+# D072 Portable numeric prerequisite, T002 remains proposal
+
+MAIN reviewed frozen T002 proposal delivery (three architecture/interface/ownership notes and question) and T071 recommendations. The full technical proposal is SUBMITTED; platform/full interface/numeric gameplay choices and boarding/headroom/continuity/overload decisions remain pending explicit MAIN freezes and P0 gates. No P1 simulation/combat or final engine/transport decision is approved here.
+
+Approve a strictly isolated, reusable portable numeric prerequisite in MVP/SHARED_NUMERIC_FOUNDATION.md0.1: checked32-bit arithmetic, exact ties-away mul/div, floor64-bit integer sqrt and explicitly specified bounded Q16 input normalization. These primitives are independently useful to the proposed authoritative world/camera/movement solver, do not depend on platform choice or unapproved gameplay values and do not implement P1 behavior. D003/D005-style P0 prerequisite authority is extended only to individually released T0785.1; no phase gate waived. Existing baseline0.5/source ownership remains unchanged; additive contract has its own revision.
+
+Release T078 Engine, exclusive new source/outbreak/fixed.h/.cpp and tests/outbreak/numeric/T078, preserving all current browser/native/runtime input trees/SDK/artifacts. Exact public API/semantics/test gate in approved addendum; native+Wasm actual oracle comparison permitted only within inspected local harness/tool scope. No game build/integration/loopback/service/dependency install. Full T002 approval and gameplay implementation remain separate.

@@ -133,17 +133,23 @@ void gl_init(int w, int h, int depth, int fsaa)
     glClearDepth(1.0);
     glDepthFunc(GL_LESS);
     glEnable(GL_DEPTH_TEST);
+#ifndef __EMSCRIPTEN__
     glShadeModel(GL_SMOOTH);
+#endif
 
 
     glEnable(GL_FOG);
     glFogi(GL_FOG_MODE, GL_LINEAR);
     glFogf(GL_FOG_DENSITY, 0.25);
+#ifndef __EMSCRIPTEN__
     glHint(GL_FOG_HINT, GL_NICEST);
+#endif
 
 
     glEnable(GL_LINE_SMOOTH);
+#ifndef __EMSCRIPTEN__
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+#endif
 
     glCullFace(GL_FRONT);
     glEnable(GL_CULL_FACE);
@@ -1003,12 +1009,37 @@ float depthcorrect(float d)
 
 void readdepth(int w, int h, vec &pos)
 {
+#ifdef __EMSCRIPTEN__
+    // WebGL1 cannot read this framebuffer's depth as DEPTH_COMPONENT/FLOAT.
+    // Query the actual center ray against the same world geometry used by shots.
+    vec4 farpoint;
+    invmvpmatrix.transform(vec(0, 0, 1), farpoint);
+    if(!isfinite(farpoint.x) || !isfinite(farpoint.y) || !isfinite(farpoint.z) ||
+       !isfinite(farpoint.w) || fabsf(farpoint.w) < 1e-8f)
+        fatal("Invalid browser center-ray inverse projection");
+    const vec end = vec(farpoint.x, farpoint.y, farpoint.z).div(farpoint.w);
+    if(!isfinite(end.x) || !isfinite(end.y) || !isfinite(end.z))
+        fatal("Invalid browser center-ray endpoint");
+    pos = end;
+    intersectgeometry(camera1->o, pos);
+    if(!isfinite(pos.x) || !isfinite(pos.y) || !isfinite(pos.z))
+        fatal("Invalid browser geometry target");
+    vec4 projected;
+    mvpmatrix.transform(pos, projected);
+    if(!isfinite(projected.z) || !isfinite(projected.w) || fabsf(projected.w) < 1e-8f)
+        fatal("Invalid browser target projection");
+    const float depth = 0.5f * (projected.z / projected.w + 1.0f);
+    if(!isfinite(depth)) fatal("Invalid browser target depth");
+    // An unchanged far endpoint is a real no-hit; preserve exact depth=1 edit behavior.
+    cursordepth = pos == end ? 1.0f : clamp(depth, 0.0f, 1.0f);
+#else
     glReadPixels(w/2, h/2, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &cursordepth);
     vec screen(0, 0, depthcorrect(cursordepth)*2 - 1);
     vec4 world;
     invmvpmatrix.transform(screen, world);
     pos = vec(world.x, world.y, world.z).div(world.w);
     intersectgeometry(camera1->o, pos);
+#endif
 }
 
 VARP(ignoreoverride_nowaterreflect, 0, 0, 1);
@@ -1126,7 +1157,9 @@ void gl_drawframe(int w, int h, float changelod, float curfps, int elapsed)
     renderbounceents();
     endmodelbatches();
 
+#if !defined(__EMSCRIPTEN__) || defined(STANDALONE)
     WaypointClass.Think();// Rick: Need to do here because of drawing the waypoints
+#endif
     
     drawhudgun();
 

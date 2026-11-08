@@ -45,8 +45,14 @@
     #ifdef __APPLE__
         #undef SDL_VIDEO_DRIVER_WINDOWS
     #endif
+    #ifndef __EMSCRIPTEN__
 	#include <SDL_syswm.h>
+    #endif
 
+    #ifdef __EMSCRIPTEN__
+        // Use the target SDK's GL declarations, not desktop extension headers.
+        #include <SDL_opengl.h>
+    #else
     #define GL_GLEXT_LEGACY
     #define __glext_h__
     #define NO_SDL_GLEXT
@@ -54,6 +60,7 @@
     #undef __glext_h__
 
     #include "GL/glext.h"
+    #endif
 
     #ifdef __APPLE__
         #include "OpenAL/al.h"

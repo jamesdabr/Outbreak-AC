@@ -12,7 +12,11 @@ const int dbgvlight = 0;
 //VAR(dbgstenc, 0, 0, 2);
 //VAR(dbgvlight, 0, 0, 1);
 
+#ifdef __EMSCRIPTEN__
+VAR(mdldlist, 1, 0, 0); // browser read-only: use existing direct vertex/index drawing
+#else
 VARP(mdldlist, 0, 1, 1);
+#endif
 
 vec modelpos;
 float modelroll, modelyaw, modelpitch;
@@ -159,7 +163,9 @@ struct vertmodel : model
             DELETEA(bbs);
             DELETEA(shareverts);
             DELETEA(tris);
+#ifndef __EMSCRIPTEN__
             if(statlist) glDeleteLists(statlist, 1);
+#endif
             DELETEA(dynidx);
             DELETEA(dyndraws);
         }
@@ -292,7 +298,9 @@ struct vertmodel : model
         {
             if(statlist)
             {
+#ifndef __EMSCRIPTEN__
                 glDeleteLists(1, statlist);
+#endif
                 statlist = 0;
             }
         }
@@ -468,13 +476,16 @@ struct vertmodel : model
             }
 
             bool isstat = as.frame==0 && as.range==1;
+#ifndef __EMSCRIPTEN__
             if(isstat && statlist && !stenciling)
             {
                 glCallList(statlist);
                 xtraverts += statlen;
                 return;
             }
-            else if(stenciling==1)
+            else
+#endif
+            if(stenciling==1)
             {
                 bb curbb;
                 getcurbb(curbb, as, cur, prev, ai_t);
@@ -544,20 +555,26 @@ struct vertmodel : model
                 return;
             }
 
+#ifdef __EMSCRIPTEN__
+            const bool builddlist = false;
+#else
             bool builddlist = isstat && !owner->model->vertexlight && mdldlist;
             if(builddlist) glNewList(statlist = glGenLists(1), GL_COMPILE);
+#endif
             loopi(numdyndraws)
             {
                 const drawcall &d = dyndraws[i];
                 if(hasDRE && !builddlist) glDrawRangeElements_(d.type, d.minvert, d.maxvert, d.count, GL_UNSIGNED_SHORT, &dynidx[d.start]);
                 else glDrawElements(d.type, d.count, GL_UNSIGNED_SHORT, &dynidx[d.start]);
             }
+#ifndef __EMSCRIPTEN__
             if(builddlist)
             {
                 glEndList();
                 glCallList(statlist);
                 statlen = dynlen;
             }
+#endif
             xtraverts += dynlen;
         }
 

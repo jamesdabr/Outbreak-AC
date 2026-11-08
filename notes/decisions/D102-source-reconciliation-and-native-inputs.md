@@ -1,0 +1,7 @@
+# D102 — Accept source reconciliation and prepare native external identities
+
+MAIN accepts T1001.0 source provenance audit. Independent verification matched all154 current source records and52 reference files; independently recomputed114 equal accepted browser inputs and exactly the two main.cpp/MD3 differences covered by D090/D087. No missing or unexplained scoped production file. Receipt notes/reviews/MAIN-T100-source-receipt.json; report SHA256ae1f791fd6287b2c1c5ac93e55add4ef59e18412097bb439785dfd25f10c8f85, Markdownb4720091f477c30a07eca07155d790aab156aa3605380e5ec50c5c69c9e1a5b0. The old native sound.h raw-hash mismatch remains disclosed; no old D052 waiver is extended. Preserved prototype remains a baseline, not authoritative gameplay.
+
+This resolves the core source provenance review needed for MAIN's reviewed revision; final tooling/package freeze, exact source whitelist and Git/clean-checkout review still required. No actual build/runtime/P0 acceptance here.
+
+T1021.0 RELEASED AI-Director: collect exact current external native prerequisites from retained native dependency records and accepted native preparation observation. Read/hash files as DATA, no compiler/tool/project invocation. The resulting external map will aid MAIN's future clean-root authorization, but it is not execution pins or proof of a current compile closure. Actual candidate discover/compile/link must reject undeclared or changed dependencies. Avoid recursive SDK/toolchain scans; use the fixed historical consumed-path union and exact native tool/authoring roles.

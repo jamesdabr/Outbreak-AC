@@ -13,7 +13,9 @@ typedef unsigned short ushort;
 typedef unsigned int uint;
 
 #ifdef _DEBUG
-#ifdef __GNUC__
+#if defined(__EMSCRIPTEN__) || defined(__aarch64__) || defined(__arm64__)
+#define ASSERT(c) if(!(c)) { fflush(NULL); __builtin_trap(); }
+#elif defined(__GNUC__)
 #define ASSERT(c) if(!(c)) { fflush(NULL); asm("int $3"); }
 #else
 #define ASSERT(c) if(!(c)) { fflush(NULL); { __asm int 3 } }

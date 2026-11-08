@@ -731,6 +731,10 @@ static struct { uchar *salt, *priv; uint pwdcfg; } passdargs;
 
 static int passdeferred(void *pass)   // decrypt the private key in the background
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Deferred passphrase unavailable in offline browser profile");
+    return -1;
+#else
     uchar keyhash[32];
     int iterations = passdargs.pwdcfg >> 10;
     passphrase2key((char*)pass, passdargs.salt, 16, keyhash, 32, &iterations, 0, passdargs.pwdcfg & 0x3ff);
@@ -739,6 +743,7 @@ static int passdeferred(void *pass)   // decrypt the private key in the backgrou
     extern void authsetup(char **args, int numargs);
     authsetup(NULL, -1);  // tell authsetup, that the passwd is done
     return 0;
+#endif
 }
 
 void savepreprivkey(const char *filename, uchar *preprivkey, uchar preprivlen, uchar *psalt, uint preprivpwdcfg) {
@@ -800,6 +805,12 @@ void saveprivkey(const char *filename, uchar *privkey, uchar *pubkey, uchar salt
 
 void authsetup(char **args, int numargs)  // set up private and public keys
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    sk = NULL;
+    conoutf("Authentication setup unavailable in offline browser profile");
+    intret(0);
+    return;
+#else
     const int preprivminlen = 32, preprivmaxlen = 128;
     static uchar *buf = NULL, pub[32], keyhash[128], psalt[16], salt[16], preprivlen = 0;
     static uint preprivpwdcfg = 0, privpwdcfg = 0;
@@ -980,6 +991,7 @@ void authsetup(char **args, int numargs)  // set up private and public keys
     }
     else sk = NULL;
     intret(res);
+#endif
 }
 COMMAND(authsetup, "v");
 
@@ -1468,6 +1480,10 @@ void rebuildcerttree()       // determines the rank of all certs; ages them; rem
 
 void loadcert(const char *fname)
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Certificate file loading unavailable in offline browser profile");
+    return;
+#else
     cert *c = new cert(fname);
     if(c->ischecked && c->name)
     {
@@ -1475,10 +1491,15 @@ void loadcert(const char *fname)
         DEBUG("loaded cert " << c->name << ", type " << certtypekeywords[c->type] << ", signed-date " << c->signeddate);
     }
     else delete c;
+#endif
 }
 
 void loadcertdir()     // load all certs in "config/certs"
 {
+#if defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Certificate directory loading unavailable in offline browser profile");
+    return;
+#else
     vector<char *> certfiles;
 
     listfiles(CERTFILEDIR, CERTFILEEXT, certfiles);
@@ -1488,6 +1509,7 @@ void loadcertdir()     // load all certs in "config/certs"
         delstring(certfiles[i]);
     }
     rebuildcerttree();
+#endif
 }
 
 #ifndef STANDALONE

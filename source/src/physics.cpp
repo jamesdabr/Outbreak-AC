@@ -852,13 +852,13 @@ void attack(bool on)
     {
         if(!on) tryrespawn();
     }
-    else player1->attacking = on;
+    else player1->attacking = on && !player1->combat.downed;
 }
 
 void jumpn(bool on)
 {
     static bool wason = false;
-    player1->jumpnext = on && !wason && !player1->crouching && !intermission && !player1->isspectating() && !ispaused;
+    player1->jumpnext = on && !player1->combat.downed && !wason && !player1->crouching && !intermission && !player1->isspectating() && !ispaused;
     wason = on;
     if(player1->isspectating())
     {

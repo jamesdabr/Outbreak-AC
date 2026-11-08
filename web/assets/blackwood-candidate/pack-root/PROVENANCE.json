@@ -1,0 +1,105 @@
+{
+  "canonical_slots": {
+    "count": 32,
+    "origin": "exact report offsets, foot0 Q10, not native entities"
+  },
+  "config_body_sha256": "6d3b4157f43881ebbc369285802674536a1d1afd9fd3aee96ca5a326fd6d8862",
+  "generator_files": {
+    "candidate.py": "1dae10954da5c92b12e711b083901bf3eec292c0c8d6d3b2ac885621bfcf385a",
+    "generate.py": "bc2bfad98fdfc4e5c8586bd83bde3013c8adb7751aa30ae04702b09e525c578c",
+    "validate.py": "be4bfa6a388004db09fb039f96fafc4bd37d17922ae5ffc40ce6fe557c185a6c"
+  },
+  "geometry_origin": "exact pinned T076 iteration2 static rectangles; no placed wood",
+  "legacy_starts": {
+    "attr2": 100,
+    "count": 8,
+    "kind": 2,
+    "yaw": "((canonical_degrees_from_east+90)%360)*10",
+    "z": 5
+  },
+  "lights": {
+    "origin": "new deterministic13-point layout, original proof white220 palette",
+    "other_attrs": 0,
+    "radius": 24,
+    "white_intensity": 220,
+    "xy": [
+      [
+        20,
+        40
+      ],
+      [
+        64,
+        36
+      ],
+      [
+        108,
+        40
+      ],
+      [
+        40,
+        64
+      ],
+      [
+        64,
+        64
+      ],
+      [
+        88,
+        64
+      ],
+      [
+        20,
+        88
+      ],
+      [
+        64,
+        92
+      ],
+      [
+        108,
+        88
+      ],
+      [
+        56,
+        56
+      ],
+      [
+        72,
+        56
+      ],
+      [
+        56,
+        72
+      ],
+      [
+        72,
+        72
+      ]
+    ],
+    "z": 10
+  },
+  "limitations": [
+    "CANDIDATE_NOT_BALANCE_ACCEPTED",
+    "NO_RUNTIME_CAPSULE_NAV_OR_GAMEPLAY_PROOF",
+    "LEGACY_STARTS_ARE_NOT_CANONICAL_SQUAD_SLOTS",
+    "NO_RESOURCE_OR_ACTOR_GRANTS"
+  ],
+  "materials": {
+    "packages/textures/outbreak/ceiling.png": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa",
+    "packages/textures/outbreak/ground.png": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39",
+    "packages/textures/outbreak/wall.png": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3"
+  },
+  "profile": "BLACKWOOD_GREYBOX_CANDIDATE_DATA",
+  "schema_version": 1,
+  "scope": "NEW_ORIGINAL_DATA_ONLY_NOT_RUNTIME_OR_STOCK_RELICENSE",
+  "source_files": {
+    "MVP/BLACKWOOD_DATA_FOUNDATION.md": "b194cc675978c21df6e88c071bc72c9c99c82fcf50e1e48c08fae05f77d12221",
+    "notes/proposals/T076-world-blackwood-plan.md": "44f272bfb2f50b44bece0601153627c161c79405dbc44f1131b3477789cd5b51",
+    "source/src/clientgame.cpp": "6f394da0969de59ab1bfc26c3ca6e535b8e7126457e2dc039676aa5abdcbd6b9",
+    "source/src/physics.cpp": "bc74c8cfdb39df5e5a5488b69cfaab307e5d064b08d54f581769dfab00d61f5b",
+    "web/assets/network-profile/manifest.json": "c9ecfa62f7e4ca7111a9d3a23a9c97b906d11399d32f6f312463c6697a3359d7",
+    "web/assets/network-profile/pack-root/LICENSE.txt": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e",
+    "web/assets/network-profile/pack-root/packages/maps/dev_outbreak_browser.cfg": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de",
+    "web/world/reviews/T076/measurements-2.json": "33b29fc02f340a62b7aa6fce6d74574f735dd1a95a51c658c0b870270c3be9e3"
+  }
+}
