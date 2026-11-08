@@ -1,6 +1,10 @@
 # Authoritative P1 rules
 
-Revision:0.1. Status: APPROVED MAIN D086 for numerical/behavior freeze only. P0 acceptance, complete shared record/wire/body definitions and individually released P1 tickets remain mandatory before gameplay implementation. This addendum supersedes only matching draft P0/P1 rows in PARAMETERS0.2 and resolves the named T002 policy questions. Later-phase numerical recommendations remain drafts unless explicitly stated here.
+Revision:0.2. Status: APPROVED MAIN D086/D112 for numerical/behavior freeze and explicitly tagged P1 evidence-only completion. P0 acceptance, complete shared record/wire/body definitions and individually released P1 tickets remain mandatory before gameplay implementation. This addendum supersedes only matching draft P0/P1 rows in PARAMETERS0.2 and resolves the named T002 policy questions. Later-phase numerical recommendations remain drafts unless explicitly stated here.
+
+## P1 evidence-only terminal boundary
+
+D112 approves the proposed trusted EndP1Scenario control only for a separately released P1 combat evidence scenario, before full extraction exists. It may produce Results reason P1ScenarioComplete when that explicit scenario's evidence criteria have been met; it is not an MVP win, extraction, client action, public console/admin command or grant to an LLM player. The trusted coordinator/harness owns it; normal clients cannot submit it. No test hook may silently force gameplay state or bypass authority/atomic commit. In a P1-only build reaching active_start_tick+45000 without the mandatory later extraction lifecycle, emit an explicit Results-Aborted/P1ScopeBoundary with the last committed tick, not normal success. Existing debt/fault/lease abort behavior remains unchanged. Later P3/MVP profile must implement the full900s round/last180s extraction and cannot use this P1-only boundary as normal product behavior. Typed enum/wire/private-control layouts still require MAIN interface approval; this paragraph approves the limited semantic policy only.
 
 ## Time and authority
 

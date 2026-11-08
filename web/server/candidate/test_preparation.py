@@ -32,8 +32,9 @@ class Fixture:
   old=root/'web/server/deps-signed';old.mkdir(parents=True);(old/'opaque').symlink_to('/FIXTURE_ONLY/nonexistent/outside')
   for name in [*stage.TOOLS.values(),stage.CLT+'/usr/bin/clang',stage.CLT+'/usr/bin/ld',stage.CLT+'/usr/lib/clang/17/include/stddef.h',stage.PYTHON+'/bin/python3']:
    self.ext(name)
-  for name in ['SDKSettings.json','usr/include/zlib.h','usr/include/pthread/pthread.h','usr/lib/libz.tbd','usr/lib/libpthread.tbd','usr/lib/libc++.tbd']:self.ext(stage.SDK+'/'+name,b'{"Version":"15.5"}' if name=='SDKSettings.json' else b'FIXTURE_ONLY_SDK')
-  alias=self.sdk_root/'usr/include/pthread.h';alias.symlink_to('pthread/pthread.h');os.lchmod(alias,0o755);self.external[stage.SDK_PTHREAD_ALIAS[0]]=alias
+  for name in ['SDKSettings.json','usr/include/zlib.h','usr/include/pthread/pthread.h','usr/include/pthread/sched.h','usr/lib/libz.tbd','usr/lib/libpthread.tbd','usr/lib/libc++.tbd']:self.ext(stage.SDK+'/'+name,b'{"Version":"15.5"}' if name=='SDKSettings.json' else b'FIXTURE_ONLY_SDK')
+  for name,text,mode,_ in stage.SDK_HEADER_ALIASES:
+   alias=self.sdk_root/name[len(stage.SDK)+1:];alias.symlink_to(text);os.lchmod(alias,mode);self.external[name]=alias
   self.view=FixtureView(self)
   entries=[]
   package=stage.CPP+stage.C+['source/src/sound.h','source/src/Makefile','source/enet/Makefile.am','notes/decisions/FIXTURE_ONLY.md','notes/decisions/OTHER.md','source/game/portable.h']+['web/server/candidate/'+n for n in stage.SCRIPT_NAMES]
@@ -77,7 +78,7 @@ class FakeRunner:
    p=Path(argv[-1])/('Versions/A/hidapi' if argv[-1].endswith('hidapi.framework') else 'Versions/A/SDL2');b=p.read_bytes();p.write_bytes(b[:-1]+b'X')
   elif kind in ('discover_dependencies','compile') and not bad:
    source=argv[-1] if kind=='discover_dependencies' else argv[argv.index('-c')+1];obj=argv[argv.index('-MT')+1] if kind=='discover_dependencies' else argv[argv.index('-o')+1];dep=argv[argv.index('-MF')+1]
-   names=[source,str(self.root/'source/src/sound.h'),str(self.base/'deps-signed/SDL2.framework/Headers/SDL.h'),stage.SDK+'/usr/include/zlib.h',stage.SDK_PTHREAD_ALIAS[0],stage.CLT+'/usr/lib/clang/17/include/stddef.h']
+   names=[source,str(self.root/'source/src/sound.h'),str(self.base/'deps-signed/SDL2.framework/Headers/SDL.h'),stage.SDK+'/usr/include/zlib.h',stage.SDK_PTHREAD_ALIAS[0],stage.SDK_SCHED_ALIAS[0],stage.CLT+'/usr/lib/clang/17/include/stddef.h']
    if self.include_undeclared:names.append(str(self.root/'web/runtime/tests/historical/unconsumed.h'))
    Path(dep).write_text(obj+': '+' '.join(shlex.quote(n) for n in names)+'\n')
    if kind=='compile':Path(obj).write_bytes(fake_macho(1))
@@ -356,6 +357,53 @@ class Preparation(unittest.TestCase):
   try:self.assertEqual(self.pipeline()['status'],'NATIVE_LINKED_NOT_RUN');self.assertEqual(verify.verify(self.f.root,self.f.ident,self.f.pin,self.f.digest)['status'],'VERIFIED_BUILD_ONLY_NOT_RUN')
   finally:
    for p in reversed(patches):p.stop()
+ def sched_no_effects(self):
+  with patch.object(FakeRunner,'run',side_effect=AssertionError('EFFECT BEFORE SCHED GATE')):
+   with self.assertRaises(stage.Refused):self.pipeline()
+  self.assertFalse(self.f.output().exists())
+ def test_sched_retained_failed_dependency_and_both_alias_pipeline(self):
+  self.pthread_ready();p=Path(__file__).parent/'preparation-T106-20261108-1/failed-log.pre.d';raw=p.read_text();self.assertEqual(stage.sha(p.read_bytes()),'c4fd1b45db65f65e251d9b6633a1923197787c8e98d4cb097b115cfafd5786c3');lines=[line for line in raw.splitlines() if any(a in line for a,_,_,_ in stage.SDK_HEADER_ALIASES)];self.assertEqual(len(lines),2)
+  text='/FIXTURE_ONLY.o: \\\n'+'\n'.join(lines)+'\n '+stage.SDK+'/usr/include/zlib.h\n';deps=stage.dependency_paths(text,'/FIXTURE_ONLY.o',self.f.view,self.f.ident)
+  for alias,_,_,target in stage.SDK_HEADER_ALIASES:self.assertIn(alias,text);self.assertIn(target,deps);self.assertNotIn(alias,deps)
+  r=self.pipeline();self.assertEqual(r['status'],'NATIVE_LINKED_NOT_RUN')
+  for mode in r['modes'].values():
+   for unit in mode['units']:
+    for alias,_,_,target in stage.SDK_HEADER_ALIASES:self.assertIn(alias,Path(unit['dep']).read_text());self.assertIn(target,unit['dependencies']);self.assertNotIn(alias,unit['dependencies'])
+  self.assertEqual(verify.verify(self.f.root,self.f.ident,self.f.pin,self.f.digest)['status'],'VERIFIED_BUILD_ONLY_NOT_RUN')
+ def test_sched_raw_identity_type_text_mode_before_effects(self):
+  alias,raw,mode,_=stage.SDK_SCHED_ALIAS;original=self.f.view.link_identity
+  for identity in [None,{'target':'./'+raw,'mode':mode},{'target':'pthread/pthread.h','mode':mode},{'target':raw,'mode':0o777}]:
+   with self.subTest(identity=identity),patch.object(self.f.view,'link_identity',side_effect=lambda name:identity if name==alias else original(name)):self.sched_no_effects()
+ def test_sched_missing_undeclared_changed_target_before_effects(self):
+  original=copy.deepcopy(self.f.auth);target=stage.SDK_SCHED_ALIAS[3]
+  for change in [lambda p:p['observation']['inputs'].pop(target),lambda p:p['observation']['system_sdk']['files'].pop('usr/include/pthread/sched.h'),lambda p:p['observation']['inputs'].update({target:'0'*64})]:
+   self.f.auth=copy.deepcopy(original);change(self.f.auth);self.f.write();self.sched_no_effects()
+ def test_sched_physical_wrong_raw_escape_dangling_before_effects(self):
+  alias,raw,mode,_=stage.SDK_SCHED_ALIAS;p=self.f.view.mapped(alias)
+  for text in ['./'+raw,'pthread/pthread.h','../outside.h','/FIXTURE_ONLY/escape.h','pthread/missing.h']:
+   p.unlink();p.symlink_to(text);os.lchmod(p,mode);self.sched_no_effects()
+ def test_sched_missing_or_ordinary_alias_before_effects(self):
+  alias,_,_,target=stage.SDK_SCHED_ALIAS;p=self.f.view.mapped(alias);p.unlink();p.write_bytes(self.f.view.mapped(target).read_bytes());self.sched_no_effects();p.unlink();self.sched_no_effects()
+ def test_sched_nested_target_before_effects(self):
+  target=self.f.view.mapped(stage.SDK_SCHED_ALIAS[3]);other=target.with_name('same-bytes.h');target.rename(other);target.symlink_to('same-bytes.h');self.sched_no_effects()
+ def test_sched_linked_ancestor_before_effects(self):
+  parent=self.f.view.mapped(stage.SDK_SCHED_ALIAS[3]).parent;other=parent.with_name('same-directory');parent.rename(other);parent.symlink_to('same-directory',target_is_directory=True);self.sched_no_effects()
+ def test_sched_missing_or_changed_ordinary_target_before_effects(self):
+  target=self.f.view.mapped(stage.SDK_SCHED_ALIAS[3]);target.write_text('FIXTURE_ONLY changed sched bytes');self.sched_no_effects();target.unlink();self.sched_no_effects()
+ def test_sched_consumed_rechecks_mode_target_hash_and_declarations(self):
+  self.pthread_ready();alias,_,mode,target=stage.SDK_SCHED_ALIAS;p=self.f.view.mapped(alias);os.lchmod(p,0o700)
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  os.lchmod(p,mode);ordinary=self.f.view.mapped(target);old=ordinary.read_bytes();ordinary.write_text('FIXTURE_ONLY late target change')
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  ordinary.write_bytes(old);saved=self.f.view.declared_inputs.pop(target)
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+  self.f.view.declared_inputs[target]=saved;self.f.view.sdk_files.pop('usr/include/pthread/sched.h')
+  with self.assertRaises(stage.Refused):self.pthread_dep(alias)
+ def test_sched_unknown_same_byte_alias_and_unknown_helper_selector_refused(self):
+  self.pthread_ready();unknown=stage.SDK+'/usr/include/same-sched.h';self.f.view.mapped(unknown).symlink_to('pthread/sched.h');self.assertEqual(self.f.view.hash(unknown),self.f.view.hash(stage.SDK_SCHED_ALIAS[3]))
+  with self.assertRaises(stage.Refused):self.pthread_dep(unknown)
+  with patch.object(self.f.view,'ordinary_ancestors',side_effect=AssertionError('UNKNOWN SELECTOR TOUCHED FILESYSTEM')):
+   with self.assertRaises(stage.Refused):stage.sdk_header_alias(self.f.view,self.f.view.declared_inputs,self.f.view.sdk_files,unknown)
  def test_capture_wrapper_effect_double_success_and_timeout(self):
   # Exercise real capture/control logic with fake process/fd/selector/signals only.
   import types

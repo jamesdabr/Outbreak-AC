@@ -274,3 +274,20 @@ D107: reviewed commitf0b9f1f2/fresh source887-member checks and actual6738-membe
 D108: T103 Player re-released1.1/probe0.2, explicit same-origin iframe choice and unavailable early-output disclosure/partial diagnostic scope; no actual browser/service execution.
 
 D109: T104 exact SDK pthread alias correction ACCEPTED after independent52 tests/all18 frozen files/targeted source review. MAIN successor source revision/clean-root/prerequisite transaction authorized; actual compiler/build tickets still separate.
+
+D110: successor31d433b9 fresh checkout892-source checks/cache stage PASS; common893-entry manifest and exact native pins pure authorization passed. T1051.0 AI RELEASED ONE actual native32-object/two-link build + independent readonly verification in D109clean root. Browser role waits for native review; no runtime release.
+
+| T105 | P0 subset | [Actual clean-root native candidate](T105.md) | AI-Director | D109/T104/source/root/pins/D110 | RELEASED |
+
+D111: T105 actual build FAILED after one object at known sched.h SDK alias; attempt preserved/no retry/runtime. Complete32-file retained raw .d scan identifies exactly pthread.h+sched.h. Native0.4/T106 AI correction and T107 World bounded SDK link-stub predeclaration RELEASED for a new source/pin wave; no old pin/manifest rewrite.
+
+| T106 | P0 subset | [Handle both selected SDK header aliases](T106.md) | AI-Director | T104/failure evidence/D111/native0.4 | RELEASED |
+| T107 | P0 subset | [Declare system link stubs](T107.md) | World | D111/T102/fixed SDK | RELEASED |
+
+D112: T107 re-released1.1 with explicit framework-root pruning/511nonframework names398targets; same readonly scope. T002 P1 proposal SUBMITTED, P1_RULES0.2 approves only its tagged evidence-only terminal semantics; typed interfaces/gameplay still pending MAIN review.
+
+T002 final static review resolved ACK/resync and prediction gaps; one pair-only geometry exchange remains. T1081.0 Engine RELEASED additive notes-only pair-query proposal; frozen base docs unchanged, no implementation/interface adoption yet.
+
+| T108 | P0 subset | [Complete actor-pair query proposal](T108.md) | Engine | T002 final review/P1_RULES0.2 | RELEASED |
+
+D113: T106 exact two-header alias prep ACCEPTED after independent62 tests/all20 frozen files. T107381 confined link-stub targets ACCEPTED with32 explicit refusals. Player T103 is on confirmed HUMAN HOLD; QA hold unchanged. MAIN new source/clone/cache transaction authorized before NEW build pins/attempt; T108 continues independently.

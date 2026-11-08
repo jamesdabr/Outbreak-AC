@@ -1,7 +1,7 @@
-# T0925.19 / T0985.24 / T1041.0 native candidate tooling — PREPARATION ONLY
+# T0925.19 / T0985.24 / T1041.0 / T1061.0 native candidate tooling — PREPARATION ONLY
 
-Governing CANDIDATE_NATIVE_FOUNDATION0.3 / CANDIDATE_BUILD_FOUNDATION0.2,
-D087/D088/D090/D091/D098/D107; all old helpers, binaries, ledgers and frameworks immutable.
+Governing CANDIDATE_NATIVE_FOUNDATION0.4 / CANDIDATE_BUILD_FOUNDATION0.2,
+D087/D088/D090/D091/D098/D107/D111; all old helpers, binaries, ledgers and frameworks immutable.
 No actual signing/compile/tool probe/server has been run by this preparation.
 Fixture commands/objects/signatures are conspicuously fake temporary data and
 cannot authorize real effects or become accepted build evidence.
@@ -211,3 +211,42 @@ format/full simulated builder+independent verifier, pre-effect refusal, mode/tex
 ancestor/ordinary/declaration/target changes, same-byte unknown aliases and a guard
 against any real CLT/Python/tool file read. All real process/socket/compiler/signing
 guards remain. Fake commands/objects do not become actual native build evidence.
+
+## T106 complete selected two-header alias set
+
+D111/native0.4 supersedes the historical T104 one-alias scope: the fixed recipe
+now declares exactly pthread.h -> pthread/pthread.h and sched.h -> pthread/sched.h
+under canonical SDK/usr/include, both link mode0755 with ordinary canonical
+terminals. SDK_PTHREAD_ALIAS retains its exact reviewed value; SDK_SCHED_ALIAS
+and the fixed two-element SDK_HEADER_ALIASES tuple are source constants, never
+an authorization-supplied alias map. Shared sdk_header_alias rejects unknown
+names before filesystem access, then applies the same strict raw type/text/mode,
+ordinary ancestor/terminal, canonical identity and dual ordinary-pin/hash checks.
+authorize validates BOTH before any attempt reservation or tool effect; each
+consumed raw alias repeats the shared validation and maps only to its exact
+declared canonical target. Raw .d/log evidence and public schemas remain intact.
+Existing framework normalization and all other alias refusals remain unchanged.
+
+The current actual T105 attempt remains FAILED and immutable. Its log.pre.d
+identified sched.h only after successful discovery; no actual link was reached.
+preparation-T106-20261108-1/failed-log.pre.d is a byte-identical DATA copy, with
+original path/hash/report/freeze provenance. The new positive regression uses
+only its two exact raw header lines/continuation format under a fixture-owned
+target; it is not a new compiler result or a replay of the failed build.
+
+Before edits, all prior source/docs bytes were archived with explicit mappings;
+build.py/verify.py remain unchanged. All original52 test bodies are preserved.
+The only common fixture changes add a physical fake sched.h link/canonical target
+beside pthread.h, include canonical ordinary target pins and emit both raw names
+in fake dependency files. Original real-effect and real-external-file guards
+remain, now exercising both aliases. New sched regressions cover raw retained
+format, full fake pipeline/verifier, pre-effect wrong text/mode/type/target/
+ancestor/missing/undeclared/changed-byte refusal, consumed-time rechecks and
+unknown same-byte alias refusal. No test reads real SDK/tool files.
+
+Flags, target, SDK selector, tool roles, public metadata fields, limits and recipe
+identity are unchanged. T106 does not edit system link-stub declarations/pins;
+MAIN/T107 owns those separate prerequisites. No D110 retry, compiler/signing/
+native/browser/network execution, clean-clone/pin/manifest edit or new build
+acceptance is authorized by this preparation. MAIN must review successor source
+and issue a fresh execution release and exact pins before another actual attempt.

@@ -88,6 +88,9 @@ notes/decisions/D106-reviewed-source-revision-and-prerequisite-stage.md
 notes/decisions/D107-native-sdk-header-alias.md
 notes/decisions/D108-browser-probe-public-api-boundaries.md
 notes/decisions/D109-native-alias-acceptance-and-source-successor.md
+notes/decisions/D111-native-failure-and-complete-sdk-declarations.md
+notes/decisions/D112-sdk-traversal-and-p1-evidence-boundary.md
+notes/decisions/D113-complete-sdk-preparation-and-source-successor.md
 notes/proposals/T076-world-blackwood-plan.md
 source/README.txt
 source/README_CUBEENGINE.txt
@@ -417,6 +420,10 @@ tickets/T101.md
 tickets/T102.md
 tickets/T103.md
 tickets/T104.md
+tickets/T105.md
+tickets/T106.md
+tickets/T107.md
+tickets/T108.md
 web/DEVELOPMENT.md
 web/assets/audio-profile/README.md
 web/assets/audio-profile/build_profile.py
@@ -838,6 +845,7 @@ web/server/candidate/README.md
 web/server/candidate/build.py
 web/server/candidate/preparation-T098-20261108-1/retained-otool.json
 web/server/candidate/preparation-T104-20261108-1/retained-pthread-dependencies.json
+web/server/candidate/preparation-T106-20261108-1/failed-log.pre.d
 web/server/candidate/stage.py
 web/server/candidate/test_preparation.py
 web/server/candidate/verify.py

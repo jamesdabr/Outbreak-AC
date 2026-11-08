@@ -5,6 +5,8 @@ from pathlib import Path,PurePosixPath
 ROOT=Path(__file__).resolve().parents[3]
 SDK='/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk'
 SDK_PTHREAD_ALIAS=(SDK+'/usr/include/pthread.h','pthread/pthread.h',0o755,SDK+'/usr/include/pthread/pthread.h')
+SDK_SCHED_ALIAS=(SDK+'/usr/include/sched.h','pthread/sched.h',0o755,SDK+'/usr/include/pthread/sched.h')
+SDK_HEADER_ALIASES=(SDK_PTHREAD_ALIAS,SDK_SCHED_ALIAS)
 CLT='/Library/Developer/CommandLineTools'
 PYTHON='/Library/Frameworks/Python.framework/Versions/3.11'
 FRAMEWORK='source/xcode/Frameworks/SDL2.framework'
@@ -110,14 +112,15 @@ def validate_preservation(p):
  for missing in p['absent_roots']:need(not any(beneath(n,missing) for group in kinds[:3] for n in group),'present member inside absent root')
  return p
 
-def sdk_pthread_alias(view,inputs,sdk_files):
- """D107: one fixed leaf alias, pinned ordinary target, never a generic waiver."""
- alias,text,mode,target=SDK_PTHREAD_ALIAS;relative=target[len(SDK)+1:]
- need(view.ordinary_ancestors(alias) and view.ordinary_ancestors(target),'SDK pthread alias ancestors must be ordinary')
- need(view.link_identity(alias)=={'target':text,'mode':mode},'fixed SDK pthread alias raw text/mode/type changed')
- need(view.ordinary(target) and view.canonical(target)==target and view.canonical(alias)==target,'SDK pthread target must be exact canonical ordinary file')
- need(target in inputs and relative in sdk_files and alias not in inputs and 'usr/include/pthread.h' not in sdk_files,'SDK pthread canonical target not declared')
- need(digest(inputs[target])==digest(sdk_files[relative])==view.hash(target),'SDK pthread target bytes changed')
+def sdk_header_alias(view,inputs,sdk_files,name):
+ """D107/D111: exactly two fixed leaf aliases, never a supplied alias map."""
+ row=next((r for r in SDK_HEADER_ALIASES if r[0]==name),None);need(row is not None,'unknown SDK header alias')
+ alias,text,mode,target=row;relative=target[len(SDK)+1:]
+ need(view.ordinary_ancestors(alias) and view.ordinary_ancestors(target),'SDK header alias ancestors must be ordinary')
+ need(view.link_identity(alias)=={'target':text,'mode':mode},'fixed SDK header alias raw text/mode/type changed')
+ need(view.ordinary(target) and view.canonical(target)==target and view.canonical(alias)==target,'SDK header target must be exact canonical ordinary file')
+ need(target in inputs and relative in sdk_files and alias not in inputs and alias[len(SDK)+1:] not in sdk_files,'SDK header canonical target not declared')
+ need(digest(inputs[target])==digest(sdk_files[relative])==view.hash(target),'SDK header target bytes changed')
  return target
 
 def authorize(data,expected_sha,ident,view,existing=False,verify_preservation=True):
@@ -149,7 +152,8 @@ def authorize(data,expected_sha,ident,view,existing=False,verify_preservation=Tr
  need(all(root+'/'+n in o['inputs'] for n in entries) and manifest in o['inputs'] and root+'/'+decision in o['inputs'],'manifest/decision inputs missing')
  need(all(row['path'] in o['inputs'] and o['inputs'][row['path']]==row['sha256'] for row in o['tools'].values()),'tool inputs missing')
  need(all(SDK+'/'+n in o['inputs'] and o['inputs'][SDK+'/'+n]==h for n,h in o['system_sdk']['files'].items()),'SDK inputs missing')
- sdk_pthread_alias(view,o['inputs'],o['system_sdk']['files']);view.sdk_files=o['system_sdk']['files']
+ for alias,_,_,_ in SDK_HEADER_ALIASES:sdk_header_alias(view,o['inputs'],o['system_sdk']['files'],alias)
+ view.sdk_files=o['system_sdk']['files']
  for path in (CLT+'/usr/bin/clang',CLT+'/usr/bin/ld',SDK+'/SDKSettings.json',SDK+'/usr/include/zlib.h',SDK+'/usr/include/pthread.h',SDK+'/usr/lib/libz.tbd',SDK+'/usr/lib/libpthread.tbd'):
   physical=view.canonical(path);need(beneath(physical,CLT) and physical in o['inputs'],'actual compiler/SDK/link prerequisite not declared')
  for name,row in o['source_framework'].items():
@@ -337,7 +341,7 @@ def dependency_paths(text,target,view,ident):
  raw=shlex.split(right);need(raw and len(raw)==len(set(raw)),'empty/duplicate dependency file');result={};root=view.root;copy=attempt(root,ident)+'/deps-signed/SDL2.framework'
  for name in raw:
   absolute(name)
-  if name==SDK_PTHREAD_ALIAS[0]:canonical=sdk_pthread_alias(view,view.declared_inputs,view.sdk_files);origin=canonical
+  if name in (SDK_PTHREAD_ALIAS[0],SDK_SCHED_ALIAS[0]):canonical=sdk_header_alias(view,view.declared_inputs,view.sdk_files,name);origin=canonical
   elif beneath(name,copy):
    canonical=view.canonical(name)
    need(beneath(canonical,copy),'staged dependency escapes');origin=root+'/'+FRAMEWORK+canonical[len(copy):]
