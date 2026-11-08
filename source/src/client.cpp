@@ -5,7 +5,7 @@
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
 #include "browsernet.h"
 #include "browsernet_observer.h"
-#include "../../web/transport/enet_ws_bridge.h"
+#include "enet_ws_bridge.h"
 #include <emscripten/emscripten.h>
 #endif
 
