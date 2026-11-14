@@ -1,0 +1,9 @@
+# T175 data-only candidate operation stopped before reservation
+
+T1751.0/D263 named worker /root/review_native_candidate. Source edits stopped at the sole guarded pass10 invocation. That pass completed PASS_FIXTURE_ONLY:228 groups/247 leaves,124.39756370894611s,4,203,549 retained bytes; result4d4ac9e283cb0b9b625bb3430e7ff30567f3b167e8ce67669b6cd67423493e07. No source/test retry or post-invocation amendment.
+
+The subsequent inspected standard-library metadata operation stopped in its READ-ONLY external-reference preparation, before final2 mkdir/reservation/write. I used an incorrect assumed D250 filename: notes/decisions/D250-dev-preparation-acceptance.md. FileNotFoundError was raised while reading that reference. No candidate inventory/receipt/freeze or candidate directory was created by the operation; no partial occupied candidate slot exists. No source/old evidence/authority/tool/SDK/cache/manifest write, project import or actual process/FFI/build/runtime effect occurred.
+
+The source/harness/data-effect guards were not rerun, repaired or relaxed. The metadata reader's filename error is an authoring error, separate from the known original-reap boundary documented in notes/questions/T175-original-reap-ECHILD-1.md. Current source still uses Popen.wait, whose stdlib ECHILD-to-zero behavior is not covered by the earlier fake WNOWAIT ECHILD leaf. Neither the guarded PASS nor this failed metadata operation establishes complete D263 ownership-loss correctness.
+
+MAIN was notified immediately. Under the failure-preserves/stops instruction, no automatic metadata retry or filename repair follows; a corrected data-only continuation requires MAIN disposition. The permitted source changes, pass10 invocation/runtime plans/source snapshots/result and this failure note remain available as truthful pending-review evidence. No candidate final2 digest, acceptance or actual-effect permission is claimed.

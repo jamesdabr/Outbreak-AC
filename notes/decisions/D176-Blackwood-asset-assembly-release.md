@@ -1,0 +1,5 @@
+# D176 — Assemble accepted Blackwood data with approved media
+
+MAIN approves BLACKWOOD_ASSET_ASSEMBLY0.1 and World T148 as the later separate assembly explicitly anticipated by BLACKWOOD_DATA_FOUNDATION0.1. Exact79entry network-profile and5entry accepted Blackwood candidate source manifests inspected; new blackwood-profile root absent before release. New84file package preserves source bytes and maps the two Blackwood notice/provenance names into their own namespace, with original licenses intact.
+
+No map/anchor/texture/config behavior change, build/runtime/overlay, new stock assets, final map/balance/nav or gameplay acceptance. This advances actual game content independently of Player T143, Engine T146 and AI T147, with exclusive new-folder ownership. Source inputs/accepted artifacts remain readonly; pure inspected stdlib generation/tests only. Review-ready/freeze/MAIN acceptance before future consumption. QA pause, full P0/human/interface gates and pending movement preference unchanged.

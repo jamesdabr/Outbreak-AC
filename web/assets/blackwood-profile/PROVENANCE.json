@@ -1,0 +1,655 @@
+{
+  "accepted_provenance": [
+    {
+      "path": "tickets/T080.md",
+      "sha256": "66b3dc3437835815a852147cc3bc85302e0aa170e2db2e3974861c40140a6566"
+    },
+    {
+      "path": "notes/decisions/D078-Blackwood-data-acceptance.md",
+      "sha256": "5bce25734723ac24332d9c1b90e8822cd0191312dffc805995a874715897583c"
+    },
+    {
+      "path": "MVP/BLACKWOOD_DATA_FOUNDATION.md",
+      "sha256": "b194cc675978c21df6e88c071bc72c9c99c82fcf50e1e48c08fae05f77d12221"
+    },
+    {
+      "path": "MVP/BLACKWOOD_ASSET_ASSEMBLY.md",
+      "sha256": "8db75cc33b37fba9d9dd160e4a9d51af0361888e3b1f7aa74459c4c323917582"
+    }
+  ],
+  "classification": "DATA_ONLY",
+  "copied_source_identities": [
+    {
+      "bytes": 1558,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/manifest.json",
+      "sha256": "fa3049408e3ed0dbf2d4bc422b45c166b7fc0e0ac5d2fec4c8c5aadd53ae9711"
+    },
+    {
+      "bytes": 1300,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/pack-root/LICENSE.txt",
+      "sha256": "d597a754790e54f9ee13788b3c2f1ded4c0edc60c3d37251c787d5d7f648d47e"
+    },
+    {
+      "bytes": 3103,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/pack-root/PROVENANCE.json",
+      "sha256": "0da2da2801d55e0afab1abf2ec1d0ed4e25bd4bf41d8a225cad37e5aa8809676"
+    },
+    {
+      "bytes": 1677,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/pack-root/packages/maps/blackwood_greybox_v1.cfg",
+      "sha256": "289bcb22b29a17443cdf47a936e82edbc47a7a0e0dd034a8b602ce3ec79b76bd"
+    },
+    {
+      "bytes": 734,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/pack-root/packages/maps/blackwood_greybox_v1.cgz",
+      "sha256": "e68314e911130d2822fdfa65d77dfaba302d4f5c3552ff91c698b84768d5ddf1"
+    },
+    {
+      "bytes": 16385,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/blackwood-candidate/pack-root/packages/outbreak/blackwood_greybox_v1.anchors.json",
+      "sha256": "159d3afe87123616e8346f6db00c2fd3a99325abbfa74a67b825bebfd89af05e"
+    },
+    {
+      "bytes": 173076,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/manifest.json",
+      "sha256": "c9ecfa62f7e4ca7111a9d3a23a9c97b906d11399d32f6f312463c6697a3359d7"
+    },
+    {
+      "bytes": 1318,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 1318,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/config/LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 2287,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/config/browser.cfg",
+      "sha256": "b84d1e940971a1fd9007c2691154e20ebd2f93d6956c5ac96c2d8e67db709bac"
+    },
+    {
+      "bytes": 1622,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/config/default_map_settings.cfg",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de"
+    },
+    {
+      "bytes": 13889,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/config/font.cfg",
+      "sha256": "34286962a32c8dd284600b39cb404a79df150a9892b15a9f4848e7a0aeed0b08"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 39734,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/extraction.wav",
+      "sha256": "9a06d8c8d5cd3435237344611904d7bd26c8af2046c053c423f898e87e3bcf5d"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 8864,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/footstep.wav",
+      "sha256": "e0b2bc1d1f3a58a058692885b0a920295be6aeaa47e65be7f7df3a2f601e2400"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 7982,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/pistol.wav",
+      "sha256": "708999bd25f91c1a132bc04e62f487a1dea85b7e21ed851603afd31e1ec06483"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 33118,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/predator_flank.wav",
+      "sha256": "51859ce446db0c50d9390110e2007f8646a471ae3ec76f959eed5b008d01bbc7"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 26504,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/predator_front.wav",
+      "sha256": "1d8af04001b1fed5a3dc88cfaf4c35a416b34fba3f66a9bd72049939b146fe2d"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 13274,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/proof_tone.wav",
+      "sha256": "e37aa3c35b32a3a6b81610c08717721d22a95fb059f24894cfbaea24aa4e5f72"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 19888,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/reload.wav",
+      "sha256": "b409287328685f4648d377498eda64746a72866036f745635bd13d974324aa62"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 5336,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/rifle.wav",
+      "sha256": "1fcd2440fb09924f39b6d5260e28253636f76d2a1fa526dd2187f5eda8228693"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 17684,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/walker_attack.wav",
+      "sha256": "17bca6cf27dd34d06a8f26528f27401cd7723c65d420448149717854e88e9c45"
+    },
+    {
+      "bytes": 1242,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 1508,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/crosshairs/default.png",
+      "sha256": "f3171fd839d52853ca2e97ef1ecba45a8bfc45df511503123ee78d6382032f7d"
+    },
+    {
+      "bytes": 1622,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/maps/dev_outbreak_browser.cfg",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de"
+    },
+    {
+      "bytes": 561,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/maps/dev_outbreak_browser.cgz",
+      "sha256": "856173969726f632812fd8ebd2ada746831d7e81f7452dd98f7235a2bd398134"
+    },
+    {
+      "bytes": 1318,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/maps/dev_outbreak_browser.cgz.LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 3136,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/base.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/blood.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/bullethole.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 1571,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/com.png",
+      "sha256": "4bd7e0e9c08179469f7d2fbd5287949476f46e8fe6fa28051c8665407c0e5f06"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/compass-base.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/compass-rose.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/ctficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/damage.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3137,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/explosion.png",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/htficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1524,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/icon.png",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/items.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/ktficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3137,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/muzzleflash.jpg",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/radaricons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/scope.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3136,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/scorch.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/smoke.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 1776,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/startscreen.png",
+      "sha256": "abf245e8e33d0240a7fae852bfb3ce7a5a53cc2608113bd8ec3f9825ea0c8ce6"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/teamicons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/misc/voteicons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/md3.cfg",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/skin.png",
+      "sha256": "482917bedeaba79fa1c407a886473b85567a79f0667e4f91b18a64897121ff8f"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 4100,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/tris.md3",
+      "sha256": "cef9e518dead445712f708bc5f6c6ea1b5709ddcf23944d228e0b7924897ea86"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/md3.cfg",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1496,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/skin.png",
+      "sha256": "147a1a18c92bd5341d1b80eec71bf0f21eaf8f0766766da2628496cc1838b62f"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 5924,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/tris.md3",
+      "sha256": "16995887d6fcaadc01c43c4fe8b94a8bb312b74d8cbc07f44b9c4c96bb99a1d5"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2100,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/md3.cfg",
+      "sha256": "060e48df70ba96084f68ba1a2187598f628ada2ab18f78cca5eb80af190833da"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1512,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/skin.png",
+      "sha256": "9fa0040fefbc054364fdaa1e859297ec9ac5f84f2459f38a18fcf16a045f5f96"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 82156,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/tris.md3",
+      "sha256": "9b6f1cc37bc404d0cc2a1a4e26ece431af275de971924707cd9f91ebf2fefb09"
+    },
+    {
+      "bytes": 1295,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1524,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/outbreak/fallback.png",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6"
+    },
+    {
+      "bytes": 2765,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/outbreak/font.png",
+      "sha256": "e8567f11398e350100a2b11a913a3d2c21e04d2be797eaea92a707f3e24bfcc9"
+    },
+    {
+      "bytes": 1585,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/outbreak/ceiling.png",
+      "sha256": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa"
+    },
+    {
+      "bytes": 1586,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/outbreak/ground.png",
+      "sha256": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39"
+    },
+    {
+      "bytes": 1586,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/outbreak/wall.png",
+      "sha256": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_bk.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_dn.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_ft.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_lf.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_rt.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "mode": 420,
+      "nlink": 1,
+      "path": "web/assets/network-profile/pack-root/packages/textures/skymaps/_up.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    }
+  ],
+  "generator_sources": {
+    "assemble.py": "2a2e87702a276850b63404fde28ece0061cd7bf4a65df1d5bbb922f676d5c4b4",
+    "validate.py": "ece160eff8eadabe2ccbdbcd25feffd0aa1b3494e70e56d25b839a62585f2612"
+  },
+  "inputs": [
+    {
+      "path": "web/assets/network-profile/manifest.json",
+      "sha256": "c9ecfa62f7e4ca7111a9d3a23a9c97b906d11399d32f6f312463c6697a3359d7"
+    },
+    {
+      "path": "web/assets/blackwood-candidate/manifest.json",
+      "sha256": "fa3049408e3ed0dbf2d4bc422b45c166b7fc0e0ac5d2fec4c8c5aadd53ae9711"
+    }
+  ],
+  "limitations": [
+    "CANDIDATE_NOT_BALANCE_ACCEPTED",
+    "NO_RUNTIME_CAPSULE_NAV_OR_GAMEPLAY_PROOF",
+    "LEGACY_STARTS_ARE_NOT_CANONICAL_SQUAD_SLOTS",
+    "NO_RESOURCE_OR_ACTOR_GRANTS"
+  ],
+  "notice_renaming": {
+    "web/assets/blackwood-candidate/manifest.json": {
+      "LICENSE.txt": "notices/blackwood-candidate/LICENSE.txt",
+      "PROVENANCE.json": "notices/blackwood-candidate/PROVENANCE.json"
+    }
+  },
+  "profile": "BLACKWOOD_ASSET_ASSEMBLY_CANDIDATE_DATA",
+  "schema_version": 1,
+  "scope": "ASSEMBLY_ONLY_NO_BOOT_BUILD_OVERLAY_RENDER_NAV_GAMEPLAY_BALANCE_OR_PERFORMANCE",
+  "technical_starts": "8 integer native FFA starts; not 32 canonical Q10 squad slots"
+}

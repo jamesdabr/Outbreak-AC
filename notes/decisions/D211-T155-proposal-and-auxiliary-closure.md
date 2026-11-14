@@ -1,0 +1,7 @@
+# D211 — T155 proposal accepted; auxiliary bridge construction adopted
+
+MAIN accepts T1551.2 as a notes-only implementation specification delivery, after reading the final packet2/handoff and scoped interface/math reviews. The original packet's auxiliary construction omission is resolved by MAIN's separately reviewed supplement, not by rewriting worker history. Approve QUERY_CALLER_BRIDGE0.1 with packet2 section9 plus final auxiliary advisory SHAed77c24cd8bcb3eda33eaa33b9e823db08b8ded5c200b1fae5233315551e17f0. Review SHA67493736505711c4569a40398e9ffadb7aa7b4623e53ad0f4af37e9b61b94bb4 clears its exact T110 phase/sample/progress/group/budget semantics. G1 foundation remains as approved D209; its statement that caller closure was pending is historical at that revision, with this addendum now resolving construction only.
+
+Acceptance establishes complete proposed graph/storage/API/test/caller construction clauses, not executed mathematical/compiled/runtime correctness or stack/performance proof. T159 remains READY, not RELEASED, pending accepted T158 exact G0 data/final pins. G2 remains a mandatory serialized successor and G3 requires actual full scratch/call/frequency/frame and transaction evidence. No source authority, movement rate selection, policy/number/threshold change or broader P1/P0 gate follows. All original T155 packet/question/handoff bytes are immutable. World has no further T155 writes; only a new released ticket can authorize source.
+
+QA and actual runtime/RSS/human holds remain. No new worker dispatch is implied.

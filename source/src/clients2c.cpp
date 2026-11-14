@@ -1,5 +1,6 @@
 // client processing of the incoming network stream
 
+#include "browser_map_profile.h"
 #include "cube.h"
 #include "bot/bot.h"
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
@@ -49,12 +50,13 @@ bool localwrongmap = false;
 bool changemapserv(char *name, int mode, int download, int revision)        // forced map change from the server
 {
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
-    if(!name || strcmp(name,"dev_outbreak_browser") || mode!=GMODE_DEATHMATCH || revision!=2 ||
-       download<=0 || maploaded!=download || hdr.maprevision!=2 || strcmp(getclientmap(),"dev_outbreak_browser"))
+    if(!ob_browser_map::pre_change(name,mode,GMODE_DEATHMATCH,download,revision,
+                                  getclientmap(),hdr.maprevision,maploaded))
     { browsernet_close(BNE_MAP); return false; }
     gamemode=mode;
     int networkloaded=load_world(name);
-    if(networkloaded<0 || incompatiblemap || maploaded!=download || hdr.maprevision!=revision)
+    if(!ob_browser_map::post_change(networkloaded,incompatiblemap,name,mode,GMODE_DEATHMATCH,
+                                   download,revision,getclientmap(),hdr.maprevision,maploaded))
     { browsernet_close(BNE_MAP); return false; }
     browsernet_map_observed(name,revision);
     return browsernet_state()!=BN_FAILED;

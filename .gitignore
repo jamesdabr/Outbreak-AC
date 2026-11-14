@@ -59,3 +59,14 @@ web/toolchains/T090/*.tar.xz
 /notes/decisions/*-candidate-native-pins.json
 /notes/decisions/*-candidate-execution-release.md
 /web/repro/prerequisite-bundles/
+
+# Local browser playtest outputs; source/recipes remain versioned.
+/web/visible/candidates/
+/web/visible/runs/
+/web/server/blackwood-candidate-attempts/
+/web/transport/results/
+**/__pycache__/
+# Stock media packs are assembled locally from the original bundled assets.
+/web/assets/stock-player-profile/pack-root/
+/web/assets/stock-combat-profile/pack-root/
+/web/assets/swamp-profile/pack-root/

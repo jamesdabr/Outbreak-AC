@@ -1,0 +1,1069 @@
+{
+  "barricades": [
+    {
+      "axis": "y",
+      "id": "BW-B01",
+      "position_q10": [
+        52224,
+        63488,
+        0
+      ]
+    },
+    {
+      "axis": "y",
+      "id": "BW-B02",
+      "position_q10": [
+        78848,
+        67584,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B03",
+      "position_q10": [
+        49152,
+        45056,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B04",
+      "position_q10": [
+        65536,
+        45056,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B05",
+      "position_q10": [
+        81920,
+        45056,
+        0
+      ]
+    },
+    {
+      "axis": "y",
+      "id": "BW-B06",
+      "position_q10": [
+        49152,
+        57344,
+        0
+      ]
+    },
+    {
+      "axis": "y",
+      "id": "BW-B07",
+      "position_q10": [
+        81920,
+        57344,
+        0
+      ]
+    },
+    {
+      "axis": "y",
+      "id": "BW-B08",
+      "position_q10": [
+        49152,
+        75776,
+        0
+      ]
+    },
+    {
+      "axis": "y",
+      "id": "BW-B09",
+      "position_q10": [
+        81920,
+        75776,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B10",
+      "position_q10": [
+        49152,
+        81920,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B11",
+      "position_q10": [
+        65536,
+        81920,
+        0
+      ]
+    },
+    {
+      "axis": "x",
+      "id": "BW-B12",
+      "position_q10": [
+        81920,
+        81920,
+        0
+      ]
+    }
+  ],
+  "coordinate_system": "Q10_FOOT_EAST_NORTH_UP",
+  "deployment_clusters": [
+    {
+      "aim_cdeg_from_east": 4500,
+      "center_q10": [
+        20480,
+        20480,
+        0
+      ],
+      "id": "BW-D00",
+      "slots": [
+        {
+          "id": "BW-D00-S0",
+          "position_q10": [
+            19072,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D00-S1",
+          "position_q10": [
+            21888,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D00-S2",
+          "position_q10": [
+            19072,
+            21888,
+            0
+          ]
+        },
+        {
+          "id": "BW-D00-S3",
+          "position_q10": [
+            21888,
+            21888,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 9000,
+      "center_q10": [
+        65536,
+        20480,
+        0
+      ],
+      "id": "BW-D01",
+      "slots": [
+        {
+          "id": "BW-D01-S0",
+          "position_q10": [
+            64128,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D01-S1",
+          "position_q10": [
+            66944,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D01-S2",
+          "position_q10": [
+            64128,
+            21888,
+            0
+          ]
+        },
+        {
+          "id": "BW-D01-S3",
+          "position_q10": [
+            66944,
+            21888,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 13500,
+      "center_q10": [
+        110592,
+        20480,
+        0
+      ],
+      "id": "BW-D02",
+      "slots": [
+        {
+          "id": "BW-D02-S0",
+          "position_q10": [
+            109184,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D02-S1",
+          "position_q10": [
+            112000,
+            19072,
+            0
+          ]
+        },
+        {
+          "id": "BW-D02-S2",
+          "position_q10": [
+            109184,
+            21888,
+            0
+          ]
+        },
+        {
+          "id": "BW-D02-S3",
+          "position_q10": [
+            112000,
+            21888,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 18000,
+      "center_q10": [
+        110592,
+        65536,
+        0
+      ],
+      "id": "BW-D03",
+      "slots": [
+        {
+          "id": "BW-D03-S0",
+          "position_q10": [
+            109184,
+            64128,
+            0
+          ]
+        },
+        {
+          "id": "BW-D03-S1",
+          "position_q10": [
+            112000,
+            64128,
+            0
+          ]
+        },
+        {
+          "id": "BW-D03-S2",
+          "position_q10": [
+            109184,
+            66944,
+            0
+          ]
+        },
+        {
+          "id": "BW-D03-S3",
+          "position_q10": [
+            112000,
+            66944,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 22500,
+      "center_q10": [
+        110592,
+        110592,
+        0
+      ],
+      "id": "BW-D04",
+      "slots": [
+        {
+          "id": "BW-D04-S0",
+          "position_q10": [
+            109184,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D04-S1",
+          "position_q10": [
+            112000,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D04-S2",
+          "position_q10": [
+            109184,
+            112000,
+            0
+          ]
+        },
+        {
+          "id": "BW-D04-S3",
+          "position_q10": [
+            112000,
+            112000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 27000,
+      "center_q10": [
+        65536,
+        110592,
+        0
+      ],
+      "id": "BW-D05",
+      "slots": [
+        {
+          "id": "BW-D05-S0",
+          "position_q10": [
+            64128,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D05-S1",
+          "position_q10": [
+            66944,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D05-S2",
+          "position_q10": [
+            64128,
+            112000,
+            0
+          ]
+        },
+        {
+          "id": "BW-D05-S3",
+          "position_q10": [
+            66944,
+            112000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 31500,
+      "center_q10": [
+        20480,
+        110592,
+        0
+      ],
+      "id": "BW-D06",
+      "slots": [
+        {
+          "id": "BW-D06-S0",
+          "position_q10": [
+            19072,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D06-S1",
+          "position_q10": [
+            21888,
+            109184,
+            0
+          ]
+        },
+        {
+          "id": "BW-D06-S2",
+          "position_q10": [
+            19072,
+            112000,
+            0
+          ]
+        },
+        {
+          "id": "BW-D06-S3",
+          "position_q10": [
+            21888,
+            112000,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "aim_cdeg_from_east": 0,
+      "center_q10": [
+        20480,
+        65536,
+        0
+      ],
+      "id": "BW-D07",
+      "slots": [
+        {
+          "id": "BW-D07-S0",
+          "position_q10": [
+            19072,
+            64128,
+            0
+          ]
+        },
+        {
+          "id": "BW-D07-S1",
+          "position_q10": [
+            21888,
+            64128,
+            0
+          ]
+        },
+        {
+          "id": "BW-D07-S2",
+          "position_q10": [
+            19072,
+            66944,
+            0
+          ]
+        },
+        {
+          "id": "BW-D07-S3",
+          "position_q10": [
+            21888,
+            66944,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "extraction": {
+    "bounds_q10": [
+      59392,
+      88064,
+      0,
+      71680,
+      96256,
+      6144
+    ],
+    "id": "BW-E01",
+    "position_q10": [
+      65536,
+      92160,
+      0
+    ]
+  },
+  "limitations": [
+    "CANDIDATE_NOT_BALANCE_ACCEPTED",
+    "NO_RUNTIME_CAPSULE_NAV_OR_GAMEPLAY_PROOF",
+    "LEGACY_STARTS_ARE_NOT_CANONICAL_SQUAD_SLOTS",
+    "NO_RESOURCE_OR_ACTOR_GRANTS"
+  ],
+  "loot": [
+    {
+      "id": "BW-L01",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        32768,
+        36864,
+        0
+      ]
+    },
+    {
+      "id": "BW-L02",
+      "kind": "ammo_rifle",
+      "position_q10": [
+        49152,
+        43008,
+        0
+      ]
+    },
+    {
+      "id": "BW-L03",
+      "kind": "medical",
+      "position_q10": [
+        57344,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-L04",
+      "kind": "wood",
+      "position_q10": [
+        57344,
+        57344,
+        0
+      ]
+    },
+    {
+      "id": "BW-L05",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        47104,
+        49152,
+        0
+      ]
+    },
+    {
+      "id": "BW-L06",
+      "kind": "wood",
+      "position_q10": [
+        57344,
+        61440,
+        0
+      ]
+    },
+    {
+      "id": "BW-L07",
+      "kind": "medical",
+      "position_q10": [
+        34816,
+        49152,
+        0
+      ]
+    },
+    {
+      "id": "BW-L08",
+      "kind": "wood",
+      "position_q10": [
+        53248,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-L09",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        98304,
+        36864,
+        0
+      ]
+    },
+    {
+      "id": "BW-L10",
+      "kind": "ammo_rifle",
+      "position_q10": [
+        81920,
+        43008,
+        0
+      ]
+    },
+    {
+      "id": "BW-L11",
+      "kind": "medical",
+      "position_q10": [
+        73728,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-L12",
+      "kind": "wood",
+      "position_q10": [
+        73728,
+        57344,
+        0
+      ]
+    },
+    {
+      "id": "BW-L13",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        83968,
+        49152,
+        0
+      ]
+    },
+    {
+      "id": "BW-L14",
+      "kind": "wood",
+      "position_q10": [
+        73728,
+        61440,
+        0
+      ]
+    },
+    {
+      "id": "BW-L15",
+      "kind": "medical",
+      "position_q10": [
+        96256,
+        49152,
+        0
+      ]
+    },
+    {
+      "id": "BW-L16",
+      "kind": "wood",
+      "position_q10": [
+        77824,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-L17",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        32768,
+        94208,
+        0
+      ]
+    },
+    {
+      "id": "BW-L18",
+      "kind": "ammo_rifle",
+      "position_q10": [
+        49152,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-L19",
+      "kind": "medical",
+      "position_q10": [
+        57344,
+        73728,
+        0
+      ]
+    },
+    {
+      "id": "BW-L20",
+      "kind": "wood",
+      "position_q10": [
+        57344,
+        69632,
+        0
+      ]
+    },
+    {
+      "id": "BW-L21",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        47104,
+        79872,
+        0
+      ]
+    },
+    {
+      "id": "BW-L22",
+      "kind": "wood",
+      "position_q10": [
+        53248,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-L23",
+      "kind": "medical",
+      "position_q10": [
+        34816,
+        81920,
+        0
+      ]
+    },
+    {
+      "id": "BW-L24",
+      "kind": "wood",
+      "position_q10": [
+        57344,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-L25",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        98304,
+        94208,
+        0
+      ]
+    },
+    {
+      "id": "BW-L26",
+      "kind": "ammo_rifle",
+      "position_q10": [
+        81920,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-L27",
+      "kind": "medical",
+      "position_q10": [
+        73728,
+        73728,
+        0
+      ]
+    },
+    {
+      "id": "BW-L28",
+      "kind": "wood",
+      "position_q10": [
+        73728,
+        69632,
+        0
+      ]
+    },
+    {
+      "id": "BW-L29",
+      "kind": "ammo_pistol",
+      "position_q10": [
+        83968,
+        79872,
+        0
+      ]
+    },
+    {
+      "id": "BW-L30",
+      "kind": "wood",
+      "position_q10": [
+        77824,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-L31",
+      "kind": "medical",
+      "position_q10": [
+        96256,
+        81920,
+        0
+      ]
+    },
+    {
+      "id": "BW-L32",
+      "kind": "wood",
+      "position_q10": [
+        73728,
+        83968,
+        0
+      ]
+    }
+  ],
+  "map_name": "blackwood_greybox_v1",
+  "map_revision": 1,
+  "portals": [
+    {
+      "id": "BW-V01",
+      "position_q10": [
+        52224,
+        67584,
+        0
+      ]
+    },
+    {
+      "id": "BW-V02",
+      "position_q10": [
+        78848,
+        63488,
+        0
+      ]
+    }
+  ],
+  "predators": [
+    {
+      "id": "BW-P01",
+      "position_q10": [
+        34816,
+        45056,
+        0
+      ]
+    },
+    {
+      "id": "BW-P02",
+      "position_q10": [
+        96256,
+        45056,
+        0
+      ]
+    },
+    {
+      "id": "BW-P03",
+      "position_q10": [
+        98304,
+        83968,
+        0
+      ]
+    },
+    {
+      "id": "BW-P04",
+      "position_q10": [
+        32768,
+        83968,
+        0
+      ]
+    }
+  ],
+  "profile": "BLACKWOOD_GREYBOX_CANDIDATE_DATA",
+  "regions": [
+    {
+      "bounds_q10": [
+        8192,
+        8192,
+        65536,
+        65536
+      ],
+      "id": "BW-R00"
+    },
+    {
+      "bounds_q10": [
+        65536,
+        8192,
+        122880,
+        65536
+      ],
+      "id": "BW-R01"
+    },
+    {
+      "bounds_q10": [
+        8192,
+        65536,
+        65536,
+        122880
+      ],
+      "id": "BW-R02"
+    },
+    {
+      "bounds_q10": [
+        65536,
+        65536,
+        122880,
+        122880
+      ],
+      "id": "BW-R03"
+    }
+  ],
+  "reinforcements": [
+    {
+      "id": "BW-RI01",
+      "position_q10": [
+        32768,
+        45056,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI02",
+      "position_q10": [
+        45056,
+        30720,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI03",
+      "position_q10": [
+        86016,
+        30720,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI04",
+      "position_q10": [
+        98304,
+        45056,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI05",
+      "position_q10": [
+        98304,
+        86016,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI06",
+      "position_q10": [
+        98304,
+        98304,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI07",
+      "position_q10": [
+        32768,
+        98304,
+        0
+      ]
+    },
+    {
+      "id": "BW-RI08",
+      "position_q10": [
+        32768,
+        86016,
+        0
+      ]
+    }
+  ],
+  "reserved_corridors": [
+    {
+      "bounds_q10": [
+        34816,
+        86016,
+        96256,
+        98304
+      ],
+      "id": "BW-X01"
+    },
+    {
+      "bounds_q10": [
+        36864,
+        32768,
+        45056,
+        98304
+      ],
+      "id": "BW-X02"
+    },
+    {
+      "bounds_q10": [
+        86016,
+        32768,
+        94208,
+        98304
+      ],
+      "id": "BW-X03"
+    },
+    {
+      "bounds_q10": [
+        36864,
+        32768,
+        94208,
+        40960
+      ],
+      "id": "BW-X04"
+    }
+  ],
+  "schema_version": 1,
+  "source_plan_sha256": "44f272bfb2f50b44bece0601153627c161c79405dbc44f1131b3477789cd5b51",
+  "source_report_sha256": "33b29fc02f340a62b7aa6fce6d74574f735dd1a95a51c658c0b870270c3be9e3",
+  "walkers": [
+    {
+      "id": "BW-I01",
+      "position_q10": [
+        47104,
+        51200,
+        0
+      ]
+    },
+    {
+      "id": "BW-I02",
+      "position_q10": [
+        59392,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-I03",
+      "position_q10": [
+        83968,
+        51200,
+        0
+      ]
+    },
+    {
+      "id": "BW-I04",
+      "position_q10": [
+        71680,
+        47104,
+        0
+      ]
+    },
+    {
+      "id": "BW-I05",
+      "position_q10": [
+        47104,
+        77824,
+        0
+      ]
+    },
+    {
+      "id": "BW-I06",
+      "position_q10": [
+        59392,
+        73728,
+        0
+      ]
+    },
+    {
+      "id": "BW-I07",
+      "position_q10": [
+        83968,
+        77824,
+        0
+      ]
+    },
+    {
+      "id": "BW-I08",
+      "position_q10": [
+        71680,
+        73728,
+        0
+      ]
+    },
+    {
+      "id": "BW-I09",
+      "position_q10": [
+        59392,
+        57344,
+        0
+      ]
+    },
+    {
+      "id": "BW-I10",
+      "position_q10": [
+        71680,
+        57344,
+        0
+      ]
+    },
+    {
+      "id": "BW-I11",
+      "position_q10": [
+        59392,
+        67584,
+        0
+      ]
+    },
+    {
+      "id": "BW-I12",
+      "position_q10": [
+        71680,
+        63488,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# D171 — Consolidate actual P0 evidence against existing gates
+
+Release Engine T144 notes-only closure packet now that the same-source clean build pair and actual corrected normal_pair are accepted. This is a mapping of existing requirements/evidence, not another forest audit, new verification gate, acceptance waiver, P0 acceptance or production release. Preserve the full eight-player browser MVP and all actual measurement/human requirements.
+
+Use current accepted D128/D139/D165/D167 evidence plus existing T015 normal/impaired consolidation and platform baseline. Identify where newer artifacts supersede older evidence and where historical observations do not prove the current candidate. MAIN needs a concise disposition recommendation for each integrated P0 ticket/phase criterion and the smallest dependency-ordered remaining work. Do not reopen passed source/fixture reviews, fabricate missing measurements or create tickets/dispatch. QA hold and pending owner movement preference remain; Player T143 preparation continues independently.

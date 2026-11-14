@@ -1,0 +1,3 @@
+# D440 — Receive the actual-client page source
+
+MAIN receives stable T261 handoff and closes World's write lease. Reviewed the complete HTML and README usage: actual candidate index.js, bundle-relative locateFile for Wasm/data, real canvas/load/error/exit hooks, focus-only pointer listener, genuine packaged controls, no fabricated join/spawn/boot capability. Requested plain player status copy is present. MAIN extracted the inline script and SDK Node --check returned0. This is source/syntax acceptance only, not a rendered-page or playable-game claim. Immutable candidate unchanged; no service/browser started. Owner response on Player/T167 hold remains pending, QA paused. T262 original walker data generation continues independently.

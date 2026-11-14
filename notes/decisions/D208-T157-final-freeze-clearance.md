@@ -1,0 +1,9 @@
+# D208 — T157 private spread stream final freeze clearance
+
+MAIN reviewed the T157 source/harness and retained evidence with no findings. Scoped independent review: notes/reviews/T157-independent-source-review-1.md SHA256cc4ef465e1dab5b138fda9ed361f3e96562a4de9bdc2d7bb86737386bcc4f4dc. MAIN independently decoded all9343 recorded requests and recomputed every40-byte response, including all256 continued streams and batch boundaries; native/Wasm/worker-oracle agree exactly, each373720bytes/SHA25679d8cd3111acd29d2649b7aec1983e9283792d1b9ef73c4d8ff59defb455c980. Receipt: notes/reviews/MAIN-T157-independent-oracle-review-1.json. No production driver or compiled target was rerun during review.
+
+Reviewed production header SHA54eacd6a645ed9daeae9246d3957933fecd9b5c50434e3639fa07e49cc754acd, source SHAada3b2373ccf20bc37af7658e242d9cb77de788fed8c60e045c9bf6a5a21a29b. Other five source/harness/docs and result/plan/corpus/dependency/process/protected snapshots remain the exact review-ready handoff pins; result SHA53e4748540628753fa0ac0d57d553ee44fcc9f0a2889b772705a27a35ef476b0.
+
+AI-Director may append ONLY final inventory/receipt/freeze under existing tests/outbreak/spread/T157/attempt-1 and one new own handoff. Preserve all existing reviewed source/harness/doc/attempt bytes. Bind entire owned test graph and both production files, accepted core/hash dependencies, and exact current authority/review/handoff references. Reserve the direct self-slot before parent metadata capture and name its only self exclusion; preserve earlier inventories as historical. No project import, source/header extension, compile/test rerun, cache regeneration, consumer or integration work. Submit final graph and stop for MAIN acceptance.
+
+No real secret lifecycle/entropy, public Seed4/MatchInit, cone/shot/eligibility/ordinal/commit, statistical/cryptographic-strength, gameplay/P0/performance/human acceptance follows. QA/runtime holds unchanged.

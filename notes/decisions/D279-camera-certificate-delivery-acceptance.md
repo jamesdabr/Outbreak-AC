@@ -1,0 +1,9 @@
+# D279 — Accept the conditional camera placement certificate
+
+Accept T1791.1 MATHEMATICAL DELIVERY ONLY. Final25105-byte proof SHA2568a2e0563c2aa7e1ae645fbe6736166211b80eb60ba495eaf389ef7ade5352d61; handoffe9c4f1e83a9dc352659596240ce5f39edfffa07f1cd33b39b338453de55347de. Independent review `notes/reviews/T179-camera-placement-certificate-review-1.md` SHA256eae9bce6670768619c95b5853b35779a61138a72089e927326dcc07dc5ea038f found no defect in the CONDITIONAL theorem. MAIN reviewed the distance-to-entire-set, initial nonclosing-touch, floorQ32/ceilbackoff/nearest-displacement and all-angle bounds plus paired interpolation/provenance qualifications.
+
+The radius360 computational sweep supplies a feature-independent rounding reserve for physical radius358: before exact first contact, distance>=360; nearest-displacement rounding error<=sqrt3/2<1 preserves distance>358. Backoffceil(33Q/floorLength) gives more than31 projected original-boom units after rounding for nonclamped Hit; clamp-to-eye is separately safe and has no positive-margin promise. This is not31 normal clearance or a radius358 contact witness. Full exact query completeness/initial nonpenetration remains a premise.
+
+Paired positive whole-coordinate height/eye interpolation has inscribed eye-sphere minimum564 under feasible living body/same opaque geometry/revision. Full source/caller/observer/transition invariants are NOT established merely by this proof or independent scalar limits. Weak scalar-valid counterexample is honestly labeled; no arbitrary observer/free camera/old render interpolation is admitted by inference.
+
+All T179 leases CLOSED. No code/API/value/algorithm/adoption, G2/consumer/transaction/browser/human acceptance or other effect follows from mathematical delivery alone. A separate MAIN interface/behavior amendment may select the candidate and exact caller obligations. Old T176 insufficient along-boom-only argument remains history, not repaired evidence. Holds unchanged.

@@ -1,0 +1,5 @@
+# D124 — Release Engine normal-pair controller preparation
+
+MAIN received terminal T110 addendum/handoff/freeze and independently matched exact final SHA bb10cc027171ed4b7a34b0d25e6035beb7ce54ae56dfe2749aa10f1354dce58f and handoff70155895f5a2f3066fce12a48de163219ddce800ddb059f9bc956d4e5e26afe6. Final static review is in progress; T110/T108 proposals SUBMITTED, not final adopted interfaces. Frozen source/notes stay immutable and any needed revision gets separate authority. T002/full P0/gameplay gates remain unchanged.
+
+T110 notes assignment is terminal, satisfying the sequencing condition in T117. RELEASE T1171.0 to Engine under APPROVED CANDIDATE_PAIR_SMOKE0.1/D123 for NEW controller preparation/guarded fixtures only. T113 fixed API contract is its preparation seam; real accepted implementation integration/actual artifacts/runtime pins remain later gates. Existing three workers have independent nonoverlapping ownership. No gameplay source, actual controller CLI/native/browser/network/service, held T103 capability/cache/CDP/GPU/RSS or QA work is authorized. Actual T116 build continues solely under its own prior exact release.

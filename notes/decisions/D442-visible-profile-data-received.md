@@ -1,0 +1,5 @@
+# D442 — Receive the Blackwood and walker data pack
+
+MAIN receives stable T263 and closes World source/data lease. Inspected complete assembler/README/handoff and independently read all88 output files: exact membership, byte lengths and SHA256 values match the manifest. 522458raw bytes; manifest SHA256 f6f8c35de674a2956354fc4c3b6eb38aa16d258df6072d5d030b2a78f0297b4e. This is data acceptance only, no engine/gameplay acceptance. Old packs and first-playable-1 unchanged.
+
+Visible-client compile/link, player-page source and original infected art/pack preparation are complete within their limited scopes. Actual first living-character Blackwood baseline still needs genuine server join/spawn. Owner question on resuming held Player/T167 preparation is pending; QA remains paused. All current visible preparation workers are terminal/idle. MAIN will not transfer held native work, launch an unapproved runtime, fabricate a living actor or invent more audit work while that hold is unresolved. Full MVP goal remains incomplete and active; this is the first turn at an impasse after completing independent visible work.

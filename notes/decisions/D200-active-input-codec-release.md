@@ -1,0 +1,5 @@
+# D200 — Release portable active Input28 codec T156
+
+MAIN reviewed the stable scoped advisory SHA380bc105af0ed13c1b0a54432d01ba0b60ed45707c6d49a877c38757255ae00b against H InputFrame and W Input28, then adopts ACTIVE_INPUT_CODEC_FOUNDATION0.1 and releases Engine T156. The exact28-byte values/field layout are preserved. Assigning Held/InputFrame to new p1_input.h is a deliberate technical home/include-graph choice for this adopted subset, overriding an unadopted future proposal home without reopening accepted core/rules source or changing gameplay values.
+
+The two pure codec functions add structural validation/serialization only. No packet/batch/transport/admission authority, timestamp eligibility, actor identity grant, phase/life transition or live service is authorized. Native/Wasm unit work is isolated under explicit source/tool/budget scope, like accepted prior prerequisites, before full P0. T154 actual protection checks are already closed; its final owned graph excludes this disjoint new source. T155 query work is independent. All full phase/human/QA/runtime approvals remain.

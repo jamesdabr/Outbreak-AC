@@ -1,0 +1,44 @@
+{
+  "sdk_root": "/private/tmp/outbreak-web-sdk",
+  "sdk_version": "7.0.0",
+  "cache_source": "web/build/.cache",
+  "output": "web/visible/candidates/stock-combat-1",
+  "manifest": "web/assets/stock-combat-profile/manifest.json",
+  "manifest_sha256": "8e8ab354b21260cc2393e5d9cb0da29c860ea869231be11e88e81706719ecd7e",
+  "pack_root": "web/assets/stock-combat-profile/pack-root",
+  "pack_files": 97,
+  "shell": "web/build/blackwood/shell.html",
+  "js_library": "web/transport/enet_websocket.js",
+  "common_cxx": [
+    "--target=wasm32-unknown-emscripten",
+    "-std=gnu++11",
+    "-fsigned-char",
+    "-O2",
+    "-DOUTBREAK_NETWORK_CLIENT",
+    "-DOUTBREAK_BLACKWOOD_CLIENT"
+  ],
+  "common_c": [
+    "--target=wasm32-unknown-emscripten",
+    "-O2",
+    "-DHAS_SOCKLEN_T=1",
+    "-std=gnu11",
+    "-fsigned-char",
+    "-DOUTBREAK_NETWORK_CLIENT"
+  ],
+  "ports": [
+    "-sUSE_SDL=2",
+    "-sUSE_SDL_IMAGE=2",
+    "-sSDL2_IMAGE_FORMATS=[\"png\"]",
+    "-sUSE_ZLIB=1",
+    "-sUSE_VORBIS=1"
+  ],
+  "link": [
+    "-O2",
+    "-lopenal",
+    "-sLEGACY_GL_EMULATION=1",
+    "-sGL_UNSAFE_OPTS=0",
+    "-sALLOW_MEMORY_GROWTH=1",
+    "-sINITIAL_MEMORY=67108864",
+    "-sSTACK_SIZE=2097152"
+  ]
+}

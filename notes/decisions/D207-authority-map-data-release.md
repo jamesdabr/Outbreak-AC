@@ -1,0 +1,9 @@
+# D207 — Release Blackwood authority-data prerequisite T158
+
+MAIN reviewed stable advisory SHAf921fbe237d38ffc9d7242a85ae12489e3387990a9a3e9db101f1136c0abee39 and accepted immutable source/input pins, then approves AUTHORITY_MAP_DATA0.1 and assigns Engine T158. Only G0 data and actual map_import instance proof are adopted; full World queries/unfinished packet2 are independent. Initial Engine writer ownership is explicit; World later reads accepted data under separate lease. New output root/ticket/contract were absent and importer/advisory hashes verified before release.
+
+MAIN separately bounded-decompressed accepted734-byte CGZ into6650 raw bytes and decoded canonical reference cells/anchors/geometry using stdlib only. Receipt MAIN-G0-authority-source-oracle-1.json is source-derived review evidence, NOT native/Wasm/runtime proof. T158 must independently reproduce and compare complete actual unchanged C++ decoder outputs on both targets before data decoder claims become true.
+
+MAIN narrows publication mechanism to exclusive data-directory reservation/per-file creation and a refusal-marker/PASS/outer-exit/later-acceptance gate, avoiding a false exclusive-no-replace POSIX directory-rename assumption. Runtime inventory is explicitly historical before later authorized freeze records. No mathematical/schema/hash scope/radius/geometry/input bytes or product acceptance threshold changed. Actual copied source notices remain scoped and unmodified; no new startup/mounting/grants or accepted-asset mutation.
+
+Bounded inspected same-project native/Wasm data-unit work may precede complete P0 like existing primitives. No app/server/browser/network execution, OS entropy, resource calibration, capsule/nav/balance/renderer/gameplay/performance/human acceptance. All QA/runtime approval holds remain.

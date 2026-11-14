@@ -1,0 +1,442 @@
+[
+  {
+    "name": "ac_africa",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_alcove",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_aqueous",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_arabian",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_arctic",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_arctic2",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_arid",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_avenue",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_coal",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_complex",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "By makkE, Copyright 2004, Email: makk_e@web.de"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_depot",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "By Mike \"MitaMAN\" Poeschl (mitaman1@optonline.net), June 11,"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_desert",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "By makkE & Arghvark, Copyright 2004, Email: makk_e@web.de"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_desert2",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "by Nieb"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_desert3",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "by Nieb"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_douze",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "By makkE & Stanze, Copyright 2004, Email: makk_e@web.de"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_dusk",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_edifice",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_elevation",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "(c) A&D_Shadow"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_gothic",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_industrial",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_ingress",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_kazemat",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_keller",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": "By Mr.Floppy (cf1984@live.de)"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_lainio",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_lotus",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-sa-3.0",
+        "comment": "map edited for AssaultCube (thanks original authors)"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_mines",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "By makkE, Copyright 2004, Email: makk_e@web.de"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_nocturne",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_origin",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_outpost",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": "Mapped by: Halo, jiba, sunnyd, R4zor, Ruthless, Mr.Floppy"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_power",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "edited by makkE, custom media by wotwot, makkE and Toca"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_rampart",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_rattrap",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": "by Pablo \"RatBoy\" Ciamarra, E-mail: ratboymaps@gmail.com"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_scaffold",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_shine",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_snow",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_stellar",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_sunset",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_swamp",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-sa-3.0",
+        "comment": "edited for AssaultCube (thanks original authors)"
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_terros",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_toxic",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_urban",
+    "mapinfo": [
+      {
+        "license": "ac-default",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_venison",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_wasteland",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": ""
+      }
+    ],
+    "embedded_config_comments": []
+  },
+  {
+    "name": "ac_werk",
+    "mapinfo": [
+      {
+        "license": "cc-by-nc-nd-3.0",
+        "comment": "By Mr.Floppy (cf1984@live.de)"
+      }
+    ],
+    "embedded_config_comments": []
+  }
+]

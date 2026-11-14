@@ -1,0 +1,5 @@
+# D458 — One bounded owned-PID signal check
+
+The real D455 compiler child exited/reaped cleanly, but sandbox killpg returned EPERM. Before considering broader runtime permission, MAIN releases one narrow ordinary local check of signaling an exact original owned PID: fixed /bin/sleep 2, fresh session, no poll/reap before positive-PID SIGTERM, bounded original wait, then read-only group-absence observation. A denied signal is recorded and the finite sleep is allowed to terminate; no broad/group mutating signal, PID discovery or other process is touched.
+
+Exact inspected inline Python3.11 -I -S -B source, repository cwd; sole new record notes/preflight/MAIN-owned-pid-signal-check-1.json, refuse occupied before spawn. No network/server/browser/compiler/FFI/SDK/framework/Git or QA probe. This developer process-ownership observation is separate from held QA/T149/browser capability work. One invocation only; actual exit/reap/absence evidence determines the result, no assumed permission or retry. It does not authorize live services or change T272's scope.

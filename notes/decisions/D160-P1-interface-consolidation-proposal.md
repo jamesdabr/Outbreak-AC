@@ -1,0 +1,5 @@
+# D160 — Consolidate selected P1 decisions for MAIN adoption review
+
+Release T1391.0 to AI-Director for notes-only consolidation of existing P1 proposals and MAIN-selected D150 changes. This addresses pending final typed interface adoption while Engine independently performs T138 guarded correction. Preserve P0 prerequisites and all gameplay/numeric/resource acceptance requirements. No production implementation, new algorithm, parameter change, public interface adoption or worker authority to amend contracts.
+
+Deliver one reviewable precedence/integration addendum with exact existing proposal hashes and literal replacement clauses for D150's private remaining-tail hold/branch restoration/arithmetic qualification. Identify truly unresolved adoption blockers once, with concrete proposed resolution or evidence still required; distinguish implementation/acceptance proof obligations from missing contract definitions. Do not start another unbounded mathematical/resource research cycle, broaden solver behavior, or fabricate proof. MAIN alone will approve final interfaces and release production tickets after required gates.

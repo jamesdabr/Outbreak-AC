@@ -1,0 +1,5 @@
+# D439 — Supply the missing infected visual
+
+MAIN receives T260's code-path inspection: legacy bots are client-driven player actors, not reusable authoritative infected; the approved Blackwood pack has walker audio but lacks a walker model/skin. Accept T260 as inspection only. Its architectural references guide later server implementation, not gameplay acceptance.
+
+Approve VISIBLE_SLICE0.3 isolated original walker asset production before the visible baseline. This fills a concrete missing render input without implementing enemy simulation, selecting P2 balance, changing approved packs or accepting P2. AI T262 owns only NEW web/assets/walker/ files and own notes. Reuse the original MIT T041 procedural model encoding conventions, not stock assets or new dependencies. Author a recognizable unarmed low-poly infected humanoid, distinguishable from the survivor, with real idle/walk/attack/pain/fall/dead poses and native animation config. Generation is local stdlib data production after worker inspection, with exact new outputs; no toolchain, browser, server, process, network or asset pack assembly effects. Keep future integration separate.

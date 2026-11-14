@@ -1,0 +1,11 @@
+# D341 — Record T205's found independent candidate
+
+MAIN records the one D340 operation as RECORDED FOUND CANDIDATE, UNADOPTED. T2051.2 closes all effect/protection/source leases. Original owned tool session24412/chunks194ac8 then933904, terminal parent exit0. Direct child2259 actual wait0/exit0/reaped, both pipes EOF/closed, no errors/signals/discarded/unretained bytes. Captured stdout13192/SHA256211e5c799f8ed942849c1959420f39b46d38b4b2738b7c8dd5589484cc35dd2c; stderr0. Parent elapsed1.699468791950494 is an observation, not OS CPU/RSS/game performance.
+
+MAIN independently matched all12 internal/14 external original/current descriptor identities/hashes, ten snapshots and18 ordinary0644 files262550 bytes. Resultcf7075c30af8cdaab6c3e8c017cd97a73184bc3007e22a72f6156227227a36e7; MAIN actual review7b7564774e9a1efb3c042a45f2d00efc352a01fdf9409c3f49efa20731a10ad4 and preflight281c7fc79438a1641d56c3457c94695222ec32cab4d7d228664a0386801dbec6. Original tool objects are separately retained. No restart/repair/overwrite or camera/query/corpus run occurred.
+
+Found after7573 aims/1938554 X entries, with one full certificate/eight variants/sixteen body checks; no eligible Z mode encountered. This is first-found, not domain exhaustion. Base data: yaw32768,pitch-428,D(-1280,6127,766),L6305,k22479607,modeX,h256,M16777216,j121,qs2038431744,qf2060911351,g2940,v6127,Eye(33894,62236,8192). Source reports full-target/body/half certificates; parent typed-schema checks and this operational readback do not replace independent mathematical proof.
+
+Assign MAIN's independent reviewer /root/review_head_equality to review the ACTUAL13192-byte candidate as DATA against original accepted angle data/rig/domain/wholeF1 geometry, all eight rotations/translations, BOTH bodies/positive absolute half discrepancy/true first-priority/row associations. Only NEW own review note may be written; fixed named DATA reads/paper arithmetic allowed, no mirror/program/oracle/search/compiler/query/runtime or existing source/evidence mutation. Any proposed row adoption remains MAIN's later explicit decision.
+
+Preserve T205 source/plan/math-1/raw/snapshots/receipts unchanged. No further invocation or seed adoption follows automatically. Original32/4096/64/94/fullG2/currentG1/camera/normal-frame/caller/browser/gameplay/human/held-worker gates remain.

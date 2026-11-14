@@ -1,0 +1,7 @@
+# D205 — Accept active Input28 codec T156
+
+MAIN accepts T156 after independent source/harness review with no findings, full67421-response struct/integer oracle reconstruction matching actual native/Wasm outputs, and exact final graph verification. Freeze521992bytes/SHA2564b17f209c528845de8bffbe0ab8b7d98697a91d028dec2ea09f414aa1dfa567f binds1950 ordinary member files/117 directories/no links, plus its one direct self-file exclusion (1951 total ordinary files). All recorded owned metadata/content and named authority/core/terminal-receipt bindings matched before ticket status change. See notes/reviews/MAIN-T156-final-freeze-review.json and independent oracle receipt.
+
+Production header SHAe8ad0291d5cb33d68b4ed8050daf1684fbbb03d40eb0b735305940278095bddd; source SHAee6bfe1c507f07802284661a54ca71b18cc4a4d7c6773393a87404160d576310. Exact Held/InputFrame home is p1_input.h; core remains unchanged. All66432 decode/989 encode cases passed, including complete pitch/axis cases and append/guard/refusal preservation. No compiler/test rerun during final review.
+
+This accepts pure28-byte serialization/structural validation only, not full envelopes/batches, protocol admission/window/life/age/phase eligibility, networking, simulation, gameplay, P0/performance/human behavior. Source/frozen evidence now immutable; Engine has no further T156 writes. Future consumer/extension/ownership requires separate MAIN release. QA/T149/actual RSS/runtime holds unchanged.

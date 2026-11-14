@@ -1,0 +1,3 @@
+# D151 — Return T103 in-scope findings before freeze
+
+T103 REVIEW-READY1 four hashes and independent79-fixture test reviewed; tests pass but static integration review found four concrete gaps listed in MAIN-T103-review-ready-1-findings.md. Return to Player for correction within existing unfrozen T1031.2 exclusive files/preparation lease. Preserve all preparation-1/reference evidence and old source histories; no freeze clearance or actual probe. No governing capability0.2/D108 policy change, dependencies, browser flags, new network scope or public interface. Actual installed support remains unproven. Review-ready-before-freeze remains required. QA human hold unchanged.

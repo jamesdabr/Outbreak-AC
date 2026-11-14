@@ -1,0 +1,3883 @@
+{
+  "models": [
+    {
+      "slot": 0,
+      "name": "makke/barrel",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel/tris.md3",
+          "exists": true,
+          "bytes": 5220
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel/skin.jpg",
+          "exists": true,
+          "bytes": 46813
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/barrel/md3.cfg",
+        "exists": true,
+        "bytes": 173
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "12"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Barrel"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 3 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 12\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Barrel\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 3 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 1,
+      "name": "makke/barrel_fallen",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel_fallen/tris.md3",
+          "exists": true,
+          "bytes": 5220
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel/skin.jpg",
+          "exists": true,
+          "bytes": 46813
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/barrel_fallen/md3.cfg",
+        "exists": true,
+        "bytes": 233
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "../barrel/skin.jpg"
+        ],
+        [
+          "mdlshadowdist",
+          "12"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Barrel, knocked over"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 2 0 0"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin * ../barrel/skin.jpg\nmdlshadowdist 12\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Barrel, knocked over\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 2,
+      "name": "makke/barrel_newsteel",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel/tris.md3",
+          "exists": true,
+          "bytes": 5220
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel_newsteel/skin.jpg",
+          "exists": true,
+          "bytes": 25842
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/barrel_newsteel/md3.cfg",
+        "exists": true,
+        "bytes": 227
+      },
+      "commands": [
+        [
+          "md3load",
+          "../barrel/tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "./skin.jpg"
+        ],
+        [
+          "mdlshadowdist",
+          "12"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Steel barrel"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 3 0 0"
+        ]
+      ],
+      "config_text": "md3load ../barrel/tris.md3\nmd3skin * ./skin.jpg\nmdlshadowdist 12\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Steel barrel\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 3 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 3,
+      "name": "makke/barrel_newsteel_fallen",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel_fallen/tris.md3",
+          "exists": true,
+          "bytes": 5220
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/barrel_newsteel/skin.jpg",
+          "exists": true,
+          "bytes": 25842
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/barrel_newsteel_fallen/md3.cfg",
+        "exists": true,
+        "bytes": 265
+      },
+      "commands": [
+        [
+          "md3load",
+          "../barrel_fallen/tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "../barrel_newsteel/skin.jpg"
+        ],
+        [
+          "mdlshadowdist",
+          "12"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Steel barrel, knocked over"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 2 0 0"
+        ]
+      ],
+      "config_text": "md3load ../barrel_fallen/tris.md3\nmd3skin * ../barrel_newsteel/skin.jpg\nmdlshadowdist 12\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Steel barrel, knocked over\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg"
+      ]
+    },
+    {
+      "slot": 4,
+      "name": "makke/bench_seat",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/bench_seat/tris.md3",
+          "exists": true,
+          "bytes": 8068
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/bench_seat/skin.jpg",
+          "exists": true,
+          "bytes": 20753
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/bench_seat/md3.cfg",
+        "exists": true,
+        "bytes": 172
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Park bench"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "3 2 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlattribute keywords \"street\"\nmdlattribute desc \"Park bench\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"3 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 5,
+      "name": "makke/bolt_nut",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/bolt_nut/tris.md3",
+          "exists": true,
+          "bytes": 1412
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/bolt_nut/skin.jpg",
+          "exists": true,
+          "bytes": 14396
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/bolt_nut/md3.cfg",
+        "exists": true,
+        "bytes": 137
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Nut"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlshadowdist 2\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Nut\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 6,
+      "name": "makke/broken_wood",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/broken_wood/tris.md3",
+          "exists": true,
+          "bytes": 1812
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/broken_wood/skin.jpg",
+          "exists": true,
+          "bytes": 19740
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/broken_wood/md3.cfg",
+        "exists": true,
+        "bytes": 125
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Broken wood"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"litter\"\nmdlattribute desc \"Broken wood\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 7,
+      "name": "makke/coke_can",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/coke_can/tris.md3",
+          "exists": true,
+          "bytes": 3140
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/coke_can/skin.jpg",
+          "exists": true,
+          "bytes": 22192
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/coke_can/md3.cfg",
+        "exists": true,
+        "bytes": 133
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Can"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlshadowdist 2\nmdlattribute keywords \"litter\"\nmdlattribute desc \"Can\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 8,
+      "name": "makke/coke_can_fallen",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/coke_can_fallen/tris.md3",
+          "exists": true,
+          "bytes": 3140
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/coke_can/skin.jpg",
+          "exists": true,
+          "bytes": 22192
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/coke_can_fallen/md3.cfg",
+        "exists": true,
+        "bytes": 191
+      },
+      "commands": [
+        [
+          "md3load",
+          "./tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "../coke_can/skin.jpg"
+        ],
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Can, fallen"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ./tris.md3\nmd3skin * ../coke_can/skin.jpg\nmdlshadowdist 2\nmdlattribute keywords \"litter\"\nmdlattribute desc \"Can, fallen\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 9,
+      "name": "makke/drainpipe",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/drainpipe/tris.md3",
+          "exists": true,
+          "bytes": 2412
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/drainpipe/skin.jpg",
+          "exists": true,
+          "bytes": 15458
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/drainpipe/md3.cfg",
+        "exists": true,
+        "bytes": 154
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "pipes"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Drainpipe"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 8 0 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"pipes\"\nmdlattribute desc \"Drainpipe\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"0 8 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 10,
+      "name": "makke/fence_chainlink",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/fence_chainlink/tris.md3",
+          "exists": true,
+          "bytes": 12132
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/fence_chainlink/skin.jpg",
+          "exists": true,
+          "bytes": 38043
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/fence_chainlink/md3.cfg",
+        "exists": true,
+        "bytes": 197
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "fence",
+          "skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "fencing"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wire fence"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 8 0 0"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin fence skin.jpg\nmdlattribute keywords \"fencing\"\nmdlattribute desc \"Wire fence\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 8 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 11,
+      "name": "makke/fence_chainlink_post",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/fence_chainlink_post/tris.md3",
+          "exists": true,
+          "bytes": 1300
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/fence_chainlink/skin.jpg",
+          "exists": true,
+          "bytes": 38043
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/fence_chainlink_post/md3.cfg",
+        "exists": true,
+        "bytes": 224
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "fencepost",
+          "../fence_chainlink/skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "fencing"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wire fencepost"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 8 0 0"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin fencepost ../fence_chainlink/skin.jpg\nmdlattribute keywords \"fencing\"\nmdlattribute desc \"Wire fencepost\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 8 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 12,
+      "name": "makke/flyer_environmental",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/flyer_propaganda/tris.md3",
+          "exists": true,
+          "bytes": 428
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/flyer_environmental/skin.jpg",
+          "exists": true,
+          "bytes": 7060
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/flyer_environmental/md3.cfg",
+        "exists": true,
+        "bytes": 180
+      },
+      "commands": [
+        [
+          "md3load",
+          "../flyer_propaganda/tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Tree flyer"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ../flyer_propaganda/tris.md3\nmd3skin * skin.jpg\nmdlattribute keywords \"litter\"\nmdlattribute desc \"Tree flyer\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 13,
+      "name": "makke/flyer_propaganda",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/flyer_propaganda/tris.md3",
+          "exists": true,
+          "bytes": 428
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/flyer_propaganda/skin.jpg",
+          "exists": true,
+          "bytes": 2683
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/flyer_propaganda/md3.cfg",
+        "exists": true,
+        "bytes": 119
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Flyer"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"litter\"\nmdlattribute desc \"Flyer\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 14,
+      "name": "makke/fuel_tank",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/fuel_tank/tris.md3",
+          "exists": true,
+          "bytes": 4476
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/fuel_tank/skin.jpg",
+          "exists": true,
+          "bytes": 63561
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/fuel_tank/md3.cfg",
+        "exists": true,
+        "bytes": 205
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Gastank"
+        ],
+        [
+          "mdlattribute",
+          "usage",
+          "To clip: 'newent clip 0 3 7 5' in the middle of the model."
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"industrial\"\nmdlattribute desc \"Gastank\"\nmdlattribute usage \"To clip: 'newent clip 0 3 7 5' in the middle of the model.\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 15,
+      "name": "makke/grass_long",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_long/tris.md3",
+          "exists": true,
+          "bytes": 2196
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_long/skin.jpg",
+          "exists": true,
+          "bytes": 6734
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/grass_long/md3.cfg",
+        "exists": true,
+        "bytes": 125
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "plants"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Grass, long"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"plants\"\nmdlattribute desc \"Grass, long\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 16,
+      "name": "makke/grass_short",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_short/tris.md3",
+          "exists": true,
+          "bytes": 1572
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_short/skin.jpg",
+          "exists": true,
+          "bytes": 4685
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/grass_short/md3.cfg",
+        "exists": true,
+        "bytes": 126
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "plants"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Grass, short"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"plants\"\nmdlattribute desc \"Grass, short\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 17,
+      "name": "makke/grass_short_dry",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_short/tris.md3",
+          "exists": true,
+          "bytes": 1572
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/grass_short_dry/skin.jpg",
+          "exists": true,
+          "bytes": 4500
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/grass_short_dry/md3.cfg",
+        "exists": true,
+        "bytes": 183
+      },
+      "commands": [
+        [
+          "md3load",
+          "../grass_short/tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "./skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "plants"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Grass, short dry"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ../grass_short/tris.md3\nmd3skin * ./skin.jpg\nmdlattribute keywords \"plants\"\nmdlattribute desc \"Grass, short dry\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 18,
+      "name": "makke/grate_hor",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/grate_hor/tris.md3",
+          "exists": true,
+          "bytes": 1684
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/grate_hor/skin.jpg",
+          "exists": true,
+          "bytes": 20668
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/grate_hor/md3.cfg",
+        "exists": true,
+        "bytes": 137
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Grate, horizontal 1"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"industrial\"\nmdlattribute desc \"Grate, horizontal 1\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 19,
+      "name": "makke/grate_vert",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/grate_vert/tris.md3",
+          "exists": true,
+          "bytes": 1684
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/grate_hor/skin.jpg",
+          "exists": true,
+          "bytes": 20668
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/grate_vert/md3.cfg",
+        "exists": true,
+        "bytes": 186
+      },
+      "commands": [
+        [
+          "md3load",
+          "./tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "../grate_hor/skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Grate, vertical 1"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ./tris.md3\nmd3skin * ../grate_hor/skin.jpg\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Grate, vertical 1\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 20,
+      "name": "makke/hook",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/hook/tris.md3",
+          "exists": true,
+          "bytes": 6692
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/hook/skin.jpg",
+          "exists": true,
+          "bytes": 17760
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/hook/md3.cfg",
+        "exists": true,
+        "bytes": 122
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hook"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"industrial\"\nmdlattribute desc \"Hook\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 21,
+      "name": "makke/lightbulb",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/lightbulb/tris.md3",
+          "exists": true,
+          "bytes": 4340
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/lightbulb/skin.jpg",
+          "exists": true,
+          "bytes": 13197
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/lightbulb/md3.cfg",
+        "exists": true,
+        "bytes": 122
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "lamps"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Lightbulb"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"lamps\"\nmdlattribute desc \"Lightbulb\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 22,
+      "name": "makke/locker",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/locker/tris.md3",
+          "exists": true,
+          "bytes": 2508
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/locker/skin.jpg",
+          "exists": true,
+          "bytes": 71349
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/locker/md3.cfg",
+        "exists": true,
+        "bytes": 152
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "office"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Locker"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 6 0 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"office\"\nmdlattribute desc \"Locker\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 6 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 23,
+      "name": "makke/office_chair",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/office_chair/tris.md3",
+          "exists": true,
+          "bytes": 7116
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/office_chair/skin.jpg",
+          "exists": true,
+          "bytes": 8769
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/office_chair/md3.cfg",
+        "exists": true,
+        "bytes": 174
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "4"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "office"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Office chair"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 2 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 4\nmdlattribute keywords \"office\"\nmdlattribute desc \"Office chair\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"1 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 24,
+      "name": "makke/platform",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/platform/tris.md3",
+          "exists": true,
+          "bytes": 2932
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/platform/skin.jpg",
+          "exists": true,
+          "bytes": 16610
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/platform/md3.cfg",
+        "exists": true,
+        "bytes": 217
+      },
+      "commands": [
+        [
+          "mdlcachelimit",
+          "16"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdltrans",
+          "0",
+          "0",
+          "0.1975"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "platforms"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Platform 8x8 1"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "4 1 0 0"
+        ]
+      ],
+      "config_text": "mdlcachelimit 16\nmdlvertexlight 1\nmdltrans 0 0 0.1975\nmdlattribute keywords \"platforms\"\nmdlattribute desc \"Platform 8x8 1\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"4 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 25,
+      "name": "makke/roadblock_graffiti",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/roadblock/tris.md3",
+          "exists": true,
+          "bytes": 1220
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/roadblock_graffiti/skin.jpg",
+          "exists": true,
+          "bytes": 94773
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/roadblock_graffiti/md3.cfg",
+        "exists": true,
+        "bytes": 196
+      },
+      "commands": [
+        [
+          "md3load",
+          "../roadblock/tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "./skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Roadblock/barrier with graffiti"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ../roadblock/tris.md3\nmd3skin * ./skin.jpg\nmdlattribute keywords \"street\"\nmdlattribute desc \"Roadblock/barrier with graffiti\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 26,
+      "name": "makke/signs/no_camping",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/signs/no_camping/tris.md3",
+          "exists": true,
+          "bytes": 2260
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/signs/no_camping/skin.jpg",
+          "exists": true,
+          "bytes": 17398
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/signs/no_camping/md3.cfg",
+        "exists": true,
+        "bytes": 123
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "signs"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "No camping"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"signs\"\nmdlattribute desc \"No camping\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 27,
+      "name": "makke/wall_spotlight",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/wall_spotlight/tris.md3",
+          "exists": true,
+          "bytes": 1852
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/wall_spotlight/skin.jpg",
+          "exists": true,
+          "bytes": 19064
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/wall_spotlight/md3.cfg",
+        "exists": true,
+        "bytes": 121
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "lamps"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Strahler"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"lamps\"\nmdlattribute desc \"Strahler\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 28,
+      "name": "makke/wires/2x8",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/wires/2x8/tris.md3",
+          "exists": true,
+          "bytes": 2004
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/wires/skin.jpg",
+          "exists": true,
+          "bytes": 8514
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/wires/2x8/md3.cfg",
+        "exists": true,
+        "bytes": 196
+      },
+      "commands": [
+        [
+          "md3load",
+          "./tris.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "../skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wires 2x8"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 0 2 0"
+        ]
+      ],
+      "config_text": "md3load ./tris.md3\nmd3skin * ../skin.jpg\nmdlattribute keywords \"street\"\nmdlattribute desc \"Wires 2x8\"\nmdlattribute author makke\nmdlattribute distribution official\nmdlattribute defaults \"0 0 2 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 29,
+      "name": "makke/wrench",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/makke/wrench/tris.md3",
+          "exists": true,
+          "bytes": 2628
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/makke/wrench/skin.jpg",
+          "exists": true,
+          "bytes": 5379
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/makke/wrench/md3.cfg",
+        "exists": true,
+        "bytes": 140
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wrench"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "makke"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlshadowdist 2\nmdlattribute keywords \"industrial\"\nmdlattribute desc \"Wrench\"\nmdlattribute author makke\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 30,
+      "name": "misterfloppy/hanging_ladder/ladder_2",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_2/tris.md3",
+          "exists": true,
+          "bytes": 3244
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/skin.jpg",
+          "exists": true,
+          "bytes": 16757
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_2/md3.cfg",
+        "exists": true,
+        "bytes": 178
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "ladders"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hangable ladder, 2 rungs"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 1 1 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"ladders\"\nmdlattribute desc \"Hangable ladder, 2 rungs\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"0 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 31,
+      "name": "misterfloppy/hanging_ladder/ladder_6",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_6/tris.md3",
+          "exists": true,
+          "bytes": 7340
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/skin.jpg",
+          "exists": true,
+          "bytes": 16757
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_6/md3.cfg",
+        "exists": true,
+        "bytes": 178
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "ladders"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hangable ladder, 6 rungs"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 3 3 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"ladders\"\nmdlattribute desc \"Hangable ladder, 6 rungs\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"0 3 3 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 32,
+      "name": "misterfloppy/hanging_ladder/ladder_low",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_low/tris.md3",
+          "exists": true,
+          "bytes": 4388
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/skin.jpg",
+          "exists": true,
+          "bytes": 16757
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_low/md3.cfg",
+        "exists": true,
+        "bytes": 177
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "ladders"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hangable ladder, bottom"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 1 1 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"ladders\"\nmdlattribute desc \"Hangable ladder, bottom\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"0 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 33,
+      "name": "misterfloppy/hanging_ladder/ladder_top",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_top/tris.md3",
+          "exists": true,
+          "bytes": 4772
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/skin.jpg",
+          "exists": true,
+          "bytes": 16757
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_top/md3.cfg",
+        "exists": true,
+        "bytes": 179
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "ladders"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hangable ladder, top over"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 1 1 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"ladders\"\nmdlattribute desc \"Hangable ladder, top over\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"0 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 34,
+      "name": "misterfloppy/hanging_ladder/ladder_up",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_up/tris.md3",
+          "exists": true,
+          "bytes": 3908
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/skin.jpg",
+          "exists": true,
+          "bytes": 16757
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/hanging_ladder/ladder_up/md3.cfg",
+        "exists": true,
+        "bytes": 179
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "ladders"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Hangable ladder, top side"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 1 1 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"ladders\"\nmdlattribute desc \"Hangable ladder, top side\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"0 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 35,
+      "name": "misterfloppy/valve_hor",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/valve_hor/tris.md3",
+          "exists": true,
+          "bytes": 7244
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/misterfloppy/valve_hor/skin.jpg",
+          "exists": true,
+          "bytes": 14749
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/misterfloppy/valve_hor/md3.cfg",
+        "exists": true,
+        "bytes": 162
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "industrial"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Valve"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "misterfloppy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 1 0 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"industrial\"\nmdlattribute desc \"Valve\"\nmdlattribute author misterfloppy\nmdlattribute distribution official\nmdlattribute defaults \"1 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 36,
+      "name": "ratboy/toca_milkcrate_red",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/milkcrate/tris.md3",
+          "exists": true,
+          "bytes": 1572
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/ratboy/toca_milkcrate_red/skin.jpg",
+          "exists": true,
+          "bytes": 104003
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/ratboy/toca_milkcrate_red/md3.cfg",
+        "exists": true,
+        "bytes": 292
+      },
+      "commands": [
+        [
+          "md3load",
+          "../../toca/milkcrate/tris.md3"
+        ],
+        [
+          "md3skin",
+          "mesh",
+          "./skin.jpg"
+        ],
+        [
+          "mdlalphatest",
+          "30"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Milk crate, red"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "ratboy"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 1 0 0"
+        ]
+      ],
+      "config_text": "md3load ../../toca/milkcrate/tris.md3\nmd3skin mesh ./skin.jpg\n\n// needed so that thin lines don't get too blended\nmdlalphatest 30\nmdlattribute keywords \"street\"\nmdlattribute desc \"Milk crate, red\"\nmdlattribute author ratboy\nmdlattribute distribution official\nmdlattribute defaults \"1 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 37,
+      "name": "toca/bullet",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/bullet/tris.md3",
+          "exists": true,
+          "bytes": 2532
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/bullet/skin.jpg",
+          "exists": true,
+          "bytes": 6271
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/bullet/md3.cfg",
+        "exists": true,
+        "bytes": 138
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "military"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Bullet"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlshadowdist 2\n\nmdlattribute keywords \"military\"\nmdlattribute desc \"Bullet\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 38,
+      "name": "toca/cardboardbox",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/cardboardbox/tris.md3",
+          "exists": true,
+          "bytes": 868
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/cardboardbox/skin.jpg",
+          "exists": true,
+          "bytes": 12247
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/cardboardbox/md3.cfg",
+        "exists": true,
+        "bytes": 160
+      },
+      "commands": [
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Cardboard box 1"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 2 0 0"
+        ]
+      ],
+      "config_text": "mdlattribute keywords \"litter\"\nmdlattribute desc \"Cardboard box 1\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 39,
+      "name": "toca/ceilingfan",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/ceilingfan/tris.md3",
+          "exists": true,
+          "bytes": 86620
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/ceilingfan/skin.jpg",
+          "exists": true,
+          "bytes": 9455
+        },
+        {
+          "path": "packages/models/mapmodels/toca/ceilingfan/skin.jpg",
+          "exists": true,
+          "bytes": 9455
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/ceilingfan/md3.cfg",
+        "exists": true,
+        "bytes": 218
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "base",
+          "skin.jpg"
+        ],
+        [
+          "md3skin",
+          "blades",
+          "skin.jpg"
+        ],
+        [
+          "md3anim",
+          "mapmodel",
+          "1",
+          "29",
+          "23"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "office home"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Ceiling fan"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin base skin.jpg\nmd3skin blades skin.jpg\nmd3anim mapmodel 1 29 23\nmdlattribute keywords \"office home\"\nmdlattribute desc \"Ceiling fan\"\nmdlattribute author toca\nmdlattribute distribution official\n\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 40,
+      "name": "toca/decals/windows/1",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/decals/windows/1/tris.md3",
+          "exists": true,
+          "bytes": 516
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/decals/windows/1/skin.png",
+          "exists": true,
+          "bytes": 100915
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/decals/windows/1/md3.cfg",
+        "exists": true,
+        "bytes": 189
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "mesh",
+          "skin.png"
+        ],
+        [
+          "mdlalphatest",
+          "70"
+        ],
+        [
+          "mdlcullface",
+          "0"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Window"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin mesh skin.png\nmdlalphatest 70\nmdlcullface  0\nmdlattribute keywords \"street\"\nmdlattribute desc \"Window\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.png",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 41,
+      "name": "toca/grid6x8",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/grid6x8/grid6x8.md3",
+          "exists": true,
+          "bytes": 6500
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/grid6x8/skin.jpg",
+          "exists": true,
+          "bytes": 96133
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/grid6x8/md3.cfg",
+        "exists": true,
+        "bytes": 238
+      },
+      "commands": [
+        [
+          "md3load",
+          "grid6x8.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "skin.jpg"
+        ],
+        [
+          "mdlcachelimit",
+          "16"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "platforms"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wire platform 6x8"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "3 1 0 0"
+        ]
+      ],
+      "config_text": "md3load grid6x8.md3\nmd3skin * skin.jpg\nmdlcachelimit 16\nmdlvertexlight 1\nmdlattribute keywords \"platforms\"\nmdlattribute desc \"Wire platform 6x8\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"3 1 0 0\"\n\n",
+      "direct_files": [
+        "grid6x8.md3",
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 42,
+      "name": "toca/guardrail2",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/guardrail2/tris.md3",
+          "exists": true,
+          "bytes": 12948
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/guardrail2/skin.jpg",
+          "exists": true,
+          "bytes": 6941
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/guardrail2/md3.cfg",
+        "exists": true,
+        "bytes": 219
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "guardrail",
+          "skin.jpg"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "fencing"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Guard rail 2"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 4 0 0"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin guardrail skin.jpg\nmdlvertexlight 1\nmdlattribute keywords \"fencing\"\nmdlattribute desc \"Guard rail 2\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 4 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 43,
+      "name": "toca/milkcarton",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/milkcarton/tris.md3",
+          "exists": true,
+          "bytes": 1476
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/milkcarton/skin.jpg",
+          "exists": true,
+          "bytes": 22741
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/milkcarton/md3.cfg",
+        "exists": true,
+        "bytes": 185
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "milkcarton",
+          "skin.jpg"
+        ],
+        [
+          "mdlshadowdist",
+          "4"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "litter"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Milk carton"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin milkcarton skin.jpg\nmdlshadowdist 4\nmdlattribute keywords \"litter\"\nmdlattribute desc \"Milk carton\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 44,
+      "name": "toca/pipes/concretepipe",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/concretepipe/tris.md3",
+          "exists": true,
+          "bytes": 4900
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/concretepipe/skin.jpg",
+          "exists": true,
+          "bytes": 16844
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/pipes/concretepipe/md3.cfg",
+        "exists": true,
+        "bytes": 196
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "pipes"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Large concrete pipe"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 1 1 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlvertexlight 1\nmdlattribute keywords \"pipes\"\nmdlattribute desc \"Large concrete pipe\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 45,
+      "name": "toca/pipes/metalpipe",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/metalpipe/tris.md3",
+          "exists": true,
+          "bytes": 3500
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/metalpipe/skin.jpg",
+          "exists": true,
+          "bytes": 19567
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/pipes/metalpipe/md3.cfg",
+        "exists": true,
+        "bytes": 177
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "4"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "pipes"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Medium metal pipe"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 1 1 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 4\nmdlattribute keywords \"pipes\"\nmdlattribute desc \"Medium metal pipe\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 1 1 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 46,
+      "name": "toca/pipes/metalpipe2",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/metalpipe2/tris.md3",
+          "exists": true,
+          "bytes": 2948
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/pipes/metalpipe2/skin.jpg",
+          "exists": true,
+          "bytes": 21303
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/pipes/metalpipe2/md3.cfg",
+        "exists": true,
+        "bytes": 176
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "4"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "pipes"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Small metal pipe"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "0 1 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 4\nmdlattribute keywords \"pipes\"\nmdlattribute desc \"Small metal pipe\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"0 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 47,
+      "name": "toca/platformmet",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/platformmet/tris.md3",
+          "exists": true,
+          "bytes": 9988
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/platformmet/skin.jpg",
+          "exists": true,
+          "bytes": 110024
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/platformmet/md3.cfg",
+        "exists": true,
+        "bytes": 199
+      },
+      "commands": [
+        [
+          "mdlcachelimit",
+          "16"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "platforms"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wire platform 8x8"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "4 1 0 0"
+        ]
+      ],
+      "config_text": "mdlcachelimit 16\nmdlvertexlight 1\nmdlattribute keywords \"platforms\"\nmdlattribute desc \"Wire platform 8x8\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"4 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 48,
+      "name": "toca/sgshell",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/sgshell/tris.md3",
+          "exists": true,
+          "bytes": 1332
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/sgshell/skin.jpg",
+          "exists": true,
+          "bytes": 8148
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/sgshell/md3.cfg",
+        "exists": true,
+        "bytes": 144
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "2"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "military"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Shotgun shell"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "mdlshadowdist 2\nmdlattribute keywords \"military\"\nmdlattribute desc \"Shotgun shell\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 49,
+      "name": "toca/signs/noentry",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/signs/sign_a.md3",
+          "exists": true,
+          "bytes": 868
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/signs/noentry/skin.jpg",
+          "exists": true,
+          "bytes": 6718
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/signs/noentry/md3.cfg",
+        "exists": true,
+        "bytes": 161
+      },
+      "commands": [
+        [
+          "md3load",
+          "../sign_a.md3"
+        ],
+        [
+          "md3skin",
+          "*",
+          "skin.jpg"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "signs"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "No entry"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load ../sign_a.md3\nmd3skin * skin.jpg\nmdlattribute keywords \"signs\"\nmdlattribute desc \"No entry\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg"
+      ]
+    },
+    {
+      "slot": 50,
+      "name": "toca/stairs_aqueous/stairsacc/beam",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/stairs_aqueous/stairsacc/beam/tris.md3",
+          "exists": true,
+          "bytes": 692
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/platformmet/skin.jpg",
+          "exists": true,
+          "bytes": 110024
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/stairs_aqueous/stairsacc/beam/md3.cfg",
+        "exists": true,
+        "bytes": 224
+      },
+      "commands": [
+        [
+          "md3load",
+          "tris.md3"
+        ],
+        [
+          "md3skin",
+          "tris",
+          "../../../platformmet/skin.jpg"
+        ],
+        [
+          "mdlcachelimit",
+          "16"
+        ],
+        [
+          "mdlvertexlight",
+          "1"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "stairs"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wire stairs, beam"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ]
+      ],
+      "config_text": "md3load tris.md3\nmd3skin tris ../../../platformmet/skin.jpg\nmdlcachelimit 16\nmdlvertexlight 1\nmdlattribute keywords \"stairs\"\nmdlattribute desc \"Wire stairs, beam\"\nmdlattribute author toca\nmdlattribute distribution official\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 51,
+      "name": "toca/trashbag",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/trashbag/tris.md3",
+          "exists": true,
+          "bytes": 8692
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/trashbag/skin.jpg",
+          "exists": true,
+          "bytes": 14801
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/trashbag/md3.cfg",
+        "exists": true,
+        "bytes": 169
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Trashbag"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 2 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlattribute keywords \"street\"\nmdlattribute desc \"Trashbag\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 2 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 52,
+      "name": "toca/trashcan",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/trashcan/tris.md3",
+          "exists": true,
+          "bytes": 7620
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/trashcan/skin.jpg",
+          "exists": true,
+          "bytes": 11862
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/trashcan/md3.cfg",
+        "exists": true,
+        "bytes": 169
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Trashcan"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 3 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlattribute keywords \"street\"\nmdlattribute desc \"Trashcan\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 3 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 53,
+      "name": "toca/tyre",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/tyre/tris.md3",
+          "exists": true,
+          "bytes": 8340
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/tyre/skin.jpg",
+          "exists": true,
+          "bytes": 12828
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/tyre/md3.cfg",
+        "exists": true,
+        "bytes": 165
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Tyre"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "2 1 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlattribute keywords \"street\"\nmdlattribute desc \"Tyre\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"2 1 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    },
+    {
+      "slot": 54,
+      "name": "toca/wheel",
+      "geometry": [
+        {
+          "path": "packages/models/mapmodels/toca/wheel/tris.md3",
+          "exists": true,
+          "bytes": 10676
+        }
+      ],
+      "skins": [
+        {
+          "path": "packages/models/mapmodels/toca/wheel/skin.jpg",
+          "exists": true,
+          "bytes": 13676
+        }
+      ],
+      "config": {
+        "path": "packages/models/mapmodels/toca/wheel/md3.cfg",
+        "exists": true,
+        "bytes": 166
+      },
+      "commands": [
+        [
+          "mdlshadowdist",
+          "8"
+        ],
+        [
+          "mdlattribute",
+          "keywords",
+          "street"
+        ],
+        [
+          "mdlattribute",
+          "desc",
+          "Wheel"
+        ],
+        [
+          "mdlattribute",
+          "author",
+          "toca"
+        ],
+        [
+          "mdlattribute",
+          "distribution",
+          "official"
+        ],
+        [
+          "mdlattribute",
+          "defaults",
+          "1 3 0 0"
+        ]
+      ],
+      "config_text": "mdlshadowdist 8\nmdlattribute keywords \"street\"\nmdlattribute desc \"Wheel\"\nmdlattribute author toca\nmdlattribute distribution official\nmdlattribute defaults \"1 3 0 0\"\n\n",
+      "direct_files": [
+        "md3.cfg",
+        "skin.jpg",
+        "tris.md3"
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "slot": 0,
+      "used": true,
+      "path": "packages/textures/kurt/klite1.jpg",
+      "exists": true,
+      "bytes": 642
+    },
+    {
+      "slot": 1,
+      "used": false,
+      "path": "packages/textures/toca/greybricks.jpg",
+      "exists": true,
+      "bytes": 23735
+    },
+    {
+      "slot": 2,
+      "used": true,
+      "path": "packages/textures/noctua/wall/plast03.jpg",
+      "exists": true,
+      "bytes": 24262
+    },
+    {
+      "slot": 3,
+      "used": true,
+      "path": "packages/textures/craig_fortune/terrain/Grass_mossy.jpg",
+      "exists": true,
+      "bytes": 24343
+    },
+    {
+      "slot": 4,
+      "used": true,
+      "path": "packages/textures/noctua/metal/iron05_b.jpg",
+      "exists": true,
+      "bytes": 22835
+    },
+    {
+      "slot": 5,
+      "used": false,
+      "path": "packages/models/mapmodels/ratboy/toca_cardboardbox_reskin/skin.jpg",
+      "exists": true,
+      "bytes": 20357
+    },
+    {
+      "slot": 6,
+      "used": true,
+      "path": "packages/textures/arcitool/Cotta1-grau.jpg",
+      "exists": true,
+      "bytes": 9175
+    },
+    {
+      "slot": 7,
+      "used": true,
+      "path": "packages/textures/arcitool/Cotta1-graubraun.jpg",
+      "exists": true,
+      "bytes": 9030
+    },
+    {
+      "slot": 8,
+      "used": true,
+      "path": "packages/textures/arcitool/Cotta1-graubraunhell.jpg",
+      "exists": true,
+      "bytes": 9985
+    },
+    {
+      "slot": 9,
+      "used": true,
+      "path": "packages/textures/boeck/aircon2.jpg",
+      "exists": true,
+      "bytes": 4038
+    },
+    {
+      "slot": 10,
+      "used": true,
+      "path": "packages/textures/boeck/rolltor.jpg",
+      "exists": true,
+      "bytes": 21779
+    },
+    {
+      "slot": 11,
+      "used": true,
+      "path": "packages/textures/boeck/stone_013.jpg",
+      "exists": true,
+      "bytes": 24370
+    },
+    {
+      "slot": 12,
+      "used": true,
+      "path": "packages/textures/boeck/stone_022.jpg",
+      "exists": true,
+      "bytes": 20217
+    },
+    {
+      "slot": 13,
+      "used": true,
+      "path": "packages/textures/craig_fortune/crates/light_weathered.jpg",
+      "exists": true,
+      "bytes": 8448
+    },
+    {
+      "slot": 14,
+      "used": true,
+      "path": "packages/textures/craig_fortune/terrain/rubble.jpg",
+      "exists": true,
+      "bytes": 37868
+    },
+    {
+      "slot": 15,
+      "used": true,
+      "path": "packages/textures/golgotha/5sqtunnelroad.jpg",
+      "exists": true,
+      "bytes": 36998
+    },
+    {
+      "slot": 16,
+      "used": true,
+      "path": "packages/textures/golgotha/elecpanelstwo.jpg",
+      "exists": true,
+      "bytes": 3113
+    },
+    {
+      "slot": 17,
+      "used": true,
+      "path": "packages/textures/golgotha/hhroofgray.jpg",
+      "exists": true,
+      "bytes": 26029
+    },
+    {
+      "slot": 18,
+      "used": true,
+      "path": "packages/textures/grsites/brick051.jpg",
+      "exists": true,
+      "bytes": 6989
+    },
+    {
+      "slot": 19,
+      "used": true,
+      "path": "packages/textures/grsites/metal026.jpg",
+      "exists": true,
+      "bytes": 807
+    },
+    {
+      "slot": 20,
+      "used": true,
+      "path": "packages/textures/lemog/036metal.jpg",
+      "exists": true,
+      "bytes": 9284
+    },
+    {
+      "slot": 21,
+      "used": true,
+      "path": "packages/textures/lemog/063bois.jpg",
+      "exists": true,
+      "bytes": 16542
+    },
+    {
+      "slot": 22,
+      "used": true,
+      "path": "packages/textures/lemog/063bois_b.jpg",
+      "exists": true,
+      "bytes": 16611
+    },
+    {
+      "slot": 23,
+      "used": true,
+      "path": "packages/textures/makke/aircon.jpg",
+      "exists": true,
+      "bytes": 8080
+    },
+    {
+      "slot": 24,
+      "used": true,
+      "path": "packages/textures/makke/asph_01.jpg",
+      "exists": true,
+      "bytes": 26129
+    },
+    {
+      "slot": 25,
+      "used": true,
+      "path": "packages/textures/makke/box_2.jpg",
+      "exists": true,
+      "bytes": 2224
+    },
+    {
+      "slot": 26,
+      "used": true,
+      "path": "packages/textures/makke/box_3.jpg",
+      "exists": true,
+      "bytes": 4740
+    },
+    {
+      "slot": 27,
+      "used": true,
+      "path": "packages/textures/makke/box_4.jpg",
+      "exists": true,
+      "bytes": 7438
+    },
+    {
+      "slot": 28,
+      "used": true,
+      "path": "packages/textures/makke/lampe.jpg",
+      "exists": true,
+      "bytes": 6923
+    },
+    {
+      "slot": 29,
+      "used": true,
+      "path": "packages/textures/makke/lampe_tile.jpg",
+      "exists": true,
+      "bytes": 1015
+    },
+    {
+      "slot": 30,
+      "used": true,
+      "path": "packages/textures/makke/lampe_tile2.jpg",
+      "exists": true,
+      "bytes": 997
+    },
+    {
+      "slot": 31,
+      "used": true,
+      "path": "packages/textures/makke/lampe_tile2_a.jpg",
+      "exists": true,
+      "bytes": 1025
+    },
+    {
+      "slot": 32,
+      "used": true,
+      "path": "packages/textures/makke/lampe_tile_a.jpg",
+      "exists": true,
+      "bytes": 1023
+    },
+    {
+      "slot": 33,
+      "used": true,
+      "path": "packages/textures/makke/pebbles_01.jpg",
+      "exists": true,
+      "bytes": 30512
+    },
+    {
+      "slot": 34,
+      "used": true,
+      "path": "packages/textures/makke/stairtrim.jpg",
+      "exists": true,
+      "bytes": 5297
+    },
+    {
+      "slot": 35,
+      "used": true,
+      "path": "packages/textures/makke/tiles.jpg",
+      "exists": true,
+      "bytes": 7811
+    },
+    {
+      "slot": 36,
+      "used": false,
+      "path": "packages/textures/mitaman/various/metal_trim_4_v.jpg",
+      "exists": true,
+      "bytes": 5091
+    },
+    {
+      "slot": 37,
+      "used": true,
+      "path": "packages/textures/mitaman/various/rgrates0006.jpg",
+      "exists": true,
+      "bytes": 4103
+    },
+    {
+      "slot": 38,
+      "used": true,
+      "path": "packages/textures/noctua/ground/asph01.jpg",
+      "exists": true,
+      "bytes": 30911
+    },
+    {
+      "slot": 39,
+      "used": true,
+      "path": "packages/textures/noctua/metal/copper01.jpg",
+      "exists": true,
+      "bytes": 25677
+    },
+    {
+      "slot": 40,
+      "used": true,
+      "path": "packages/textures/noctua/metal/iron02.jpg",
+      "exists": true,
+      "bytes": 27054
+    },
+    {
+      "slot": 41,
+      "used": true,
+      "path": "packages/textures/noctua/metal/iron03.jpg",
+      "exists": true,
+      "bytes": 23409
+    },
+    {
+      "slot": 42,
+      "used": true,
+      "path": "packages/textures/noctua/metal/iron05.jpg",
+      "exists": true,
+      "bytes": 22926
+    },
+    {
+      "slot": 43,
+      "used": true,
+      "path": "packages/textures/noctua/metal/metbgr01.jpg",
+      "exists": true,
+      "bytes": 20072
+    },
+    {
+      "slot": 44,
+      "used": true,
+      "path": "packages/textures/noctua/metal/metbgr02.jpg",
+      "exists": true,
+      "bytes": 17247
+    },
+    {
+      "slot": 45,
+      "used": true,
+      "path": "packages/textures/noctua/metal/metbgr04.jpg",
+      "exists": true,
+      "bytes": 18517
+    },
+    {
+      "slot": 46,
+      "used": true,
+      "path": "packages/textures/noctua/metal/verdig01.jpg",
+      "exists": true,
+      "bytes": 25049
+    },
+    {
+      "slot": 47,
+      "used": true,
+      "path": "packages/textures/noctua/stone/stone03.jpg",
+      "exists": true,
+      "bytes": 32456
+    },
+    {
+      "slot": 48,
+      "used": true,
+      "path": "packages/textures/noctua/stone/stone05.jpg",
+      "exists": true,
+      "bytes": 30752
+    },
+    {
+      "slot": 49,
+      "used": true,
+      "path": "packages/textures/noctua/stone/stone12.jpg",
+      "exists": true,
+      "bytes": 26225
+    },
+    {
+      "slot": 50,
+      "used": true,
+      "path": "packages/textures/noctua/stone/stone15.jpg",
+      "exists": true,
+      "bytes": 26531
+    },
+    {
+      "slot": 51,
+      "used": true,
+      "path": "packages/textures/noctua/stone/stone18.jpg",
+      "exists": true,
+      "bytes": 25310
+    },
+    {
+      "slot": 52,
+      "used": true,
+      "path": "packages/textures/noctua/wall/conc02.jpg",
+      "exists": true,
+      "bytes": 19672
+    },
+    {
+      "slot": 53,
+      "used": true,
+      "path": "packages/textures/noctua/wall/plast04.jpg",
+      "exists": true,
+      "bytes": 23079
+    },
+    {
+      "slot": 54,
+      "used": true,
+      "path": "packages/textures/zastrow/2wood_crate_02.jpg",
+      "exists": true,
+      "bytes": 1660
+    },
+    {
+      "slot": 55,
+      "used": true,
+      "path": "packages/textures/zastrow/2wood_crate_03.jpg",
+      "exists": true,
+      "bytes": 1710
+    },
+    {
+      "slot": 56,
+      "used": true,
+      "path": "packages/textures/zastrow/3wood_crate_02.jpg",
+      "exists": true,
+      "bytes": 3754
+    },
+    {
+      "slot": 57,
+      "used": true,
+      "path": "packages/textures/zastrow/3wood_crate_10.jpg",
+      "exists": true,
+      "bytes": 4147
+    },
+    {
+      "slot": 58,
+      "used": true,
+      "path": "packages/textures/zastrow/3wood_crate_12.jpg",
+      "exists": true,
+      "bytes": 2928
+    },
+    {
+      "slot": 59,
+      "used": true,
+      "path": "packages/textures/zastrow/metal_overlaps.jpg",
+      "exists": true,
+      "bytes": 35999
+    },
+    {
+      "slot": 60,
+      "used": true,
+      "path": "packages/textures/zastrow/sub_doors512A16.jpg",
+      "exists": true,
+      "bytes": 14528
+    },
+    {
+      "slot": 61,
+      "used": true,
+      "path": "packages/textures/zastrow/sub_doors512B05.jpg",
+      "exists": true,
+      "bytes": 10862
+    },
+    {
+      "slot": 62,
+      "used": true,
+      "path": "packages/textures/zastrow/sub_window33.jpg",
+      "exists": true,
+      "bytes": 5694
+    },
+    {
+      "slot": 63,
+      "used": true,
+      "path": "packages/textures/zastrow/vent_cap.jpg",
+      "exists": true,
+      "bytes": 2715
+    }
+  ],
+  "sky": [
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_lf.jpg",
+      "exists": true,
+      "bytes": 16525
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_rt.jpg",
+      "exists": true,
+      "bytes": 18870
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_ft.jpg",
+      "exists": true,
+      "bytes": 15359
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_bk.jpg",
+      "exists": true,
+      "bytes": 18519
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_dn.jpg",
+      "exists": true,
+      "bytes": 13166
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/nightball_up.jpg",
+      "exists": true,
+      "bytes": 14568
+    }
+  ],
+  "sounds": [
+    {
+      "slot": 0,
+      "path": "packages/audio/ambience/night_crickets.ogg",
+      "exists": true,
+      "bytes": 155071
+    },
+    {
+      "slot": 1,
+      "path": "packages/audio/ambience/t_electricbuzz.ogg",
+      "exists": true,
+      "bytes": 268076
+    },
+    {
+      "slot": 2,
+      "path": "packages/audio/ambience/t_gastank.ogg",
+      "exists": true,
+      "bytes": 57950
+    },
+    {
+      "slot": 3,
+      "path": "packages/audio/ambience/t_hum03.ogg",
+      "exists": true,
+      "bytes": 120050
+    },
+    {
+      "slot": 4,
+      "path": "packages/audio/ambience/t_night01.ogg",
+      "exists": true,
+      "bytes": 336239
+    },
+    {
+      "slot": 5,
+      "path": "packages/audio/ambience/t_vents.ogg",
+      "exists": true,
+      "bytes": 244434
+    },
+    {
+      "slot": 6,
+      "path": "packages/audio/ambience/t_waterpipe01.ogg",
+      "exists": true,
+      "bytes": 385475
+    },
+    {
+      "slot": 7,
+      "path": "packages/audio/ambience/t_waterpipe02.ogg",
+      "exists": true,
+      "bytes": 308873
+    },
+    {
+      "slot": 8,
+      "path": "packages/audio/ambience/water.ogg",
+      "exists": true,
+      "bytes": 103561
+    }
+  ],
+  "notices": [
+    {
+      "path": "packages/models/mapmodels/makke/license.txt",
+      "text": "LICENSE\n================================================================================\nAll files in this folder and their subfolders are by Markus \"makkE\" Bekel\n\tmakk_e@web.de\n\nOriginally created for the game AssaultCube:\n\thttp://assault.cubers.net/\n\n* Model \"street_light_broken\" is a modified version of \"street_light\" made by Cleaner to replace a redundant line in default_map_settings.cfg\n\n* Models \"fence_chainlink\" \"fence_chainlink_closed_gate\" \"fence_chainlink_no_gate\" and \"fence_chainlink_post\" have been reworked by Boeufmironton to get rid of z-figthing and fix axis.\nTexture was also modified to fit changes.\nNote that 4 other models have been made using \"fence_chainlink_closed_gate\" as template to complete this nice set of fencing and can be found in their respective folders.\nBy Boeufmironton: \"fence_chainlink_open_gate\" and \n\"fence_chainlink_hor_post\"\nBy Cleaner: \"fence_chainlink_down\" and \"fence_chainlink_gate_down\"\nThe full set of models share the same license.\n\nShane Nieb (nieb_123@hotmail.com) modelled (but did not skin) the following:\n================================================================================\noffice_chair (Nieb did skin this one)\ndumpster\nfence_chainlink\nfence_chainlink_closed_gate\nfence_chainlink_no_gate\nfence_chainlink_post\nnothing_clip\npicture\nlightbulb\nroadblock\nroadblock_graffiti\n\n\nAll files within this folder and all subfolders, except:\n * ./platform_shine/skin.jpg\n * ./signs/biohazard/skin.jpg\n * ./signs/flammable/skin.jpg\n * ./signs/speed/skin.jpg\n\t...are licensed as follows:\n\n\nCreative Commons Deed / Attribution Non-commercial Share-Alike (AT-NC-SA):\n================================================================================\nYou are free:\n\t* to copy, distribute, display, and perform the work\n\t* to make derivative works\n\nUnder the following conditions:\n\t- Attribution. You must give the original author credit.\n\t- Non-Commercial. You may not use this work for commercial purposes.\n\t- Share Alike. If you alter, transform, or build upon this work, you may\n\t  distribute the resulting work only under a licence identical to this one.\n\nFor any reuse or distribution, you must make clear to others the licence terms of this work.\nAny of these conditions can be waived if you get permission from the copyright holder.\n\nYour fair use and other rights are in no way affected by the above.\n\n================================================================================\nThis is only a human-readable summary of the Legal Code (the full licence), which can be found at:\n\thttp://creativecommons.org/licenses/by-nc-sa/2.5/\nThe full legal code can be found at:\n\thttp://creativecommons.org/licenses/by-nc-sa/2.5/legalcode\n================================================================================\nFor \"platform_shine/skin.jpg\", this is made up of two textures. \n\nOne of the textures licenses can be found here:\n  ../../../textures/dog/license.txt\n\nThe other license can be found here:\n  ../../../textures/arcitool/license.txt\n================================================================================\nThese skins:\n * ./signs/biohazard/skin.jpg\n * ./signs/flammable/skin.jpg\n * ./signs/speed/skin.jpg\n\nWere originally copyright by:\n\t Chris \"subverse\" Zastrow (http://www.quakewiki.net/archives/subverse/)\t\n\nThese files are no longer available from this website. When these files were \noriginally obtained, they allowed redistribution with the following license:\n\n\tGreetings from the dark underworld of texture art. Thank you for giving\n\tmy textures a try.  If you'd like to use these textures commercially,\n\tplease contact me via email.  Please do not alter these images, or \n\tdistribute them without this \"info.txt\" file. Thanks if you link to my\n\tmain page, but please don't link to the files directly. Thanks, have fun!\n\n"
+    },
+    {
+      "path": "packages/models/mapmodels/misterfloppy/license.txt",
+      "text": "Files within this folder and all subfolders are by:\n\tCarlo \"Mr.Floppy\" Fischer (cf1984@live.de)\n\nAdditional to this, files in the \"hanging_ladder\" folder:\n\t* Thanks to Boeufmironton who provided the original concept.\n\t* Thanks to makkE for the textures, and additional model changes\n\t  and providing these under the CC-BY-SA license too.\n\nThey are all licensed under \"Attribution-ShareAlike 2.0 Generic\" Creative Commons:\n\thttp://creativecommons.org/licenses/by-sa/2.0/\n\n\nThis means you are free:\n    * to Share \u2014 to copy, distribute and transmit the work\n    * to Remix \u2014 to adapt the work\n\nUnder the following conditions:\n    * Attribution \u2014 You must attribute the work in the manner specified \n      by the author or licensor (but not in any way that suggests that \n      they endorse you or your use of the work).\n    * Share Alike \u2014 If you alter, transform, or build upon this work, \n      you may distribute the resulting work only under the same or \n      similar license to this one.\n\nWith the understanding that:\n    * Waiver \u2014 Any of the above conditions can be waived if you get \n      permission from the copyright holder.\n    * Public Domain \u2014 Where the work or any of its elements is in the public \n      domain under applicable law, that status is in no way affected by the license.\n    * Other Rights \u2014 In no way are any of the following rights affected by the license:\n          o Your fair dealing or fair use rights, or other applicable \n\t    copyright exceptions and limitations;\n          o The author's moral rights;\n          o Rights other persons may have either in the work itself or in how the work \n            is used, such as publicity or privacy rights.\n    * Notice \u2014 For any reuse or distribution, you must make clear to others the license terms of this work.\n"
+    },
+    {
+      "path": "packages/models/mapmodels/ratboy/license.txt",
+      "text": "================================================================================\n * ./toca_cardboardbox_reskin/skin.jpg\n\n...is a modification of:\n\t../../../textures/zastrow/wood_crate_10.jpg\n\nAs such, it is licensed the same. Please read this file for its license:\n\t../../../textures/zastrow/license.txt\n================================================================================\n * ./toca_milkcrate_blue/skin.jpg\n * ./toca_milkcrate_blue/skin.jpg\n\n... are modifications of:\n\t../toca/milkcrate/skin.png\n\nAs such, it is licensed the same. Please read this file for its license:\n\t../toca/license.txt\n================================================================================\n"
+    },
+    {
+      "path": "packages/models/mapmodels/toca/license.txt",
+      "text": "Toca's 3D Models for AssaultCube\n================================================================================\nAll mapmodels in these subfolders, have been created by Alejandro V. \"Toca\" Garc\ufffda:\n\tbuzonyx@hotmail.com\n\nOriginally created for the game AssaultCube:\n\thttp://assault.cubers.net/\n\nAll files within this folder and all subfolders are licensed as follows:\n\n\nCreative Commons Deed / Attribution Non-commercial Share-Alike (AT-NC-SA):\n================================================================================\nYou are free:\n\t* to copy, distribute, display, and perform the work\n\t* to make derivative works\n\nUnder the following conditions:\n\t- Attribution. You must give the original author credit.\n\t- Non-Commercial. You may not use this work for commercial purposes.\n\t- Share Alike. If you alter, transform, or build upon this work, you may\n\t  distribute the resulting work only under a licence identical to this one.\n\nFor any reuse or distribution, you must make clear to others the licence terms of this work.\nAny of these conditions can be waived if you get permission from the copyright holder.\n\nYour fair use and other rights are in no way affected by the above.\n\n================================================================================\nThis is only a human-readable summary of the Legal Code (the full licence), which can be found at:\n\thttp://creativecommons.org/licenses/by-nc-sa/2.5/\nThe full legal code can be found at:\n\thttp://creativecommons.org/licenses/by-nc-sa/2.5/legalcode\n\nhttp://creativecommons.org/international/mx/mx-license.pdf\nhttp://creativecommons.org/international/mx/\nhttp://creativecommons.org/licenses/by-nc-sa/2.5/mx/\n\n"
+    },
+    {
+      "path": "packages/textures/arcitool/license.txt",
+      "text": "Files within this folder are copyright (all rights reserved) by:\n\t http://www.arcitool.de/ (info@arcitool.de)\n\nThese files are no longer available from this website. When these\nfiles were originally obtained, they allowed redistribution with\nthe following German license.\n\n\tWICHTIG: Die angebotenen Dateien und Bilder sind zum kostenlosen\n\tdownload vorgesehen. Die Dateien erhalten keinen besonderen Schutz,\n\tum eine hohe Flexibilit\ufffdt f\ufffdr die Weiterbearbeitung zu gew\ufffdhrleisten.\n\tDie Dateien d\ufffdrfen beliebig ver\ufffdndert werden. Mailen Sie uns bitte\n\t\ufffdnderungsvorschl\ufffdge, damit wir die Dateien ggf. auf den neuesten\n\tStand bringen k\ufffdnnen.\n\n\tAlle Dateien und Bilder d\ufffdrfen uneingeschr\ufffdnkt in eigenen Projekten\n\tverwendet werden. Es ist nicht gestattet, die Dateien und Bilder zu\n\tver\ufffdffentlichen, in andere Sammlungen einzubauen oder in irgend einer\n\tForm zu ver\ufffdu\ufffdern. Hierzu bedarf es in jedem Fall der Erlaubnis von \n\tarcitool.\n\nThe following is a refined English translation:\n\n\tIMPORTANT: These files and images are provided as a free download.\n\tThese files do not receive special protection to ensure a high degree\n\tof flexibility for further processing. These files can be changed\n\tarbitrarily. Please email us suggestions for changes, so that if\n\tnecessary, we can update them.\n\n\tAll files and images may be used without restrictions in your own\n\tprojects. It is prohibited to incorporate these files/images into\n\tother texture collections, or to sell the files/images in any way\n\twithout permission from arcitool.\n\n"
+    },
+    {
+      "path": "packages/textures/boeck/license.txt",
+      "text": "These assorted royalty free textures are by:\n\tBoeck (http://www.boeckmania.de)\n\nNote: These files have been partially reprocessed by\n      makkE to work with AssaultCube.\n"
+    },
+    {
+      "path": "packages/textures/craig_fortune/license.txt",
+      "text": "Files within this folder AND all sub-folders are by:\n\tCraig Fortune (http://www.garagegames.com/account/profile/27414)\n\nThese files are no longer available from this website. When these\nfiles were originally obtained, they allowed redistribution with\nthe following license:\n\n\tTotally free terrain textures. Free for both commercial use,\n\tediting and otherwise. Free for commercial/non-commercial use\n\tdetailed crate textures. Just gimme a holler if you use them.\n\n\n\n\n"
+    },
+    {
+      "path": "packages/textures/golgotha/license.txt",
+      "text": "Files within this folder were originally by:\n\t\tCrack dot Com (The Golgotha Team)\n\nAccording to Golgotha's credits, these textures were most likely created by Kevin Tyler, \nStephen Wilson or Johnathan Clark:\n\thttp://web.archive.org/web/20041019082122/jonathanclark.com/golgotha/credits.html\n\nThese files were then modified to fit AssaultCube and added to the game by:\n\tMike \"MitaMAN\" Poeschl (mitaman1@optonline.net)\n\t\tor\n\tMarkus \"makkE\" Bekel\n\nRead Wikipedia for more information about the fate of Golgotha:\n\thttp://en.wikipedia.org/wiki/Golgotha_%28computer_game%29\n\nThe last available archive of their website can be found here:\n\thttp://web.archive.org/web/20041015081823/jonathanclark.com/golgotha/\n\n\nThese textures are free, released into the public domain by the since-abandoned \"Golgotha\" \ncomputer game, which means they can be used for just about anything.\nYou can read more about it being free, to the public domain below. This excerpt was taken from:\n\thttp://web.archive.org/web/20031009012921/jonathanclark.com/golgotha/free.html\n\n\nIs everything free?\n===================\nYES! Free as in \"free beer\" and free as in \"free speech.\" You can do anything you like with \nthe source, graphics, music, and level files, including: sell it, include parts or all of \nit in your project, post it, copy it, and change it to your heart's content. The only \nrestrictions lay in the code which we did not write and therefore do not own (i.e. the MP3\ndecoder code ). The author of MPG123 allows free use of that code for non profit use.\n\nThis code and data is \"public domain\" not to be confused with code released under a license\nsuch GPL. GPL sets limits on what you can do the code and conditions on it's use and we do not.\n\nThe trademarks \"Crack dot Com\" and \"Golgotha\" remain the property of crack.com.\n"
+    },
+    {
+      "path": "packages/textures/grsites/license.txt",
+      "text": "The following files are originally obtained from grsites.com\n\nTerms of use:\n\nThe background textures, fonts and sound effects found on this site were\nnot created by the webmaster, but were obtained from various sources on\nthe internet that described these graphics as freeware. They are free to\nuse for personal and commercial use.\n"
+    },
+    {
+      "path": "packages/textures/kurt/dummyfiles_readme.txt",
+      "text": "For all files in this folder:\n\t\u00a9 Copyright, Rabid Viper Productions.\n\nThe reason for these files being a normal copyright, is\nbecause they are only used as dummys for the CUBE engine,\ncould be easily/quickly recreated if needed and have no\nreal use outside of AssaultCube.\n"
+    },
+    {
+      "path": "packages/textures/lemog/license.txt",
+      "text": "The following 5 files are originally obtained from:\n\thttp://www.3dtextures.fr.st/lemog_textures/acc_textures01.html\n\n * 006metal.jpg\n * 027metal.jpg\n * 036metal.jpg\n * 063bois.jpg\n * 063bois_b.jpg\n\n\tAs per the website advised, these are completely free:\n\t\n\tWelcome at www.3dtextures.fr.st \n\tYou can find here a great choice of textures, all \"seamless\", principally\n\tmeant to used in your favorite 3d software... and it's completely free!"
+    },
+    {
+      "path": "packages/textures/makke/license.txt",
+      "text": "These five textures files:\n\n  * clayceiling.jpg\n  * d_brick.jpg\n  * platten.jpg\n  * tiles.jpg\n  * black.jpg\n  * rb_window.jpg\n  * rb_window2.jpg\n  * douze.jpg\n\n...are copyright (all rights reserved) by:\n\t Markus \"makkE\" Bekel\n\nAll other textures within this folder have been re-assembled, re-processed,\ntiled, etc. by makkE from other various sources. Unfortunately, a list of \nwhich images are from which source is unavailable.\n\nAs the original licenses to these other files are unknown, unless you're able to\nfind the original source and adhere to their license, you MUST assume that the\ndata is COPYRIGHT and you are NOT allowed to redistribute that data outside\nof an UNMODIFIED AssaultCube package(s).\n\n\nSome of the sources would have included:\n================================================================================\nThese four texture files:\n  * box_2.jpg\n  * box_2_1.jpg\n  * box_3.jpg\n  * box_4.jpg\n\nAre from \"max_payne_official_texturepack1.zip\" found at\n\thttps://legacy.3drealms.com/max/index.html\n\nOriginally available under the following license:\n\tThe textures in this file are property of Remedy Entertainment Ltd., and\n\tcan be used only as long as the work is recognized as original artwork\n\tby Remedy, and no financial profit is made in the process.\n\t(C) 1998-2001 Remedy Entertainment Ltd. \n================================================================================\nhttp://www.mayang.com/textures\n\tWilliam Smith & Mayang Murni Adnin (will@willsmith.org)\n\nOriginally available under the following license:\n\nThese textures are Copyright \u00a9 Mayang Murni Adnin, 2001-2012. They have all been\ntaken by our own cameras or created by ourselves.\n\nUse:\nThey are free to use for all uses, whether commercial or non-commercial (you may\nincorporate them into your derived work with no requirement to pay us any\nlicensing fee etc). Your derived work must involve significant modification to the\ntextures. It would be nice if you could credit us.\n\nSell:\nYou may not sell any of these textures in an unmodified form, or any derived works\nwhere the product you are selling is still a texture and is likely to compete with\nthis website.\n\nRedistribute:\nYou may redistribute (give/send to somebody else/display on a web site) up to 30 of\nthese textures together, but no more. You must credit this website as the original\nsource (tell them about us).\n\n==============================================\nhttp://www.afflict.net/\n\tDylan Debusk (dylandebusk@hotmail.com)\n\nOriginally available under the following license:\n\tCan I use these textures for free?\n\tYou can use any texture for personal or school projects without my permission.\n\tHowever if you decide to distribute your work I would appreciate credit where\n\tcredit is due.\n\n\tWhere can I NOT use these textures?\n\tAny webpage, program, or texture cd that has them available without my permission\n\tis not permitted. You can however use them in a design scheme for your site.\n==============================================\nhttp://www.jonathanclark.com\n\t\tCrack dot Com (The Golgotha Team)\n\nAccording to Golgotha's credits, these textures were most likely created by Kevin Tyler, \nStephen Wilson or Johnathan Clark:\n\thttp://web.archive.org/web/20041019082122/jonathanclark.com/golgotha/credits.html\n\nRead Wikipedia for more information about the fate of Golgotha:\n\thttp://en.wikipedia.org/wiki/Golgotha_%28computer_game%29\n\nThe last available archive of their website can be found here:\n\thttp://web.archive.org/web/20041015081823/jonathanclark.com/golgotha/\n\n\nThese textures are free, released into the public domain by the since-abandoned \"Golgotha\" \ncomputer game, which means they can be used for just about anything.\nYou can read more about it being free, to the public domain below. This excerpt was taken from:\n\thttp://web.archive.org/web/20031009012921/jonathanclark.com/golgotha/free.html\n\nIs everything free?\n-------------------\nYES! Free as in \"free beer\" and free as in \"free speech.\" You can do anything you like with \nthe source, graphics, music, and level files, including: sell it, include parts or all of \nit in your project, post it, copy it, and change it to your heart's content. The only \nrestrictions lay in the code which we did not write and therefore do not own (i.e. the MP3\ndecoder code ). The author of MPG123 allows free use of that code for non profit use.\n\nThis code and data is \"public domain\" not to be confused with code released under a license\nsuch GPL. GPL sets limits on what you can do the code and conditions on it's use and we do not.\n\nThe trademarks \"Crack dot Com\" and \"Golgotha\" remain the property of crack.com.\n"
+    },
+    {
+      "path": "packages/textures/mitaman/various/license.txt",
+      "text": "Files in this folder are from various sources.\n\nThe following 4 files in this folder are from unknown sources (however,\nit may have come from a source already used in AC). Even though the\nlicense of these files is unknown, they were free to use in AssaultCube.\n\n * metal_trim_4_v.jpg\n * metal_trim_4_h.jpg\n * large_plate.jpg\n * rgrates0006.jpg\n\nAs the original licenses to these 4 files are unknown, unless you're able to\nfind the original source and adhere to their license, you MUST assume that the\ndata is COPYRIGHT and you are NOT allowed to redistribute that data outside\nof an UNMODIFIED AssaultCube package(s).\n"
+    },
+    {
+      "path": "packages/textures/noctua/license.txt",
+      "text": "Files within these subfolders are copyright (all rights reserved) by:\n\tNOCTUA Graphics\n\nThey are distributed under the following license:\n\tAll textures, materials and 3D objects in the download area\n\tcan be used without any restrictions in your own private and\n\tcommercial projects.\n\n\tYou are NOT allowed to spread them without giving the creators\n\tname, to include them in texture collections without a written\n\tpermission and you strictly may NOT offer them as textures for\n\tsale in any way.\n\n\nFYI:\n\t./ground/rb_trim_01.jpg was edited by Ratboy for AC."
+    },
+    {
+      "path": "packages/textures/skymaps/socksky/license.txt",
+      "text": "Skymaps within this folder were originally by:\n\tSimon \"sock\" O'Callaghan (mememe@simonoc.com)\n\nThe files were obtained from here:\n\thttp://www.simonoc.com/pages/materials.htm\n\nThe website allowed usage under the following terms:\n\tAll use of my digital work is covered by this Creative Commons\n\tDeed: http://creativecommons.org/licenses/by-nc-sa/3.0/ Please\n\tdo not use any of my work for commercial purposes, thank you.\n\nThe following is a copy of the Creative Commons license link above:\n\n===========================================================================\nAttribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)\n\nYou are free:\n    * to Share \u2014 to copy, distribute and transmit the work\n    * to Remix \u2014 to adapt the work\n\nUnder the following conditions:\n    * Attribution \u2014 You must attribute the work in the manner specified\n      by the author or licensor (but not in any way that suggests that \n      they endorse you or your use of the work).\n\n    * Noncommercial \u2014 You may not use this work for commercial purposes.\n    * Share Alike \u2014 If you alter, transform, or build upon this work,\n      you may distribute the resulting work only under the same or similar\n      license to this one.\n\nWith the understanding that:\n    * Waiver \u2014 Any of the above conditions can be waived if you get\n      permission from the copyright holder.\n    * Public Domain \u2014 Where the work or any of its elements is in the\n      public domain under applicable law, that status is in no way affected\n      by the license.\n    * Other Rights \u2014 In no way are any of the following rights affected by\n      the license:\n          o Your fair dealing or fair use rights, or other applicable\n            copyright exceptions and limitations;\n          o The author's moral rights;\n          o Rights other persons may have either in the work itself or in\n            how the work is used, such as publicity or privacy rights.\n    * Notice \u2014 For any reuse or distribution, you must make clear to others\n      the license terms of this work. The best way to do this is with a\n      link to this web page.\n\n"
+    },
+    {
+      "path": "packages/textures/toca/license.txt",
+      "text": "The following textures are originally by CGTextures.com and are sourced from:\n\noldwall.jpg: http://cgtextures.com/texview.php?id=54137\nice1.jpg:    http://cgtextures.com/texview.php?id=8536\nsand1.jpg:       http://cgtextures.com/texview.php?id=32630\nfrozenground1.jpg: http://cgtextures.com/texview.php?id=30324\nfrozenground2.jpg: http://cgtextures.com/texview.php?id=30379\nsnow1.jpg:       http://cgtextures.com/texview.php?id=8537\nsnow1.jpg:       http://cgtextures.com/texview.php?id=72446\npebbles1.jpg:    http://cgtextures.com/texview.php?id=53799\npebbles2.jpg:    http://cgtextures.com/texview.php?id=66840\npebbles3.jpg:    http://cgtextures.com/texview.php?id=9524\ngreybricks.jpg:  http://cgtextures.com/texview.php?id=2725\n\nAnd are used under a complex license, to which we've been able to adhere:\n\thttp://www.cgtextures.com/content.php?action=license\n\nThis images has been reprocessed by Toca, and due to the restrictiveness of the license\nabove, redistribution has been allowed under those same license terms.\n\nTo comply with their license, we have included the following text in this file:\n\tOne or more textures on this 3D model have been created with images from CGTextures.com.\n\tThese images may not be redistributed by default, please visit www.cgtextures.com for more information.\n\n\nHere is a quick brief of their license (please see their website for full terms):\n=================================================================================\nUse of the Textures is only allowed under the following conditions:\n - Private or commercial use.\n - Use in 2D or 3D computer graphics, movies and printed media.\n - Incorporation in computer games, 3D models.\n - Selling 3D models bundled with modified versions of the textures, when the\n   texture is customized for the 3D model.\n\nIt is NOT permitted to:\n - Sell or distribute any of these textures in an unmodified form, or where the\n   derived product you are selling or distributing is a Texture or a collection of \n   Textures. IN OTHER WORDS: Do not sell or distribute any of these textures\n   (modified or not) by itself or in a texture pack, material, clipart, website\n   theme or scrapbooking pack!\n - Bundle the images with software such as paint programs, 3D programs, photo-kiosk\n   software.\n - Reselling or redistributing the images at 'print on demand' services (mugs, \n   t-shirts, mouse mats, etc).\n - Use the textures in graphic design themes or templates sold to multiple customers\n   on digital market places (this includes templates of websites and business cards\n   and e-cards).\n - Selling or redistributing skins for laptops, phones and other devices, created\n   with images from CGTextures.\n - Stockpile images with the goal of making a local texture library.\n - Using a special program (spider, leecher) or script to automatically download all\n   Textures on the CGTextures website. Users who try to mass download will be banned\n   from the website automatically.\n - Interfere with the security or otherwise abuse, disrupt, place excessive loads on,\n   or attempt to gain unauthorized access to the CGTextures website or any system\n   resources or networks connected to this website.\n - Release the Textures or derivative products under Open Source Licences\n"
+    },
+    {
+      "path": "packages/textures/zastrow/license.txt",
+      "text": "Images within this folder are copyright (all rights reserved) by:\n\t Chris \"subverse\" Zastrow (http://www.quakewiki.net/archives/subverse/)\n\nThese files are no longer available from this website. When these files were \noriginally obtained, they allowed redistribution with the following license:\n\n\tGreetings from the dark underworld of texture art. Thank you for giving\n\tmy textures a try.  If you'd like to use these textures commercially,\n\tplease contact me via email.  Please do not alter these images, or \n\tdistribute them without this \"info.txt\" file. Thanks if you link to my\n\tmain page, but please don't link to the files directly. Thanks, have fun!\n\nThese files were modified to fit AssaultCube by either:\n\t* Markus \"makkE\" Bekel\n\tor:\n\t* Mike \"MitaMAN\" Poeschl (mitaman1@optonline.net)\n"
+    }
+  ],
+  "optional_map_cfg": {
+    "packages/maps/ac_swamp.cfg": false,
+    "packages/maps/official/ac_swamp.cfg": false
+  }
+}

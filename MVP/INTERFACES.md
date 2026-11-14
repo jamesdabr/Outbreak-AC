@@ -26,3 +26,5 @@ Changes to a public header, wire message, cross-system event, config schema or s
 The LLM tester interface is a deferred requirement, not a frozen API. The owner and lead will define its game-state observation/action contract separately before T013 is released. Workers must not add screenshot requirements or select a provider/transport on their own.
 
 D086 adopts APPROVED P1_RULES.md0.1 for time/authority/atomicity/identity/ordering policy only. Public record definitions, wire message bodies, geometry/numeric algorithms and concrete adapters are still not fully frozen; T002 remains SUBMITTED. Existing portable numeric/envelope/map prerequisites retain their separately approved exact APIs.
+
+D150 selects T132 remaining-tail-hold/progress direction and qualified arithmetic wording for future final P1 integration, preserving numeric rules and old frozen proposals. This does not freeze all typed interfaces or release implementation. Exact private step restoration, sticky holds, velocity/remainders/debt and required resource/runtime proofs follow D150/T132; no broader convergence claim.

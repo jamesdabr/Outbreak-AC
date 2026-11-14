@@ -1,0 +1,5 @@
+# D061 Static integration review accepted; authority proposal released
+
+MAIN accepts frozen T068 notes-only review after terminal handoff and reading integration trace/public diagnostics. Native map-ident auto-spawn and publication-stage timing were independently confirmed/resolved D057; dedicated distributable servermaps staging and natural browser scheduling remain explicit test preconditions. No further static defect established is not actual game proof. Exact observer guide is useful to T067 but creates no private action API or runtime authority. No code was changed or executed for this review.
+
+Release existing T002revision1.0 to Engine, under D056 proposal-only constraints, now that T068 is complete. Only notes/proposals/T002-engine-*.md and own questions/handoff may be written. The full eight-player server-authoritative simulation/interfaces/ownership/numeric recommendations are proposed for MAIN review; no P1 gameplay implementation, engine switch, scope amendment or final platform acceptance authorized. Existing T070 artifact/SDK/source freeze remains untouched.

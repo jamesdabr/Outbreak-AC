@@ -1,0 +1,7 @@
+# D443 — Resume Player's existing T167 preparation
+
+Owner explicitly answered the pending question: “Resume Player’s T167 preparation.” This releases D248's chat-wide hold only for the existing T167 source and guarded simulated preparation scope. Re-release T167 revision1.2 to Player /01a1b92b-cdb9-7202-ac82-dadb42d64f5e. QA/T149 remain paused. No actual native build, tool/signature/framework inspection, browser/server runtime or playtest is authorized by this answer.
+
+Preserve all existing drafts, baselines, failed/partial artifacts and shared work. Inspect the current six owned files and last edit as text first; do not assume the old truncated edit applied or restart any old operation. Complete the existing BLACKWOOD_NATIVE_BUILD_PREPARATION0.1 source/schema and meaningful guarded fake-effect checks within its existing bounds. Fresh named fixture-pass directories only; guards must deny real process/network/tool/FFI/framework-copy boundaries before project modules load. This is necessary existing server preparation, not a release of other D434-held audit expansion. Do not add unrelated framework/proof tickets or change gameplay/source/asset scope.
+
+Deliver a concise current-state handoff with exact changed files, fixture command/result and remaining issues. Stop at REVIEW-READY for MAIN inspection before any actual effects. Prior D442 impasse is resolved for this preparation dependency; worker coordination resumes on the original full browser-MVP objective.

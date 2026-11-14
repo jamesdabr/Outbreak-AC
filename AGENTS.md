@@ -8,6 +8,8 @@ Before implementation, read `MVP/README.md`, `MVP/GOVERNANCE.md`, `MVP/CONTRACT.
 
 For the browser prerequisite wave, also read `MVP/BROWSER_FOUNDATION.md`. Its approved revision 0.5 and an individually RELEASED prerequisite ticket authorize only the isolated work defined there under decisions D003/D004/D005; unresolved draft gameplay contracts do not grant additional scope.
 
+For T147 portable core/hash prerequisite work, also read approved `MVP/SHARED_HASH_FOUNDATION.md`0.1/D174. It authorizes only that individually released isolated subset before full P0, with no gameplay or production integration release. Existing numeric/envelope/map APIs and all other phase gates remain.
+
 Only a ticket with status RELEASED, a named assignee, accepted dependencies, an explicit write allowlist and pinned contract revisions authorizes implementation. DRAFT, READY, BLOCKED, SUBMITTED and ACCEPTED tickets do not authorize new implementation. Do not implement future phases speculatively.
 
 ## Worker restrictions

@@ -1,0 +1,11 @@
+# D492 — Owner-requested source review and main checkpoint
+
+Owner explicitly requests review and commit to main, including tickets/MVP guidelines, on2026-11-14. This authorizes the scoped Git commit/push; no game/service/deployment/QA resumption. Origin currently has master only. Create main from current local history and push it without force or modifying remote master/default-branch settings.
+
+Review finding: T291's Swamp launcher overwrote the default while build config/page still select stock-combat-1, and T290 pack generation failed before writes. Preserve T291 source as separate play_swamp_local.py/gateway_swamp_local.cjs, restore the exact pre-T291 stock default (verified starting hashes), then select fresh local14. Each launcher now checks its page's candidate path before listeners/FFI. Swamp remains preparation, not a working/default build. T289 source is accepted for its optional compile profile; T291 source/data reviewed but runtime pending; T290 assembler corrected source remains unexecuted/pending.
+
+Gateway regression fixtures still used numeric frontend Host/Origin and150/180second deadlines. Align them with approved outbreak.localhost/30min profile, retain strict admission, and exercise actual component with fake sockets/clocks. No new real sockets/game process. Add a small C++ profile smoke for legacy/Blackwood/Swamp identity plus mismatch/missing receipt/size/mode rejection. Native compilation of the header test is not an Emscripten/render/game acceptance claim.
+
+Commit current browser/renderer/transport/source recipes, relevant tests, contracts/tickets and textual decision/handoff records. Leave generated candidates, caches, runtime capabilities/logs, private local stock-media copies and unrelated isolated future-P1 work local. Retain original stock notices; no public playable pack is published. Historical binary/hash receipts remain point-in-time evidence and are not renewed by this source commit.
+
+Validation and remaining limitations are recorded in notes/reviews/MAIN-D492-source-review.md. The full browser rebuild could not begin because cached SDK's emscripten-version.txt is absent; no compiler run/success claimed. Focused checks passed. Whole archival whitespace findings are preserved; current code-path whitespace check passed.

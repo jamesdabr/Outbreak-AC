@@ -396,7 +396,12 @@ void draw_text(const char *str, int left, int top, int r, int g, int b, int a, i
 #define TEXTTAB(idx) TEXTGETCOLUMN
 #define TEXTWHITE(idx)
 #define TEXTLINE(idx)
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+// Legacy GL emulation needs a uniform color outside the glyph vertex stream.
+#define TEXTCOLOR(idx) do { glEnd(); text_color(str[idx], colorstack, sizeof(colorstack), colorpos, color, a); glBegin(GL_QUADS); } while(0);
+#else
 #define TEXTCOLOR(idx) text_color(str[idx], colorstack, sizeof(colorstack), colorpos, color, a);
+#endif
 #define TEXTIGRAPH(idx) queue_igraph((uchar)str[idx], left+x, top+y), x += FONTH + 1;
 #define TEXTCHAR(idx) x += draw_char(c, left+x, top+y) + 1;
 #define TEXTWORD TEXTWORDSKELETON
@@ -407,8 +412,13 @@ void draw_text(const char *str, int left, int top, int r, int g, int b, int a, i
     igraphbatch.setsize(0);
     glBlendFunc(GL_SRC_ALPHA, curfont->tex->bpp==32 ? GL_ONE_MINUS_SRC_ALPHA : GL_ONE);
     glBindTexture(GL_TEXTURE_2D, curfont->tex->id);
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    glColor4ub(color.x, color.y, color.z, a);
+    glBegin(GL_QUADS);
+#else
     glBegin(GL_QUADS);
     glColor4ub(color.x, color.y, color.z, a);
+#endif
     TEXTSKELETON
     glEnd();
     if(cursor >= 0)

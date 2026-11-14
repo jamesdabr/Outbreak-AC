@@ -1,0 +1,5 @@
+# D143 — Accept fixed installed-input audit and release full-forest size/timing preflight
+
+T128 ACCEPTED for its fixed installed-input DATA audit only. MAIN independently recomputed all four complete no-follow trees (1210 ordinary files/957directories/eight confined aliases) and all four content/metadata inventory digests matched the frozen report SHA c085565b29d2f101bf520d75fc6164ce82a1cec92769311f56df9b78f3e7f056. MAIN-T128-installed-input-review.json records verification. No installed input incompatibility found; source/private schema/runtime acceptance not inferred.
+
+Release T130 World for bounded local read-only full-forest hash/serialization capacity/timing preflight under D142/smoke0.6; no project import/controller/admission/inspector/native/browser effects. This tests real metadata representability before another freeze and actual launch. Working controller files may change during this audit: report them honestly, do not claim stability or exempt them from future pins. MAIN will quiesce workers for actual pins/run. No source/policy modification or human-hold bypass.

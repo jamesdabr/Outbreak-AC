@@ -1,0 +1,5 @@
+# D256 — Assign the mandatory G2 moving-query plan
+
+Engine completed T170's Blackwood consumer audit; independent review is ongoing and native implementation remains dependent on held/unaccepted T167. Continue useful independent geometry work by assigning Engine T1731.0 READ-ONLY PLAN + NEW NOTES ONLY. This prepares the mandatory full G2 stage already retained in WORLD_QUERY_FOUNDATION/T155packet2, not a replacement or smaller success criterion.
+
+Exact ticket owns one new proposal and own notes only. World retains all G1/geometry source ownership and is preparing T159 against installed333b... rules under D254. No production/code/fixture/tool/SDK/FFI/runtime/Git or worker dispatch permission; no record/math/cap/gameplay adoption. Plan must close exact moving-query source/workspace/traversal/root/publication/oracle/frame/family/evidence seams while preserving G1's full proof and future explicit serialization. Missing definitions are questions for MAIN, not worker amendments. Player/QA/T149/full MVP gates unchanged.

@@ -1,0 +1,5 @@
+# D066 P1 proposal delivery and isolated tag regression
+
+MAIN accepts frozen T071 notes-only proposal delivery after terminal handoff and reviewing camera/movement/weapon/control/timing/source-ownership/evidence recommendations. This does not adopt numbers, APIs, P1/support/performance contracts or implementation. Reconcile with T002 then record explicit MAIN decisions before dependent gameplay.
+
+MAIN independently inspected md3.h166 and vertmodel.h716/1267: position-only attachment branch calls link(NULL,tag) while the three-argument link stores its optional pos pointer. T071-player-tag-output-seam question is valid for focused investigation. Release T0744.7 Player only for source-derived regression evidence under NEW web/player/tests/T074; no production header/source/artifact mutation. Genuine rendered/GPU outcome remains unproven. Do not use render tag positions for authoritative hits. Any eventual production fix requires its own reviewed release after current baseline/source freeze.

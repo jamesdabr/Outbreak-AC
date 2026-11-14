@@ -1,0 +1,7 @@
+# D190 — Accept T152 packet; release T153 arithmetic
+
+MAIN accepts T152 notes delivery after handoff/source-reference review and independent bounded static review, including final-pin re-review after the author's final clarifications. Final packet SHA256241f543b71e6663d55342ccd3f398ea52f575e9fe9d5cfa25e97af89a3b5ef7d. No findings in multiply carry, restoring division/root, rounding, conversions/aliases/refusal or proposed bounded verification. No implementation or complete geometry proof exists from that review.
+
+MAIN adopts QUERY_ARITHMETIC_FOUNDATION0.1 and releases Engine T153 with one exclusive new private header/harness lease. Its API/finite operation/stack/corpus semantics are now binding only for this prerequisite. Initial Engine ownership is explicit despite World's earlier proposed ownership; future World consumers are read-only under separately released geometry work. No accepted source is reopened, public interface amended, gameplay value selected or movement preference inferred.
+
+Like accepted numeric/hash/rules prerequisites, this isolated code may precede full P0. Real bounded current-project native/Wasm unit compilation/execution and inspected compiler frame diagnostics are authorized; no app/browser/network/runtime integration or memory/capability experiment. D150 qualifications, full query/phase/resource/human gates and QA hold remain. T150 review correction is independent.

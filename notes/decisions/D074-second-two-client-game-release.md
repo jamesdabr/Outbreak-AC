@@ -1,0 +1,9 @@
+# D074 Second actual two-full-game-client baseline release
+
+MAIN releases T0795.2 AI-Director for ONE actual corrected T067 supervisor baseline after T0775.0 acceptance D073. Exact attempt T079-1; new web/transport/results/two-client-T067/runtime-T079-1 and web/server/run/T067-T079-1 only. Runtime recipe remains T067/EXPLICIT_TWO_CLIENT_NATIVE_GAME_EXECUTION. Complete current MAIN pins D074-two-client-game-pins.json, expectedSHA supplied separately in dispatch, are mandatory before any child/listener/staging.
+
+All topology/limits/normal input/evidence/cleanup bounds from D068/T075 remain unchanged: native release49a1d..., copied signedlibs, exact c2 isolated config/servermapsmap2, accepted bundle35bad2ff04cdc17df5193ca026969380e7c9dc4176596601972b4af163b90e0a, gateway29865/static29866,2fresh one-usecaps/isolated Chrome contexts,180s total/8MiBchild/15sjoin/2smovement+gateway/3snative; no threshold/source/flag changes or visibility spoof. T077 source classification and bounded evidence are the reviewed correction; neither changes the game nor labels startup readiness.
+
+No automatic further rerun, even if timing fails differently. Preserve new actual evidence and full failure samples; native crash/nonzero/fallback/cleanup fault freezes subsequent execution and requires question. Retain T075 original FAIL and historicalsource. Only proved owned resource cleanup may signal processes; no external/public endpoints/install/compile/source mutation/deploy. New portable numeric prerequisite is independent and not linked into this legacy native-game baseline.
+
+Require both genuine native identity/map/spawn/ACK/currentalive and normalW250ms>=2units with newer receiver parsed matchingcn/life/count/time within1unit/2s in both directions, yielding frames and allerror/cleanup gates. Full authority/internal nativecache/humanmedia/performance/P0/MVP remain separate. MAIN reviews actual result before acceptance.

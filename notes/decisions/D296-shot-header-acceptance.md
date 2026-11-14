@@ -1,0 +1,5 @@
+# D296 — Accept the sole shot declaration header
+
+Accept T1851.1 for the exact NEW declaration artifact only. source/outbreak/p1_shot.h652 bytes/SHA25661c3c1dd5f0cf3d7898fd7e626cbb1eb0ca4d7dece194b45cf9971f36d8d25ea, ordinary0644/nlink1, matches approved SHOT_FOUNDATION0.1 literal bytes. MAIN independently verified the exact fence text, one camera include, sole actual shot record/enum homes and forward-declared-only MotionState; receipt notes/reviews/MAIN-T185-literal-header-review-1.json SHA256ae80589f542cd8e1c8230942733da8cbca8c1e1c7f648ee56314d7eeb60bee12. Handoff notes/handoffs/T185-AI-Director-shot-header-1.md records the preserved existing input headers and notes-only compilation limits.
+
+Close the header lease. No definition, consumer, actual MotionState adoption, compile/ABI/runtime, simulation/combat/transaction/browser or phase evidence is established. Remaining T184 validation/Fault/composition clauses still require explicit freeze; full actual G1/G2/current regression/camera/source/caller/human gates and Player/native/QA/T149 holds remain. No immediate AI implementation dependency is ready from this acceptance; next work needs a new named ticket.

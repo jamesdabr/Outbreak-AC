@@ -1,0 +1,5 @@
+# D183 — Release certified angle data T150
+
+MAIN adopts ANGLE_TABLE_FOUNDATION0.1 and releases World T150. Accepted T147/D181 core/hash and T148/D180 data work free World for this new exclusive lease. The reviewed advisory Package A supplies a finite mathematical method; MAIN fixes output schema/ownership, independent checker, bounds and release conditions in the new approved contract. Existing proposed yaw coordinate convention and table values are preserved; no player-facing balance changes or pending ground-rate choice is resolved.
+
+This isolated prerequisite can precede full P0 like numeric/hash/map data work. Only new deterministic artifact code/data/tests run through inspected standard-library Python. No engine/build/browser/network integration, API amendment, gameplay phase release or memory/capability run. Package B's C++ rules/basis remains future work pending accepted actual table hashes and a separate exact API/ticket adoption. Frozen accepted source files remain read-only. QA remains paused.

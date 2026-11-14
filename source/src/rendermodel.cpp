@@ -1061,14 +1061,16 @@ void renderclientp(playerent *d)
 {
     if(!d) return;
 #if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+    // Original MD2 animation/config and bundled default team skin.
+    const char *skin = team_base(d->team) ? "packages/models/playermodels/RVSF/01.png" : "packages/models/playermodels/CLA/01.png";
     const char *attachment = NULL;
     if(d->weaponsel) switch(d->weaponsel->type)
     {
-        case GUN_PISTOL: attachment = "outbreak/pistol"; break;
-        case GUN_ASSAULT: attachment = "outbreak/rifle"; break;
-        default: break; // unsupported native selections remain body-only
+        case GUN_PISTOL: attachment = "weapons/pistol/world"; break;
+        case GUN_ASSAULT: attachment = "weapons/assault/world"; break;
+        default: break; // other actual selections remain body-only
     }
-    renderclient(d, "outbreak/survivor", attachment, 0); // configured MD3 skin->id
+    renderclient(d, "playermodels", attachment, -(int)textureload(skin)->id);
     return;
 #else
     int team = team_base(d->team);
@@ -1102,7 +1104,22 @@ void renderclients()
 {
     playerent *d;
     loopv(players) if((d = players[i]) && d->state!=CS_SPAWNING && d->state!=CS_SPECTATE && (!player1->isspectating() || player1->spectatemode != SM_FOLLOW1ST || player1->followplayercn != i)) renderclientp(d);
-    if(player1->state==CS_DEAD || ((reflecting && !refracting) && (player1->state!=CS_SPECTATE || player1->spectatemode==SM_FLY))) renderclientp(player1);
+    bool localbody = player1->state==CS_DEAD || ((reflecting && !refracting) && (player1->state!=CS_SPECTATE || player1->spectatemode==SM_FLY));
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(outbreakthirdperson())
+    {
+        // Camera collision can leave the view inside the local body. Use the real
+        // body/camera bounds, including current crouch height, without moving either.
+        vec offset(camera1->o);
+        offset.sub(player1->o);
+        const float clearance = player1->radius + camera1->radius;
+        const bool overlapping = offset.sqrxy() <= clearance*clearance &&
+            offset.z >= -player1->eyeheight - camera1->aboveeye &&
+            offset.z <= player1->aboveeye + camera1->eyeheight;
+        localbody = !overlapping; // Recomputed each draw: restore once clear.
+    }
+#endif
+    if(localbody) renderclientp(player1); // one local draw, including overlapping reflection cases
 }
 
 void loadallmapmodels()  // try to find all mapmodels in packages/models/mapmodels

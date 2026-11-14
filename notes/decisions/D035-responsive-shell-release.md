@@ -1,0 +1,3 @@
+# D035 Responsive shell prerequisite
+
+MAIN releases T0562.6 to Engine for shell.html and task-local labeled fixture only under browser foundation/GOVERNANCE/P0 0.5. Actual D034 snapshot proves1200x1200 canvas with bottom outside1280x720; target initial intrinsic960x540 and CSS16:9 contained responsive layout, max1200 and space for real status/errors. This is presentation recovery, not final performance acceptance or source-wide SDL rewrite. Exact details, bounded inspected installed-browser loopback fixture and evidence criteria are in T056; actual game/output frozen. T052 Player owns main/audio files concurrently, no overlap. MAIN owns active T055 actual observer, QA chat stays held. T053 data review may proceed independently.

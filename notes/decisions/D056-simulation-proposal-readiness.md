@@ -1,0 +1,3 @@
+# D056 Shared simulation proposal readiness
+
+MAIN prepares T002 revision1.0 as READY, not RELEASED, for Engine after completion/review of T068. Independent proposal work can use accepted isolated browser/native components while full game integration is being prepared; final proposal acceptance still requires platform decision and MAIN technical/parameter freeze. This does not waive full T014/T015/P0 gates or authorize gameplay implementation. The legacy forwarded movement/hit path is explicitly inadequate for authoritative MVP. All recommendations remain proposals until approved. Worker is not dispatched by this decision; T068 remains its current assignment.

@@ -1,0 +1,629 @@
+{
+  "assembler_sha256": "ef7cffa188300db7a9cebd92fd32018796b9c733584c753ee2453fd288f138a3",
+  "base_manifest_sha256": "812a3d822e290774cef051a040bdeb03fd1b47f431fe53b7fef2537b5217ce37",
+  "checks": {
+    "all_written_bytes_and_hashes_match": true,
+    "approved_CFG_delta_only": true,
+    "exact_members": 97,
+    "original_inputs_unchanged": true,
+    "skin_RGB_and_RGBA_equalities": 2,
+    "stock_byte_copies": 5,
+    "unchanged_base_copies": 89
+  },
+  "classification": "DATA_ONLY_LOCAL_PRIVATE_USE",
+  "contract": "STOCK_FIRST_PROTOTYPE0.3/D483",
+  "operations": [
+    {
+      "added_lines": [
+        "scriptcontext MDLCFG md2emit",
+        "keymap 49 1",
+        "bind 1 [weapon pistol]",
+        "keymap 50 2",
+        "bind 2 [weapon assault]"
+      ],
+      "derived_sha256": "5a1bd062bb03a9443ec740acf2ed7f591afd7ac1035064a2d4513e797e08f112",
+      "isolation_and_seal_preserved": true,
+      "operation": "APPROVED_CFG_ADDITIONS_ONLY",
+      "path": "config/browser.cfg",
+      "source_sha256": "cb8abcb841d3f0955fe49e06d09e4645133e02ce359ccc968b3c476d28a6efae"
+    },
+    {
+      "derived_bytes": 1600,
+      "derived_sha256": "f08789d1c0b9565462402732b767390d9ae636bf14312622874b7dc9bc3c5171",
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "BYTE_IDENTICAL_COPY",
+      "path": "packages/models/weapons/license.txt",
+      "source_bytes": 1600,
+      "source_path": "packages/models/weapons/license.txt",
+      "source_sha256": "f08789d1c0b9565462402732b767390d9ae636bf14312622874b7dc9bc3c5171"
+    },
+    {
+      "derived_bytes": 65204,
+      "derived_sha256": "4e5ddea794b200e19ffb18c51a1bd6f6e6a1ce5e2232da75839b8ce17a942af8",
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "BYTE_IDENTICAL_COPY",
+      "path": "packages/models/weapons/pistol/world/tris.md2",
+      "source_bytes": 65204,
+      "source_path": "packages/models/weapons/pistol/world/tris.md2",
+      "source_sha256": "4e5ddea794b200e19ffb18c51a1bd6f6e6a1ce5e2232da75839b8ce17a942af8"
+    },
+    {
+      "derived_bytes": 105,
+      "derived_sha256": "9b7ab2a2ec5a236c9145de2ac4da1e270e71f7a51aa9808eafc3bbaef53a16ec",
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "BYTE_IDENTICAL_COPY",
+      "path": "packages/models/weapons/pistol/world/md2.cfg",
+      "source_bytes": 105,
+      "source_path": "packages/models/weapons/pistol/world/md2.cfg",
+      "source_sha256": "9b7ab2a2ec5a236c9145de2ac4da1e270e71f7a51aa9808eafc3bbaef53a16ec"
+    },
+    {
+      "derived_bytes": 16852,
+      "derived_sha256": "57edc75462ccfbcf4d5d0ff4ea60a4c322e1d7020bccbb40f2fd68c9f85c8cdc",
+      "dimensions": [
+        128,
+        128
+      ],
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "JPEG_TO_PNG_DECODED_PIXEL_COPY",
+      "orientation_transform": false,
+      "path": "packages/models/weapons/pistol/world/skin.png",
+      "recolor": false,
+      "resize": false,
+      "rgb_pixel_sha256": "aa4685172f80e02072313fc052bd022975c633deca0c06c6d943d904776d2f62",
+      "rgba_pixel_sha256": "ef592605325c3814e06a75c6f9ba35d5fbc4cb186ac407e25049f70ffdb48c21",
+      "source_bytes": 7125,
+      "source_path": "packages/models/weapons/pistol/world/skin.jpg",
+      "source_sha256": "77a9f58c3529a6722733dcb46525e34473c26955284477349d782e507e301359"
+    },
+    {
+      "derived_bytes": 116416,
+      "derived_sha256": "32fe4bf7935f95aa392a77c55ab050f8b704f8fc171abcf63b6c0406335bb09c",
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "BYTE_IDENTICAL_COPY",
+      "path": "packages/models/weapons/assault/world/tris.md2",
+      "source_bytes": 116416,
+      "source_path": "packages/models/weapons/assault/world/tris.md2",
+      "source_sha256": "32fe4bf7935f95aa392a77c55ab050f8b704f8fc171abcf63b6c0406335bb09c"
+    },
+    {
+      "derived_bytes": 105,
+      "derived_sha256": "9ba2f0ac05c0b7044706ec76985a5e1fd9ade55ce318e086248f0fb3d5458b0b",
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "BYTE_IDENTICAL_COPY",
+      "path": "packages/models/weapons/assault/world/md2.cfg",
+      "source_bytes": 105,
+      "source_path": "packages/models/weapons/assault/world/md2.cfg",
+      "source_sha256": "9ba2f0ac05c0b7044706ec76985a5e1fd9ade55ce318e086248f0fb3d5458b0b"
+    },
+    {
+      "derived_bytes": 32699,
+      "derived_sha256": "b1095394855be05cefb46338cc1d7b25a5a0e9dc2ed67abb4b5ad5881811c854",
+      "dimensions": [
+        256,
+        128
+      ],
+      "license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+      "notice": "packages/models/weapons/license.txt",
+      "operation": "JPEG_TO_PNG_DECODED_PIXEL_COPY",
+      "orientation_transform": false,
+      "path": "packages/models/weapons/assault/world/skin.png",
+      "recolor": false,
+      "resize": false,
+      "rgb_pixel_sha256": "2566668e7708ddcc30a9f7c6085871e6c3f13041cc16786d5b3c64f5a999e35d",
+      "rgba_pixel_sha256": "7c03d5c760640ef555abc391b25e3416d5249243df419b3a0e8e70dcb55464f1",
+      "source_bytes": 8561,
+      "source_path": "packages/models/weapons/assault/world/skin.jpg",
+      "source_sha256": "402eb7833a32ec1dff5d5012cdef24e08fed14c18314c2ae01e1f3924f187b48"
+    }
+  ],
+  "pillow_version": "11.1.0",
+  "player_notice": "packages/models/playermodels/license.txt",
+  "player_personal_use_notice_preserved": true,
+  "public_distribution_authorized": false,
+  "raw_bytes": 1169695,
+  "runtime_verified": false,
+  "schema_version": 1,
+  "source_identities": [
+    {
+      "bytes": 105,
+      "path": "packages/models/weapons/assault/world/md2.cfg",
+      "sha256": "9ba2f0ac05c0b7044706ec76985a5e1fd9ade55ce318e086248f0fb3d5458b0b"
+    },
+    {
+      "bytes": 8561,
+      "path": "packages/models/weapons/assault/world/skin.jpg",
+      "sha256": "402eb7833a32ec1dff5d5012cdef24e08fed14c18314c2ae01e1f3924f187b48"
+    },
+    {
+      "bytes": 116416,
+      "path": "packages/models/weapons/assault/world/tris.md2",
+      "sha256": "32fe4bf7935f95aa392a77c55ab050f8b704f8fc171abcf63b6c0406335bb09c"
+    },
+    {
+      "bytes": 1600,
+      "path": "packages/models/weapons/license.txt",
+      "sha256": "f08789d1c0b9565462402732b767390d9ae636bf14312622874b7dc9bc3c5171"
+    },
+    {
+      "bytes": 105,
+      "path": "packages/models/weapons/pistol/world/md2.cfg",
+      "sha256": "9b7ab2a2ec5a236c9145de2ac4da1e270e71f7a51aa9808eafc3bbaef53a16ec"
+    },
+    {
+      "bytes": 7125,
+      "path": "packages/models/weapons/pistol/world/skin.jpg",
+      "sha256": "77a9f58c3529a6722733dcb46525e34473c26955284477349d782e507e301359"
+    },
+    {
+      "bytes": 65204,
+      "path": "packages/models/weapons/pistol/world/tris.md2",
+      "sha256": "4e5ddea794b200e19ffb18c51a1bd6f6e6a1ce5e2232da75839b8ce17a942af8"
+    },
+    {
+      "bytes": 53357,
+      "path": "web/assets/stock-player-profile/manifest.json",
+      "sha256": "812a3d822e290774cef051a040bdeb03fd1b47f431fe53b7fef2537b5217ce37"
+    },
+    {
+      "bytes": 1318,
+      "path": "web/assets/stock-player-profile/pack-root/LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 1318,
+      "path": "web/assets/stock-player-profile/pack-root/config/LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 2385,
+      "path": "web/assets/stock-player-profile/pack-root/config/browser.cfg",
+      "sha256": "cb8abcb841d3f0955fe49e06d09e4645133e02ce359ccc968b3c476d28a6efae"
+    },
+    {
+      "bytes": 1622,
+      "path": "web/assets/stock-player-profile/pack-root/config/default_map_settings.cfg",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de"
+    },
+    {
+      "bytes": 13889,
+      "path": "web/assets/stock-player-profile/pack-root/config/font.cfg",
+      "sha256": "34286962a32c8dd284600b39cb404a79df150a9892b15a9f4848e7a0aeed0b08"
+    },
+    {
+      "bytes": 1300,
+      "path": "web/assets/stock-player-profile/pack-root/notices/blackwood-candidate/LICENSE.txt",
+      "sha256": "d597a754790e54f9ee13788b3c2f1ded4c0edc60c3d37251c787d5d7f648d47e"
+    },
+    {
+      "bytes": 3103,
+      "path": "web/assets/stock-player-profile/pack-root/notices/blackwood-candidate/PROVENANCE.json",
+      "sha256": "0da2da2801d55e0afab1abf2ec1d0ed4e25bd4bf41d8a225cad37e5aa8809676"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 39734,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/extraction.wav",
+      "sha256": "9a06d8c8d5cd3435237344611904d7bd26c8af2046c053c423f898e87e3bcf5d"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/extraction.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 8864,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/footstep.wav",
+      "sha256": "e0b2bc1d1f3a58a058692885b0a920295be6aeaa47e65be7f7df3a2f601e2400"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/footstep.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 7982,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/pistol.wav",
+      "sha256": "708999bd25f91c1a132bc04e62f487a1dea85b7e21ed851603afd31e1ec06483"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/pistol.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 33118,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/predator_flank.wav",
+      "sha256": "51859ce446db0c50d9390110e2007f8646a471ae3ec76f959eed5b008d01bbc7"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/predator_flank.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 26504,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/predator_front.wav",
+      "sha256": "1d8af04001b1fed5a3dc88cfaf4c35a416b34fba3f66a9bd72049939b146fe2d"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/predator_front.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 13274,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/proof_tone.wav",
+      "sha256": "e37aa3c35b32a3a6b81610c08717721d22a95fb059f24894cfbaea24aa4e5f72"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/proof_tone.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 19888,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/reload.wav",
+      "sha256": "b409287328685f4648d377498eda64746a72866036f745635bd13d974324aa62"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/reload.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 5336,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/rifle.wav",
+      "sha256": "1fcd2440fb09924f39b6d5260e28253636f76d2a1fa526dd2187f5eda8228693"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/rifle.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 17684,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/walker_attack.wav",
+      "sha256": "17bca6cf27dd34d06a8f26528f27401cd7723c65d420448149717854e88e9c45"
+    },
+    {
+      "bytes": 1242,
+      "path": "web/assets/stock-player-profile/pack-root/packages/audio/outbreak/walker_attack.wav.LICENSE.txt",
+      "sha256": "bcf8af71b43a8ae289aca184bf71c58961821276ac920137b72974440cdb8b6e"
+    },
+    {
+      "bytes": 1508,
+      "path": "web/assets/stock-player-profile/pack-root/packages/crosshairs/default.png",
+      "sha256": "f3171fd839d52853ca2e97ef1ecba45a8bfc45df511503123ee78d6382032f7d"
+    },
+    {
+      "bytes": 1677,
+      "path": "web/assets/stock-player-profile/pack-root/packages/maps/blackwood_greybox_v1.cfg",
+      "sha256": "289bcb22b29a17443cdf47a936e82edbc47a7a0e0dd034a8b602ce3ec79b76bd"
+    },
+    {
+      "bytes": 734,
+      "path": "web/assets/stock-player-profile/pack-root/packages/maps/blackwood_greybox_v1.cgz",
+      "sha256": "e68314e911130d2822fdfa65d77dfaba302d4f5c3552ff91c698b84768d5ddf1"
+    },
+    {
+      "bytes": 1622,
+      "path": "web/assets/stock-player-profile/pack-root/packages/maps/dev_outbreak_browser.cfg",
+      "sha256": "751937b8c2d1082281643895be6ffbe2c4de22f072012601bbd01361ce0e37de"
+    },
+    {
+      "bytes": 561,
+      "path": "web/assets/stock-player-profile/pack-root/packages/maps/dev_outbreak_browser.cgz",
+      "sha256": "856173969726f632812fd8ebd2ada746831d7e81f7452dd98f7235a2bd398134"
+    },
+    {
+      "bytes": 1318,
+      "path": "web/assets/stock-player-profile/pack-root/packages/maps/dev_outbreak_browser.cgz.LICENSE.txt",
+      "sha256": "93ca3c5ce03804b3e63ea54286b4576269fcb9d943bda87acda9383a8bb8ca4e"
+    },
+    {
+      "bytes": 3136,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/base.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/blood.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/bullethole.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 1571,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/com.png",
+      "sha256": "4bd7e0e9c08179469f7d2fbd5287949476f46e8fe6fa28051c8665407c0e5f06"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/compass-base.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/compass-rose.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/ctficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/damage.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3137,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/explosion.png",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/htficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1524,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/icon.png",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/items.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/ktficons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3137,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/muzzleflash.jpg",
+      "sha256": "1e3820e8730a7747ab9a914f70f2bcaf4aa91492335ff0a65e3893e4b0a8e972"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/radaricons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/scope.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 3136,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/scorch.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 3136,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/smoke.png",
+      "sha256": "e17d58327c136d80309d0e82468034b350b08b5453c58dcaa8a4f1851fb32eb8"
+    },
+    {
+      "bytes": 1776,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/startscreen.png",
+      "sha256": "abf245e8e33d0240a7fae852bfb3ce7a5a53cc2608113bd8ec3f9825ea0c8ce6"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/teamicons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1616,
+      "path": "web/assets/stock-player-profile/pack-root/packages/misc/voteicons.png",
+      "sha256": "95a9c1817208b071ea220f01e2118918294a88258ec498352e087b0f68d1a4bf"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/md3.cfg",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/skin.png",
+      "sha256": "482917bedeaba79fa1c407a886473b85567a79f0667e4f91b18a64897121ff8f"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 4100,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/tris.md3",
+      "sha256": "cef9e518dead445712f708bc5f6c6ea1b5709ddcf23944d228e0b7924897ea86"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/pistol/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2090,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/md3.cfg",
+      "sha256": "713069c9a07fafd6d7b315bb5d0a8fee268c1adab5ecb3e9aab297a6a2fe7a3f"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1496,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/skin.png",
+      "sha256": "147a1a18c92bd5341d1b80eec71bf0f21eaf8f0766766da2628496cc1838b62f"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 5924,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/tris.md3",
+      "sha256": "16995887d6fcaadc01c43c4fe8b94a8bb312b74d8cbc07f44b9c4c96bb99a1d5"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/rifle/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 2100,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/md3.cfg",
+      "sha256": "060e48df70ba96084f68ba1a2187598f628ada2ab18f78cca5eb80af190833da"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/md3.cfg.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 1512,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/skin.png",
+      "sha256": "9fa0040fefbc054364fdaa1e859297ec9ac5f84f2459f38a18fcf16a045f5f96"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/skin.png.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 82156,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/tris.md3",
+      "sha256": "9b6f1cc37bc404d0cc2a1a4e26ece431af275de971924707cd9f91ebf2fefb09"
+    },
+    {
+      "bytes": 1295,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/outbreak/survivor/tris.md3.LICENSE.txt",
+      "sha256": "606f634ef8dec225a79167af8810727fa0b756d4d1f9c32eedd0fba49417a307"
+    },
+    {
+      "bytes": 107638,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/CLA/01.png",
+      "sha256": "d6ba5e2a7a0c6646964ebd1831c6ec6294682fa712cb97e44843e19a1379e0fe"
+    },
+    {
+      "bytes": 82842,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/RVSF/01.png",
+      "sha256": "48636afee683bc9452bf32c68c2ff3723dc2e76e94ddc7ef771a7d6534ea0b11"
+    },
+    {
+      "bytes": 1431,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/license.txt",
+      "sha256": "f7489171be41ac97871dfd78fb384f524873c5c497b54999884aff876f311a36"
+    },
+    {
+      "bytes": 97,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/md2.cfg",
+      "sha256": "5ba275c4e01b8d45dcde81f6261f3e31666329bf7b6fc0b19699cb0223068827"
+    },
+    {
+      "bytes": 82842,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/skin.png",
+      "sha256": "48636afee683bc9452bf32c68c2ff3723dc2e76e94ddc7ef771a7d6534ea0b11"
+    },
+    {
+      "bytes": 249676,
+      "path": "web/assets/stock-player-profile/pack-root/packages/models/playermodels/tris.md2",
+      "sha256": "4b4c61f40c62f612f488eec644cd41dce151790b1eb9da39c4b16b6e9fd040eb"
+    },
+    {
+      "bytes": 16385,
+      "path": "web/assets/stock-player-profile/pack-root/packages/outbreak/blackwood_greybox_v1.anchors.json",
+      "sha256": "159d3afe87123616e8346f6db00c2fd3a99325abbfa74a67b825bebfd89af05e"
+    },
+    {
+      "bytes": 1524,
+      "path": "web/assets/stock-player-profile/pack-root/packages/outbreak/fallback.png",
+      "sha256": "ef1d5fcc5ee3e86bef74205ae7bde60e4cce5b0288e4a43a7f0cbacc086bb9a6"
+    },
+    {
+      "bytes": 2765,
+      "path": "web/assets/stock-player-profile/pack-root/packages/outbreak/font.png",
+      "sha256": "e8567f11398e350100a2b11a913a3d2c21e04d2be797eaea92a707f3e24bfcc9"
+    },
+    {
+      "bytes": 1585,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/outbreak/ceiling.png",
+      "sha256": "987b4f38de7ccfa1b6394e126702bda80b383e6594666fa062668ead464243fa"
+    },
+    {
+      "bytes": 1586,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/outbreak/ground.png",
+      "sha256": "e7fc43aae9a8ef80342a5ffa8afe88e226c41b244ebfa612fc4d4fce9d3c8e39"
+    },
+    {
+      "bytes": 1586,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/outbreak/wall.png",
+      "sha256": "8662db5de0f31977cad3e83099ea94dcbe59de025f08ec82b8aeda3d29d5adb3"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_bk.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_dn.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_ft.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_lf.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_rt.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    },
+    {
+      "bytes": 1497,
+      "path": "web/assets/stock-player-profile/pack-root/packages/textures/skymaps/_up.jpg",
+      "sha256": "fbc88d58b95ee8277ef7ddc075bb6a01637612092cf7a1fad2b17f80edf7d5bb"
+    }
+  ],
+  "stock_is_MIT": false,
+  "ticket": "T2841.0",
+  "weapon_license": "CC BY-NC-SA 2.5; Markus Bekel (makkE); see bundled weapons/license.txt",
+  "weapon_notice": "packages/models/weapons/license.txt"
+}

@@ -1,0 +1,9 @@
+# D039 Browser platform contract and next implementation
+
+MAIN reviewed T054 actual proposal/draft/question/handoff and rehashed exact submitted document identities, plus genuine current enet platform signatures/host creation/socket set/callers. Accept T054 as source-grounded PROPOSAL only, not blanket approval of all proposed values/code/runtime. D037 gateway0.1/T057 unchanged.
+
+Resolve platform portion of T054 freeze question with approved MVP/EXPERIMENTAL_BROWSER_BACKEND.md0.1, additive prerequisite2.8 to browser foundation/GOVERNANCE/P0 0.5. One deliberate correction to six-function draft bridge: add ob_ws_readiness(handle,conditions), because status opening/open/error cannot expose receive queue readiness without consuming a datagram. Select unsupported (no fd_set access). Freeze boot schema_version1/runId/endpoint/capability exact keys and fixed origin, all enum/API/byte/budget/lifecycle semantics in contract. T058 AI owns only new platform/header/component paths, not existing main/client/ENet source; Player audio and Engine gateway remain disjoint.
+
+Client lifecycle timing/milestones and new -c2 actual native run still need separate consumer/integration release after current source accepted. Initial trusted-only normal traffic/no malformed ENet and unchanged native binary risk boundary remains D037. Fresh-gateway/fresh-page reconnect may be a separately released preliminary feasibility test, but continuous-other-client rejoin remains mandatory later before full MVP; no silent contract weakening. Native internal cache/clientsequence remain unobserved on unchanged binary; replicated movement evidence is not damage/movement authority.
+
+QA chat hold unchanged, MAIN verifier. No global install/deploy/commit/push. Source/actual compiler/browser/platform component boundaries in T058 do not grant game traffic/native launch.

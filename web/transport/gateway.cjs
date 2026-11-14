@@ -6,8 +6,23 @@ const {performance}=require('node:perf_hooks');
 const WS=require('./vendor/ws-8.21.0/index.js');
 const {LIMITS:L,Bucket,Flow,current,deadline,overdue}=require('./gateway-limits.cjs');
 const now=()=>performance.now();
-const HOST='127.0.0.1',PORT=29865,UPSTREAM=29863,ORIGIN='http://127.0.0.1:29866',PROTOCOL='outbreak-enet-dgram.v1';
+const HOST='127.0.0.1',FRONTEND_HOST='outbreak.localhost',PORT=29865,UPSTREAM=29863,ORIGIN='http://outbreak.localhost:29866',PROTOCOL='outbreak-enet-dgram.v1';
 const STANDARD_OFFER='permessage-deflate; client_max_window_bits';
+function firstFailedAdmissionHeader(req,h,seen){
+  if(req.method!=='GET')return 'method';
+  if(h.host!==`${FRONTEND_HOST}:${PORT}`)return 'host';
+  if(h.origin!==ORIGIN)return 'origin';
+  if(h['sec-websocket-version']!=='13')return 'version';
+  if(h['sec-websocket-protocol']!==PROTOCOL)return 'protocol';
+  if(h.upgrade?.toLowerCase()!=='websocket')return 'upgrade';
+  if(!h.connection?.toLowerCase().split(/\s*,\s*/).includes('upgrade'))return 'connection';
+  if(!h['sec-websocket-key'])return 'key';
+  if(seen.has('sec-websocket-extensions')&&h['sec-websocket-extensions']!==STANDARD_OFFER)return 'extensions';
+  if(seen.has('cookie'))return 'cookie';
+  if(seen.has('authorization'))return 'authorization';
+  if(seen.has('proxy-authorization'))return 'proxy_authorization';
+  return null;
+}
 function configValues(config){
   if(!config||Object.getPrototypeOf(config)!==Object.prototype)throw Error('invalid_config');
   const descriptors=Object.getOwnPropertyDescriptors(config),keys=Reflect.ownKeys(descriptors);
@@ -193,7 +208,7 @@ async function startGateway(config){
     const seen=new Set();
     for(let i=0;i<req.rawHeaders.length;i+=2){const k=req.rawHeaders[i].toLowerCase();if(seen.has(k)){reject(t,'duplicate_header');return;}seen.add(k);}
     const h=req.headers;
-    if(req.method!=='GET'||h.host!==`${HOST}:${PORT}`||h.origin!==ORIGIN||h['sec-websocket-version']!=='13'||h['sec-websocket-protocol']!==PROTOCOL||h.upgrade?.toLowerCase()!=='websocket'||!h.connection?.toLowerCase().split(/\s*,\s*/).includes('upgrade')||!h['sec-websocket-key']||(seen.has('sec-websocket-extensions')&&h['sec-websocket-extensions']!==STANDARD_OFFER)||seen.has('cookie')||seen.has('authorization')||seen.has('proxy-authorization')){reject(t,'admission_headers');return;}
+    if(req.method!=='GET'||h.host!==`${FRONTEND_HOST}:${PORT}`||h.origin!==ORIGIN||h['sec-websocket-version']!=='13'||h['sec-websocket-protocol']!==PROTOCOL||h.upgrade?.toLowerCase()!=='websocket'||!h.connection?.toLowerCase().split(/\s*,\s*/).includes('upgrade')||!h['sec-websocket-key']||(seen.has('sec-websocket-extensions')&&h['sec-websocket-extensions']!==STANDARD_OFFER)||seen.has('cookie')||seen.has('authorization')||seen.has('proxy-authorization')){record('admission_header_'+firstFailedAdmissionHeader(req,h,seen));reject(t,'admission_headers');return;}
     const match=/^\/enet\?cap=([A-Za-z0-9_-]{21}[AQgw])$/.exec(req.url);
     if(!match){reject(t,'admission_route');return;}
     const token=match[1],decoded=Buffer.from(token,'base64url');

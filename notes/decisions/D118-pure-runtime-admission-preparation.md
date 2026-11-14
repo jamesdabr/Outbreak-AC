@@ -1,0 +1,5 @@
+# D118 — Separate pure artifact admission from held capability work
+
+MAIN approves CANDIDATE_RUNTIME_ADMISSION0.1 and releases T1131.0 to AI-Director. T099 notes proposed a reusable build-artifact gate before future effects; accepted native actual records and frozen browser tooling now supply concrete schemas. This adopts only that pure/read-only gate and explicit schema/API/bounds/phase semantics in the new contract, not T099 runtime controller, capability/cache/CDP/RSS proposals or launch authority. Browser actual acceptance and real admission data remain pending T112/MAIN review.
+
+This component changes no player behavior, MVP scope/performance thresholds, engine/transport or gameplay interfaces. It may be prepared independently of full P0, using guarded fake graph fixtures. No compiler/native/browser/service/network effects, source artifact rebuild, runtime execution or fake MAIN record permitted. T103 Player and QA HUMAN HOLD remain unchanged; their paused work is neither resumed nor reassigned. Full P0 and final P1 interface approval remain required before gameplay implementation. MAIN owns real admission/acceptance metadata and later runtime release.

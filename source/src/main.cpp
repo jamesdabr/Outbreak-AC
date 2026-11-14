@@ -1,5 +1,6 @@
 // main.cpp: initialisation & main loop
 
+#include "browser_map_profile.h"
 #include "cube.h"
 
 #ifdef __EMSCRIPTEN__
@@ -1660,8 +1661,8 @@ static void browserpublish(const char *error)
 static void browserrendered()
 {
     ++browserrenderedframes; // called only after the actual game draw returns
-    if(!strcmp(browserphase, "loading") && maploaded > 0 &&
-       !strcmp(getclientmap(), "dev_outbreak_browser")) browserphase = "running";
+    if(!strcmp(browserphase, "loading") &&
+       ob_browser_map::loaded_matches(getclientmap(),hdr.maprevision,maploaded)) browserphase = "running";
     browserpublish();
 }
 #endif
@@ -1808,30 +1809,64 @@ static void browserrequirefile(const char *name)
 }
 
 #if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
-EM_JS(void, browsermodelpublish, (int survivor, int pistol, int rifle), {
+EM_JS(void, browsermodelpublish, (int player, int base, int cla, int rvsf, int pistol, int assault, int pistolskin, int assaultskin), {
     Object.defineProperty(window, 'OUTBREAK_MODEL_DIAGNOSTICS', {
         value: Object.freeze({schema_version: 1, profile: 'network-client',
             preloads: Object.freeze([
-                Object.freeze({name: 'outbreak/survivor', loaded: !!survivor}),
-                Object.freeze({name: 'outbreak/pistol', loaded: !!pistol}),
-                Object.freeze({name: 'outbreak/rifle', loaded: !!rifle})])}),
+                Object.freeze({name: 'playermodels', loaded: !!player}),
+                Object.freeze({name: 'weapons/pistol/world', loaded: !!pistol}),
+                Object.freeze({name: 'weapons/assault/world', loaded: !!assault})]),
+            skins: Object.freeze([
+                Object.freeze({name: 'packages/models/playermodels/skin.png', loaded: !!base}),
+                Object.freeze({name: 'packages/models/playermodels/CLA/01.png', loaded: !!cla}),
+                Object.freeze({name: 'packages/models/playermodels/RVSF/01.png', loaded: !!rvsf}),
+                Object.freeze({name: 'packages/models/weapons/pistol/world/skin.png', loaded: !!pistolskin}),
+                Object.freeze({name: 'packages/models/weapons/assault/world/skin.png', loaded: !!assaultskin})])}),
         writable: false, configurable: true, enumerable: true
     });
 });
 
 static void browserpreloadmodels()
 {
-    const char *names[] = {"outbreak/survivor", "outbreak/pistol", "outbreak/rifle"};
-    const char *files[] = {"tris.md3", "md3.cfg", "skin.png"};
-    loopi(3) loopj(3)
+    const char *files[] = {"tris.md2", "md2.cfg", "skin.png", "CLA/01.png", "RVSF/01.png", "license.txt"};
+    loopi(6)
     {
-        defformatstring(path)("packages/models/%s/%s", names[i], files[j]);
+        defformatstring(path)("packages/models/playermodels/%s", files[i]);
         browserrequirefile(path);
     }
-    bool loaded[3];
-    loopi(3) loaded[i] = loadmodel(names[i]) != NULL; // genuine existing model loader
-    browsermodelpublish(loaded[0], loaded[1], loaded[2]); // only actual load outcomes
-    loopi(3) if(!loaded[i]) fatal("Cannot preload required original network model %s", names[i]);
+    bool playerloaded = loadmodel("playermodels") != NULL; // original MD2 config/scale/animations
+    bool skinsloaded[3];
+    loopi(3)
+    {
+        defformatstring(path)("packages/models/playermodels/%s", files[i+2]);
+        Texture *skin = textureload(path);
+        skinsloaded[i] = skin && skin != notexture && skin->id != 0;
+    }
+    const char *weapons[] = {"weapons/pistol/world", "weapons/assault/world"};
+    const char *weaponfiles[] = {"tris.md2", "md2.cfg", "skin.png"};
+    browserrequirefile("packages/models/weapons/license.txt");
+    loopi(2) loopj(3)
+    {
+        defformatstring(path)("packages/models/%s/%s", weapons[i], weaponfiles[j]);
+        browserrequirefile(path);
+    }
+    bool weaponsloaded[2], weaponskinsloaded[2];
+    loopi(2)
+    {
+        weaponsloaded[i] = loadmodel(weapons[i]) != NULL;
+        defformatstring(path)("packages/models/%s/skin.png", weapons[i]);
+        Texture *skin = textureload(path);
+        weaponskinsloaded[i] = skin && skin != notexture && skin->id != 0;
+    }
+    browsermodelpublish(playerloaded, skinsloaded[0], skinsloaded[1], skinsloaded[2],
+                        weaponsloaded[0], weaponsloaded[1], weaponskinsloaded[0], weaponskinsloaded[1]);
+    if(!playerloaded) fatal("Cannot preload required original playermodels MD2");
+    loopi(3) if(!skinsloaded[i]) fatal("Cannot preload required original player skin %s", files[i+2]);
+    loopi(2)
+    {
+        if(!weaponsloaded[i]) fatal("Cannot preload required original weapon %s", weapons[i]);
+        if(!weaponskinsloaded[i]) fatal("Cannot preload required original weapon skin %s", weapons[i]);
+    }
 }
 #endif
 
@@ -1843,13 +1878,15 @@ static int browsermain()
     const char *required[] = {
         "config/browser.cfg", "config/font.cfg", "config/default_map_settings.cfg",
         "packages/outbreak/fallback.png", "packages/outbreak/font.png",
-        "packages/maps/dev_outbreak_browser.cgz", "packages/maps/dev_outbreak_browser.cfg",
+        ob_browser_map::cgz_path(),
         // loadskymap(true) loads six faces even with the default empty loadsky.
         "packages/textures/skymaps/_lf.jpg", "packages/textures/skymaps/_rt.jpg",
         "packages/textures/skymaps/_ft.jpg", "packages/textures/skymaps/_bk.jpg",
         "packages/textures/skymaps/_dn.jpg", "packages/textures/skymaps/_up.jpg"
     };
     loopi(sizeof(required)/sizeof(required[0])) browserrequirefile(required[i]);
+    const char *mapcfg = ob_browser_map::cfg_path();
+    if(mapcfg) browserrequirefile(mapcfg); // only the fixed Swamp profile has no external CFG
     setlocale(LC_ALL, "POSIX");
     pushscontext(IEXC_CFG);
     persistidents = false;
@@ -1890,7 +1927,8 @@ static int browsermain()
     if(scr_w < 0) scr_w = 960;
     if(scr_h < 0) scr_h = 540;
 #if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
-    conoutf("NETWORK_BROWSER original survivor/pistol/rifle preload; other weapon visuals and HUD gun omitted. Native join/spawn requires remote protocol; proof audio waits for canvas gesture; not MVP acceptance.");
+    conoutf("NETWORK_BROWSER original MD2 player/default CLA/RVSF skins and pistol/assault world-model profile; other weapon visuals and HUD gun omitted. Stock weapon audio is not bundled; proof audio waits for canvas gesture. Native join/spawn requires remote protocol; not MVP acceptance.");
+    conoutf("NETWORK_BROWSER selected map %s revision %d; actual load and remote receipt/spawn required.", ob_browser_map::name(), ob_browser_map::revision());
 #else
     conoutf("OFFLINE_MAP omissions: no bots, HUD weapon/local character model preload, or gameplay sound mapping. Original audio proof waits for canvas gesture; not P1/MVP acceptance.");
     initserver(false);
@@ -1921,9 +1959,10 @@ static int browsermain()
     browserpreloadmodels(); // GL/fonts/config ready; before map/remote join/frame scheduling
 #endif
     extern string clientmap;
-    copystring(clientmap, "dev_outbreak_browser");
+    copystring(clientmap, ob_browser_map::name());
     int mapresult = load_world(clientmap);
-    if(mapresult != 0) fatal("Original browser map failed validation/load (%d)", mapresult);
+    if(!ob_browser_map::startup_loaded(mapresult,getclientmap(),hdr.maprevision,maploaded))
+        fatal("Original browser map failed validation/load (%d)", mapresult);
 #if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
     // No local handshake. Only T061's real remote parser can assign cn/life/join.
 #else

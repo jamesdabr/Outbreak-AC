@@ -1,0 +1,52 @@
+{
+  "common_c": [
+    "--target=wasm32-unknown-emscripten",
+    "-O2",
+    "-DHAS_SOCKLEN_T=1",
+    "-std=gnu11",
+    "-fsigned-char",
+    "-DOUTBREAK_NETWORK_CLIENT"
+  ],
+  "common_cxx": [
+    "--target=wasm32-unknown-emscripten",
+    "-std=gnu++11",
+    "-fsigned-char",
+    "-O2",
+    "-DOUTBREAK_NETWORK_CLIENT",
+    "-DOUTBREAK_BLACKWOOD_CLIENT"
+  ],
+  "compiler_revision": "777e6e5db7b4990bcaeb1b9998ed642cc84e6629",
+  "js_library": "web/transport/enet_websocket.js",
+  "libpng_sha512": "e14302d87864432d747896e3944a6416d4b5f3059f538cfe615ddbe1d0084d4a02d4df3ef2761b02c839858625bed57d873198792c3583029c619e1cf8c4561b",
+  "link": [
+    "-O2",
+    "-lopenal",
+    "-sLEGACY_GL_EMULATION=1",
+    "-sGL_UNSAFE_OPTS=0",
+    "-sALLOW_MEMORY_GROWTH=1",
+    "-sINITIAL_MEMORY=67108864",
+    "-sSTACK_SIZE=2097152"
+  ],
+  "manifest": "web/assets/blackwood-profile/manifest.json",
+  "map": {
+    "cfg_sha256": "289bcb22b29a17443cdf47a936e82edbc47a7a0e0dd034a8b602ce3ec79b76bd",
+    "cgz_bytes": 734,
+    "cgz_sha256": "e68314e911130d2822fdfa65d77dfaba302d4f5c3552ff91c698b84768d5ddf1",
+    "name": "blackwood_greybox_v1",
+    "revision": 1
+  },
+  "pack_root": "web/assets/blackwood-profile/pack-root",
+  "ports": [
+    "-sUSE_SDL=2",
+    "-sUSE_SDL_IMAGE=2",
+    "-sSDL2_IMAGE_FORMATS=[\"png\"]",
+    "-sUSE_ZLIB=1",
+    "-sUSE_VORBIS=1"
+  ],
+  "profile": "BLACKWOOD_NETWORK_CLIENT",
+  "recipe": "blackwood_network_v1",
+  "schema_version": 1,
+  "sdk_root": "/private/tmp/outbreak-web-sdk",
+  "sdk_version": "7.0.0",
+  "shell": "web/build/blackwood/shell.html"
+}

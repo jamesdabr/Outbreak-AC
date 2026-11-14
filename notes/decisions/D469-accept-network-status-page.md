@@ -1,0 +1,3 @@
+# D469 — Accept T274 connection status source
+
+MAIN reviewed complete inline script, fixed states/errors0–15 against browsernet.h, typed snapshot checks, transition-only bounded diagnostics,500ms visible/initialized polling and engine abort/exit precedence. T274 source accepted; World lease closed. Existing syntax check exit0 received; no runtime acceptance inferred. No raw boot/capability/exception/snapshot serialization, lifecycle/Module/entity mutation, dependency or layout change. Current play.html SHA256cb29fefeedf3bc9eed729fa7270bb0a2e3ee69b5ff53c34c1eb69ba48c9797a9. Actual rendering/state observation will occur in separately released next session. Engine T275 remains active notes-only diagnosis. QA paused; full MVP incomplete.

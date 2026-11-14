@@ -1,0 +1,3 @@
+# D057 Genuine native spawn paths
+
+MAIN independently inspected server.cpp3597–3621 and confirms the T068 static finding: sole-client verified map identity may cause native updateclientteam/sendspawn without SV_TRYSPAWN. T0674.1 accepts genuine parsed SPAWNSTATE+ACK/ordered milestones for this case, and requests spawn only when still JOINING/eligible. Never require artificial client requests or change native source to fit an observer. Actual branch execution is not inferred solely from lack of a published request. Snapshot timing is eventually consistent across frame stages, bounded by existing deadlines. No gameplay/runtime proof or execution scope is newly granted.

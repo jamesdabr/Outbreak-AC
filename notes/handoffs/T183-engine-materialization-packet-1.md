@@ -1,0 +1,50 @@
+# Ticket handoff
+
+- Worker: Engine & Multiplayer /01a1b92b-53f9-7132-aeb9-72b637ac3a90
+- Ticket / revision: T1831.0 / D289, READ-ONLY MATERIALIZATION PACKET + NEW NOTES ONLY
+- Phase / contract revisions: GOVERNANCE0.5; P1_RULES0.2; QUERY_CALLER_BRIDGE0.2/D284; CAMERA_FOUNDATION0.1; accepted CLOSED T180 notes/D288. H/T139/draft2 remain proposals except individually adopted clauses. MAIN explicitly announced D291/World1.3 then D293/World1.4 context binding; reviewed actual4/final-data authorization ONLY, final G1 acceptance pending/G2 unreleased/no movement source release.
+- Base commit and pre-existing edits: ticket-provided bdaa8df7ec39d9408f97feda4560832d7ef26c3c plus preserved overlay; no Git. Accepted T180 proposal/review/history read-only. World is exclusively performing its own proof; no other math source writer or consumer effects invoked here.
+- Changed files: NEW `notes/proposals/T183-movement-stance-materialization-packet-1.md`; NEW `notes/questions/T183-engine-jump-gravity-order-1.md`; NEW this handoff.
+- Commit or patch reference, if explicitly authorized: none.
+
+## Acceptance evidence
+
+PASS denotes the requested proposed notes construction, not adoption, compiled layout, source correctness or gameplay acceptance.
+
+| Ticket criterion | Result / packet location |
+| --- | --- |
+| Literal sole-home records/native layout | PASS notes sections1/3: MotionState in proposed p1_types value home, one explicit start-eye i32, offsets0..62/expected64 align4; MoveResult68<=80. Actual InputFrame/Held, camera, geometry sole homes retained. Full field/remainder/aim/foot/body/velocity/stance/flags/request validity, inactive/complete initialization, padding and output-byte contracts proposed. Native layout NOT COMPILED. |
+| Sufficient reversal/replay state | PASS paper sections2/4: both current rounded coordinates captured on reversal, explicit retained start eye; concrete4690/4034->4754/4091 versus height-line4092, and structural inverse-origin ambiguity. No hidden/render origin or incremental easing. Common-progress positive-whole-coordinate RN/ten ticks, completion/blocked reset and monotone segment specified. Inductive h-eye>=564 argument supplied, not a body-feasibility substitute. |
+| Headroom/ground/flags/jump | PASS proposal section4: real full standing headroom for EVERY enlargement using unchanged T180 simultaneous/three-classifier schedule; blocked Hit reset versus query-fault refusal distinct. D284 entry support before eligibility/final support and exact original charges retained. Proposed crouch/aim/sprint/reload/switch mapping, jump-before-horizontal eligibility and final sprint clear on ledge specified. Request selection differs from accepted action; evaluated jump marker/outcomes staged privately. Exact same-tick vertical impulse/gravity recurrence is explicitly QUESTIONED, not guessed. |
+| Precise future wire/baseline consequences | PASS paper section5: reject blind Motion64 wire expansion (would make largest baseline1148>1144). Propose lossless u16 start height@40/start eye@42 within existing Motion60; Own204/ActorView64/1144 baseline and paging unchanged. Native64 is not wire64. All affected future codecs/OwnInit/digests/fork/replay consumers identified; no accepted codec/constant/source changed. Actual codec proof remains separate future gate, not test-wrapper evidence. |
+| Literal public/private call and ownership | PASS proposal sections6/7: explicit public AngleTables/self/borrowed scratch arguments repair old H's missing identity/resources; no accepted API exists or public selector/query bypass. Proposed private header with exact TickActorIn/TickIn/TickOut, full-ref roster/input/freshness/admitted-jump/post-control seam; TickOut tagged jump results make denied versus applied unambiguous and fit636<=640. Typed scratch lifetime/alias and immutable source/output preservation proposed. No SimStore fabricated, eight independent authoritative calls, hidden proxy MotionState or World implementation. Proxy convention remains explicitly unadopted. |
+| Ordered local Fault/alias/transaction | PASS proposal section8: stage0/detail256*i+field, exact first-error order, called helper/query Fault propagated unchanged, prevalidation -> stance -> support -> once-only prepare -> existing solver -> final support/validation -> one publish. Validly backed alias cases, opaque-resource preconditions, complete output/padding preservation and spent scratch-work distinction stated. Real advance_tick commit/ACK/RNG/outbox is later ownership. |
+| Q1 and owner selector | PASS proposal section9: exact delta/ceilnorm/divmod/trunc recurrence, fractional remainder retention/no reintegration; proposed target grouping explicit for MAIN review. Exactly one private select_horizontal_rate site, working certified ground after jump; frozen air16/ground64/96, NO A/B chosen, public selector argument or duplicate owner question. |
+| Concise finite evidence mapping/no allowance increase | PASS notes section10: materialization observations map to existing T180 F01/F14/F15/F16/FI and grounding checkpoints. No new case/job/resource allocation;888/37 plan remains read-only. Future actual protocol codec and full frame/source/caller proofs are explicitly separate gates. No corpus/oracle/fixture/golden generated. |
+| Exact inputs/current context | PASS identity inspection: D288 accepted T18082014/SHA256946e6caad8ba2ea4de56f9c5bd74e60a832d6dbdeb605ffbd2ff578664c07fb4 and review8422/81f0919ed6cc41f2defa5e373065215dd099ea7645232afb35046e60259d51dd consumed read-only.31 current input pins in appendix, including D291/D293/current World1.4; prior actual1/2/3 failed. D293's reviewed actual4 is context, not Engine reproduction or final G1/G2 acceptance. |
+| Notes-only operations | PASS observed: cat/sed/rg, read-only hash/text inspection and standalone fixed standard-library Fraction/integer arithmetic; apply_patch only these three NEW owned Markdown paths. No project import/test/compiler/SDK/FFI/probe/runtime/network/Git/source/history/authority mutation or worker dispatch/negotiation. |
+
+Analyst arithmetic only: exact Fraction/RN checks for the two displayed reversal/nonuniqueness examples; fixed native semantic-byte64/result68/private-output636 bounds; unchanged baseline332+160+204+448=1144; Q1 square/product bounds. Observed assertions passed. These are NOT test vectors/corpus generation, a simulation/oracle, native/Wasm/ABI/frame source execution or performance evidence. No OS/toolchain/hardware measurement claimed.
+
+The initial29-file hash snapshot already captured World1.3 (18526 bytes/SHA256892c64b0927cdcb6f26a876f5f20b34c74c6fe308e2391920787ecf76cbfba04), although an earlier text read showed1.2. MAIN explicitly announced D291 and its text authorized T183 to bind that context within existing notes-only scope. Read D291/current World and added D291 as input30; fresh comparison found all29 earlier captured identities unchanged. Re-read T183 revision1.0 before delivery; no assigned-ticket revision/write overlap observed.
+
+The subsequent30-input final check truthfully FAILED, observed assertion exit1: World alone advanced to1.4 (19154/SHA256e7962e63fee90807dc3fc9b69c9e1d7acc89abe48a7a844d1518588ba6f74c97); remaining29 matched. Immediately following the read-only diagnosis MAIN explicitly announced D293/World1.4/T1591.17 and authorized this context rebind, no new question merely for the announced transition. Read exact D293/current World, replaced ONLY current World pin and added D293 as input31. D293 records reviewed actual4/final DATA archive authorization, prior1/2/3 failed, MAIN final G1 acceptance pending/G2 unreleased. No source/evidence operation by Engine, no past failed check becomes PASS. Final31-input check must be NEW and must pass after these own-note corrections; a new unannounced relevant change stops affected work.
+
+Delivery identities:
+
+| File | Bytes | SHA256 |
+| --- | ---: | --- |
+| `notes/proposals/T183-movement-stance-materialization-packet-1.md` | 54296 | `23e66b230d06c39aa16f56bde8f92344fb40eac6b87cf8e57040662f9dc85707` |
+| `notes/questions/T183-engine-jump-gravity-order-1.md` | 3418 | `03452f0b3819dc21f7cd8a3653df849ed3ca0fe6150e14a00b786496fa1d9dc9` |
+
+## Implementation status
+
+Implemented gameplay/source/codec: NONE. Simulated/game-executed/generated oracle/fixture/golden: NONE. Tests/builds/native/Wasm/frame/dependency/runtime/performance: NOT RUN. All new record/signature/flag/Fault/target-rounding/seam/encoding constructions are PROPOSALS awaiting MAIN adoption; accepting T180 notes adopted none of them.31 pins prove file identity only.
+
+The proposed exact public resource/ref signature and private header are explicit future interface decisions, not a hidden extra source allowance. Proposed defensive MotionState velocity bounds do not narrow any accepted helper API. Proposed wire origin words do not alter accepted constants/codec bytes or prove production interoperability. Proposed jump denial consumption/private outcomes do not retire canonical requests. Body/camera source eligibility and real immutable resource certification remain actual caller obligations.
+
+## Integration and questions
+
+NEW `notes/questions/T183-engine-jump-gravity-order-1.md` identifies the missing exact same-tick jump impulse/gravity/vertical-remainder and supported-no-jump recurrence. It cites the existing clauses and fixed distinct results, selects neither ordering, and blocks only affected future vertical bodies/goldens. Independent authorized packet/handoff work completed. This is separate from the existing owner braking selector, which was not repeated or answered.
+
+Full G1 then G2 acceptance/physical surface mapping, exact MAIN typed/M4/signature/encoding/alias/Fault adoption, owner selector, stationary-proxy disposition and a NEW named implementation/evidence lease remain required. Actual normal-frame/lifetime/storage/call/performance/tick transaction/browser/Player/nativeT167/QA/T149/human/full MVP gates unchanged. T180 is closed and untouched. Submit stable packet/new question/handoff, then STOP for MAIN review; no automatic source or evidence work.

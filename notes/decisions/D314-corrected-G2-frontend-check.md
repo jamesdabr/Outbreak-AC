@@ -1,0 +1,7 @@
+# D314 — Validate the corrected private G2 layout
+
+MAIN read World notes/handoffs/T187-D311-layout-correction-2.md and the complete failed-source diff2962/SHA256e9a35e71d54bf988f0cb2a2749fc6bd7ffa7188d2e5132112ae4cd87d8bc9c6b, inspecting all changed source blocks. Current geometry74884/SHA2565163a100e558022cc26e3e9693a470677e5a3b79570d68a12c0961ae457b0cb8 differs from failed T193 source only in D311's typed array-pointer bindings/constructor and standard-layout/offset assertions. Accepted G1 prefix remains31382/c232100352425092561f6fc9701c77db17f643893510fde780839db21be17d21. No behavior/header/flag/packing change or warning suppression; reference indexing and same real arrays preserved. This reviews that narrow construction correction, not full G2 source/semantics/frame fit.
+
+Approve G2_FOUNDATION0.4's named T195 exception for ONE native and ONE Wasm -fsyntax-only call on the corrected stable source, same flags/tools/SDK/env/time/output limits as T193. T193 failed outcomes and all old evidence stay immutable/closed. New T195 output ownership only; no replay/overwrite/automatic correction. Protect current source+consumed headers until new stable postflight/handoff; World may continue disjoint Q source.
+
+No object/assembly/link/program/query/test/corpus/oracle execution, SDK copy, new source fix or final acceptance. Real current-source R/full Q/normal-callee/frame/functional/camera/movement/tick/browser/performance/human/Player/QA/T149 gates remain unchanged. Syntax failure stops for MAIN; success supports only frontend compatibility.

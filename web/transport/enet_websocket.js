@@ -61,7 +61,7 @@ addToLibrary({
       if (document.visibilityState === 'hidden') return this.stop(s, 15);
       if (s.lastFrame !== null && now - s.lastFrame > 1000) return this.stop(s, 15);
       if (!s.opened && now - s.started >= 2000) return this.stop(s, 2);
-      if (now - s.started >= 150000) return this.stop(s, 7);
+      if (now - s.started >= 1800000) return this.stop(s, 7);
       if (s.queue.length && now - s.queue[0].at > 500) return this.stop(s, 7);
       if (s.ws && s.ws.bufferedAmount > 0) {
         if (s.backlogAt === null) s.backlogAt = now;
@@ -98,8 +98,8 @@ addToLibrary({
           values[k] = d.value;
         });
         if (values.schema_version !== 1 || typeof values.runId !== 'string' || !/^[0-9a-f]{32}$/.test(values.runId) ||
-            values.endpoint !== 'ws://127.0.0.1:29865/enet' || typeof values.capability !== 'string' ||
-            !/^[A-Za-z0-9_-]{21}[AQgw]$/.test(values.capability) || window.location.origin !== 'http://127.0.0.1:29866') throw 0;
+            values.endpoint !== 'ws://outbreak.localhost:29865/enet' || typeof values.capability !== 'string' ||
+            !/^[A-Za-z0-9_-]{21}[AQgw]$/.test(values.capability) || window.location.origin !== 'http://outbreak.localhost:29866') throw 0;
       } catch (_) { this.lastOpenError = 1; return -1; }
       var generation = ++this.generation;
       var s = this.session = {

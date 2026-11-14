@@ -1,0 +1,7 @@
+# D470 — Accept T275 diagnosis and observe actual network failure
+
+MAIN accepts T275 notes-only source inspection. No demonstrated omitted bridge/boot-order/precondition source defect; no speculative engine/transport patch. In-app document context is a hypothesis, not verified cause. Ordinary Chrome pointer-lock test is still required. Current Chrome window is under active UI control; MAIN has stopped operating it after the tool's interruption guard.
+
+T274 source is accepted D469 and can reveal the missing actual client state/error in the next embedded session. Release ONE fresh same inspected D467 local visual session using verified native3 debug server and first-playable-1 client, accepted current play.html. ONLY fixed output-directory literals advance local-3→local-4 in both wrappers/docs; preserve prior source/run artifacts. Same loopback socket permission, fixed ports/args/seed/caps,120s interaction/150s whole/8MiB capture/owned original PID cleanup. No build/replay/Git/install/external service or transport/security change.
+
+MAIN opens one fresh in-app game tab once at the printed numeric-loopback route, reads actual visible network status/diagnostics and document URL/origin/context only, saves actual screenshot. This is targeted diagnosis after a new source change, not repeated performance/QA probing. Do not claim IAB pointer capture or weaken it. No automatic retry. After closure MAIN may release a concrete fix only if evidence identifies it. QA stays paused; full eight-player MVP scope unchanged.

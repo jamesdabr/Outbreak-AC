@@ -1,0 +1,25 @@
+# T275 — Local3 join/input diagnosis
+
+Engine /01a1b92b-53f9-7132-aeb9-72b637ac3a90; T2751.0 / VISIBLE_SLICE0.6 / D468. Notes-only source inspection. Only this new handoff written. No project/program/helper/build/server/browser/network/Git execution or source changes.
+
+## Finding and smallest recommendation
+
+**No demonstrated missing transport code or launcher boot-order defect. The strongest immediate hypothesis is the in-app document context, but the recorded observations do not identify the exact connection failure. Do not patch admission or ENet speculatively.** The smallest next action is a fresh authorized session opened directly in ordinary Chrome at `http://127.0.0.1:29866/web/visible/play.html`, with World's T274 read-only lifecycle status visible. Use the exact numeric host and top-level document, not a preview/iframe/file URL or `localhost`. Keep the same transport security policy and real spawn flow. Local3's page/capability was consumed and its services are closed; do not reload/reuse it.
+
+The screenshots show the real map and a precise pointer rejection: `WrongDocumentError: The root document of this element is not valid for pointer lock.` This supports a document-context problem; it does not prove which in-app embedding restriction caused it. `source/src/main.cpp:878–925` requests lock directly on the page's actual `#canvas` during the normal synchronous gesture and records the real Promise rejection. `web/visible/play.html` has one canvas, no iframe, and focuses it on pointerdown. No engine pointer-lock source fix is justified by the current evidence. Retrying a detached/ineligible preview document is not a remedy.
+
+## Connection trace checked
+
+- Actual `first-playable-1/logs/commands.txt`: client and main compiled with `OUTBREAK_NETWORK_CLIENT` and `OUTBREAK_BLACKWOOD_CLIENT`; the 61 units include `web/transport/enet_websocket.c`, and linking uses `enet_websocket.js`. Actual bundle JS contains `OutbreakWS`, its boot checks and WebSocket constructor; Wasm contains the network lifecycle/counter strings. This rules out an obviously absent bridge/profile, not every possible compiled-code defect.
+- `web/visible/play_local.py:217–225,173–180` generates valid-shaped run ID/capability and injects the four-field frozen `OUTBREAK_NETWORK_BOOT` into `<head>` on the one player-page response. The deferred compiled script runs afterward. Boot is not injected into the separately served bundle index page, so that page must not be used as an alternative entry URL.
+- `source/src/main.cpp:1863–1942` initializes the real client, skips local server/connect for this profile, loads Blackwood/models, and calls `browsernet_begin()` before scheduling frames. `source/src/client.cpp:189–203` rejects an existing private key/host/peer, otherwise calls `enet_host_create(NULL,1,3,0,0)`. Inspected startup globals are null and the original browser config does not connect or create a private key; no definite precondition violation found.
+- `source/enet/host.c:29–60` calls `enet_socket_create`; `web/transport/enet_websocket.c:51–57` calls `ob_ws_open`; `web/transport/enet_websocket.js:84–117` strictly checks boot shape/values **and current `window.location.origin`**, then opens the loopback WebSocket. A preview-origin or realm mismatch could fail here before any gateway admission. This is an inference, not a captured runtime fact.
+- `runs/local-3/logs/gateway.stdout` records admitted0/to_udp0/to_ws0, but its wrapper omits upgrade/rejection counters and reasons. Thus zero admissions alone cannot distinguish boot rejection, WebSocket/browser denial, or rejected upgrade. It does not implicate native map/spawn protocol yet.
+
+## Observation needed before any client fix
+
+Use T274's existing immutable `outbreakNetworkSnapshot` readout in the next authorized ordinary-browser session: actual state/error, begin_calls and teardown counters. Error1 means boot/precondition rejection; error2/3 indicates opening/transport failure; error15 indicates visibility/frame lifecycle closure. Missing snapshot while rendering needs a different compiled-startup investigation. Preserve the first terminal error; do not reconnect, inject boot via console, or weaken origin/capability checks.
+
+Normal connection must reach joining/map milestones before a capture gesture can request spawn. `main.cpp:978–983` attempts ordinary respawn only after successful pointer-lock change and a valid client number; input is deliberately gated on actual capture. Pointer denial therefore independently prevents entry/movement even after transport is repaired. Successful capture, genuine join/spawn and visible living survivor/movement remain **NOT VERIFIED**.
+
+Exact immediate source patch recommendation: **none to engine/ENet yet**; take the regular-browser path plus T274 status first. If error1 reproduces at the exact top-level origin, MAIN should release a narrow reason-only boot diagnostic in `client.cpp`/`enet_websocket.js` retaining all existing validation, rather than relaxing checks. All native/QA holds remain as recorded; this note grants no new runtime permission. Stopping for MAIN.

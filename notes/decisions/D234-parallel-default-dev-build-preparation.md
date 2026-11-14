@@ -1,0 +1,7 @@
+# D234 — Prepare the required default-dev regression in parallel
+
+MAIN reviewed the final default-dev audit68efa2bcf48228dbc2ce6ed6fbc5d6d1ea2b68a6fb0a0546c542b69a315f3b66. The accepted T163 absent-define branch is source/data-compatible with the fixed old dev recipe, but old runner/terminal defects preclude simply executing its CLI anew. A fixed successor is required; no new engine loader/profile API or second active legacy manifest is necessary.
+
+Approve DEFAULT_DEV_BUILD_PREPARATION0.1 and release T1681.0 to MAIN-delegated /root/review_native_candidate as fixed-dev build worker, transferring the DRAFT's intended future Engine ownership BEFORE any writes in the absent new root. Engine T164 stays its exclusive Blackwood priority, no file overlap. The independently inspected immutable old recipe/profile/config/assets/T163 are accepted source bases; no unfinished T164 import or presumed acceptance is permitted. Parallel source authoring need not wait for T164 to close. Actual builds still require accepted preparations and serialized stable common inputs.
+
+Only six new helper/doc files and guarded simulated fixture data are released. Fixed256-case/300s/8MiB captured output/128MiB retained-data per-pass limits are adopted for this new dev preparation, with full required negative families and failure preservation. No compiler/tool/Node/version/SDK-copy/runtime/network/Git effect or game API/value change is authorized. This advances a mandatory full-client regression gate without splitting Engine's active assignment. QA/T149/full-phase/human holds remain.

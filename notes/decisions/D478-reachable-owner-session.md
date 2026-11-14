@@ -1,0 +1,9 @@
+# D478 — Repair owner startup usability
+
+Owner reported the supplied site unreachable. Actual local7 exited0 after110.155s, page_delivered:false, zero gateway TCP/upgrade requests, all original children reaped/group empty. The provided session had expired; no hostname-resolution success/failure was demonstrated. MAIN should have left a usable interactive window.
+
+Owner's start/retry request authorizes this local startup repair only; broader MVP goal/workers/QA remain paused. MAIN adopts a30-minute bounded local owner session: launcher interaction1800s/whole1830s, wrapper close1790s, gateway run/session absolute1800000ms and browser session absolute1800000ms. Keep all rate/queue/payload/backlog/visibility/idle/handshake/capability/security/loopback/ownership/8MiB cleanup rules. Match900s game rules unchanged. This is an owner-play profile, not acceptance performance or a weakened historical proof gate.
+
+Serve at most two player pages, each using one of the already existing two distinct one-use capabilities, no mint/reconnect/refresh API. This lets MAIN verify one real page while leaving the second token for the owner's external Chrome tab. Both native/gateway active capacity remains2; old pages/caps/runs immutable. No cookie reading/clearing, broad exposure or additional endpoints.
+
+Prepare fresh first-playable-3 browser output (same61 units/frozen SDK/84 assets) because the browser session bound is compiled into the JS library, and new local-8 output only. Source edits are the named timeout/page-allocation and output literals plus matching docs. MAIN reviews syntax and actual build, then starts loopback services, verifies actual browser page once and leaves second allocation available. New hostname stays exact outbreak.localhost, numeric bindings unchanged. No full goal resumption, synthetic actor or game behavior acceptance.

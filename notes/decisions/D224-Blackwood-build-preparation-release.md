@@ -1,0 +1,7 @@
+# D224 — Engine Blackwood full-client build-pipeline preparation released
+
+T163 source/helper final graph is accepted D223. MAIN read final build-prep advisory SHA7ab5f5521ec800a293e8f866d86c97084c514722ade6bc0e09e95f298bc6bd20 and independent review SHA5f5aacb53989a6c41c66bfd576b89c438d290b4bc2433a3d5c88aa849fc186b2. Adopt its preparation subset with the explicit new fixed MAIN source-manifest path web/repro/blackwood-source-manifest.json, preserving all old absolute controls. Active checkout lacks the old relative path; no overwrite occurred. The substitution separates new provenance rather than alleging a mutation.
+
+Approve BLACKWOOD_BUILD_PREPARATION0.1 and release Engine T1641.0 under exact new eight-file/fixture ownership. Actual T163 decision/final handoff/evidence and four immutable source pins replace prior PENDING inputs. Source/classic helper ownership is closed; builder preparation cannot edit it. No actual compiler/tool/version/Node/SDK-copy/build/signing/admission/runtime effect is authorized; pure guard evidence only.
+
+This prepares the full61-unit/84-member real candidate path, retaining matched native build/dev regression/accepted v4 admission/controller/real two-browser proof rather than substituting a smaller renderer demo. All exact output/schema/role/dependency/source/context/asset/refusal constraints and inherited future build budgets remain; real execution needs its own MAIN pins/ticket after preparation review. QA/T149/runtime/RSS/full phase/human holds unchanged.

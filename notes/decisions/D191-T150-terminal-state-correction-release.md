@@ -1,0 +1,7 @@
+# D191 — Return T150 terminal-state handling for correction
+
+Attempt1's actual generation passed39.43s/22 tests with25386 certified values and deterministic reproduction. MAIN independently verified all artifact identities, every certificate endpoint's unique integer rounding, initializer mapping and reproduced bytes. Independent static mathematical review found no formula/checker defect. Current successful exit0 attempt is not invalidated or relabeled failed.
+
+One source finding prevents acceptance of the general publication/consumer contract: generate.py writes PASS result before fallible logging; a subsequent output failure can leave failure.json alongside PASS. Standalone verify.py's terminal gate does not reject that marker. World must correct explicit failed/contradictory-state refusal and terminal ordering, add controlled production-helper tests, and regenerate under new identities. Raw ru_maxrss label is qualified accounting, not accepted calibration or budget proof.
+
+MAIN preserved original six source contents/hashes in notes/reviews/MAIN-T150-review-ready-source-snapshot-1.json. ANGLE_TABLE_FOUNDATION0.3/T1501.2 retains unchanged math/caps and grants ONLY existing own source/docs plus ONE fresh attempt2. Original attempt1 immutable. No root/path/precision CLI selector, automatic third attempt or actual game/runtime authorization. Require equal old/new bin/inc and independently verified fresh certificates; source/reference identities may change legitimately. Submit review-ready before freeze. QA/T149/actual RSS holds unchanged.

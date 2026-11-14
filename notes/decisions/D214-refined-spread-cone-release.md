@@ -1,0 +1,7 @@
+# D214 — Refined pure cone sampler released
+
+MAIN read final complete advisory2 SHAa404309a1e18ac4caadb75441e645c605516e203039842a3e34cf8477a7d2b68 and independent correction review2 SHAe4ec914c1be62d198030ecaace43c03813bed77ea819f4abf25c9fafc5e34d1c. Original advisory1 remains unadopted: its coarse ceil-root normalization materially distorted tiny accepted centre vectors. Successor2's refined root-scaled normalization preserves the input domain with nonzero/frame and finite I256 proofs. No reviewed blocker remains; actual native/Wasm/source-loop/compiled-chain/timing evidence is still required.
+
+Approve SPREAD_CONE_FOUNDATION0.1, explicitly adopting exact routine API/error/domain/pole/handedness/rounding/root/scaling choices from advisory2 without changing frozen weapon/modifier values. Release AI-Director T1611.0 under exclusive NEW p1_spread_cone source/test ownership. Existing basis/RNG/core/hash/fixed/wide/table and artifacts stay unchanged. No real entropy/shot/resource/commit/geometry/state-owner or app integration is authorized.
+
+MAIN confirmed accepted dependency hashes and cdeg-table lower-bound inequality before release. Finite full-azimuth/table-mutation/tiny-centre corpus and exact native/Wasm independent outputs plus complete64KiB stack/work/protection evidence are requirements, not already-passing claims. T157 accepted private RNG remains immutable and is not called here; future owner alone decides shot acceptance/advance. QA and actual runtime/RSS/full phase/human holds remain.

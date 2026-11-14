@@ -1,0 +1,5 @@
+# Visible browser client build 1
+
+MAIN executed the inspected D437 command once. Original exec session36245 exited0 after all61 compile steps and link. New bundle: web/visible/candidates/first-playable-1/bundle/{index.html,index.js,index.wasm,index.data}; command and individual stdout/stderr logs are alongside in logs/. No compiler errors or warnings in the three changed presentation translation units; link log empty. SDK Node `--check` on generated index.js exited0.
+
+This is the first compiled candidate containing T258 living-character/third-person source and the84-file Blackwood pack. Existing outputs and cached dependencies were preserved; compiler used a fresh private frozen cache. No server, browser, network playtest or native build was launched. No screenshots or visible-gameplay result yet. Runtime needs genuine join/spawn and the held Player/T167 native preparation; MAIN has asked owner for the narrow preparation hold release after preparing this concrete client. QA remains paused. Full MVP remains incomplete.

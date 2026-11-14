@@ -1,0 +1,7 @@
+# D170 — Accept scoped definition review and correct MAIN draft
+
+T142 notes delivery ACCEPTED after MAIN full review/handoff/question and exact three delivery hashes verified. F1 is valid: draft1's blanket replay prohibition could suppress required reconciliation recomputation. F2 is valid: scope origin must bind to CameraSolution.camera, not an undefined alternate camera.origin/eye/ideal field. These are wording/source-binding defects in the MAIN draft, not executed gameplay defects. MAIN resolves both in NEW MAIN-P1-definition-closure-draft-2.md, preserving draft1/review. It also spells out the already proposed entire-replay immutable proxy lifetime for subsequent Hide/removal/life updates.
+
+The reviewer found no other scoped contradiction in the proposed vector budget, basis/grouping, frustum/LOS or provisional stationary-proxy conventions, with explicit paper-proof/runtime limitations. This accepts scoped review and its corrections, not final typed interfaces, whole motion/resource correctness or executable evidence. Q1 ground rate-selector preference remains pending with the owner; no answer/default is inferred. Draft2 remains PROPOSAL_ONLY, no P1 implementation or scope/parameter/acceptance waiver. No repeat review or tests required for these direct wording corrections at this stage; final adoption still belongs to MAIN.
+
+Player T143 guarded diagnostic preparation independently active under capability0.4; actual support and future game instrumentation suitability remain unproved. Previous actual probe approval is consumed; QA stays paused.

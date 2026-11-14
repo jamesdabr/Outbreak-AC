@@ -1,0 +1,5 @@
+# D139 — Accept T125 actual read-only validation evidence
+
+MAIN reviewed exact T125 receipt SHA35da0c37b31a3fd6e929b999f35d1e4a0a35be69972838810aa614f393f095a5, wrapper/audit/code/environment/typed result/exit/output/time and handoff. One guarded accepted-v4 call passed in44.181373458seconds, exit0/reaped, no forbidden attempts. MAIN independently rehashed all22 captured identities, matching before/after/current, and checked output digest/size and exact summary. MAIN-T125-actual-admission-review.json records review. T125 ACCEPTED for actual pure current-artifact validation only.
+
+No actual fresh-pair runtime/controller/P0/gameplay acceptance. Before any real smoke: Engine must fix T117 findings, pass independent review, receive freeze clearance and component acceptance; MAIN then supplies exact current source/tool/tree/preservation runtime pins and explicitly releases one effectful attempt. T125 is not a reusable execution token and does not replace that run's own pure gates. No further World call or effect is released. Player/QA holds unchanged. T126 independent design proof review continues.

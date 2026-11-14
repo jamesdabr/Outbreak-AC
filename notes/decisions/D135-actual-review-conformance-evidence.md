@@ -1,0 +1,7 @@
+# D135 — Accept qualified real-data review conformance evidence
+
+MAIN reviewed T123-world-1.md and exact receiptSHA170ecabcade557009ce067ed8901bab2a59c5f67579b1f588822c906c22f1077. ONE literal frozen-v3 guarded API call exit0/43.556650833s returned exact D128/root/source/candidate/bundle/digest identities, runtime/P0false. Guard reported no denied events/forbidden process/socket/write attempts, installed before import and retained through exit; child reaped,8MiB/120s bounds met. MAIN independently rechecked all21captured metadata hashes/bytes/modes unchanged. MAIN-T123-review-conformance-review.json records evidence/limits.
+
+Accept T123 only as REVIEW_CONFORMANCE_ONLY. It supplies actual successful current-file/format/graph checks on the exact accepted build data, not component/contract/controller/runtime/P0/MVP acceptance. Known unused installed-role dependency-context issue remains assigned T124; frozen v3/evidence unchanged. This result does not supersede the FAILED old T119 or authorize an effectful v3 caller. Corrected v4 acceptance and NEW exact current validation remain required before any runtime launch.
+
+Prepare T125 READY/nonexecutable for fixed-v4 actual validation, same D128data/current source/root/IDs; final v4 source SHA/T124 acceptance and MAIN RELEASE still pending. T124 and T117 must present REVIEW-READY candidate/source/tests/schema before freeze; MAIN may return in-scope edits before clearance. Player hold question pending with owner, no inferred resume; QA hold unchanged. Independent authorized work continues.

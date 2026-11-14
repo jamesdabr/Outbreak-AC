@@ -3,7 +3,7 @@
 const LIMITS = Object.freeze({active:2,retired:4,udpTotal:6,pendingTCP:4,headerMs:2000,attempts:8,
   minPayload:2,maxPayload:4096,packetRate:256,packetBurst:64,byteRate:524288,byteBurst:131072,
   udpPending:64,pendingBytes:131072,backlogMs:500,wireRate:1048576,wireBurst:131072,
-  controlRate:4,controlBurst:8,pingMs:5000,pongMs:10000,idleMs:30000,sessionMs:150000,runMs:180000,
+  controlRate:4,controlBurst:8,pingMs:5000,pongMs:10000,idleMs:30000,sessionMs:1800000,runMs:1800000,
   retireMs:60000,diagnostics:512,outputBytes:8388608});
 class Bucket {
   constructor(rate,burst,now){this.rate=rate;this.burst=burst;this.tokens=burst;this.at=now;}

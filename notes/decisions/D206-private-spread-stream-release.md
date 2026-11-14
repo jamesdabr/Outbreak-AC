@@ -1,0 +1,5 @@
+# D206 — Release deterministic private spread helper T157
+
+MAIN reviewed stable advisory SHAffeb21406a5b193b4df632c6e4258315fef142d096e534c95f77402f69857a7d against H's exact spread derivation/transition and seams'32-byte master, then adopts SPREAD_STREAM_FOUNDATION0.1 and assigns AI-Director T157. Only synthetic pure seed derivation and two-draw state transition are released under new exclusive paths. Existing core/hash/rules/input/query files and historical evidence remain read-only.
+
+This freezes the narrow already proposed65-byte SHA512/first16LEbytes/xoshiro128** subset, not cone sampling or accepted-shot/ordinal/canonical mutation. Real OS entropy/room master acquisition and storage, public Seed4/MatchInit home and packet/adapter ownership remain future work. No pending player-facing value/rate choice is selected. Like prior isolated prerequisites, bounded same-project native/Wasm unit execution may precede complete P0 without accepting integration/gameplay. All broader acceptance/QA/runtime/human holds remain.

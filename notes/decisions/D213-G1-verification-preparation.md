@@ -1,0 +1,7 @@
+# D213 — World G1 preparation while corrected data is verified
+
+Release ONLY T1591.2 notes preparation before T160 acceptance. The exact production implementation/actual verification gate remains unaccepted and unreleased. World may write NEW notes/proposals/T159-G1-execution-plan-1.md and own new notes, no source/harness/project import/compiler/runtime/test/Git/network or other worker dispatch. This preparation depends only on approved WORLD_QUERY_FOUNDATION0.2, accepted pure dependencies and immutable specification inputs, not unfinished T160 products.
+
+Produce a directly implementable finite G1 request/response/setup schema and case-family/count/byte budget, independent exact oracle construction, native/Wasm diagnostic/call-chain evidence plan, owned source/test paths and exact installed tool-role/argv/environment/dependency plan template. Identify exact future source/product pins that can only be filled after completed implementation/T160 acceptance; never pin in-progress outputs or fabricate verification. Preserve all G1 behavior/domains/refusal/8192/65536 stack and existing process/corpus caps. Do not reopen full feasibility, negotiate scope, implement future geometry or replace full test obligations with a small demonstration.
+
+The literal source-stage lease and reviewed source/fixture/tool plan remain future MAIN release. This useful independent preparation does not waive the accepted G0 predecessor. QA/runtime holds unchanged.

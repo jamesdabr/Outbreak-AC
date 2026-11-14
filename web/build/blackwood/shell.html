@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Outbreak — network scene and join proof</title>
+<style>
+html,body{margin:0;background:#111;color:#ddd;font:14px system-ui}
+main{max-width:1200px;height:100vh;height:100dvh;margin:auto;display:flex;flex-direction:column}
+#status,#errors{box-sizing:border-box;flex:none;max-height:25vh;max-height:25dvh;overflow:auto;overflow-wrap:anywhere;padding:12px}
+#canvas-area{flex:1;min-height:0;container-type:size;display:grid;place-items:center}
+canvas{display:block;width:min(100cqw,calc(100cqh * 16 / 9));height:auto;aspect-ratio:16/9;object-fit:contain;background:#000}
+#errors{white-space:pre-wrap;color:#ffb5b5}
+#errors:empty{display:none}
+</style></head>
+<body><main><div id="status" role="status">Loading engine…</div>
+<div id="canvas-area"><canvas id="canvas" width="960" height="540" tabindex="0" aria-label="Outbreak game canvas"></canvas></div>
+<div id="errors" role="alert"></div></main>
+<script>
+var engineStatus = 'loading';
+var Module = {
+  canvas: document.getElementById('canvas'),
+  setStatus: function(text) { if (engineStatus === 'loading') document.getElementById('status').textContent = text || 'Starting engine…'; },
+  print: function(text) { console.log(text); },
+  printErr: function(text) { console.error(text); },
+  onAbort: function(reason) { engineStatus = 'error'; document.getElementById('status').textContent = 'Engine error'; document.getElementById('errors').textContent = String(reason); },
+  onRuntimeInitialized: function() { if (engineStatus === 'loading') { engineStatus = 'loaded'; document.getElementById('status').textContent = 'Engine loaded — starting game…'; } },
+  onExit: function(code) { engineStatus = 'stopped'; document.getElementById('status').textContent = 'Engine stopped (' + code + ')'; }
+};
+window.addEventListener('error', function(event) { Module.onAbort(event.message); });
+</script>
+{{{ SCRIPT }}}
+</body></html>

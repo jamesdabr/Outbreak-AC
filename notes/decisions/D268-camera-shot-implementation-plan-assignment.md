@@ -1,0 +1,7 @@
+# D268 — Assign the camera and pure shot implementation plan
+
+After accepted spread stream T157 and full cone T172/D267, assign AI-Director T176 READ-ONLY PLAN + NEW NOTES ONLY. Prepare the concrete next camera/shot source and evidence contract while World completes G1 and Engine completes Blackwood builder correction. This is preparation for mandatory P1 authoritative third-person combat, not a substitute foundation or a source release before full moving queries.
+
+Approved product behavior remains P1_RULES0.2, accepted arithmetic/rules/table/basis/cone helpers and QUERY_PUBLICATION0.2. Historical T002 headers/seams and T139 remain proposals except clauses separately adopted by explicit decisions. Identify their actual authority rather than adopting unapproved types by citation. No worker amendment, new API, gameplay value, numerical shortcut, precision/work/resource reduction or cross-worker negotiation is allowed. Questions go to notes/questions for MAIN. Player's held presentation/native ownership remains untouched.
+
+T176 owns one new implementation/evidence proposal and own new handoff/questions only. No source/fixture/oracle/test/compiler/SDK/native/browser/network/secret/OS-entropy/worker-dispatch/Git effect. The plan must make camera and pure shot routines ready for later explicit source-contract materialization, preserving full G2 dependencies, pure-versus-transaction boundaries and real two-browser authoritative/visual acceptance. Future implementation remains separately gated; no actual effect follows from plan acceptance.

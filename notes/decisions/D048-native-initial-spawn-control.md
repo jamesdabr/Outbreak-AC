@@ -1,0 +1,5 @@
+# D048 Initial native spawn is a request-response join step
+
+MAIN inspected actual server welcomepacket2946+ and SV_TRYSPAWN3733+: new remote client is spectator/forceddead until real spawn request/canspawn. Current in-progress T061 guards tryrespawn/respawnself and message admission to BN_ACTIVE, which would prevent initial SPAWNSTATE and therefore ACTIVE. Explicitly amend client contract0.2/T0613.4 to allow ordinary rate-limited SV_TRYSPAWN as join control after genuine first three milestones/expected map/cn, before actual server SPAWNSTATE. New fourth observer-header helper is a side-effect-free readiness query; no T058 header change. No automatic timer/retry/fake living state or new wire message. Native/offline unchanged.
+
+This clarifies complete genuine handshake, not a permission to relax server auth/spawn/map validation or redefine transport-only success. Source-only task remains; subsequent main timing/wiring also must keep network polling/control active at prediction lastmillis0 before ACTIVE, rather than if(lastmillis) deadlock. Main implementation separately assigned after accepted source review.

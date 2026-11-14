@@ -1,0 +1,34 @@
+{
+  "kind": "LOCAL_SWAMP_NATIVE_SEED",
+  "local_only": true,
+  "map": {
+    "automatic_embedded_config": true,
+    "bytes": 23987,
+    "embedded_notice": {
+      "comment": "edited for AssaultCube (thanks original authors)",
+      "license_id": "cc-by-nc-sa-3.0",
+      "text": "cc-by-nc-sa-3.0\u0000edited for AssaultCube (thanks original authors)"
+    },
+    "external_map_cfg": false,
+    "format_version": 10,
+    "name": "ac_swamp",
+    "revision": 179,
+    "sha256": "acb8d878f90fb4dfa1a53aa69b4500282bace127fe426a658f348a70a4fde9aa",
+    "source": "packages/maps/official/ac_swamp.cgz",
+    "target": "packages/maps/servermaps/ac_swamp.cgz",
+    "title": "ac_swamp by Undead & ExodusS"
+  },
+  "permission_note": "Original embedded map notice recorded without extending it to separate media. Local/private stock-map baseline only; no distribution authorization or new permission asserted. Original assets and authored geometry/configuration unchanged.",
+  "rotation": {
+    "bytes": 110,
+    "change": "Only the first map token; existing options and final LF preserved.",
+    "map_token": "ac_swamp",
+    "mode": "dm",
+    "sha256": "9769eb5c2da7eb813e199ea981e7c86c46eff418c97f3abfd89775a6d7bfeb9a",
+    "source_map_token": "blackwood_greybox_v1",
+    "source_rotation_sha256": "a5703f92d5fd945dedeb64335bd31fef364ea82e2f7a22e6511a8c9084961f8f",
+    "target": "config/maprot.cfg"
+  },
+  "schema_version": 1,
+  "source_inspection": "notes/analysis/T288-swamp-inspection-1.json"
+}

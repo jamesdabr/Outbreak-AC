@@ -1,0 +1,7 @@
+# D032 MAIN actual corrected graphics run
+
+MAIN independently verified61 successful actual target compilation records, current source/shared-header/config/output hashes including all seven D031 changed files, exact safeGL profile and41 actual preload slices. D032-graphics-browser-artifact.json pins exact output identity/four requested runtime files. No media overlay or other flags changed.
+
+Under D027, MAIN owns one real-mode loopback Chrome/Playwright run with accepted T047 observer833b4173bdebb578a1887f70036e52b1994f31adb001da074b3b330fe36a4b8f, exact pins, fresh T030-real-D032-1.json/stdout/stderr and --capture-canvas. Inspected existing server/observer/tools, same bounded loopback/request/input/security/profile/cleanup controls. Canvas PNG is actual visual evidence for lead inspection, not automatic pixel correctness or LLM observation requirement. QA chat remains idle under direct human hold.
+
+No source/build/media mutations, state injection, renderer/GPU warning suppression, unsafe browser flags, external endpoints or service account. Known exact two SDK notices retained raw/classified once; all other errors/actual GPU INVALID/buffer warnings fail. Actual startup/render/input/blur/collision/audio/network gate limits remain distinct. If sandbox disallows same-project local browser/listener execution, request only the exact scoped runtime tool escalation; no broad environment change or alternate unverified build.

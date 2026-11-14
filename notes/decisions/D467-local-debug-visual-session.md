@@ -1,0 +1,7 @@
+# D467 — Fresh local3 visual session using verified debug server
+
+D466 local2 actual native server DID start and load its single Blackwood map, but release log.cpp flushes console only at shutdown (normal lines fflush only under _DEBUG, source lines160–162). Therefore the launcher timed out waiting for its real readiness text, then original native PID7744 exited0/reaped/group_empty:true. No gateway/page started. Preserve local2 logs/result and launcher copies. This is a readiness capture mismatch, not evidence of game rendering.
+
+MAIN changes ONLY fixed run local-2→local-3 in both wrappers/docs and native release/ac_server→debug/ac_server in launcher/docs/diagnostic. Debug was genuinely built/independently verified D463/D464, SHA256cff64e645ea281cef13f171bd2da084f58ed2aa6e2293c84467db65f66ec3b55; stage.flags confirms -D_DEBUG; log.cpp flushes each console line in that build. No game/native/browser/transport source or executable modification, no readiness bypass/synthetic success. Debug performance is not measured or accepted.
+
+Release ONE fresh same reviewed D465 local visual session under new runs/local-3 using current wrapper and verified debug binary, with the same loopback permission accepted D466. All existing ports/args/seed/client/capability120s/150s/8MiB/ownership/cleanup/no-external limits unchanged. No occupied reuse or automatic further retry. MAIN opens existing blank in-app tab once and records actual UI, saves screenshots. Full MVP incomplete; QA/T149 stay paused.

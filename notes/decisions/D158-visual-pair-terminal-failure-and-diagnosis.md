@@ -1,0 +1,9 @@
+# D158 — Preserve T135 terminal failure and release read-only diagnosis
+
+D157-pair-1 single controller invocation terminated FAIL, runtime_started:true. World reports outer elapsed195.4s, controller reaped without supervisor signals. Retained report errors:['timely native spawn ACK']; evidence_validated:false/proof:null. Observer separately reported OBSERVATIONS_COMPLETE with no observer errors, two movement observations and two actual canvas captures. These observations do not override parent rejection. Terminal receipt additionally reports 'terminal captures required', captures:[], report/ledger digests:null. No normal-pair/P0/gameplay acceptance and no second attempt authorized.
+
+MAIN opened both actual PNGs and independently verified ordinary0600/nlink1, byte counts and observer hashes. A:881575bytes SHA25614e65736cf6cb905e33cc1e2b8800ec01264019a5076b7a195164dd9d45b2b0d. B:890145bytes SHA256cfe9c157bd7b86d6453ed949fc1c222022223e641b5cc02284e19175d6374ae6. Both show the grid-textured placeholder dev room. They are real current-build images retained as UNACCEPTED FAILURE EVIDENCE, not Blackwood/final art or accepted movement proof.
+
+Recorded cleanup: browsers/contexts/static/gateway stopped, handles empty, native exit0, groups reaped, ports released, profiles/private entropy removed, no kill fallback. World is completing its bounded terminal handoff. Lift D157 temporary repository-write quiescence now that the invocation is authoritatively terminal. Do not reuse/reseal D157 pins or modify its outputs, source freezes or prior evidence. QA human hold/T136 owner-approval block unchanged.
+
+Release T137 to Engine for notes-only read-only diagnosis of exact ACK validation and secondary receipt failure against retained evidence. No runtime/imports/tests/source edits or retries. MAIN will review the concrete cause before selecting a correction; no acceptance criterion relaxation.

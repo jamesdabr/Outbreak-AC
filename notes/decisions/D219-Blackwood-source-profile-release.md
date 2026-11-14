@@ -1,0 +1,7 @@
+# D219 — Engine fixed Blackwood source-profile implementation released
+
+T160 final delivery is accepted D218 and its writer lease is closed. Release Engine T1631.1 under approved BLACKWOOD_CLIENT_FOUNDATION0.1/D217 for the exact source/helper subset only. MAIN rechecked all three classic source baseline hashes against the contract and confirmed new header/test root absent immediately before release. Other active worker leases are new portable modules/World notes, with no overlapping classic source owner.
+
+Engine exclusively edits main.cpp/client.cpp/clients2c.cpp plus new browser_map_profile.h and its fixed new T163 helper harness/evidence roots. Preserve before-source snapshots and unrelated changes; no .git operations. Actual code gates must use shared tested selected-map predicates while retaining genuine parser/load/receipt/spawn lifecycle, default dev semantics and strict mismatch rejection. Full native/Wasm helper proof and named invalid-profile compile diagnostics remain distinct from full-client build/runtime evidence.
+
+No Package B/C/D tooling/full build/native signing/admission/controller/browser/server/runtime or asset/map modification is released. Future runtime baselines must be exact accepted v4, not the superseded plan1 v3. Accepted authority-p2 and all old assets/artifacts remain immutable; no T160 further writes/rerun. QA/T149/runtime/RSS/full phase/human gates unchanged.

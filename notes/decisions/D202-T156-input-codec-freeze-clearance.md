@@ -1,0 +1,9 @@
+# D202 — T156 active input codec final freeze clearance
+
+MAIN clears T156 for append-only final freeze after scoped source/harness review with no findings and independent reconstruction of every67421 oracle response against both recorded targets. Counts66432 decode/989 encode, each3236208 bytes/SHA256d12fece7abb9165a9313f7fb855fdeb485aa9c5c4c57430c57b1889a4f334c1b. All seven source identities and recorded output hashes match; protected snapshots equal. Receipt: notes/reviews/MAIN-T156-independent-oracle-review-1.json. No production/compiler/native/Wasm execution repeated during MAIN review.
+
+Production header SHAe8ad0291d5cb33d68b4ed8050daf1684fbbb03d40eb0b735305940278095bddd, source SHAee6bfe1c507f07802284661a54ca71b18cc4a4d7c6773393a87404160d576310. review-ready1 SHA71f9492a70aabbc0201f3427339aa23ecbbde9daaaae652dee0ff507e04e0bfe; result SHA57ac36d827b22d01ac8e3160d19a6794c7467a0f2da066e01d2fc16d048804bd. Other five source/harness/docs remain exact reviewed pins.
+
+Engine may append ONLY final inventory/receipt/freeze under existing attempt1 and a new own handoff. Preserve all existing source/harness/doc/attempt/dependency/control/output bytes. Bind entire owned test graph and two production files, accepted core dependencies and external current authority/review/handoff refs. Reserve exact direct self-slot before capturing parent metadata and name its only self exclusion; keep earlier inventory metadata historical. Do not import project code, compile/test/rerun/regenerate caches, change source, consume full packets or integrate clients/servers. Source ownership remains Engine until separately transferred. Submit final graph and stop for acceptance.
+
+This does not accept envelope/body-batch composition, protocol eligibility/admission, time/life/window checks, networking, gameplay, P0/performance/human behavior. QA/runtime holds unchanged.

@@ -1,0 +1,5 @@
+# D448 — Accept the seven-file preservation correction
+
+MAIN accepts T265 after reviewing the actual stage changes, targeted harness cases, four-file diff and final handoff. The exact seven non-consumed historical artifacts are type/identity/size/mode/owner/link/time bound without content opens; unknown unreadable paths still fail ordinary hashing. Production inventory/validation requires all seven to remain present. Ordinary/hash/source/dependency consumption of these paths refuses. Readable-file behavior and builder/verifier/runner remain unchanged.
+
+MAIN matched all20 planned simulated case names/results and all six current source bytes to executed pass-7 snapshots. All passed, including the original full fake-build/independent-verifier success. Original T167202-case evidence and T264 blocked observation remain intact. Close Player's T265 lease. This is source/targeted-test acceptance only, not actual tool/ABI/build/runtime evidence. Next is a fresh current-input observation after current launcher source stabilizes, to avoid collecting a moving graph. No further broad proof work or native effect is released here; QA stays paused.

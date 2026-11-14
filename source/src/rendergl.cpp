@@ -509,6 +509,29 @@ void resetcamera()
 
 void recomputecamera()
 {
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    if(outbreakthirdperson())
+    {
+        static physent chasecam;
+        // Rebuild from the real pose each frame; camera collision cannot move the player.
+        chasecam = *(physent *)player1;
+        chasecam.reset();
+        chasecam.move = -1; // reset clears it; native follow uses backward camera movement.
+        chasecam.type = ENT_CAMERA;
+        chasecam.roll = 0;
+        chasecam.radius = chasecam.eyeheight = chasecam.maxeyeheight = chasecam.aboveeye = 0.2f;
+        chasecam.maxspeed = 16.0f;
+        const float yaw = RAD*(player1->yaw-90), pitch = RAD*player1->pitch;
+        chasecam.vel.x = -cosf(yaw)*cosf(pitch)*player1->radius;
+        chasecam.vel.y = -sinf(yaw)*cosf(pitch)*player1->radius;
+        chasecam.vel.z = -sinf(pitch)*player1->radius + 0.25f;
+        // Existing chase-camera physics stops at geometry; only the camera moves backward.
+        loopi(10) moveplayer(&chasecam, 20, true, 50);
+        chasecam.vel = vec(0, 0, 0);
+        camera1 = &chasecam; // ENT_CAMERA also suppresses drawhudgun's first-person model.
+        return;
+    }
+#endif
     if((player1->state==CS_SPECTATE || player1->state==CS_DEAD) && !editmode)
     {
         switch(player1->spectatemode)

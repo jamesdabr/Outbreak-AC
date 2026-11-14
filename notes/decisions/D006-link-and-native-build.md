@@ -1,0 +1,29 @@
+# D006 Reviewed foundation and next ready builds
+
+Authority: coordinating lead, under the owner's instruction to check workers, review completed work/questions and distribute ready tickets. Approved execution addendum revision 0.6. Product scope remains unchanged.
+
+## Review and acceptance
+
+T026 is ACCEPTED for exact local SDK setup and actual release/debug Wasm objects; T016 is ACCEPTED through its T026 follow-up. Six real object results are preserved in generated/t026/attempt-4; they do not cover later changed main.cpp bytes. T028 is ACCEPTED for source/helper/native and its own final real Wasm object evidence, not integrated running-game behavior. T029 and T025 are ACCEPTED for source/service/auth helper and native/actual Wasm object scope. Lead reviewed guarded source and reran services_submission.py: 16 current-source/current-object results verified. All 14 original pack tests and git diff --check pass. T027 remains RELEASED while World completes the six original empty-sky aliases already authorized under T027; its first structural handoff is reviewed. T017 retains integrated input/lifecycle verification pending; T030 is SUBMITTED for observer infrastructure, actual engine run pending. No runtime or full P0/MVP acceptance is implied.
+
+## Released T031 integration boundary
+
+T031 may compile current real client sources immediately with the pinned inspected SDK. Final preload/link acceptance requires stable World sky-closure follow-up and lead-approved exact pack manifest hash; do not package a knowingly incomplete pack. Source baseline is D006-baseline.json; current main.cpp final T028 bytes supersede T026's earlier main hash. Ownership remains disjoint; no worker edits another owner's source.
+
+SDK 7.0.0/local Node/config/cache execution and five ports remain exactly D005. The one additional PNG decoder recipe is inspected installed tools/ports/libpng.py: version 1.6.59, URL https://storage.googleapis.com/webassembly/emscripten-ports/libpng-1.6.59.tar.gz, SHA-512 e14302d87864432d747896e3944a6416d4b5f3059f538cfe615ddbe1d0084d4a02d4df3ef2761b02c839858625bed57d873198792c3583029c619e1cf8c4561b. Acquire/build only this exact archive into existing task-local ports/cache; verify the recipe hash and archive integrity before use. Existing zlib dependency is approved. No JPEG or other ports/global installations.
+
+Compile baseline: 53 real CLIENT_OBJS C++ TUs and 8 ENet C TUs inventoried by T026, separate generated objects. C++ gnu++11/fsigned-char, release O2; debug O0/g/_DEBUG checks on changed units. ENet HAS_SOCKLEN_T=1 reflects inspected target header. Target SDL2, SDL2_image with SDL2_IMAGE_FORMATS=["png"], zlib, Vorbis/Ogg and SDK -lopenal. Link LEGACY_GL_EMULATION=1, ALLOW_MEMORY_GROWTH=1, INITIAL_MEMORY=67108864, STACK_SIZE=2097152; default safe WebGL1 compatibility. SDK standard system runtime builds in approved cache are allowed. Do not add GL_FFP_ONLY, GL_UNSAFE_OPTS, undefined-symbol suppression, threads, SIMD, network transport, new dependencies or broad renderer changes. If a flag is incompatible with this pinned compiler, record the exact error and ask for the narrow adjustment.
+
+Output web/build/out/index.html plus real JS/Wasm/data, canvas id canvas, loading/error shell; preload only original pack-root at /outbreak with notices. Pin every source/header/config/pack input and every output, detect concurrent changes, rerun stale objects. Source fixes outside platform.h/tools.h go to notes/questions for lead dispatch. Build scripts may execute only inspected compiler/toolchain/build steps, no inherited game scripts on host. Local output generation only; no serving/publishing by Engine. QA remains sole loopback browser-run owner.
+
+## Released T033 native server build
+
+AI-Director independently builds the real native STANDALONE SERVER_OBJS plus repository ENet into web/server/out, using installed Apple clang, system libc/zlib/pthread and repository SDL2 framework only if actually required by macOS source. Inspect native headers/binary architectures before use. Do not execute configure/make/install hooks blindly, download dependencies or use host/global library installations. Explicit separate object compile/link is authorized after source/driver inspection. No server execution/listeners, master registration, credentials or user-profile writes in this ticket. Missing arm64 libraries are an honest blocker, never a fake server or omitted source. Build source changes require a lead note first. See T033 for evidence.
+
+## Question resolutions and next dependency
+
+T028 sky question: six original PNG faces at existing empty-sky .jpg aliases, with true encoding documented and SDL_image magic detection checked; actual Wasm decoding stays runtime evidence. World already owns this closure. Do not overwrite historical question/handoff notes.
+
+T030 collision question: use T027 world 64x64, courtyard x/y [8,56), structure wall x [26,28), y [24,30) with radius1.1. Proposed measured approach from (22,25) toward +X should stop near center x<=24.9, through-door route y=32 must remain passable. These are geometric expectations, not observed results. Current read-only diagnostics provide no teleport/action API: normal input must reach the route and verify actual starting position/yaw. If that cannot be controlled reproducibly, record collision NOT RUN; never inject state or infer success solely from a position plateau. QA may inspect geometry/prepare route now under T030, but actual game run waits for lead-supplied real bundle identity and per-file SHA pins. No new API or gameplay threshold is authorized.
+
+BROWSER_FOUNDATION/GOVERNANCE/P0 revision 0.5 remains the frozen governing baseline for outstanding T027/T030 work; this approved revision 0.6 addendum governs only the newly released T031/T033. Later gameplay, two-client networking and MVP tests remain unaccepted.

@@ -1,0 +1,9 @@
+# D381 — Receive T225 bounded startup facts
+
+MAIN reads the full original T225 tool receipt and handoff, and freshly rehashes all six dispatched source/tool/authority/review roles unchanged before closing T225. Raw receipt SHAa9cf1969a88a937c024508e549689285ed8549674c4542de18f918657d1e037d; handoff SHAcf4bebb202a78fb1e276a5d60775298eba4186ed93d6933a247d11362ee5d707. ONE invocation, original initial already terminal exit0/chunk73e058/no session,856 UTF8 bytes untruncated, no timer expiry/interrupt/poll/retry/errors. Host10s timer was installed before command; source local elapsed0.0724223330616951 and wall diagnostic189ms are supplemental. Backend wall_time_seconds0.000010041 is preserved as reported, not claimed as complete startup duration.
+
+Accept the bounded facts delivery ONLY: fixed Python3.11.9/isolated/no-bytecode/observer argv/cwd all match; six expected ENV values match/no missing keys; sole unexpected NAME __CF_USER_TEXT_ENCODING, LC_CTYPE absent. Unknown extra value not disclosed. Entire environment equality is FALSE. No exact old T224 branch diagnosis, installed injection point, alternative profile or test acceptance inferred.
+
+Close T225 execution lease, no retry. Observer source has no project file/child/network/test/root effects; independent source review and current six literal hashes support that narrow behavior. This receipt does not claim a freshly repeated349-role historical filesystem postflight. Old roles/histories/source16/callers/roots remain read-only. T224 previously completed its separate full postflight before D378 closure. Any later guarded job requires its own fresh complete preflight/source/effect/literal dispatch; observer result cannot substitute for it.
+
+T227 notes-only repair design under D380 is the sole follow-up. No source repair or runtime/test/build/browser/native/capability operation is authorized by this receipt. QA/Player/native and all full MVP gates unchanged.

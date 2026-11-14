@@ -1,0 +1,9 @@
+# D212 — Corrected G0 supervisor successor released
+
+T158 completed its one actual invocation exit0 with matching30-case native/Wasm decoder results and71 finite adversarial cases. MAIN independently verified all four binary products against its earlier source oracle, repacked all32 anchors, checked all nine product hashes/membership and both full-cell responses. Receipt notes/reviews/MAIN-T158-recorded-data-review-1.json. These successful observations remain historical and are not relabeled failed execution.
+
+Source review notes/reviews/T158-independent-source-review-1.md SHA14aafa4406787e91673dbb1ea56ee6a774aa818ba515ea51bedac9386d15c379 identified an uncovered post-Popen/pre-try acquisition path that can bypass child cleanup. Related cleanup operations must also not suppress one another or add time beyond the original deadlines. This blocks package/supervisor acceptance. Preserve the complete authority-p1 tree; T158 is SUBMITTED with correction required, no further source/test/freeze writes. Its original handoff remains unchanged.
+
+Approve AUTHORITY_MAP_DATA0.2 and release Engine T1601.0 in NEW web/world/authority-p2 only. Same seven sources/docs, exact nine-file schema/data and sole fresh attempt; narrowly corrected supervisor plus guarded fake-boundary regression tests and literal path/provenance changes. One actual real decoder proof is separately required for the corrected source graph. All mathematical/tool/process/data/publication/resource constraints unchanged. This is an explicitly authorized successor, not an automatic retry or occupied-output overwrite.
+
+World T159 READY now awaits accepted T160 corrected G0/final pins instead of unaccepted T158. WORLD_QUERY_FOUNDATION0.2 makes only that dependency/path correction and references D211's auxiliary construction closure; no new query/source authority. QA and actual browser/runtime/RSS/human holds unchanged.

@@ -1,0 +1,5 @@
+# D185 — Release portable rules factory T151
+
+MAIN approves SHARED_RULES_FOUNDATION0.1 and assigns AI-Director T151. This deliberately sequences the reviewed advisory's Package B: only already frozen constant records/factory and canonical hashing now; table validation/aim basis await accepted T150 material and a later exact lease. This is an additive portable prerequisite, not a scope reduction or gameplay acceptance. No T147 file is reopened; new p1_rules files have one named owner. Public core/header records and weapon/movement numerical values are unchanged; the owner ground-braking selector remains pending and is not implemented.
+
+Like the existing isolated numeric/hash modules, this exact prerequisite may precede full P0; normal dependent gameplay/integration gates remain. Authorizes inspected bounded current-project native/Wasm unit compilation/execution, no app/browser/network/run/deploy. Accepting constant records cannot accept damage/movement enforcement, performance, P0 or MVP. QA remains paused. Engine's T146 preparation is separately accepted D184, with no actual calibration permission.

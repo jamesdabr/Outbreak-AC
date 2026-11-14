@@ -1,0 +1,5 @@
+# D184 — Accept native measurement preparation T146
+
+MAIN accepts T146 preparation after independent source review,37 guarded copied fixtures, and final graph verification. Freeze7869 bytes/SHA256 e42ddc10892f0c9e25e0c95b5bb0668b40e5e56778e535d71f804779c782d670 binds23 member files plus one direct self-file exclusion and two directories. All recorded file identities, directory metadata and external authority bindings matched before this ticket status change. Receipt: notes/reviews/MAIN-T146-final-freeze-review.json. Frozen source and all prior evidence remain immutable.
+
+This accepts only preparation: no actual process/wait4/Mach/calibration occurred; native units unconfirmed and budget NOT_EVALUATED; Chrome tree NOT_OBSERVED. No actual calibration lease or run authorization follows. Engine has no further T146 writes. A future actual caller must be concrete/reviewed and directly approved by owner. QA remains paused; T149 still READY awaiting fresh approval. Full P0 and MVP remain incomplete.

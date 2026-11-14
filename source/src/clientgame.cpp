@@ -20,7 +20,16 @@ bool outbreakactive() { return false; }
 #else
 bool outbreakactive() { return outbreak && !m_mp(gamemode) && !multiplayer(NULL) && !watchingdemo; }
 #endif
-bool outbreakthirdperson() { return outbreakactive() && !editmode && player1->state == CS_ALIVE && !player1->scoping; }
+bool outbreakthirdperson()
+{
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    // Presentation only: never enable the offline combat/revive prototype here.
+    return !watchingdemo && !editmode && player1->type == ENT_PLAYER && player1->state == CS_ALIVE &&
+           player1->spectatemode == SM_NONE && !player1->scoping;
+#else
+    return outbreakactive() && !editmode && player1->state == CS_ALIVE && !player1->scoping;
+#endif
+}
 COMMANDF(outbreakaim, "i", (int *on) { outbreakaiming = *on != 0 && outbreakactive(); });
 COMMANDF(revive, "i", (int *on) { outbreakreviving = *on != 0 && outbreakactive(); });
 

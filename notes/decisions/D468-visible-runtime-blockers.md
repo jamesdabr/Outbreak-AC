@@ -1,0 +1,7 @@
+# D468 — Actual Blackwood render; connection and input blockers
+
+D467 local3 session exec86489 terminal947c58 exit0, CLOSED_VISUAL_SESSION in110.636s. Native PID7800 and gateway7801 exit0/reaped/group_empty:true, gateway clean sockets. Page delivered once. Actual in-app UI shows Blackwood greybox geometry/textures. No living survivor or verified movement. Gateway actual close reports admitted0/to_udp0/to_ws0. Canvas gesture initialized audio but pointer lock reported WrongDocumentError. Do not call this playable or accept VISIBLE_SLICE/P0/P1/MVP.
+
+Actual screenshots: notes/previews/MAIN-local3-first-render.jpg and MAIN-local3-after-input.jpg. No fake entity/state/input changes. First screenshot is a rendered map only. Stored screenshots are output evidence and are not browser source assets.
+
+Amend VISIBLE_SLICE0.6 only to permit player-page connection status from the existing public immutable outbreakNetworkSnapshot API; display actual lifecycle/errors without calling lifecycle mutators or changing admission/security policy. Technical diagnostic state/error belongs in existing Client messages details. Engine performs bounded notes-only source diagnosis of no admission and pointer lock, then MAIN releases a concrete fix. Do not broaden proof/fixture infrastructure or resume QA. All native attempts/run artifacts stay immutable. Current local launcher is source only again; no new runtime release from this decision.

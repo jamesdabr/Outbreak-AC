@@ -1,0 +1,7 @@
+# D194 — Release exact table validation and aiming basis T154
+
+MAIN approves ANGLE_BASIS_FOUNDATION0.1 and releases AI-Director T1541.0. Draft1 received bounded independent review with no findings; draft2 preserves it and makes the same quadrant lookup explicit, checked over all65536 yaw symmetries. Accepted T150/D193 now supplies real pinned table bytes; accepted T151 source baseline was archived before extension. This transfers a new exclusive extension lease for working p1_rules.h/.cpp to AI-Director; old T151 source snapshot/evidence remains historical and immutable. No other owner may edit those files.
+
+No player-facing value changes or pending Q1 choice are made. This is the already proposed immutable AngleTables/validation/aim-basis subset, isolated like numeric/hash/rules prerequisites. It may be implemented before full P0 without accepting gameplay or production integration. Existing rules factory must retain its exact200-byte hash and pass regression on both targets. No motion/geometry/spread/camera behavior or full typed interface adoption.
+
+Engine's T153 arithmetic actual run and protected-input comparison already completed before this lease; its production header includes only stdint, not rules. That completed preservation record remains historical. No T153 source/evidence may change; any still-needed live cross-source identity binding must be coordinated rather than silently failing or rerunning old tools. Full gates, QA and runtime approvals unchanged.

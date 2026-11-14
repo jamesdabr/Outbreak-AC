@@ -1,5 +1,6 @@
 // client.cpp, mostly network related client game code
 
+#include "browser_map_profile.h"
 #include "cube.h"
 #include "bot/bot.h"
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
@@ -152,7 +153,7 @@ static void bnpublish()
     vec own=player1 ? player1->o : vec(0,0,0);
     if(!__builtin_isfinite(own.x)||!__builtin_isfinite(own.y)||!__builtin_isfinite(own.z)) { browsernet_close(BNE_SIZE); own=vec(0,0,0); }
 #define BN_JSON(...) do { int wrote=snprintf(json+n,sizeof(json)-n,__VA_ARGS__); if(wrote<0 || wrote>=int(sizeof(json)-n)) { browsernet_close(BNE_BACKLOG); return; } n+=wrote; } while(0)
-    BN_JSON("{\"schema_version\":1,\"profile\":\"network-client\",\"state\":\"%s\",\"error\":%d,\"map_name\":\"%s\",\"map_revision\":%d,\"own\":{\"cn\":%d,\"life\":%d,\"state\":%d,\"position\":[%.9g,%.9g,%.9g]},\"remotes\":[", states[bnphase],bnerror,bnmap?"dev_outbreak_browser":"",bnmap?2:0,player1?player1->clientnum:-1,bnlife,player1?player1->state:CS_SPECTATE,own.x,own.y,own.z);
+    BN_JSON("{\"schema_version\":1,\"profile\":\"network-client\",\"state\":\"%s\",\"error\":%d,\"map_name\":\"%s\",\"map_revision\":%d,\"own\":{\"cn\":%d,\"life\":%d,\"state\":%d,\"position\":[%.9g,%.9g,%.9g]},\"remotes\":[", states[bnphase],bnerror,ob_browser_map::receipt_name(bnmap),ob_browser_map::receipt_revision(bnmap),player1?player1->clientnum:-1,bnlife,player1?player1->state:CS_SPECTATE,own.x,own.y,own.z);
     bool comma=false;
     loopi(MAXCLIENTS) if(bnremotes[i].valid)
     {
@@ -248,15 +249,16 @@ void browsernet_game_observed(unsigned milestone,int cn,int lifeSequence)
 bool browsernet_spawn_expected()
 {
     if(bnterminal()) return false;
-    if(!bnmap) { browsernet_close(BNE_MAP); return false; }
+    if(!ob_browser_map::spawn_matches(bnmap,getclientmap(),hdr.maprevision,maploaded,gamemode,GMODE_DEATHMATCH))
+    { browsernet_close(BNE_MAP); return false; }
     if(!curpeer || player1->clientnum!=bncn || (bnphase!=BN_ACTIVE && (bnphase!=BN_JOINING || bnstage!=3))) { browsernet_close(BNE_MILESTONE); return false; }
     bnspawnack=false;
     return true;
 }
 bool browsernet_spawn_request_allowed()
 {
-    return player1 && curpeer && clienthost && curpeer->host==clienthost && bnmap &&
-      gamemode==GMODE_DEATHMATCH && hdr.maprevision==2 && maploaded>0 &&
+    return player1 && curpeer && clienthost && curpeer->host==clienthost &&
+      ob_browser_map::spawn_matches(bnmap,getclientmap(),hdr.maprevision,maploaded,gamemode,GMODE_DEATHMATCH) &&
       bncn>=0 && bncn<MAXCLIENTS && player1->clientnum==bncn &&
       ((bnphase==BN_JOINING && bnstage==3) || (bnphase==BN_ACTIVE && bnstage==4));
 }
@@ -288,7 +290,8 @@ void browsernet_remove_observed(int cn)
 void browsernet_map_observed(const char *name,int revision)
 {
     if(bnterminal()) return;
-    if(!name || strcmp(name,"dev_outbreak_browser") || revision!=2 || gamemode!=GMODE_DEATHMATCH || maploaded<=0 || hdr.maprevision!=2) { browsernet_close(BNE_MAP); return; }
+    if(!ob_browser_map::observed_matches(name,revision,getclientmap(),hdr.maprevision,maploaded,gamemode,GMODE_DEATHMATCH))
+    { browsernet_close(BNE_MAP); return; }
     bnmap=true; ++bnc.map_receipts;
 }
 #endif

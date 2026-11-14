@@ -1,0 +1,1768 @@
+{
+  "method": "Native header/RLE and calcmapdims; geometry proxies only",
+  "official_maps": 44,
+  "decoded": 44,
+  "maps": [
+    {
+      "name": "ac_africa",
+      "map_path": "packages/maps/official/ac_africa.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 283,
+      "title": "ac_africa by $N!P3R* with help from Snoosnoo",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 71,
+        "x2": 195,
+        "y1": 65,
+        "y2": 164
+      },
+      "occupied_width": 125,
+      "occupied_depth": 100,
+      "occupied_bbox_area": 12500,
+      "nonsolid_cells": 6810,
+      "tagged_clip_nonsolid_cells": 292,
+      "noncorner_unclipped_cells": 6373,
+      "minfloor": -10,
+      "maxceil": 22,
+      "distinct_base_floor_heights": 21,
+      "cube_counts": {
+        "SOLID": 58726,
+        "SPACE": 5829,
+        "FHF": 743,
+        "CORNER": 163,
+        "CHF": 75
+      },
+      "interior_margins": {
+        "left": 69,
+        "right": 58,
+        "top": 63,
+        "bottom": 89
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_africa.jpg"
+    },
+    {
+      "name": "ac_alcove",
+      "map_path": "packages/maps/official/ac_alcove.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 865,
+      "title": "Alcove by Halo and Bukz",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 23,
+        "x2": 229,
+        "y1": 31,
+        "y2": 238
+      },
+      "occupied_width": 207,
+      "occupied_depth": 208,
+      "occupied_bbox_area": 43056,
+      "nonsolid_cells": 17611,
+      "tagged_clip_nonsolid_cells": 1479,
+      "noncorner_unclipped_cells": 15794,
+      "minfloor": -20,
+      "maxceil": 16,
+      "distinct_base_floor_heights": 29,
+      "cube_counts": {
+        "SOLID": 47925,
+        "SPACE": 16170,
+        "CHF": 262,
+        "CORNER": 384,
+        "FHF": 795
+      },
+      "interior_margins": {
+        "left": 21,
+        "right": 24,
+        "top": 29,
+        "bottom": 15
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_alcove.jpg"
+    },
+    {
+      "name": "ac_aqueous",
+      "map_path": "packages/maps/official/ac_aqueous.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 712,
+      "title": "Aqueous - By RandumKiwi",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 95,
+        "x2": 234,
+        "y1": 32,
+        "y2": 214
+      },
+      "occupied_width": 140,
+      "occupied_depth": 183,
+      "occupied_bbox_area": 25620,
+      "nonsolid_cells": 13585,
+      "tagged_clip_nonsolid_cells": 1515,
+      "noncorner_unclipped_cells": 11721,
+      "minfloor": -10,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 51951,
+        "CHF": 1331,
+        "SPACE": 10655,
+        "FHF": 1221,
+        "CORNER": 378
+      },
+      "interior_margins": {
+        "left": 93,
+        "right": 19,
+        "top": 30,
+        "bottom": 39
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_aqueous.jpg"
+    },
+    {
+      "name": "ac_arabian",
+      "map_path": "packages/maps/official/ac_arabian.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 241,
+      "title": "ac_arabian by jiba",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 46,
+        "x2": 252,
+        "y1": 21,
+        "y2": 212
+      },
+      "occupied_width": 207,
+      "occupied_depth": 192,
+      "occupied_bbox_area": 39744,
+      "nonsolid_cells": 21553,
+      "tagged_clip_nonsolid_cells": 1992,
+      "noncorner_unclipped_cells": 19066,
+      "minfloor": -1,
+      "maxceil": 39,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 43983,
+        "SPACE": 14654,
+        "FHF": 3042,
+        "CORNER": 519,
+        "CHF": 3338
+      },
+      "interior_margins": {
+        "left": 44,
+        "right": 1,
+        "top": 19,
+        "bottom": 41
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_arabian.jpg"
+    },
+    {
+      "name": "ac_arctic",
+      "map_path": "packages/maps/official/ac_arctic.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 298,
+      "title": "Frozen Village by Halo",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 55,
+        "x2": 190,
+        "y1": 77,
+        "y2": 211
+      },
+      "occupied_width": 136,
+      "occupied_depth": 135,
+      "occupied_bbox_area": 18360,
+      "nonsolid_cells": 11893,
+      "tagged_clip_nonsolid_cells": 202,
+      "noncorner_unclipped_cells": 11584,
+      "minfloor": -10,
+      "maxceil": 18,
+      "distinct_base_floor_heights": 18,
+      "cube_counts": {
+        "SOLID": 53643,
+        "FHF": 2361,
+        "CHF": 266,
+        "SPACE": 9159,
+        "CORNER": 107
+      },
+      "interior_margins": {
+        "left": 53,
+        "right": 63,
+        "top": 75,
+        "bottom": 42
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_arctic.jpg"
+    },
+    {
+      "name": "ac_arctic2",
+      "map_path": "packages/maps/official/ac_arctic2.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 757,
+      "title": "Arctic2 by Halo & Snoosnoo",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 28,
+        "x2": 243,
+        "y1": 24,
+        "y2": 245
+      },
+      "occupied_width": 216,
+      "occupied_depth": 222,
+      "occupied_bbox_area": 47952,
+      "nonsolid_cells": 27690,
+      "tagged_clip_nonsolid_cells": 1833,
+      "noncorner_unclipped_cells": 25438,
+      "minfloor": -17,
+      "maxceil": 22,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 37846,
+        "SPACE": 22373,
+        "CORNER": 463,
+        "FHF": 2729,
+        "CHF": 2125
+      },
+      "interior_margins": {
+        "left": 26,
+        "right": 10,
+        "top": 22,
+        "bottom": 8
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_arctic2.jpg"
+    },
+    {
+      "name": "ac_arid",
+      "map_path": "packages/maps/official/ac_arid.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 289,
+      "title": "ac_arid by BenWasHere",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 76,
+        "x2": 194,
+        "y1": 87,
+        "y2": 205
+      },
+      "occupied_width": 119,
+      "occupied_depth": 119,
+      "occupied_bbox_area": 14161,
+      "nonsolid_cells": 8084,
+      "tagged_clip_nonsolid_cells": 524,
+      "noncorner_unclipped_cells": 7497,
+      "minfloor": -17,
+      "maxceil": 19,
+      "distinct_base_floor_heights": 30,
+      "cube_counts": {
+        "SOLID": 57452,
+        "SPACE": 6302,
+        "CORNER": 63,
+        "FHF": 1112,
+        "CHF": 607
+      },
+      "interior_margins": {
+        "left": 74,
+        "right": 59,
+        "top": 85,
+        "bottom": 48
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_arid.jpg"
+    },
+    {
+      "name": "ac_avenue",
+      "map_path": "packages/maps/official/ac_avenue.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 518,
+      "title": "ac_avenue by jiba",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 54,
+        "x2": 252,
+        "y1": 8,
+        "y2": 208
+      },
+      "occupied_width": 199,
+      "occupied_depth": 201,
+      "occupied_bbox_area": 39999,
+      "nonsolid_cells": 18377,
+      "tagged_clip_nonsolid_cells": 1562,
+      "noncorner_unclipped_cells": 16676,
+      "minfloor": -15,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 35,
+      "cube_counts": {
+        "SOLID": 47159,
+        "CORNER": 168,
+        "SPACE": 14589,
+        "CHF": 1457,
+        "FHF": 2163
+      },
+      "interior_margins": {
+        "left": 52,
+        "right": 1,
+        "top": 6,
+        "bottom": 45
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_avenue.jpg"
+    },
+    {
+      "name": "ac_coal",
+      "map_path": "packages/maps/official/ac_coal.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 874,
+      "title": "ac_coal by Halo and Snoosnoo (old ac_hoist by RandumKiwi)",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 4,
+        "x2": 252,
+        "y1": 6,
+        "y2": 211
+      },
+      "occupied_width": 249,
+      "occupied_depth": 206,
+      "occupied_bbox_area": 51294,
+      "nonsolid_cells": 22576,
+      "tagged_clip_nonsolid_cells": 2178,
+      "noncorner_unclipped_cells": 20161,
+      "minfloor": 0,
+      "maxceil": 76,
+      "distinct_base_floor_heights": 62,
+      "cube_counts": {
+        "SOLID": 42960,
+        "FHF": 820,
+        "SPACE": 21291,
+        "CHF": 188,
+        "CORNER": 277
+      },
+      "interior_margins": {
+        "left": 2,
+        "right": 1,
+        "top": 4,
+        "bottom": 42
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_coal.jpg"
+    },
+    {
+      "name": "ac_complex",
+      "map_path": "packages/maps/official/ac_complex.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 394,
+      "title": "Industrial Zone - by makkE",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 70,
+        "x2": 189,
+        "y1": 67,
+        "y2": 224
+      },
+      "occupied_width": 120,
+      "occupied_depth": 158,
+      "occupied_bbox_area": 18960,
+      "nonsolid_cells": 11588,
+      "tagged_clip_nonsolid_cells": 19,
+      "noncorner_unclipped_cells": 11462,
+      "minfloor": -6,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 24,
+      "cube_counts": {
+        "SOLID": 53948,
+        "SPACE": 10560,
+        "CORNER": 108,
+        "FHF": 688,
+        "CHF": 232
+      },
+      "interior_margins": {
+        "left": 68,
+        "right": 64,
+        "top": 65,
+        "bottom": 29
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_complex.jpg"
+    },
+    {
+      "name": "ac_depot",
+      "map_path": "packages/maps/official/ac_depot.cgz",
+      "version": 10,
+      "sfactor": 9,
+      "entities": 516,
+      "title": "The Storage Depot by MitaMAN",
+      "canvas_side": 512,
+      "canvas_area": 262144,
+      "bounds": {
+        "x1": 82,
+        "x2": 315,
+        "y1": 188,
+        "y2": 383
+      },
+      "occupied_width": 234,
+      "occupied_depth": 196,
+      "occupied_bbox_area": 45864,
+      "nonsolid_cells": 23488,
+      "tagged_clip_nonsolid_cells": 1739,
+      "noncorner_unclipped_cells": 21109,
+      "minfloor": -16,
+      "maxceil": 18,
+      "distinct_base_floor_heights": 28,
+      "cube_counts": {
+        "SOLID": 238656,
+        "SPACE": 22062,
+        "CORNER": 656,
+        "CHF": 752,
+        "FHF": 18
+      },
+      "interior_margins": {
+        "left": 80,
+        "right": 194,
+        "top": 186,
+        "bottom": 126
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_depot.jpg"
+    },
+    {
+      "name": "ac_desert",
+      "map_path": "packages/maps/official/ac_desert.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 234,
+      "title": "Desert Village by Arghvark & makkE",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 69,
+        "x2": 185,
+        "y1": 70,
+        "y2": 186
+      },
+      "occupied_width": 117,
+      "occupied_depth": 117,
+      "occupied_bbox_area": 13689,
+      "nonsolid_cells": 10223,
+      "tagged_clip_nonsolid_cells": 15,
+      "noncorner_unclipped_cells": 10104,
+      "minfloor": -13,
+      "maxceil": 16,
+      "distinct_base_floor_heights": 23,
+      "cube_counts": {
+        "SOLID": 55313,
+        "SPACE": 8838,
+        "FHF": 540,
+        "CHF": 741,
+        "CORNER": 104
+      },
+      "interior_margins": {
+        "left": 67,
+        "right": 68,
+        "top": 68,
+        "bottom": 67
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_desert.jpg"
+    },
+    {
+      "name": "ac_desert2",
+      "map_path": "packages/maps/official/ac_desert2.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 226,
+      "title": "Desert City by Nieb",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 40,
+        "x2": 211,
+        "y1": 67,
+        "y2": 223
+      },
+      "occupied_width": 172,
+      "occupied_depth": 157,
+      "occupied_bbox_area": 27004,
+      "nonsolid_cells": 14410,
+      "tagged_clip_nonsolid_cells": 1999,
+      "noncorner_unclipped_cells": 12278,
+      "minfloor": -5,
+      "maxceil": 20,
+      "distinct_base_floor_heights": 25,
+      "cube_counts": {
+        "SOLID": 51126,
+        "CHF": 1324,
+        "SPACE": 12225,
+        "FHF": 664,
+        "CORNER": 197
+      },
+      "interior_margins": {
+        "left": 38,
+        "right": 42,
+        "top": 65,
+        "bottom": 30
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_desert2.jpg"
+    },
+    {
+      "name": "ac_desert3",
+      "map_path": "packages/maps/official/ac_desert3.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 253,
+      "title": "Desert3 by Nieb",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 8,
+        "x2": 175,
+        "y1": 36,
+        "y2": 188
+      },
+      "occupied_width": 168,
+      "occupied_depth": 153,
+      "occupied_bbox_area": 25704,
+      "nonsolid_cells": 14400,
+      "tagged_clip_nonsolid_cells": 1670,
+      "noncorner_unclipped_cells": 12629,
+      "minfloor": -4,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 23,
+      "cube_counts": {
+        "SOLID": 51136,
+        "SPACE": 13083,
+        "CORNER": 103,
+        "CHF": 647,
+        "FHF": 567
+      },
+      "interior_margins": {
+        "left": 6,
+        "right": 78,
+        "top": 34,
+        "bottom": 65
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_desert3.jpg"
+    },
+    {
+      "name": "ac_douze",
+      "map_path": "packages/maps/official/ac_douze.cgz",
+      "version": 10,
+      "sfactor": 7,
+      "entities": 245,
+      "title": "Douze (AC-Version) by makkE - layout by stanze",
+      "canvas_side": 128,
+      "canvas_area": 16384,
+      "bounds": {
+        "x1": 11,
+        "x2": 123,
+        "y1": 3,
+        "y2": 125
+      },
+      "occupied_width": 113,
+      "occupied_depth": 123,
+      "occupied_bbox_area": 13899,
+      "nonsolid_cells": 9925,
+      "tagged_clip_nonsolid_cells": 8,
+      "noncorner_unclipped_cells": 9651,
+      "minfloor": -6,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 25,
+      "cube_counts": {
+        "SOLID": 6459,
+        "SPACE": 8934,
+        "CHF": 563,
+        "CORNER": 266,
+        "FHF": 162
+      },
+      "interior_margins": {
+        "left": 9,
+        "right": 2,
+        "top": 1,
+        "bottom": 0
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_douze.jpg"
+    },
+    {
+      "name": "ac_dusk",
+      "map_path": "packages/maps/official/ac_dusk.cgz",
+      "version": 10,
+      "sfactor": 7,
+      "entities": 217,
+      "title": "Dusk by A&D_Shadow",
+      "canvas_side": 128,
+      "canvas_area": 16384,
+      "bounds": {
+        "x1": 8,
+        "x2": 109,
+        "y1": 3,
+        "y2": 123
+      },
+      "occupied_width": 102,
+      "occupied_depth": 121,
+      "occupied_bbox_area": 12342,
+      "nonsolid_cells": 7602,
+      "tagged_clip_nonsolid_cells": 209,
+      "noncorner_unclipped_cells": 7119,
+      "minfloor": -9,
+      "maxceil": 18,
+      "distinct_base_floor_heights": 22,
+      "cube_counts": {
+        "SOLID": 8782,
+        "SPACE": 5988,
+        "CHF": 771,
+        "FHF": 564,
+        "CORNER": 279
+      },
+      "interior_margins": {
+        "left": 6,
+        "right": 16,
+        "top": 1,
+        "bottom": 2
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_dusk.jpg"
+    },
+    {
+      "name": "ac_edifice",
+      "map_path": "packages/maps/official/ac_edifice.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 701,
+      "title": "Edifice by Bukz and optus",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 3,
+        "x2": 168,
+        "y1": 3,
+        "y2": 228
+      },
+      "occupied_width": 166,
+      "occupied_depth": 226,
+      "occupied_bbox_area": 37516,
+      "nonsolid_cells": 20695,
+      "tagged_clip_nonsolid_cells": 2924,
+      "noncorner_unclipped_cells": 17413,
+      "minfloor": -17,
+      "maxceil": 39,
+      "distinct_base_floor_heights": 43,
+      "cube_counts": {
+        "SOLID": 44841,
+        "SPACE": 17708,
+        "CORNER": 435,
+        "FHF": 578,
+        "CHF": 1974
+      },
+      "interior_margins": {
+        "left": 1,
+        "right": 85,
+        "top": 1,
+        "bottom": 25
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_edifice.jpg"
+    },
+    {
+      "name": "ac_elevation",
+      "map_path": "packages/maps/official/ac_elevation.cgz",
+      "version": 10,
+      "sfactor": 7,
+      "entities": 673,
+      "title": "ac_elevation by A&D_Shadow",
+      "canvas_side": 128,
+      "canvas_area": 16384,
+      "bounds": {
+        "x1": 5,
+        "x2": 124,
+        "y1": 3,
+        "y2": 124
+      },
+      "occupied_width": 120,
+      "occupied_depth": 122,
+      "occupied_bbox_area": 14640,
+      "nonsolid_cells": 11364,
+      "tagged_clip_nonsolid_cells": 165,
+      "noncorner_unclipped_cells": 10848,
+      "minfloor": -17,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 34,
+      "cube_counts": {
+        "SOLID": 5020,
+        "SPACE": 8722,
+        "CORNER": 356,
+        "CHF": 717,
+        "FHF": 1569
+      },
+      "interior_margins": {
+        "left": 3,
+        "right": 1,
+        "top": 1,
+        "bottom": 1
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_elevation.jpg"
+    },
+    {
+      "name": "ac_gothic",
+      "map_path": "packages/maps/official/ac_gothic.cgz",
+      "version": 10,
+      "sfactor": 7,
+      "entities": 288,
+      "title": "Gothic Empire - By R4zor",
+      "canvas_side": 128,
+      "canvas_area": 16384,
+      "bounds": {
+        "x1": 3,
+        "x2": 123,
+        "y1": 3,
+        "y2": 124
+      },
+      "occupied_width": 121,
+      "occupied_depth": 122,
+      "occupied_bbox_area": 14762,
+      "nonsolid_cells": 11630,
+      "tagged_clip_nonsolid_cells": 571,
+      "noncorner_unclipped_cells": 10835,
+      "minfloor": -5,
+      "maxceil": 21,
+      "distinct_base_floor_heights": 18,
+      "cube_counts": {
+        "SOLID": 4754,
+        "FHF": 590,
+        "SPACE": 9497,
+        "CORNER": 245,
+        "CHF": 1298
+      },
+      "interior_margins": {
+        "left": 1,
+        "right": 2,
+        "top": 1,
+        "bottom": 1
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_gothic.jpg"
+    },
+    {
+      "name": "ac_industrial",
+      "map_path": "packages/maps/official/ac_industrial.cgz",
+      "version": 10,
+      "sfactor": 9,
+      "entities": 409,
+      "title": "Industrialisies by jiba, Sanzo'' & Brett",
+      "canvas_side": 512,
+      "canvas_area": 262144,
+      "bounds": {
+        "x1": 171,
+        "x2": 390,
+        "y1": 174,
+        "y2": 319
+      },
+      "occupied_width": 220,
+      "occupied_depth": 146,
+      "occupied_bbox_area": 32120,
+      "nonsolid_cells": 19175,
+      "tagged_clip_nonsolid_cells": 1777,
+      "noncorner_unclipped_cells": 16981,
+      "minfloor": -6,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 242969,
+        "SPACE": 14454,
+        "CHF": 2291,
+        "FHF": 1992,
+        "CORNER": 438
+      },
+      "interior_margins": {
+        "left": 169,
+        "right": 119,
+        "top": 172,
+        "bottom": 190
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_industrial.jpg"
+    },
+    {
+      "name": "ac_ingress",
+      "map_path": "packages/maps/official/ac_ingress.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 315,
+      "title": "ac_ingress - The Streets - By Ruthless and R4zor",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 46,
+        "x2": 190,
+        "y1": 58,
+        "y2": 178
+      },
+      "occupied_width": 145,
+      "occupied_depth": 121,
+      "occupied_bbox_area": 17545,
+      "nonsolid_cells": 13233,
+      "tagged_clip_nonsolid_cells": 1929,
+      "noncorner_unclipped_cells": 11189,
+      "minfloor": -4,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 21,
+      "cube_counts": {
+        "SOLID": 52303,
+        "SPACE": 10666,
+        "CORNER": 129,
+        "FHF": 1947,
+        "CHF": 491
+      },
+      "interior_margins": {
+        "left": 44,
+        "right": 63,
+        "top": 56,
+        "bottom": 75
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_ingress.jpg"
+    },
+    {
+      "name": "ac_kazemat",
+      "map_path": "packages/maps/official/ac_kazemat.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 578,
+      "title": "Kazemat by YesWeCamp",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 3,
+        "x2": 219,
+        "y1": 16,
+        "y2": 249
+      },
+      "occupied_width": 217,
+      "occupied_depth": 234,
+      "occupied_bbox_area": 50778,
+      "nonsolid_cells": 23973,
+      "tagged_clip_nonsolid_cells": 7054,
+      "noncorner_unclipped_cells": 16623,
+      "minfloor": -9,
+      "maxceil": 20,
+      "distinct_base_floor_heights": 25,
+      "cube_counts": {
+        "SOLID": 41563,
+        "SPACE": 15993,
+        "FHF": 6377,
+        "CORNER": 435,
+        "CHF": 1168
+      },
+      "interior_margins": {
+        "left": 1,
+        "right": 34,
+        "top": 14,
+        "bottom": 4
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_kazemat.jpg"
+    },
+    {
+      "name": "ac_keller",
+      "map_path": "packages/maps/official/ac_keller.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 416,
+      "title": "Keller - by Mr.Floppy",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 23,
+        "x2": 231,
+        "y1": 16,
+        "y2": 248
+      },
+      "occupied_width": 209,
+      "occupied_depth": 233,
+      "occupied_bbox_area": 48697,
+      "nonsolid_cells": 17453,
+      "tagged_clip_nonsolid_cells": 744,
+      "noncorner_unclipped_cells": 16299,
+      "minfloor": -23,
+      "maxceil": 15,
+      "distinct_base_floor_heights": 33,
+      "cube_counts": {
+        "SOLID": 48083,
+        "SPACE": 12395,
+        "FHF": 2677,
+        "CORNER": 420,
+        "CHF": 1961
+      },
+      "interior_margins": {
+        "left": 21,
+        "right": 22,
+        "top": 14,
+        "bottom": 5
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_keller.jpg"
+    },
+    {
+      "name": "ac_lainio",
+      "map_path": "packages/maps/official/ac_lainio.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 779,
+      "title": "Lainio by Halo",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 40,
+        "x2": 219,
+        "y1": 38,
+        "y2": 211
+      },
+      "occupied_width": 180,
+      "occupied_depth": 174,
+      "occupied_bbox_area": 31320,
+      "nonsolid_cells": 17710,
+      "tagged_clip_nonsolid_cells": 1086,
+      "noncorner_unclipped_cells": 16399,
+      "minfloor": -12,
+      "maxceil": 16,
+      "distinct_base_floor_heights": 17,
+      "cube_counts": {
+        "SOLID": 47826,
+        "SPACE": 13986,
+        "CORNER": 241,
+        "FHF": 2790,
+        "CHF": 693
+      },
+      "interior_margins": {
+        "left": 38,
+        "right": 34,
+        "top": 36,
+        "bottom": 42
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_lainio.jpg"
+    },
+    {
+      "name": "ac_lotus",
+      "map_path": "packages/maps/official/ac_lotus.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 434,
+      "title": "Lotus by DogDancing & $N!P3R*",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 21,
+        "x2": 154,
+        "y1": 3,
+        "y2": 195
+      },
+      "occupied_width": 134,
+      "occupied_depth": 193,
+      "occupied_bbox_area": 25862,
+      "nonsolid_cells": 14052,
+      "tagged_clip_nonsolid_cells": 444,
+      "noncorner_unclipped_cells": 13333,
+      "minfloor": -6,
+      "maxceil": 28,
+      "distinct_base_floor_heights": 24,
+      "cube_counts": {
+        "SOLID": 51484,
+        "SPACE": 11291,
+        "CHF": 499,
+        "CORNER": 278,
+        "FHF": 1984
+      },
+      "interior_margins": {
+        "left": 19,
+        "right": 99,
+        "top": 1,
+        "bottom": 58
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_lotus.jpg"
+    },
+    {
+      "name": "ac_mines",
+      "map_path": "packages/maps/official/ac_mines.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 450,
+      "title": "Abandoned Mines - by makkE",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 28,
+        "x2": 224,
+        "y1": 38,
+        "y2": 196
+      },
+      "occupied_width": 197,
+      "occupied_depth": 159,
+      "occupied_bbox_area": 31323,
+      "nonsolid_cells": 14792,
+      "tagged_clip_nonsolid_cells": 846,
+      "noncorner_unclipped_cells": 13853,
+      "minfloor": -24,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 46,
+      "cube_counts": {
+        "SOLID": 50744,
+        "SPACE": 10920,
+        "FHF": 3300,
+        "CHF": 469,
+        "CORNER": 103
+      },
+      "interior_margins": {
+        "left": 26,
+        "right": 29,
+        "top": 36,
+        "bottom": 57
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_mines.jpg"
+    },
+    {
+      "name": "ac_nocturne",
+      "map_path": "packages/maps/official/ac_nocturne.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 524,
+      "title": "Nocturnal City by YesWeCamp",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 19,
+        "x2": 199,
+        "y1": 3,
+        "y2": 195
+      },
+      "occupied_width": 181,
+      "occupied_depth": 193,
+      "occupied_bbox_area": 34933,
+      "nonsolid_cells": 15389,
+      "tagged_clip_nonsolid_cells": 2799,
+      "noncorner_unclipped_cells": 12383,
+      "minfloor": -4,
+      "maxceil": 27,
+      "distinct_base_floor_heights": 25,
+      "cube_counts": {
+        "SOLID": 50147,
+        "SPACE": 11970,
+        "CHF": 1109,
+        "CORNER": 228,
+        "FHF": 2082
+      },
+      "interior_margins": {
+        "left": 17,
+        "right": 54,
+        "top": 1,
+        "bottom": 58
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_nocturne.jpg"
+    },
+    {
+      "name": "ac_origin",
+      "map_path": "packages/maps/official/ac_origin.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 491,
+      "title": "ac_origin by DaylixX",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 57,
+        "x2": 223,
+        "y1": 56,
+        "y2": 239
+      },
+      "occupied_width": 167,
+      "occupied_depth": 184,
+      "occupied_bbox_area": 30728,
+      "nonsolid_cells": 14440,
+      "tagged_clip_nonsolid_cells": 2104,
+      "noncorner_unclipped_cells": 12073,
+      "minfloor": -13,
+      "maxceil": 25,
+      "distinct_base_floor_heights": 28,
+      "cube_counts": {
+        "SOLID": 51096,
+        "SPACE": 12746,
+        "CORNER": 317,
+        "FHF": 529,
+        "CHF": 848
+      },
+      "interior_margins": {
+        "left": 55,
+        "right": 30,
+        "top": 54,
+        "bottom": 14
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_origin.jpg"
+    },
+    {
+      "name": "ac_outpost",
+      "map_path": "packages/maps/official/ac_outpost.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 422,
+      "title": "Outpost by DES|",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 30,
+        "x2": 248,
+        "y1": 70,
+        "y2": 251
+      },
+      "occupied_width": 219,
+      "occupied_depth": 182,
+      "occupied_bbox_area": 39858,
+      "nonsolid_cells": 17426,
+      "tagged_clip_nonsolid_cells": 2350,
+      "noncorner_unclipped_cells": 14933,
+      "minfloor": -17,
+      "maxceil": 26,
+      "distinct_base_floor_heights": 27,
+      "cube_counts": {
+        "SOLID": 48110,
+        "SPACE": 13968,
+        "FHF": 2882,
+        "CORNER": 158,
+        "CHF": 418
+      },
+      "interior_margins": {
+        "left": 28,
+        "right": 5,
+        "top": 68,
+        "bottom": 2
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_outpost.jpg"
+    },
+    {
+      "name": "ac_power",
+      "map_path": "packages/maps/official/ac_power.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 746,
+      "title": "Power Station - by wotwot",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 56,
+        "x2": 224,
+        "y1": 30,
+        "y2": 246
+      },
+      "occupied_width": 169,
+      "occupied_depth": 217,
+      "occupied_bbox_area": 36673,
+      "nonsolid_cells": 24927,
+      "tagged_clip_nonsolid_cells": 2249,
+      "noncorner_unclipped_cells": 22478,
+      "minfloor": -2,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 24,
+      "cube_counts": {
+        "SOLID": 40609,
+        "SPACE": 22969,
+        "CHF": 320,
+        "CORNER": 285,
+        "FHF": 1353
+      },
+      "interior_margins": {
+        "left": 54,
+        "right": 29,
+        "top": 28,
+        "bottom": 7
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_power.jpg"
+    },
+    {
+      "name": "ac_rampart",
+      "map_path": "packages/maps/official/ac_rampart.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 205,
+      "title": "Rampart by DogDancing",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 67,
+        "x2": 170,
+        "y1": 65,
+        "y2": 186
+      },
+      "occupied_width": 104,
+      "occupied_depth": 122,
+      "occupied_bbox_area": 12688,
+      "nonsolid_cells": 7792,
+      "tagged_clip_nonsolid_cells": 319,
+      "noncorner_unclipped_cells": 7416,
+      "minfloor": -1,
+      "maxceil": 39,
+      "distinct_base_floor_heights": 25,
+      "cube_counts": {
+        "SOLID": 57744,
+        "CHF": 622,
+        "SPACE": 6764,
+        "CORNER": 57,
+        "FHF": 349
+      },
+      "interior_margins": {
+        "left": 65,
+        "right": 83,
+        "top": 63,
+        "bottom": 67
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_rampart.jpg"
+    },
+    {
+      "name": "ac_rattrap",
+      "map_path": "packages/maps/official/ac_rattrap.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 748,
+      "title": "Filthy RatTrap by RatBoy",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 80,
+        "x2": 198,
+        "y1": 41,
+        "y2": 171
+      },
+      "occupied_width": 119,
+      "occupied_depth": 131,
+      "occupied_bbox_area": 15589,
+      "nonsolid_cells": 9717,
+      "tagged_clip_nonsolid_cells": 909,
+      "noncorner_unclipped_cells": 8608,
+      "minfloor": -1,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 19,
+      "cube_counts": {
+        "SOLID": 55819,
+        "SPACE": 8915,
+        "CORNER": 217,
+        "CHF": 454,
+        "FHF": 131
+      },
+      "interior_margins": {
+        "left": 78,
+        "right": 55,
+        "top": 39,
+        "bottom": 82
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_rattrap.jpg"
+    },
+    {
+      "name": "ac_scaffold",
+      "map_path": "packages/maps/official/ac_scaffold.cgz",
+      "version": 10,
+      "sfactor": 7,
+      "entities": 314,
+      "title": "ac_scaffold by DogDancing",
+      "canvas_side": 128,
+      "canvas_area": 16384,
+      "bounds": {
+        "x1": 11,
+        "x2": 120,
+        "y1": 19,
+        "y2": 109
+      },
+      "occupied_width": 110,
+      "occupied_depth": 91,
+      "occupied_bbox_area": 10010,
+      "nonsolid_cells": 6551,
+      "tagged_clip_nonsolid_cells": 237,
+      "noncorner_unclipped_cells": 6131,
+      "minfloor": -4,
+      "maxceil": 25,
+      "distinct_base_floor_heights": 21,
+      "cube_counts": {
+        "SOLID": 9833,
+        "SPACE": 5164,
+        "FHF": 662,
+        "CORNER": 191,
+        "CHF": 534
+      },
+      "interior_margins": {
+        "left": 9,
+        "right": 5,
+        "top": 17,
+        "bottom": 16
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_scaffold.jpg"
+    },
+    {
+      "name": "ac_shine",
+      "map_path": "packages/maps/official/ac_shine.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 485,
+      "title": "ac_shine by DogDancing",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 74,
+        "x2": 207,
+        "y1": 45,
+        "y2": 207
+      },
+      "occupied_width": 134,
+      "occupied_depth": 163,
+      "occupied_bbox_area": 21842,
+      "nonsolid_cells": 12746,
+      "tagged_clip_nonsolid_cells": 368,
+      "noncorner_unclipped_cells": 12211,
+      "minfloor": -8,
+      "maxceil": 27,
+      "distinct_base_floor_heights": 24,
+      "cube_counts": {
+        "SOLID": 52790,
+        "SPACE": 9657,
+        "CHF": 471,
+        "FHF": 2449,
+        "CORNER": 169
+      },
+      "interior_margins": {
+        "left": 72,
+        "right": 46,
+        "top": 43,
+        "bottom": 46
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_shine.jpg"
+    },
+    {
+      "name": "ac_snow",
+      "map_path": "packages/maps/official/ac_snow.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 274,
+      "title": "Mine City - By daMfr0",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 9,
+        "x2": 115,
+        "y1": 12,
+        "y2": 147
+      },
+      "occupied_width": 107,
+      "occupied_depth": 136,
+      "occupied_bbox_area": 14552,
+      "nonsolid_cells": 8496,
+      "tagged_clip_nonsolid_cells": 0,
+      "noncorner_unclipped_cells": 8393,
+      "minfloor": -1,
+      "maxceil": 21,
+      "distinct_base_floor_heights": 21,
+      "cube_counts": {
+        "SOLID": 57040,
+        "SPACE": 7402,
+        "CORNER": 103,
+        "FHF": 922,
+        "CHF": 69
+      },
+      "interior_margins": {
+        "left": 7,
+        "right": 138,
+        "top": 10,
+        "bottom": 106
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_snow.jpg"
+    },
+    {
+      "name": "ac_stellar",
+      "map_path": "packages/maps/official/ac_stellar.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 1349,
+      "title": "Stellar by Bukz and Halo",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 54,
+        "x2": 244,
+        "y1": 35,
+        "y2": 207
+      },
+      "occupied_width": 191,
+      "occupied_depth": 173,
+      "occupied_bbox_area": 33043,
+      "nonsolid_cells": 18788,
+      "tagged_clip_nonsolid_cells": 2171,
+      "noncorner_unclipped_cells": 16163,
+      "minfloor": -15,
+      "maxceil": 19,
+      "distinct_base_floor_heights": 29,
+      "cube_counts": {
+        "SOLID": 46748,
+        "SPACE": 15108,
+        "CORNER": 540,
+        "FHF": 2767,
+        "CHF": 373
+      },
+      "interior_margins": {
+        "left": 52,
+        "right": 9,
+        "top": 33,
+        "bottom": 46
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_stellar.jpg"
+    },
+    {
+      "name": "ac_sunset",
+      "map_path": "packages/maps/official/ac_sunset.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 394,
+      "title": "Sunset Reserve - By R4zor",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 67,
+        "x2": 226,
+        "y1": 47,
+        "y2": 190
+      },
+      "occupied_width": 160,
+      "occupied_depth": 144,
+      "occupied_bbox_area": 23040,
+      "nonsolid_cells": 16555,
+      "tagged_clip_nonsolid_cells": 2132,
+      "noncorner_unclipped_cells": 14279,
+      "minfloor": -6,
+      "maxceil": 21,
+      "distinct_base_floor_heights": 22,
+      "cube_counts": {
+        "SOLID": 48981,
+        "CHF": 733,
+        "SPACE": 12310,
+        "FHF": 3299,
+        "CORNER": 213
+      },
+      "interior_margins": {
+        "left": 65,
+        "right": 27,
+        "top": 45,
+        "bottom": 63
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_sunset.jpg"
+    },
+    {
+      "name": "ac_swamp",
+      "map_path": "packages/maps/official/ac_swamp.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 656,
+      "title": "ac_swamp by Undead & ExodusS",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 79,
+        "x2": 247,
+        "y1": 101,
+        "y2": 245
+      },
+      "occupied_width": 169,
+      "occupied_depth": 145,
+      "occupied_bbox_area": 24505,
+      "nonsolid_cells": 14449,
+      "tagged_clip_nonsolid_cells": 2587,
+      "noncorner_unclipped_cells": 11627,
+      "minfloor": -9,
+      "maxceil": 24,
+      "distinct_base_floor_heights": 29,
+      "cube_counts": {
+        "SOLID": 51087,
+        "SPACE": 11055,
+        "CORNER": 333,
+        "CHF": 683,
+        "FHF": 2378
+      },
+      "interior_margins": {
+        "left": 77,
+        "right": 6,
+        "top": 99,
+        "bottom": 8
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_swamp.jpg"
+    },
+    {
+      "name": "ac_terros",
+      "map_path": "packages/maps/official/ac_terros.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 638,
+      "title": "ac_terros by DaylixX & Sanzo''",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 24,
+        "x2": 238,
+        "y1": 28,
+        "y2": 220
+      },
+      "occupied_width": 215,
+      "occupied_depth": 193,
+      "occupied_bbox_area": 41495,
+      "nonsolid_cells": 22034,
+      "tagged_clip_nonsolid_cells": 3204,
+      "noncorner_unclipped_cells": 18650,
+      "minfloor": -12,
+      "maxceil": 17,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 43502,
+        "SPACE": 17239,
+        "CORNER": 219,
+        "CHF": 1816,
+        "FHF": 2760
+      },
+      "interior_margins": {
+        "left": 22,
+        "right": 15,
+        "top": 26,
+        "bottom": 33
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_terros.jpg"
+    },
+    {
+      "name": "ac_toxic",
+      "map_path": "packages/maps/official/ac_toxic.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 923,
+      "title": "RadioToxicity - By RandumKiwi",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 57,
+        "x2": 191,
+        "y1": 47,
+        "y2": 195
+      },
+      "occupied_width": 135,
+      "occupied_depth": 149,
+      "occupied_bbox_area": 20115,
+      "nonsolid_cells": 13494,
+      "tagged_clip_nonsolid_cells": 1280,
+      "noncorner_unclipped_cells": 11911,
+      "minfloor": -4,
+      "maxceil": 21,
+      "distinct_base_floor_heights": 17,
+      "cube_counts": {
+        "SOLID": 52042,
+        "SPACE": 11897,
+        "CORNER": 372,
+        "FHF": 699,
+        "CHF": 526
+      },
+      "interior_margins": {
+        "left": 55,
+        "right": 62,
+        "top": 45,
+        "bottom": 58
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_toxic.jpg"
+    },
+    {
+      "name": "ac_urban",
+      "map_path": "packages/maps/official/ac_urban.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 640,
+      "title": "Urban district - By Archangel and RandumKiwi",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 45,
+        "x2": 203,
+        "y1": 33,
+        "y2": 161
+      },
+      "occupied_width": 159,
+      "occupied_depth": 129,
+      "occupied_bbox_area": 20511,
+      "nonsolid_cells": 10519,
+      "tagged_clip_nonsolid_cells": 218,
+      "noncorner_unclipped_cells": 9851,
+      "minfloor": -19,
+      "maxceil": 18,
+      "distinct_base_floor_heights": 27,
+      "cube_counts": {
+        "SOLID": 55017,
+        "SPACE": 8543,
+        "CORNER": 465,
+        "CHF": 966,
+        "FHF": 545
+      },
+      "interior_margins": {
+        "left": 43,
+        "right": 50,
+        "top": 31,
+        "bottom": 92
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_urban.jpg"
+    },
+    {
+      "name": "ac_venison",
+      "map_path": "packages/maps/official/ac_venison.cgz",
+      "version": 10,
+      "sfactor": 9,
+      "entities": 900,
+      "title": "Venison - By fundog",
+      "canvas_side": 512,
+      "canvas_area": 262144,
+      "bounds": {
+        "x1": 123,
+        "x2": 372,
+        "y1": 144,
+        "y2": 408
+      },
+      "occupied_width": 250,
+      "occupied_depth": 265,
+      "occupied_bbox_area": 66250,
+      "nonsolid_cells": 33700,
+      "tagged_clip_nonsolid_cells": 10494,
+      "noncorner_unclipped_cells": 23070,
+      "minfloor": -8,
+      "maxceil": 22,
+      "distinct_base_floor_heights": 26,
+      "cube_counts": {
+        "SOLID": 228444,
+        "SPACE": 22063,
+        "CORNER": 249,
+        "CHF": 3870,
+        "FHF": 7518
+      },
+      "interior_margins": {
+        "left": 121,
+        "right": 137,
+        "top": 142,
+        "bottom": 101
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_venison.jpg"
+    },
+    {
+      "name": "ac_wasteland",
+      "map_path": "packages/maps/official/ac_wasteland.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 563,
+      "title": "Amazon - By Halo & R4zor",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 32,
+        "x2": 213,
+        "y1": 66,
+        "y2": 190
+      },
+      "occupied_width": 182,
+      "occupied_depth": 125,
+      "occupied_bbox_area": 22750,
+      "nonsolid_cells": 13186,
+      "tagged_clip_nonsolid_cells": 3269,
+      "noncorner_unclipped_cells": 9848,
+      "minfloor": -5,
+      "maxceil": 18,
+      "distinct_base_floor_heights": 16,
+      "cube_counts": {
+        "SOLID": 52350,
+        "SPACE": 11999,
+        "CORNER": 115,
+        "FHF": 766,
+        "CHF": 306
+      },
+      "interior_margins": {
+        "left": 30,
+        "right": 40,
+        "top": 64,
+        "bottom": 63
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_wasteland.jpg"
+    },
+    {
+      "name": "ac_werk",
+      "map_path": "packages/maps/official/ac_werk.cgz",
+      "version": 10,
+      "sfactor": 8,
+      "entities": 505,
+      "title": "Werk - by Mr.Floppy",
+      "canvas_side": 256,
+      "canvas_area": 65536,
+      "bounds": {
+        "x1": 64,
+        "x2": 181,
+        "y1": 74,
+        "y2": 183
+      },
+      "occupied_width": 118,
+      "occupied_depth": 110,
+      "occupied_bbox_area": 12980,
+      "nonsolid_cells": 10459,
+      "tagged_clip_nonsolid_cells": 550,
+      "noncorner_unclipped_cells": 9795,
+      "minfloor": 0,
+      "maxceil": 26,
+      "distinct_base_floor_heights": 22,
+      "cube_counts": {
+        "SOLID": 55077,
+        "SPACE": 8087,
+        "FHF": 1953,
+        "CORNER": 155,
+        "CHF": 264
+      },
+      "interior_margins": {
+        "left": 62,
+        "right": 72,
+        "top": 72,
+        "bottom": 70
+      },
+      "trailing_bytes": 0,
+      "preview_path": "packages/maps/official/preview/ac_werk.jpg"
+    }
+  ],
+  "errors": []
+}

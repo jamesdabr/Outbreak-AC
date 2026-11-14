@@ -1,0 +1,11 @@
+# D007 Original audio prerequisite
+
+Approved lead addendum revision 0.7 to BROWSER_FOUNDATION/GOVERNANCE/P0 revision 0.5 under the owner's continuing browser-MVP build and worker-dispatch instruction. T032 is an independent asset prerequisite. Existing T031/T033 and accepted original map pack remain unchanged.
+
+T014 expressly requires basic audio under real browser gesture rules, and MVP later requires weapon, infected, Predator and extraction cues. Source inspection confirms openal.cpp sbuffer::load resolves packages/audio/<name>.wav and SDL_LoadWAV_RW decodes PCM16 to AL_FORMAT_MONO16; no new codec/encoder port is required. This decision authorizes original data generation only, not startup/playback integration or gameplay rules.
+
+World owns only new web/assets/audio/** plus own T032 handoff/question notes. Generate deterministic original mono signed little-endian PCM16 WAV, 22,050 Hz, maximum one second each, peak absolute amplitude <=8191, explicit attack/release envelope. Names under separate staged pack-root/packages/audio/outbreak/: proof_tone.wav, pistol.wav, rifle.wav, reload.wav, footstep.wav, walker_attack.wav, predator_front.wav, predator_flank.wav, extraction.wav. These are neutral procedural prototype cues, not final sound art. Front/flank must have distinguishable temporal/pitch patterns; cue generation never chooses command cooldown/range/balance. No inherited sample transformation, downloads, new dependencies, host audio playback or stock sound config copying.
+
+Use installed Python standard library only, hand-authored deterministic wave synthesis and exact manifest/notice sidecars. Validate RIFF lengths, format/rate/channels/sample width, finite duration, amplitude/nonzero samples, envelope and hash membership; rerun generation to prove byte identity. A compact validator suffices; don't expand into generic media framework. No actual listening/engine/Wasm decode claims follow from file checks.
+
+Do not overlay or change accepted T027 pack or current T031 build. Lead will release audio mount and user-gesture engine hooks after real initial map evidence; existing browser audio=0 stays unchanged for that initial profile. Full T014/P0 cannot be accepted until real audio evidence is added.

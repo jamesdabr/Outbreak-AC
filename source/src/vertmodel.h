@@ -555,6 +555,34 @@ struct vertmodel : model
                 return;
             }
 
+#if defined(__EMSCRIPTEN__) && defined(OUTBREAK_NETWORK_CLIENT) && !defined(STANDALONE)
+            // Legacy GL's indexed path restrides planar attributes by index count,
+            // not the vertex range. Submit the original triangles without that path.
+            GLfloat color[4];
+            glGetFloatv(GL_CURRENT_COLOR, color);
+            glDisableClientState(GL_VERTEX_ARRAY);
+            glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+            glDisableClientState(GL_COLOR_ARRAY);
+            lastvertexarray = lasttexcoordarray = lastcolorarray = NULL;
+            const bool textured = !(as.anim&ANIM_NOSKIN && !isstat);
+            glBegin(GL_TRIANGLES);
+            loopi(numtris) loopj(3)
+            {
+                const int index = tris[i].vert[j];
+                if(vlight)
+                {
+                    const lightvert &light = vlight[index];
+                    glColor4ub(light.r, light.g, light.b, light.a);
+                }
+                if(textured) glTexCoord2f(tcverts[index].u, tcverts[index].v);
+                glVertex3fv(buf[index].v);
+            }
+            glEnd();
+            glColor4f(color[0], color[1], color[2], color[3]);
+            xtraverts += 3*numtris;
+            return;
+#endif
+
 #ifdef __EMSCRIPTEN__
             const bool builddlist = false;
 #else

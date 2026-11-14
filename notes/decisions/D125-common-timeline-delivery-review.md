@@ -1,0 +1,5 @@
+# D125 — Accept common timeline proposal delivery, preserve phase gates
+
+MAIN and independent read-only reviewer checked final frozen T110 addendum SHA bb10cc027171ed4b7a34b0d25e6035beb7ce54ae56dfe2749aa10f1354dce58f, exact handoff/freeze identities and final changes against T002/T108/P1_RULES0.2/D115. No concrete remaining static contradiction found. Accept T110 notes delivery only; final typed interface adoption and T002/P0 acceptance still require the governing gates. This is not implementation/resource/performance proof or a source/gameplay release. MAIN-T110-final-static-review.json records checks/limits. Original notes remain immutable.
+
+The T108 common-trajectory question now has a complete reviewed caller proposal, but its technical adoption is not inferred from delivery acceptance. T117 Engine normal-pair preparation proceeds under its separate D123/D124 contract. T113 provisional review findings are returned within its active preparation lease; no new effects or held work authorized. Current actual T116 browser build remains separate; no cache/human/P0/MVP waiver.

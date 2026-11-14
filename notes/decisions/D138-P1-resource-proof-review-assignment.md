@@ -1,0 +1,3 @@
+# D138 — Independent notes-only P1 resource proof review
+
+MAIN releases T126 to AI-Director for an independent mathematical/static review of proposed T108/T110 arithmetic widths, bounded work and storage before final interface adoption. This follows the notes-only T110 design workflow; it approves no gameplay implementation, interface amendment, phase gate waiver or extra execution. The source proposals remain immutable and unadopted. Read-only review plus a new owned report/handoff only; no scripts/tests/imports/compiler/process/network/runtime or source edits. Engine T117 and World T125 ownership remain exclusive. Player/QA holds remain intact.

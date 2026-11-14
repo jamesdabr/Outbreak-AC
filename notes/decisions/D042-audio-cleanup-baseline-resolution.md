@@ -1,0 +1,7 @@
+# D042 Exact audio dependency mismatch resolution
+
+MAIN reviewed T059-player-source-baseline-conflict and actual a874... correction. It fixes a genuine ownership gap: failed buffer/source deletion must retain handle+context, not zero id after global SDK buffer remains. D040 acceptance describes historical d839... source/objects verified then, not current corrected source; T052 task-local objects/reports were later reused before notification, preserve current tree as mixed evidence rather than claiming immutable equivalence. No actual integrated/runtime acceptance exists.
+
+MAIN amends released T059 from2.9 to3.1, additive prerequisite3.1 under browser foundation/GOVERNANCE/P0 0.5, for same Player to finish/reverify this narrow browser proof cleanup plus original pointer denial fix, with new T059 evidence only. Existing audiomanager.cpp proof cleanup and actual read-only audio_context_state field now allowed, sound.h remains read-only. Exact current pins and acceptance in ticket; preserve old handoff/conflict. Do not rollback other source, silently regenerate prior acceptance or demand new user permission for an authorized same-project correction. All new real component checks must match final current sources.
+
+This resolves the dependency ambiguity; T052 historical narrow acceptance remains, current combined source requires T0593.1 acceptance. T060 tooling preparation can proceed but must not compile/freeze this source yet. Actual final source freeze/build/runtime remains separate.

@@ -1,0 +1,5 @@
+# D281 — Accept the exact shared camera header
+
+MAIN accepts T1811.1 HEADER ONLY. `source/outbreak/p1_camera.h` is exactly427bytes/SHA256f3ab259fed5172a7763b6c85ebf873e0f1f0d501b4aaf204b2dd6f6639732174. MAIN read every line, independently compared bytes with CAMERA_FOUNDATION0.1's literal block, checked ordinary0644/single-link file and sole actual symbol homes. Includes only actual p1_geometry.h; exact CameraPose/CameraSolution/explicit borrowed AngleTables solve_camera declaration. No extra symbol/implementation/dependency or duplicate geometry type.
+
+All T181 leases CLOSED. No compiler/ABI/wire/runtime behavior was tested or accepted, and no function implementation exists. Header-only verification is exact text/source review, not a replacement for later full consumer native/Wasm/geometry/frame/transaction/browser/human evidence. Current camera foundation future semantics remain binding; unresolved motion/shot/caller/phase and held work remain separate. Historical header delivery controls unchanged.

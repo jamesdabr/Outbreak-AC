@@ -1,0 +1,6 @@
+# T266 — Inherited native info sockets
+
+- World & Match Systems; T2661.0/D447, VISIBLE_SLICE0.5. OPEN for MAIN's later execution scope.
+- Current source serverms.cpp379–405 binds the native game on29863 plus an info socket on CUBE_SERVINFO_PORT(29863)=29864 and LAN-info28762. Both inherit the explicit127.0.0.1 address. protocol.h6–7 defines these ports. Existing native arguments have no option disabling these two sockets. No master argument/key is supplied, so servermsinit keeps master connectivity disabled.
+- T266 says ONLY HTTP29866/WS29865/nativeUDP29863 with existing native arguments and no source/protocol change. The prepared launcher keeps those existing arguments and documents the two inherited loopback info sockets, rather than pretending they do not exist. Existing gateway also allocates bounded ephemeral loopback UDP tuples as its inspected policy requires.
+- Please explicitly include these inherited loopback-only sockets in the concrete run release, or separately resolve a real native socket restriction before execution. No extra port probe,listener,native patch or runtime occurred to discover this source fact. Source launcher preparation can complete; actual execution remains unreleased. No public exposure or network outside loopback is proposed.

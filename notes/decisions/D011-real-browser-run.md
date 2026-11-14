@@ -1,0 +1,7 @@
+# D011 First real linked-engine browser run
+
+MAIN independently verified 61 actual target compile records, safe profile and successful preload/link, every recorded source/config/header/pack/output hash, Wasm signature, and all 41 packaged data slices against exact accepted original file hashes. D011-first-real-browser-artifact.json pins identity and each requested runtime file. First verification assumed quoted JSON keys in the minified package table; it stopped before writing any approval. Corrected read-only extraction handles the actual unquoted minified syntax without executing JS and all hashes pass.
+
+This accepts this artifact for real testing, not runtime results or final T031 documentation completeness. QA is released to resume T030 actual-run branch on exact pinned web/build/out/index.html, installed Chrome/Playwright with normal approved flags and owned loopback server/profile cleanup. Use ephemeral numeric loopback URL and all four exact expect-file pins (HTML/JS/Wasm/data). No fixture can substitute. Source/build/assets remain read-only. Record actual engine phase/errors/rendered frames, geometry/input/focus/lifecycle, console/network and limitations. Current audio/models remain omitted; no full T014/P0/MVP pass.
+
+If startup fails, retain exact real error/trajectory/browser identity and clean up. Report concrete error for lead assignment; do not patch game source or weaken observer. T035 notes-only proposal can pause for this actual run. Additional route-specific observer implementation requires lead release after first runtime evidence.

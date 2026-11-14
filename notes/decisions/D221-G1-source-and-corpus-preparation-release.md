@@ -1,0 +1,9 @@
+# D221 — World G1 implementation and bounded preparation released
+
+MAIN read final T159 plan53816bytes/SHA256c7b2844ea06f00e74a0511d44b0fac69b20a142bbdf6eae244d048c77b9afb63 and final handoff. Independent final review SHA69f7370986f74cb94cd0281b9548f0e28dbcef3d3d0b50e114edca8e982053b9 clears the typed lifetime correction and full G1 schemas/case/byte/G0/oracle/frame/deadline plan. The disclosed initial read-only git-status deviation changed no Git state; no repeat is authorized. Acceptance of the plan is not a compiler/test/runtime result.
+
+Approve WORLD_QUERY_FOUNDATION0.4 and release World T1591.4 SOURCE IMPLEMENTATION + GUARDED STDLIB PREPARATION ONLY. T160 G0 is accepted D218; MAIN confirmed all three new production paths and G1 test root absent before release. Exclusive geometry.h/.cpp/narrow store.h plus exact five harness/docs and preparation-1 output tree. G2 declarations only, no consumers/integration/Engine source ownership. All accepted dependencies remain immutable.
+
+The final plan explicitly requires MAIN review of the actual generated manifest/coverage before effects. Therefore no compiler/target/SDK-copy or actual driver attempt is released yet. World may inspect/pin new own code and run bounded pure fixture/oracle/corpus generation under denied process/network effects in preparation-1, preserving any failure. Supply actual source/harness/setup/corpus/expected/branch/work/tool/argv/cleanup pins for MAIN static preflight review. Later explicit clearance will authorize one fresh attempt-1 if ready, with the unchanged full G1 resource/correctness obligations. No automatic retry or cap/policy change.
+
+Full integer+rational pair, complete stationary static/pair classification, storage/inspection, exact tie predicate and typed copy/lifetime semantics are required; no smaller demonstration/fake G2 pass. Full moving queries/caller/native/browser/gameplay/P0/performance/RSS/human proof remains future. QA/T149/runtime holds unchanged.
