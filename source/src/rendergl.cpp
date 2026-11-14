@@ -509,7 +509,6 @@ void resetcamera()
 
 void recomputecamera()
 {
-#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
     if(outbreakthirdperson())
     {
         static physent chasecam;
@@ -531,7 +530,6 @@ void recomputecamera()
         camera1 = &chasecam; // ENT_CAMERA also suppresses drawhudgun's first-person model.
         return;
     }
-#endif
     if((player1->state==CS_SPECTATE || player1->state==CS_DEAD) && !editmode)
     {
         switch(player1->spectatemode)

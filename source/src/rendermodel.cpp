@@ -1105,7 +1105,6 @@ void renderclients()
     playerent *d;
     loopv(players) if((d = players[i]) && d->state!=CS_SPAWNING && d->state!=CS_SPECTATE && (!player1->isspectating() || player1->spectatemode != SM_FOLLOW1ST || player1->followplayercn != i)) renderclientp(d);
     bool localbody = player1->state==CS_DEAD || ((reflecting && !refracting) && (player1->state!=CS_SPECTATE || player1->spectatemode==SM_FLY));
-#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
     if(outbreakthirdperson())
     {
         // Camera collision can leave the view inside the local body. Use the real
@@ -1118,7 +1117,6 @@ void renderclients()
             offset.z <= player1->aboveeye + camera1->eyeheight;
         localbody = !overlapping; // Recomputed each draw: restore once clear.
     }
-#endif
     if(localbody) renderclientp(player1); // one local draw, including overlapping reflection cases
 }
 

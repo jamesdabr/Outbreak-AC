@@ -921,6 +921,9 @@ void gl_drawhud(int w, int h, int curfps, int nquads, int curvert, bool underwat
         if(dimeditinfopanel > 255) dimeditinfopanel = 255;
     }
 
+    if(const char *testhud = extractiontesthud())
+        draw_text(testhud, VIRTW - text_width(testhud)/2, 100);
+
     if(!intermission && lastgametimeupdate!=0)
     {
         int cssec = (gametimecurrent+(lastmillis-lastgametimeupdate))/1000;

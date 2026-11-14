@@ -1323,3 +1323,7 @@ extern bool outbreakactive();
 extern bool outbreakthirdperson();
 extern bool outbreakaiming;
 extern bool outbreakreviving;
+
+// Minimal local extraction mock.
+extern bool extractiontestactive();
+extern const char *extractiontesthud();

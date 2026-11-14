@@ -250,7 +250,7 @@ client.o: protos.h bot/bot.h bot/bot_util.h bot/bot_waypoint.h bot/ac_bot.h
 clientgame.o: cube.h platform.h tools.h geom.h model.h protocol.h sound.h
 clientgame.o: weapon.h entity.h world.h command.h varray.h vote.h console.h
 clientgame.o: protos.h bot/bot.h bot/bot_util.h bot/bot_waypoint.h
-clientgame.o: bot/ac_bot.h
+clientgame.o: bot/ac_bot.h extractiontest.h
 clients2c.o: cube.h platform.h tools.h geom.h model.h protocol.h sound.h
 clients2c.o: weapon.h entity.h world.h command.h varray.h vote.h console.h
 clients2c.o: protos.h bot/bot.h bot/bot_util.h bot/bot_waypoint.h

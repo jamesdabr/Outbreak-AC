@@ -2,6 +2,7 @@
 
 #include "cube.h"
 #include "bot/bot.h"
+#include "extractiontest.h"
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
 #include "browsernet.h"
 #include "browsernet_observer.h"
@@ -20,6 +21,123 @@ bool outbreakactive() { return false; }
 #else
 bool outbreakactive() { return outbreak && !m_mp(gamemode) && !multiplayer(NULL) && !watchingdemo; }
 #endif
+// Owner-requested minimal local camera/timer/extraction mock. No network authority.
+static extractiontestround extractionround;
+static vec extractionzone(0, 0, 0);
+static bool extractionzoneplaced = false;
+static int extractionmarker = 0;
+
+bool extractiontestactive()
+{
+    return extractionzoneplaced && !m_mp(gamemode) && !multiplayer(NULL) && !watchingdemo;
+}
+
+static bool extractiontestallowed()
+{
+#if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
+    conoutf("Extraction mock requires a native local game; network browser mode is unsupported.");
+    return false;
+#else
+    if(m_mp(gamemode) || multiplayer(NULL) || watchingdemo || editmode ||
+       player1->state != CS_ALIVE || !getclientmap()[0])
+    {
+        conoutf("Load a local bot-mode map, leave edit mode, and spawn before using the extraction mock.");
+        return false;
+    }
+    return true;
+#endif
+}
+
+COMMANDF(extractiontestzone, "", (void)
+{
+    if(!extractiontestallowed()) return;
+    extractionround.reset();
+    extractionzone = player1->o;
+    extractionzone.z -= player1->eyeheight;
+    extractionzoneplaced = true;
+    extractionmarker = 0;
+    conoutf("Extraction zone placed here (radius 4). Move away, then /extractionteststart 120.");
+});
+
+COMMANDF(extractionteststart, "i", (int *seconds)
+{
+    if(!extractiontestallowed()) return;
+    if(!extractionzoneplaced) { conoutf("Place the zone first with /extractiontestzone."); return; }
+    const int duration = *seconds == 0 ? 120 : *seconds;
+    if(duration < 1 || duration > 120) { conoutf("Test duration must be 1..120 seconds."); return; }
+    if(outbreak) { conoutf("Set /outbreak 0 first; this test does not use the combat/revive prototype."); return; }
+    extractionround.start(1, duration*1000);
+    setscope(false);
+    conoutf("Extraction test started: %d seconds. Enter the green zone to extract.", duration);
+});
+
+COMMANDF(extractionteststop, "", (void)
+{
+    extractionround.reset();
+    extractionzoneplaced = false;
+    resetcamera();
+    conoutf("Extraction test stopped.");
+});
+
+const char *extractiontesthud()
+{
+    static string text;
+    if(!extractiontestactive()) return NULL;
+    if(extractionround.finished)
+        copystring(text, extractionround.won(0) ? "YOU WIN - extracted!" : "EVERYONE LOST - nobody extracted.");
+    else if(extractionround.running)
+    {
+        const int seconds = (extractionround.remaining+999)/1000;
+        formatstring(text)("EXTRACTION %02d:%02d | %s", seconds/60, seconds%60,
+            extractionround.extracted[0] ? "EXTRACTED - waiting for results" : "Enter the green zone");
+    }
+    else copystring(text, "Zone ready: move away, then /extractionteststart 120");
+    return text;
+}
+
+COMMANDF(extractionteststatus, "", (void)
+{
+    const char *status = extractiontesthud();
+    result(status ? status : "Extraction test inactive");
+});
+
+static void updateextractiontest(int elapsed)
+{
+    if(!extractionzoneplaced) return;
+    if(!extractiontestactive()) { extractionround.reset(); extractionzoneplaced = false; return; }
+    if(editmode) { extractionround.reset(); extractionzoneplaced = false; return; }
+    // Local pause freezes this mock's simulation countdown.
+    if(!ispaused && !intermission) extractionround.advance(elapsed);
+    if(!ispaused && !intermission && extractionround.running)
+    {
+        vec feet(player1->o);
+        feet.z -= player1->eyeheight;
+        vec delta(feet);
+        delta.sub(extractionzone);
+        if(delta.sqrxy() <= 16.0f && fabsf(delta.z) <= 2.0f &&
+           extractionround.enter(0, player1->state == CS_ALIVE))
+            hudoutf("Extracted! Your win will be recorded when the countdown ends.");
+    }
+    if(extractionround.extracted[0] || extractionround.finished)
+    {
+        player1->attacking = player1->jumpnext = false;
+        player1->move = player1->strafe = 0;
+    }
+    if(lastmillis - extractionmarker >= 100)
+    {
+        extractionmarker = lastmillis;
+        loopi(24)
+        {
+            const float angle = i*2*PI/24;
+            vec point(extractionzone);
+            point.x += 4*cosf(angle);
+            point.y += 4*sinf(angle);
+            point.z += 0.25f;
+            particle_splash(13, 1, 200, point); // Existing green spawn marker.
+        }
+    }
+}
+
 bool outbreakthirdperson()
 {
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
@@ -27,7 +145,7 @@ bool outbreakthirdperson()
     return !watchingdemo && !editmode && player1->type == ENT_PLAYER && player1->state == CS_ALIVE &&
            player1->spectatemode == SM_NONE && !player1->scoping;
 #else
-    return outbreakactive() && !editmode && player1->state == CS_ALIVE && !player1->scoping;
+    return (outbreakactive() || extractiontestactive()) && !editmode && player1->state == CS_ALIVE && !player1->scoping;
 #endif
 }
 COMMANDF(outbreakaim, "i", (int *on) { outbreakaiming = *on != 0 && outbreakactive(); });
@@ -754,6 +872,7 @@ void updateworld(int curtime, int lastmillis)        // main game update loop
     movelocalplayer(); c2sinfo(player1);
     // No sleep execution, edit synchronisation, BotManager or updateoutbreak.
 #else
+    updateextractiontest(curtime);
     // process command sleeps
     sleepssemaphore->wait();
     loopv(sleeps)
@@ -876,6 +995,7 @@ void spawnplayer(playerent *d)
 
 void respawnself()
 {
+    if(extractiontestactive() && (extractionround.running || extractionround.finished)) return;
 #if defined(OUTBREAK_NETWORK_CLIENT) && defined(__EMSCRIPTEN__) && !defined(STANDALONE)
     if(browsernet_spawn_request_allowed()) addmsg(SV_TRYSPAWN,"r");
     return;
@@ -1274,6 +1394,8 @@ VARP(showmodedescriptions, 0, 1, 1);
 
 void startmap(const char *name, bool reset, bool norespawn)   // called just after a map load
 {
+    extractionround.reset();
+    extractionzoneplaced = false;
     player1->type = ENT_PLAYER; // intermission VP requires ENT_CAMERA
     extern bool canceldownloads;
     canceldownloads = false;
